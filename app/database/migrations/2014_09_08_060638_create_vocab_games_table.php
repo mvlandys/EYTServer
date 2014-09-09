@@ -16,12 +16,12 @@ class CreateVocabGamesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-            $table->integer("subject_id");
-            $table->integer("session_id");
-            $table->integer("grade");
-            $table->date("dob");
-            $table->integer("age");
-            $table->integer("sex");
+            $table->string("subject_id");
+            $table->string("session_id")->nullable();
+            $table->string("grade")->nullable();
+            $table->date("dob")->nullable();
+            $table->integer("age")->nullable();
+            $table->integer("sex")->nullable();
             $table->integer("score");
 		});
 	}

@@ -6,6 +6,10 @@ class TestController extends Controller {
 
 	public function index()
     {
+        if (!Input::has("games")) {
+            return array("error" => "No Game Data specified");
+        }
+        
         $games = Input::get("games");
         $json  = array();
 
@@ -25,8 +29,11 @@ class TestController extends Controller {
             $game->subject_id = $gameData["user_data"]["subject_id"];
             $game->session_id = $gameData["user_data"]["session_id"];
             $game->grade = $gameData["user_data"]["grade"];
-            $game->dob = \DateTime::createFromFormat("d/m/Y",$gameData["user_data"]["dob"]);
-            $game->age = $gameData["user_data"]["age"];
+
+            $dob = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y",$gameData["user_data"]["dob"]);
+            $game->dob = $dob;
+
+            $game->age = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
             $game->sex = $gameData["user_data"]["sex"];
 
             $score = 0;

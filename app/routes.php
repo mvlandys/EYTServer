@@ -18,4 +18,4 @@ Route::any('/', function()
 });
 
 //Route::post("/test1", "TestController@index");
-Route::post("/test1", "TestController@newGame");
+Route::any("/test1", "TestController@newGame");
