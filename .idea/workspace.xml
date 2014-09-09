@@ -47,7 +47,7 @@
               <file leaf-file-name="composer.json" pinned="false" current="true" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/composer.json">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="9" column="27" selection-start="272" selection-end="272" vertical-scroll-proportion="0.18448023" vertical-offset="0" max-vertical-offset="683">
+                    <state line="9" column="28" selection-start="273" selection-end="273" vertical-scroll-proportion="0.18448023" vertical-offset="0" max-vertical-offset="683">
                       <folding />
                     </state>
                   </provider>
@@ -69,7 +69,7 @@
               <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/routes.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="19" column="11" selection-start="496" selection-end="496" vertical-scroll-proportion="0.20648968" vertical-offset="0" max-vertical-offset="678">
+                    <state line="20" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.22713864" vertical-offset="0" max-vertical-offset="678">
                       <folding />
                     </state>
                   </provider>
@@ -420,13 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="11" selection-start="496" selection-end="496" vertical-scroll-proportion="0.20648968" vertical-offset="0" max-vertical-offset="678">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="35" selection-start="570" selection-end="570" vertical-scroll-proportion="0.2169014" vertical-offset="0" max-vertical-offset="1420">
@@ -441,9 +434,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="0.22713864" vertical-offset="0" max-vertical-offset="678">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="27" selection-start="272" selection-end="272" vertical-scroll-proportion="0.18448023" vertical-offset="0" max-vertical-offset="683">
+        <state line="9" column="28" selection-start="273" selection-end="273" vertical-scroll-proportion="0.18448023" vertical-offset="0" max-vertical-offset="683">
           <folding />
         </state>
       </provider>

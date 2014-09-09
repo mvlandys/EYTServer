@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper" : "1.*",
 		"way/generators": "~3.0",
-        "ext-sqlite3" : "*"
+        "ext-sqlite3" : "*",
+        "ext-pdo_sqlite" : "*"
 	},
 	"autoload": {
 		"classmap": [
