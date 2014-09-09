@@ -17,5 +17,5 @@ Route::any('/', function()
 	//return View::make('layout');
 });
 
-//Route::post("/test1", "TestController@index");
+Route::get("/test2", "TestController@index");
 Route::any("/test1", "TestController@newGame");

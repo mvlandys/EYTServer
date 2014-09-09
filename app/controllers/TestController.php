@@ -6,22 +6,19 @@ class TestController extends Controller {
 
 	public function index()
     {
-        if (!Input::has("games")) {
-            return array("error" => "No Game Data specified");
-        }
-        
-        $games = Input::get("games");
-        $json  = array();
+        $games = VocabGame::all();
 
-        foreach($games as $game) {
-            $json[] = $game;
-        }
-
-        return Response::json($json);
+        return View::make("test", array(
+            "games" => $games
+        ));
     }
 
     public function newGame()
     {
+        if (!Input::has("games")) {
+            return array("error" => "No Game Data specified");
+        }
+
         $games = Input::get("games");
 
         foreach($games as $gameData) {

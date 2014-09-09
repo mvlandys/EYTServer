@@ -21,115 +21,26 @@
     <favorites_list name="GamesDB" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63721555">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.5">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="VocabGame.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/models/VocabGame.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="210">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="TestController.php" pinned="false" current="true" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/app/controllers/TestController.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="11" column="8" selection-start="234" selection-end="234" vertical-scroll-proportion="0.22547585" vertical-offset="0" max-vertical-offset="798">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="composer.json" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/composer.json">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="8" column="32" selection-start="243" selection-end="243" vertical-scroll-proportion="-4.869565" vertical-offset="0" max-vertical-offset="630">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/config/database.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="33" column="59" selection-start="1053" selection-end="1053" vertical-scroll-proportion="-4.2608695" vertical-offset="364" max-vertical-offset="1820">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="2014_09_08_061222_create_vocab_scores_table.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="18" column="36" selection-start="380" selection-end="380" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="602">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/routes.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="20" column="10" selection-start="544" selection-end="544" vertical-scroll-proportion="-6.695652" vertical-offset="0" max-vertical-offset="238">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="laravel.log" pinned="false" current="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="701">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="app.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/config/app.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="25" column="5" selection-start="834" selection-end="834" vertical-scroll-proportion="-15.217391" vertical-offset="0" max-vertical-offset="2800">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/Procfile">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="84">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
-      </split-first>
-      <split-second>
         <leaf>
-          <file leaf-file-name="2014_09_08_060638_create_vocab_games_table.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
+          <file leaf-file-name="TestController.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/controllers/TestController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="47" selection-start="627" selection-end="627" vertical-scroll-proportion="0.2169014" vertical-offset="0" max-vertical-offset="1420">
+                <state line="41" column="24" selection-start="1188" selection-end="1193" vertical-scroll-proportion="0.40422535" vertical-offset="0" max-vertical-offset="1420">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test.blade.php" pinned="false" current="false" current-in-tab="false">
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="test.blade.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/test.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="5" selection-start="111" selection-end="111" vertical-scroll-proportion="-6.0869565" vertical-offset="0" max-vertical-offset="224">
+                <state line="32" column="8" selection-start="694" selection-end="694" vertical-scroll-proportion="0.31549296" vertical-offset="0" max-vertical-offset="1420">
                   <folding />
                 </state>
               </provider>
@@ -153,16 +64,16 @@
         <option value="$PROJECT_DIR$/vendor/way/generators/src/config/config.php" />
         <option value="$PROJECT_DIR$/app/models/VocabGame.php" />
         <option value="$PROJECT_DIR$/app/views/test.php" />
-        <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/test.blade.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php" />
         <option value="$PROJECT_DIR$/app/storage/logs/laravel.log" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/TestController.php" />
+        <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/test.blade.php" />
       </list>
     </option>
   </component>
@@ -259,29 +170,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,25 +393,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1204" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="4" selection-start="114" selection-end="114" vertical-scroll-proportion="0.06901409" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/test.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="111" selection-end="111" vertical-scroll-proportion="-6.0869565" vertical-offset="0" max-vertical-offset="224">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="36" selection-start="380" selection-end="380" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="602">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="683">
@@ -537,37 +407,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="32" selection-start="243" selection-end="243" vertical-scroll-proportion="-4.869565" vertical-offset="0" max-vertical-offset="630">
+        <state line="23" column="47" selection-start="627" selection-end="627" vertical-scroll-proportion="-13.391304" vertical-offset="0" max-vertical-offset="630">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
+    <entry file="file://$PROJECT_DIR$/app/views/layout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="701">
+        <state line="14" column="0" selection-start="291" selection-end="291" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="32" selection-start="243" selection-end="243" vertical-scroll-proportion="0.07887324" vertical-offset="0" max-vertical-offset="1420">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="59" selection-start="1053" selection-end="1053" vertical-scroll-proportion="-4.2608695" vertical-offset="364" max-vertical-offset="1820">
+        <state line="33" column="59" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.06901409" vertical-offset="364" max-vertical-offset="1820">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="10" selection-start="544" selection-end="544" vertical-scroll-proportion="-6.695652" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="834" selection-end="834" vertical-scroll-proportion="-15.217391" vertical-offset="0" max-vertical-offset="2800">
+        <state line="18" column="36" selection-start="380" selection-end="380" vertical-scroll-proportion="0.16760564" vertical-offset="0" max-vertical-offset="1420">
           <folding />
         </state>
       </provider>
@@ -579,9 +449,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="47" selection-start="627" selection-end="627" vertical-scroll-proportion="0.2169014" vertical-offset="0" max-vertical-offset="1420">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="701">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="5" selection-start="834" selection-end="834" vertical-scroll-proportion="0.24647887" vertical-offset="0" max-vertical-offset="2800">
           <folding />
         </state>
       </provider>
@@ -596,9 +473,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="18" selection-start="503" selection-end="503" vertical-scroll-proportion="0.09859155" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="8" selection-start="234" selection-end="234" vertical-scroll-proportion="0.22547585" vertical-offset="0" max-vertical-offset="798">
+        <state line="41" column="24" selection-start="1188" selection-end="1193" vertical-scroll-proportion="0.40422535" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/test.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="8" selection-start="694" selection-end="694" vertical-scroll-proportion="0.31549296" vertical-offset="0" max-vertical-offset="1420">
           <folding />
         </state>
       </provider>
