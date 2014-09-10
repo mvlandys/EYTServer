@@ -7,6 +7,7 @@
 <table class="table table-bordered table-stiped">
     <thead>
     <tr>
+        <th>Test Name</th>
         <th>Subject ID</th>
         <th>Session ID</th>
         <th>Grade</th>
@@ -19,6 +20,7 @@
     <tbody>
     @foreach ($games as $game)
         <tr>
+            <td>{{ $game->test_name }}</td>
             <td>{{ $game->subject_id }}</td>
             <td>{{ $game->session_id }}</td>
             <td>{{ $game->grade }}</td>
