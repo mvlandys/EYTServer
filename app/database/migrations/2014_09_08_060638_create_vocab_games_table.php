@@ -18,6 +18,7 @@ class CreateVocabGamesTable extends Migration {
 			$table->timestamps();
             $table->string("subject_id");
             $table->string("session_id")->nullable();
+            $table->string("test_name")->nullable();
             $table->string("grade")->nullable();
             $table->date("dob")->nullable();
             $table->integer("age")->nullable();
