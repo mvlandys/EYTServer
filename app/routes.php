@@ -16,5 +16,5 @@ Route::any('/', function()
     return Input::all();
 });
 
-Route::get("/vocab/save", "VocabController@saveGames");
-Route::any("/vocab", "VocabController@showResults");
+Route::post("/vocab/save", "VocabController@saveGames");
+Route::get("/vocab", "VocabController@showResults");
