@@ -8,7 +8,7 @@
     <thead>
     <tr>
         <th>Game ID</th>
-        <th>Test Name</th>
+        <th>Study Name</th>
         <th>Subject ID</th>
         <th>Session ID</th>
         <th>Grade</th>
@@ -26,9 +26,21 @@
             <td>{{ $game->subject_id }}</td>
             <td>{{ $game->session_id }}</td>
             <td>{{ $game->grade }}</td>
-            <td>{{ $game->dob }}</td>
+            <td>
+                @if ($game->dob == "")
+                .
+                @else
+                {{ date("d/m/Y",strtotime($game->dob)) }}
+                @endif
+            </td>
             <td>{{ $game->age }}</td>
-            <td>{{ $game->sex }}</td>
+            <td>
+                @if ($game->sex == 0)
+                .
+                @else
+                    {{ ($game->sex == 1) ? "Male" : "Female" }}
+                @endif
+            </td>
             <td>{{ $game->score }}</td>
         </tr>
     @endforeach
