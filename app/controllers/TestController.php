@@ -7,9 +7,11 @@ class TestController extends Controller {
 	public function index()
     {
         $games = VocabGame::all();
+        $scores = VocabScore::all();
 
         return View::make("test", array(
-            "games" => $games
+            "games" => $games,
+            "scores" => $scores
         ));
     }
 
@@ -33,8 +35,6 @@ class TestController extends Controller {
             $dob = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y",$gameData["user_data"]["dob"]);
             $game->dob = $dob;
 
-
-
             $score = 0;
 
             foreach($gameData["score_data"] as $gameScore) {
@@ -43,6 +43,17 @@ class TestController extends Controller {
 
             $game->score = $score;
             $game->save();
+
+            foreach($gameData["score_data"] as $card => $value) {
+                $card = substr($card, 5);
+                $cardScore = new VocabScore();
+
+                $cardScore->game_id = $game->id;
+                $cardScore->card = $card;
+                $cardScore->value = ($value != 0 || $value != 1) ? 0 : $value;
+                $cardScore->additional = ($value != 0 || $value != 1) ? $value : 0;
+                $cardScore->save();
+            }
         }
 
         return Input::all();

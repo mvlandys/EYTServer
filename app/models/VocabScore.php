@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class VocabGame extends Model {
+class VocabScore extends Model {
 
 	protected $fillable = [];
 
-    protected $table = "vocab_games";
+    protected $table = "vocab_scores";
 
 }
