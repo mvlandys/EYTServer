@@ -14,8 +14,7 @@
 Route::any('/', function()
 {
     return Input::all();
-	//return View::make('layout');
 });
 
-Route::get("/test2", "TestController@index");
-Route::any("/test1", "TestController@newGame");
+Route::get("/vocab/save", "VocabController@saveGames");
+Route::any("/vocab", "VocabController@showResults");

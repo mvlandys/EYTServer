@@ -24,20 +24,22 @@
     <splitter split-orientation="horizontal" split-proportion="0.43105757">
       <split-first>
         <leaf>
-          <file leaf-file-name="TestController.php" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="TestController.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/TestController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="53" column="56" selection-start="1751" selection-end="1751" vertical-scroll-proportion="0.5273632" vertical-offset="0" max-vertical-offset="1407">
+                <state line="14" column="11" selection-start="125" selection-end="305" vertical-scroll-proportion="-8.521739" vertical-offset="0" max-vertical-offset="938">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="routes.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/routes.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="47" selection-start="578" selection-end="578" vertical-scroll-proportion="-6.695652" vertical-offset="0" max-vertical-offset="238">
-                  <folding />
+                <state line="2" column="2" selection-start="9" selection-end="9" vertical-scroll-proportion="0.01971831" vertical-offset="0" max-vertical-offset="1420">
+                  <folding>
+                    <element signature="e#7#392#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -55,15 +57,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="laravel.log" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="laravel.log" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="91" column="34" selection-start="13743" selection-end="13794" vertical-scroll-proportion="0.7605132" vertical-offset="207" max-vertical-offset="1610">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="84">
                   <folding />
                 </state>
               </provider>
               <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
                 <state />
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VocabController.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="50" column="31" selection-start="1676" selection-end="1687" vertical-scroll-proportion="0.49295774" vertical-offset="0" max-vertical-offset="1420">
+                  <folding />
+                </state>
               </provider>
             </entry>
           </file>
@@ -106,14 +117,15 @@
         <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/app/storage/logs/laravel.log" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php" />
         <option value="$PROJECT_DIR$/app/models/VocabGame.php" />
         <option value="$PROJECT_DIR$/app/models/VocabScore.php" />
         <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/app/views/test.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/TestController.php" />
+        <option value="$PROJECT_DIR$/app/storage/logs/laravel.log" />
+        <option value="$PROJECT_DIR$/app/controllers/VocabController.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
       </list>
     </option>
   </component>
@@ -271,29 +283,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -558,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="47" selection-start="578" selection-end="578" vertical-scroll-proportion="-6.695652" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="36" selection-start="373" selection-end="380" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="602">
@@ -574,7 +557,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="34" selection-start="13743" selection-end="13794" vertical-scroll-proportion="0.7605132" vertical-offset="207" max-vertical-offset="1610">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1416">
           <folding />
         </state>
       </provider>
@@ -584,8 +567,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="56" selection-start="1751" selection-end="1751" vertical-scroll-proportion="0.5273632" vertical-offset="0" max-vertical-offset="1407">
+        <state line="14" column="11" selection-start="125" selection-end="305" vertical-scroll-proportion="-8.521739" vertical-offset="0" max-vertical-offset="938">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="31" selection-start="1676" selection-end="1687" vertical-scroll-proportion="0.49295774" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="2" selection-start="9" selection-end="9" vertical-scroll-proportion="0.01971831" vertical-offset="0" max-vertical-offset="1420">
+          <folding>
+            <element signature="e#7#392#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
