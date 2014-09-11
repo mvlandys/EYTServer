@@ -17,4 +17,7 @@ Route::any('/', function()
 });
 
 Route::post("/vocab/save", "VocabController@saveGames");
+Route::get("/vocab/game/{id}", "VocabController@viewScores");
 Route::get("/vocab", "VocabController@showResults");
+
+Route::get("/questions", "QuestionsController@displayForm");

@@ -39,7 +39,7 @@ class VocabController extends Controller {
 
                 $cardScore->game_id = $game->id;
                 $cardScore->card = $card;
-                $cardScore->value = ($value != 0 || $value != 1) ? 0 : $value;
+                $cardScore->value = ($value != 0 && $value != 1) ? 0 : $value;
                 $cardScore->additional = ($value != 0 || $value != 1) ? $value : 0;
                 $cardScore->save();
             }
@@ -51,10 +51,17 @@ class VocabController extends Controller {
     public function showResults($test_name = null, $start = null, $end = null)
     {
         $games = VocabGame::all();
-        $scores = VocabScore::all();
 
         return View::make("test", array(
-            "games" => $games,
+            "games" => $games
+        ));
+    }
+
+    public function viewScores($game_id)
+    {
+        $scores = VocabScore::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
+
+        return View::make("scores", array(
             "scores" => $scores
         ));
     }
