@@ -40,7 +40,7 @@ class VocabController extends Controller {
 
                 $cardScore->game_id = $game->id;
                 $cardScore->card = $card;
-                $cardScore->value = ($value != 0 && $value != 1) ? 0 : $value;
+                $cardScore->value = ($value == 1) ? 1 : 0;
                 $cardScore->additional = ($value != 0 || $value != 1) ? $value : 0;
                 $cardScore->save();
             }
