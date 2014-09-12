@@ -19,6 +19,7 @@ class VocabController extends Controller {
             $game->grade = $gameData["user_data"]["grade"];
             $game->sex = $gameData["user_data"]["sex"];
             $game->test_name = $gameData["user_data"]["test_name"];
+            $game->played_at = $gameData["played_at"];
 
             $game->age = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
             $dob = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y",$gameData["user_data"]["dob"]);

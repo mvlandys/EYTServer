@@ -43,7 +43,7 @@
                 @endif
             </td>
             <td>{{ $game->score }}</td>
-            <td>{{ date("d/m/Y",strtotime($game->played_at)) }}</td>
+            <td>{{ date("h:m A, d/m/Y",strtotime($game->played_at)) }}</td>
         </tr>
     @endforeach
     </tbody>
