@@ -7,7 +7,7 @@
 <table class="table table-bordered table-stiped">
     <thead>
     <tr>
-        <th>Card</th>
+        <th>Item</th>
         <th>Value</th>
         <th>Additional</th>
     </tr>

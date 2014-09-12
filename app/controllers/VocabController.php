@@ -52,7 +52,7 @@ class VocabController extends Controller {
     {
         $games = VocabGame::all();
 
-        return View::make("test", array(
+        return View::make("vocab/results", array(
             "games" => $games
         ));
     }
@@ -61,7 +61,7 @@ class VocabController extends Controller {
     {
         $scores = VocabScore::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
 
-        return View::make("scores", array(
+        return View::make("vocab/scores", array(
             "scores" => $scores
         ));
     }

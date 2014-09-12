@@ -23,6 +23,7 @@ class CreateVocabGamesTable extends Migration {
             $table->date("dob")->nullable();
             $table->integer("age")->nullable();
             $table->integer("sex")->nullable();
+            $table->dateTime("played_at")->nullable();
             $table->integer("score");
 		});
 	}

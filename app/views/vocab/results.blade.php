@@ -16,6 +16,7 @@
         <th>Age</th>
         <th>Sex</th>
         <th>Score</th>
+        <th>Played At</th>
     </tr>
     </thead>
     <tbody>
@@ -42,6 +43,7 @@
                 @endif
             </td>
             <td>{{ $game->score }}</td>
+            <td>{{ date("d/m/Y",strtotime($game->played_at)) }}</td>
         </tr>
     @endforeach
     </tbody>
