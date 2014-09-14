@@ -42,19 +42,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="28" selection-start="103" selection-end="103" vertical-scroll-proportion="0.03880804" vertical-offset="0" max-vertical-offset="1443">
+            <state line="4" column="28" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="database.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="24" selection-start="914" selection-end="914" vertical-scroll-proportion="-17.652174" vertical-offset="0" max-vertical-offset="1834">
+            <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.27605635" vertical-offset="0" max-vertical-offset="1834">
               <folding />
             </state>
           </provider>
@@ -98,8 +98,8 @@
         <option value="$PROJECT_DIR$/app/views/vocab/scores.blade.php" />
         <option value="$PROJECT_DIR$/app/views/vocab/results.blade.php" />
         <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
-        <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/app/config/database.php" />
       </list>
     </option>
   </component>
@@ -616,16 +616,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="24" selection-start="914" selection-end="914" vertical-scroll-proportion="-17.652174" vertical-offset="0" max-vertical-offset="1834">
+        <state line="4" column="28" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="28" selection-start="103" selection-end="103" vertical-scroll-proportion="0.03880804" vertical-offset="0" max-vertical-offset="1443">
+        <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.27605635" vertical-offset="0" max-vertical-offset="1834">
           <folding />
         </state>
       </provider>

@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	//'default' => 'pgsql',
-	'default' => 'sqlite',
+	'default' => 'pgsql',
+	//'default' => 'sqlite',
 
 	/*
 	|--------------------------------------------------------------------------
