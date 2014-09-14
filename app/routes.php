@@ -29,6 +29,7 @@ Route::group(array("before" => "auth"), function()
 
     // Vocab Routes
     Route::get("/vocab/game/{id}", "VocabController@viewScores");
+    Route::get("/vocab/csv", "VocabController@makeCSV");
     Route::get("/vocab/{test_name}", "VocabController@showResults");
     Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
     Route::get("/vocab", "VocabController@showResults");
@@ -36,6 +37,7 @@ Route::group(array("before" => "auth"), function()
     // CardSort Routes
     Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
     Route::get("/cardsort/{test_name}", "CardSortController@showResults");
+    Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
     Route::get("/cardsort", "CardSortController@showResults");
 
     // Questionnaire Routes

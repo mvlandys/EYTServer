@@ -51,18 +51,14 @@ class VocabController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $games = VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
-        } else if (!empty($test_name)) {
-            $games = VocabGame::where("test_name", "=", $test_name)->get();
-        } else {
-            $games = VocabGame::all();
-        }
+        $games = $this->getGames($test_name, $start, $end);
 
         return View::make("vocab/results", array(
             "games"     => $games,
             "test_name" => $test_name,
-            "tests"      => VocabGame::all(array("test_name"))
+            "start"     => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
+            "end"       => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
+            "tests"     => VocabGame::all(array("test_name"))
         ));
     }
 
@@ -73,5 +69,60 @@ class VocabController extends Controller
         return View::make("vocab/scores", array(
             "scores" => $scores
         ));
+    }
+
+    public function makeCSV($test_name = null, $start = null, $end = null)
+    {
+        $games = $this->getGames($test_name, $start, $end);
+        $filename = date("U") . ".csv";
+
+        $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+
+        fputcsv($fp, array(
+            "game_id",
+            "subject_id",
+            "session_id",
+            "test_name",
+            "grade",
+            "dob",
+            "age",
+            "sex",
+            "played_at",
+            "score"
+        ));
+
+        foreach($games as $game) {
+            fputcsv($fp, array(
+                $game->id,
+                (empty($game->subject_id)) ? "." : $game->subject_id,
+                (empty($game->session_id)) ? "." : $game->session_id,
+                (empty($game->test_name)) ? "." : $game->test_name,
+                (empty($game->grade)) ? "." : $game->grade,
+                (empty($game->dob)) ? "." : $game->dob,
+                (empty($game->age)) ? "." : $game->age,
+                (empty($game->sex)) ? "." : $game->sex,
+                (empty($game->played_at)) ? "." : $game->played_at,
+                (empty($game->score)) ? "." : $game->score
+            ));
+        }
+
+        fclose($fp);
+
+        return View::make("csv", array(
+            "filename" => $filename
+        ));
+    }
+
+    private function getGames($test_name = null, $start = null, $end = null)
+    {
+        if (!empty($test_name) && !empty($start) && !empty($end)) {
+            $games = VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+        } else if (!empty($test_name)) {
+            $games = VocabGame::where("test_name", "=", $test_name)->get();
+        } else {
+            $games = VocabGame::all();
+        }
+
+        return $games;
     }
 }

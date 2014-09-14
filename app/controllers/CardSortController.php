@@ -42,10 +42,14 @@ class CardSortController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games = CardSortGame::all();
+        $games = $this->getGames($test_name, $start, $end);
 
         return View::make("cardsort/results", array(
-            "games" => $games
+            "games"     => $games,
+            "test_name" => $test_name,
+            "start"     => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
+            "end"       => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
+            "tests"     => CardSortGame::all(array("test_name"))
         ));
     }
 
@@ -56,5 +60,18 @@ class CardSortController extends Controller
         return View::make("cardsort/scores", array(
             "scores" => $scores
         ));
+    }
+
+    private function getGames($test_name = null, $start = null, $end = null)
+    {
+        if (!empty($test_name) && !empty($start) && !empty($end)) {
+            $games = CardSortGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+        } else if (!empty($test_name)) {
+            $games = CardSortGame::where("test_name", "=", $test_name)->get();
+        } else {
+            $games = CardSortGame::all();
+        }
+
+        return $games;
     }
 }

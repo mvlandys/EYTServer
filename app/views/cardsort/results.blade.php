@@ -4,10 +4,35 @@
 
 @section('content')
 
+<div class="well">
+    <div class="row">
+        <div class="col-sm-3">
+            <label>Test Name:</label>
+            <select id="test_name">
+                <option value="">All Tests</option>
+                @foreach ($tests as $test)
+                <option {{{ ($test_name == $test["test_name"]) ? "selected" : "" }}} value="{{ $test["test_name"] }}">{{ $test["test_name"] }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label>Date From:</label>
+            <input type="text" id="date_start" placeholder="dd/mm/yyyy" value="{{{ $start or '' }}}" />
+        </div>
+        <div class="col-sm-3">
+            <label>Date To:</label>
+            <input type="text" id="date_end" placeholder="dd/mm/yyyy" value="{{{ $end or '' }}}" />
+        </div>
+        <div class="col-sm-3">
+            <a class="btn btn-primary" id="btnCardSortFilter">Submit</a>
+        </div>
+    </div>
+</div>
+
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th>Game ID</th>
+        <th><a class="btn btn-warning btn-xs" id="btnCardSortCSV">CSV</a></th>
         <th>Study Name</th>
         <th>Subject ID</th>
         <th>Session ID</th>

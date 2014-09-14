@@ -8,8 +8,10 @@ $(document).ready(function() {
 
     $("#btnLogin").on("click", login);
     $("#btnVocabFilter").on("click", filterVocab);
+    $("#btnCardSortFilter").on("click", filterCardSort);
+    $("#btnVocabCSV").on("click", vocabCSV);
 
-    if (route.indexOf("/vocab") > -1) {
+    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
         formSetup();
     }
 });
@@ -36,6 +38,23 @@ function filterVocab() {
     $.colorbox({
         onOpen:function() {
             window.location.pathname = "/vocab/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
+        }
+    });
+}
+
+function filterCardSort() {
+    var test  = $("#test_name").val();
+    var start = $("#date_start");
+    var end   = $("#date_end");
+
+    if (test == "" || start.val()== "" || end.val() == "") {
+        alert("Please fill in all fields");
+        return false;
+    }
+
+    $.colorbox({
+        onOpen:function() {
+            window.location.pathname = "/cardsort/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
         }
     });
 }
@@ -95,5 +114,11 @@ function login() {
 
             return true;
         }
+    });
+}
+
+function vocabCSV() {
+    $.colorbox({
+        href: "/vocab/csv"
     });
 }
