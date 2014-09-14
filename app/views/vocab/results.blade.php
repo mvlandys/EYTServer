@@ -4,7 +4,7 @@
 
 @section('content')
 
-<table class="table table-bordered table-stiped">
+<table class="table table-bordered table-striped">
     <thead>
     <tr>
         <th>Game ID</th>
@@ -22,11 +22,11 @@
     <tbody>
     @foreach ($games as $game)
         <tr>
-            <td><a href="/vocab/game/{{ $game->id }}">{{ $game->id }}</a></td>
-            <td>{{ $game->test_name }}</td>
-            <td>{{ $game->subject_id }}</td>
-            <td>{{ $game->session_id }}</td>
-            <td>{{ $game->grade }}</td>
+            <td><a class="btn btn-info btn-sm" href="/vocab/game/{{ $game->id }}">View Scores</a></td>
+            <td>{{{ empty($game->test_name) ? '.' : $game->test_name }}}</td>
+            <td>{{{ empty($game->subject_id) ? '.' : $game->subject_id }}}</td>
+            <td>{{{ empty($game->session_id) ? '.' : $game->session_id }}}</td>
+            <td>{{{ empty($game->grade) ? '.' : $game->grade }}}</td>
             <td>
                 @if ($game->dob == "")
                 .
@@ -43,7 +43,7 @@
                 @endif
             </td>
             <td>{{ $game->score }}</td>
-            <td>{{ date("h:m A, d/m/Y",strtotime($game->played_at)) }}</td>
+            <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
         </tr>
     @endforeach
     </tbody>

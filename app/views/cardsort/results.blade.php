@@ -4,7 +4,7 @@
 
 @section('content')
 
-<table class="table table-bordered table-stiped">
+<table class="table table-bordered table-striped">
     <thead>
     <tr>
         <th>Game ID</th>
@@ -21,11 +21,11 @@
     <tbody>
     @foreach ($games as $game)
         <tr>
-            <td><a href="/cardsort/game/{{ $game->id }}">{{ $game->id }}</a></td>
-            <td>{{ $game->test_name }}</td>
-            <td>{{ $game->subject_id }}</td>
-            <td>{{ $game->session_id }}</td>
-            <td>{{ $game->grade }}</td>
+            <td class="text-center"><a class="btn btn-info btn-sm" href="/cardsort/game/{{ $game->id }}">View Scores</a></td>
+            <td>{{{ empty($game->test_name) ? '.' : $game->test_name }}}</td>
+            <td>{{{ empty($game->subject_id) ? '.' : $game->subject_id }}}</td>
+            <td>{{{ empty($game->session_id) ? '.' : $game->session_id }}}</td>
+            <td>{{{ empty($game->grade) ? '.' : $game->grade }}}</td>
             <td>
                 @if ($game->dob == "")
                 .
@@ -33,7 +33,7 @@
                 {{ date("d/m/Y",strtotime($game->dob)) }}
                 @endif
             </td>
-            <td>{{ $game->age }}</td>
+            <td>{{{ ($game->age == 0) ? '.' : $game->age }}}</td>
             <td>
                 @if ($game->sex == 0)
                 .
@@ -41,7 +41,7 @@
                     {{ ($game->sex == 1) ? "Male" : "Female" }}
                 @endif
             </td>
-            <td>{{ date("h:m A, d/m/Y",strtotime($game->played_at)) }}</td>
+            <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
         </tr>
     @endforeach
     </tbody>
