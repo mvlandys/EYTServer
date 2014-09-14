@@ -11,17 +11,37 @@
 |
 */
 
-Route::any('/', function()
+
+
+Route::get("/login", function() {
+    return View::make("login");
+});
+Route::post("/login/submit", "UserController@login");
+Route::get("/logout", "UserController@logout");
+
+Route::group(array("before" => "auth"), function()
 {
-    return Input::all();
+    // Default Route
+    Route::any('/', function()
+    {
+        return View::make("layout");
+    });
+
+    // Vocab Routes
+    Route::get("/vocab/game/{id}", "VocabController@viewScores");
+    Route::get("/vocab/{test_name}", "VocabController@showResults");
+    Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
+    Route::get("/vocab", "VocabController@showResults");
+
+    // CardSort Routes
+    Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
+    Route::get("/cardsort/{test_name}", "CardSortController@showResults");
+    Route::get("/cardsort", "CardSortController@showResults");
+
+    // Questionnaire Routes
+    Route::get("/questions", "QuestionsController@displayForm");
 });
 
+// App POST routes
 Route::post("/vocab/save", "VocabController@saveGames");
-Route::get("/vocab/game/{id}", "VocabController@viewScores");
-Route::get("/vocab", "VocabController@showResults");
-
-Route::get("/questions", "QuestionsController@displayForm");
-
 Route::post("/cardsort/save", "CardSortController@saveGame");
-Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
-Route::get("/cardsort", "CardSortController@showResults");

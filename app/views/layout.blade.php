@@ -6,12 +6,15 @@
 
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link href="/vendor/colorbox/colorbox.css" rel="stylesheet">
 
     <script src="/vendor/jquery/jquery-2.1.1.min.js" type="application/javascript"></script>
     <script src="/vendor/jquery-ui/jquery-ui.min.js" type="application/javascript"></script>
+    <script src="/vendor/colorbox/jquery.colorbox-min.js" type="application/javascript"></script>
     <script src="/js/app.js" type="application/javascript"></script>
 </head>
 <body>
+    @if (Session::has("user_id"))
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,9 +34,14 @@
                     <li><a href="/vocab">Vocab Data</a></li>
                     <li><a href="/cardsort">CardSort Data</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
             </div><!-- /.navbar-collapse -->
+
         </div><!-- /.container-fluid -->
     </nav>
+    @endif
     <div class="container">
         @yield('content')
     </div>

@@ -51,10 +51,18 @@ class VocabController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games = VocabGame::all();
+        if (!empty($test_name) && !empty($start) && !empty($end)) {
+            $games = VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+        } else if (!empty($test_name)) {
+            $games = VocabGame::where("test_name", "=", $test_name)->get();
+        } else {
+            $games = VocabGame::all();
+        }
 
         return View::make("vocab/results", array(
-            "games" => $games
+            "games"     => $games,
+            "test_name" => $test_name,
+            "tests"      => VocabGame::all(array("test_name"))
         ));
     }
 
