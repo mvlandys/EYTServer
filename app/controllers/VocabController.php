@@ -77,8 +77,13 @@ class VocabController extends Controller
         $filename = date("U") . ".csv";
 
         $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $gamesCount = array();
 
-        fputcsv($fp, array(
+        for($x=0;$x<48;$x++) {
+            $gamesCount[] = "Item" . $x . "_Resp";
+        }
+
+        fputcsv($fp, array_merge(array(
             "game_id",
             "subject_id",
             "session_id",
@@ -89,10 +94,17 @@ class VocabController extends Controller
             "sex",
             "played_at",
             "score"
-        ));
+        ), $gamesCount));
 
         foreach($games as $game) {
-            fputcsv($fp, array(
+            $scores = array();
+
+            for($x = 0; $x < 48; $x++) {
+                $score = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $x)->first();
+                $scores[] = (isset($score->value)) ? $score->value : ".";
+            }
+
+            fputcsv($fp, array_merge(array(
                 $game->id,
                 (empty($game->subject_id)) ? "." : $game->subject_id,
                 (empty($game->session_id)) ? "." : $game->session_id,
@@ -103,7 +115,7 @@ class VocabController extends Controller
                 (empty($game->sex)) ? "." : $game->sex,
                 (empty($game->played_at)) ? "." : $game->played_at,
                 (empty($game->score)) ? "." : $game->score
-            ));
+            ), $scores));
         }
 
         fclose($fp);

@@ -10,6 +10,7 @@ $(document).ready(function() {
     $("#btnVocabFilter").on("click", filterVocab);
     $("#btnCardSortFilter").on("click", filterCardSort);
     $("#btnVocabCSV").on("click", vocabCSV);
+    $("#btnCardSortCSV").on("click", cardsortCSV);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
         formSetup();
@@ -120,5 +121,11 @@ function login() {
 function vocabCSV() {
     $.colorbox({
         href: "/vocab/csv"
+    });
+}
+
+function cardsortCSV() {
+    $.colorbox({
+        href: "/cardsort/csv"
     });
 }

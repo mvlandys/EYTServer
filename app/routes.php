@@ -36,6 +36,7 @@ Route::group(array("before" => "auth"), function()
 
     // CardSort Routes
     Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
+    Route::get("/cardsort/csv", "CardSortController@makeCSV");
     Route::get("/cardsort/{test_name}", "CardSortController@showResults");
     Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
     Route::get("/cardsort", "CardSortController@showResults");
