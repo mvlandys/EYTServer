@@ -21,3 +21,7 @@ Route::get("/vocab/game/{id}", "VocabController@viewScores");
 Route::get("/vocab", "VocabController@showResults");
 
 Route::get("/questions", "QuestionsController@displayForm");
+
+Route::post("/cardsort/save", "CardSortController@saveGame");
+Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
+Route::get("/cardsort", "CardSortController@showResults");
