@@ -480,16 +480,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "2b60366be6dcb9f9cd3e244ab25eb98eaea99551"
+                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2b60366be6dcb9f9cd3e244ab25eb98eaea99551",
-                "reference": "2b60366be6dcb9f9cd3e244ab25eb98eaea99551",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cde7a00d1410a17fb6d61b993cb017a78be1137c",
+                "reference": "cde7a00d1410a17fb6d61b993cb017a78be1137c",
                 "shasum": ""
             },
             "require": {
@@ -522,7 +522,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2014-08-26 03:18:44"
+            "time": "2014-09-10 03:26:33"
         },
         {
             "name": "nikic/php-parser",
@@ -676,16 +676,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "0.3.7",
+            "version": "0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "8b8c62f278e363b75ddcacaf5803710232fbd3e4"
+                "reference": "5085202f1f37769aae59f9711c423f28159c9b29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8b8c62f278e363b75ddcacaf5803710232fbd3e4",
-                "reference": "8b8c62f278e363b75ddcacaf5803710232fbd3e4",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/5085202f1f37769aae59f9711c423f28159c9b29",
+                "reference": "5085202f1f37769aae59f9711c423f28159c9b29",
                 "shasum": ""
             },
             "require": {
@@ -694,6 +694,7 @@
             "require-dev": {
                 "phing/phing": "2.7.*",
                 "phpunit/phpunit": "4.0.*",
+                "sami/sami": "1.*",
                 "squizlabs/php_codesniffer": "1.*"
             },
             "suggest": {
@@ -769,7 +770,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2014-07-05 16:36:21"
+            "time": "2014-09-13 02:42:45"
         },
         {
             "name": "predis/predis",
