@@ -8,16 +8,16 @@
     <thead>
     <tr>
         <th>Level</th>
-        <th>Correct</th>
-        <th>Incorrect</th>
+        <th>Card</th>
+        <th>Value</th>
     </tr>
     </thead>
     <tbody>
     @foreach ($scores as $score)
     <tr>
         <td>{{ $score->level }}</td>
-        <td>{{ $score->correct }}</td>
-        <td>{{ $score->incorrect }}</td>
+        <td>{{ $score->card }}</td>
+        <td>{{ $score->value }}</td>
     </tr>
     @endforeach
     </tbody>

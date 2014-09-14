@@ -25,19 +25,31 @@ class CardSortController extends Controller
             $game->dob        = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
             $game->save();
 
+            // Loop through each level
             for ($x = 1; $x < 4; $x++) {
-                if (!empty($gameData["score_data"]["level-" . $x])) {
+                // Loop through the 6 tests
+                $z = 0;
+                for ($y = 1; $y < 7; $y++) {
+                    if ($x < 3 && $z == 0) {
+                        $y--;
+                        $z++;
+                    }
+
                     $cardScore            = new CardSortScore();
                     $cardScore->game_id   = $game->id;
                     $cardScore->level     = $x;
-                    $cardScore->correct   = $gameData["score_data"]["level-" . $x]["Correct"];
-                    $cardScore->incorrect = $gameData["score_data"]["level-" . $x]["Incorrect"];
+                    $cardScore->card      = $y;
+                    $cardScore->value     = (isset($gameData["score_data"][$x . "-" . $y])) ? $gameData["score_data"][$x . "-" . $y] : 0;
                     $cardScore->save();
+
+                    if ($x < 3 && $y == 5) {
+                        $y = 7;
+                    }
                 }
             }
         }
 
-        return CardSortScore::all();
+        return array("success");//CardSortScore::all();
     }
 
     public function showResults($test_name = null, $start = null, $end = null)
@@ -81,35 +93,42 @@ class CardSortController extends Controller
         $filename = date("U") . ".csv";
 
         $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $cards = array();
 
-        fputcsv($fp, array(
+        // Loop through each level
+        for ($x = 1; $x < 4; $x++) {
+            // Loop through the 6 tests
+            for ($y = 1; $y < 7; $y++) {
+                $cards[] = "Level" . $x . "_" . $y . "Acc";
+            }
+        }
+
+        // Response Time = RT
+
+        fputcsv($fp, array_merge(array(
             "game_id",
             "subject_id",
             "session_id",
-            "test_name",
+            "study_name",
             "grade",
-            "dob",
+            "DOB",
             "age",
             "sex",
-            "played_at",
-            "level 1 correct",
-            "level 1 incorrect",
-            "level 2 correct",
-            "level 2 incorrect",
-            "level 3 correct",
-            "level 3 incorrect",
-        ));
+            "DOT",
+            "TOT"
+        ), $cards));
 
         foreach($games as $game) {
-            $scores = CardSortScore::where("game_id", "=", $game->id)->get();
+            $scores = CardSortScore::where("game_id", "=", $game->id)->orderBy("level")->orderBy("card")->get();
             $scoreData = array();
 
             foreach($scores as $score) {
-                $scoreData[$score->level]["correct"] = $score->correct;
-                $scoreData[$score->level]["incorrect"] = $score->incorrect;
+                $scoreData[] = $score->value;
             }
 
-            fputcsv($fp, array(
+            $played_at = DateTime::createFromFormat("Y-m-d H:i:s", $game->played_at);
+
+            fputcsv($fp, array_merge(array(
                 $game->id,
                 (empty($game->subject_id)) ? "." : $game->subject_id,
                 (empty($game->session_id)) ? "." : $game->session_id,
@@ -118,14 +137,9 @@ class CardSortController extends Controller
                 (empty($game->dob)) ? "." : $game->dob,
                 (empty($game->age)) ? "." : $game->age,
                 (empty($game->sex)) ? "." : $game->sex,
-                (empty($game->played_at)) ? "." : $game->played_at,
-                (empty($scoreData["1"]["correct"])) ? "." : $scoreData[1]["correct"],
-                (empty($scoreData["1"]["incorrect"])) ? "." : $scoreData[1]["incorrect"],
-                (empty($scoreData["2"]["correct"])) ? "." : $scoreData[2]["correct"],
-                (empty($scoreData["2"]["incorrect"])) ? "." : $scoreData[2]["incorrect"],
-                (empty($scoreData["3"]["correct"])) ? "." : $scoreData[3]["correct"],
-                (empty($scoreData["3"]["incorrect"])) ? "." : $scoreData[3]["incorrect"],
-            ));
+                (empty($game->played_at)) ? "." : $played_at->format("d/m/Y"),
+                (empty($game->played_at)) ? "." : $played_at->format("H:i")
+            ), $scoreData));
         }
 
         fclose($fp);

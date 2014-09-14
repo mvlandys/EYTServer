@@ -33,7 +33,9 @@ class CreateVocabScoresTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('vocab_scores');
+        if (Schema::hasTable('vocab_scores')) {
+            Schema::drop('vocab_scores');
+        }
 	}
 
 }

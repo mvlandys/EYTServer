@@ -21,8 +21,9 @@ class CreateCardsortScoresTable extends Migration {
             $table->integer("game_id");
             $table->foreign('game_id')->references('id')->on('cardsort_games');
             $table->integer("level");
-            $table->integer("correct");
-            $table->integer("incorrect");
+            $table->integer("card");
+            $table->integer("value");
+            $table->time("response")->nullable();
         });
 	}
 
@@ -33,7 +34,9 @@ class CreateCardsortScoresTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('cardsort_scores');
+        if (Schema::hasTable('cardsort_scores')) {
+            Schema::drop('cardsort_scores');
+        }
 	}
 
 }

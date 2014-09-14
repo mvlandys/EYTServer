@@ -80,19 +80,19 @@ class VocabController extends Controller
         $gamesCount = array();
 
         for($x=0;$x<48;$x++) {
-            $gamesCount[] = "Item" . $x . "_Resp";
+            $gamesCount[] = "Item" . ($x+1) . "_Acc";
         }
 
         fputcsv($fp, array_merge(array(
             "game_id",
             "subject_id",
             "session_id",
-            "test_name",
+            "study_name",
             "grade",
-            "dob",
+            "DOB",
             "age",
             "sex",
-            "played_at",
+            "DOT",
             "score"
         ), $gamesCount));
 
