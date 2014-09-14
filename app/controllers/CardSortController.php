@@ -20,43 +20,24 @@ class CardSortController extends Controller
             $game->grade      = $gameData["user_data"]["grade"];
             $game->sex        = $gameData["user_data"]["sex"];
             $game->test_name  = $gameData["user_data"]["test_name"];
-            $game->played_at  = $gameData["played_at"];
+            $game->played_at  = \DateTime::createFromFormat("Y-m-d H:i:s", $gameData["played_at"]);
             $game->age        = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
             $game->dob        = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
             $game->save();
 
-            // Level 1
-            if (!empty($gameData["scoreData"]["level-1"])) {
-                $cardScore            = new CardSortScore();
-                $cardScore->game_id   = $game->id;
-                $cardScore->level     = 1;
-                $cardScore->correct   = $gameData["scoreData"]["level-1"]["Correct"];
-                $cardScore->incorrect = $gameData["scoreData"]["level-1"]["Incorrect"];
-                $cardScore->save();
-            }
-
-            // Level 2
-            if (!empty($gameData["scoreData"]["level-2"])) {
-                $cardScore            = new CardSortScore();
-                $cardScore->game_id   = $game->id;
-                $cardScore->level     = 1;
-                $cardScore->correct   = $gameData["scoreData"]["level-2"]["Correct"];
-                $cardScore->incorrect = $gameData["scoreData"]["level-2"]["Incorrect"];
-                $cardScore->save();
-            }
-
-            // Level 3
-            if (!empty($gameData["scoreData"]["level-3"])) {
-                $cardScore            = new CardSortScore();
-                $cardScore->game_id   = $game->id;
-                $cardScore->level     = 1;
-                $cardScore->correct   = $gameData["scoreData"]["level-3"]["Correct"];
-                $cardScore->incorrect = $gameData["scoreData"]["level-3"]["Incorrect"];
-                $cardScore->save();
+            for ($x = 1; $x < 4; $x++) {
+                if (!empty($gameData["score_data"]["level-" . $x])) {
+                    $cardScore            = new CardSortScore();
+                    $cardScore->game_id   = $game->id;
+                    $cardScore->level     = $x;
+                    $cardScore->correct   = $gameData["score_data"]["level-" . $x]["Correct"];
+                    $cardScore->incorrect = $gameData["score_data"]["level-" . $x]["Incorrect"];
+                    $cardScore->save();
+                }
             }
         }
 
-        return array("success");
+        return CardSortScore::all();
     }
 
     public function showResults($test_name = null, $start = null, $end = null)
@@ -70,7 +51,7 @@ class CardSortController extends Controller
 
     public function viewScores($game_id)
     {
-        $scores = CardSortScore::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
+        $scores = CardSortScore::where("game_id", "=", $game_id)->get();
 
         return View::make("cardsort/scores", array(
             "scores" => $scores

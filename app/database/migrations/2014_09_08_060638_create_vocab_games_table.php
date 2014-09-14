@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVocabGamesTable extends Migration {
 
@@ -36,7 +38,13 @@ class CreateVocabGamesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('vocab_games');
+        if (Schema::hasTable('vocab_scores')) {
+            Schema::drop('vocab_scores');
+        }
+
+        if (Schema::hasTable('vocab_games')) {
+            Schema::drop('vocab_games');
+        }
 	}
 
 }

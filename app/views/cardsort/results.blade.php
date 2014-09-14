@@ -21,7 +21,7 @@
     <tbody>
     @foreach ($games as $game)
         <tr>
-            <td><a href="/vocab/game/{{ $game->id }}">{{ $game->id }}</a></td>
+            <td><a href="/cardsort/game/{{ $game->id }}">{{ $game->id }}</a></td>
             <td>{{ $game->test_name }}</td>
             <td>{{ $game->subject_id }}</td>
             <td>{{ $game->session_id }}</td>

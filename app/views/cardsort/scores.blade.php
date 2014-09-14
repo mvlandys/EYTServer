@@ -7,17 +7,17 @@
 <table class="table table-bordered table-stiped">
     <thead>
     <tr>
-        <th>Item</th>
-        <th>Value</th>
-        <th>Additional</th>
+        <th>Level</th>
+        <th>Correct</th>
+        <th>Incorrect</th>
     </tr>
     </thead>
     <tbody>
     @foreach ($scores as $score)
     <tr>
-        <td>{{ $score->card }}</td>
-        <td>{{ $score->value }}</td>
-        <td>{{ $score->additional }}</td>
+        <td>{{ $score->level }}</td>
+        <td>{{ $score->correct }}</td>
+        <td>{{ $score->incorrect }}</td>
     </tr>
     @endforeach
     </tbody>

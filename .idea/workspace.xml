@@ -24,10 +24,37 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="CardSortController.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="CardSortController.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/CardSortController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="68" column="5" selection-start="2712" selection-end="2712" vertical-scroll-proportion="-41.391304" vertical-offset="0" max-vertical-offset="1176">
+                <state line="33" column="65" selection-start="1529" selection-end="1529" vertical-scroll-proportion="0.3283582" vertical-offset="0" max-vertical-offset="1407">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/config/database.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="70" column="53" selection-start="2107" selection-end="2133" vertical-scroll-proportion="-26.782608" vertical-offset="364" max-vertical-offset="1820">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scores.blade.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/cardsort/scores.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="25" column="5" selection-start="437" selection-end="437" vertical-scroll-proportion="-15.217391" vertical-offset="0" max-vertical-offset="434">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="results.blade.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/cardsort/results.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="23" column="34" selection-start="449" selection-end="449" vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="770">
                   <folding />
                 </state>
               </provider>
@@ -42,19 +69,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="results.blade.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/views/cardsort/results.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="43" column="0" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.42394367" vertical-offset="0" max-vertical-offset="1420">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="laravel.log" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="215" column="0" selection-start="30804" selection-end="30804" vertical-scroll-proportion="-33.25926" vertical-offset="2112" max-vertical-offset="3542">
+                <state line="437" column="0" selection-start="67742" selection-end="67742" vertical-scroll-proportion="-33.25926" vertical-offset="5220" max-vertical-offset="6650">
                   <folding />
                 </state>
               </provider>
@@ -66,52 +84,46 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.5">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="VocabController.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="5" column="1" selection-start="85" selection-end="85" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1036">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="CardSortGame.php" pinned="false" current="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/app/models/CardSortGame.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="7" column="40" selection-start="151" selection-end="151" vertical-scroll-proportion="0.14348462" vertical-offset="0" max-vertical-offset="683">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="2014_09_12_053614_create_cardsort_games_table.php" pinned="false" current="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="14" column="38" selection-start="246" selection-end="260" vertical-scroll-proportion="0.26843658" vertical-offset="0" max-vertical-offset="678">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="2014_09_12_062811_create_cardsort_scores_table.php" pinned="false" current="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state line="23" column="11" selection-start="632" selection-end="632" vertical-scroll-proportion="-13.391304" vertical-offset="0" max-vertical-offset="588">
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
+        <leaf>
+          <file leaf-file-name="VocabController.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="5" column="1" selection-start="85" selection-end="85" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1036">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CardSortGame.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/models/CardSortGame.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="9" column="1" selection-start="154" selection-end="154" vertical-scroll-proportion="-5.478261" vertical-offset="0" max-vertical-offset="210">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="2014_09_12_062811_create_cardsort_scores_table.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="16" column="39" selection-start="332" selection-end="347" vertical-scroll-proportion="-9.73913" vertical-offset="0" max-vertical-offset="630">
+                  <folding>
+                    <element signature="e#9#50#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CardSortScore.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/models/CardSortScore.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="41" selection-start="153" selection-end="153" vertical-scroll-proportion="0.06901409" vertical-offset="0" max-vertical-offset="1420">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-second>
     </splitter>
   </component>
@@ -128,7 +140,6 @@
         <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/vendor/way/generators/src/config/config.php" />
         <option value="$PROJECT_DIR$/app/views/test.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/composer.json" />
@@ -140,16 +151,18 @@
         <option value="$PROJECT_DIR$/app/controllers/QuestionsController.php" />
         <option value="$PROJECT_DIR$/app/views/test.blade.php" />
         <option value="$PROJECT_DIR$/app/views/scores.blade.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php" />
         <option value="$PROJECT_DIR$/app/views/vocab/results.blade.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/VocabController.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php" />
-        <option value="$PROJECT_DIR$/app/controllers/CardSortController.php" />
-        <option value="$PROJECT_DIR$/app/models/CardSortScore.php" />
         <option value="$PROJECT_DIR$/app/models/CardSortGame.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php" />
+        <option value="$PROJECT_DIR$/app/views/cardsort/scores.blade.php" />
         <option value="$PROJECT_DIR$/app/views/cardsort/results.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/CardSortScore.php" />
+        <option value="$PROJECT_DIR$/app/controllers/CardSortController.php" />
       </list>
     </option>
   </component>
@@ -370,6 +383,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -616,11 +647,6 @@
         <state line="8" column="32" selection-start="243" selection-end="243" vertical-scroll-proportion="0.07887324" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="59" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.06901409" vertical-offset="364" max-vertical-offset="1820" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="701" />
@@ -656,19 +682,9 @@
         <state line="10" column="1" selection-start="151" selection-end="151" vertical-scroll-proportion="-6.0869565" vertical-offset="0" max-vertical-offset="224" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="235" selection-end="241" vertical-scroll-proportion="0.12816902" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="5" selection-start="225" selection-end="225" vertical-scroll-proportion="0.118309855" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="0" selection-start="30804" selection-end="30804" vertical-scroll-proportion="-33.25926" vertical-offset="2112" max-vertical-offset="3542">
+        <state line="437" column="0" selection-start="67742" selection-end="67742" vertical-scroll-proportion="-33.25926" vertical-offset="5220" max-vertical-offset="6650">
           <folding />
         </state>
       </provider>
@@ -676,44 +692,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/CardSortController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="5" selection-start="2712" selection-end="2712" vertical-scroll-proportion="-41.391304" vertical-offset="0" max-vertical-offset="1176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/VocabGame.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="1" selection-start="149" selection-end="149" vertical-scroll-proportion="0.09859155" vertical-offset="0" max-vertical-offset="1420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="1" selection-start="85" selection-end="85" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1036">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/CardSortScore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="7" selection-end="46" vertical-scroll-proportion="0.04099561" vertical-offset="0" max-vertical-offset="683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="11" selection-start="632" selection-end="632" vertical-scroll-proportion="-13.391304" vertical-offset="0" max-vertical-offset="588">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="38" selection-start="246" selection-end="260" vertical-scroll-proportion="0.26843658" vertical-offset="0" max-vertical-offset="678">
           <folding />
         </state>
       </provider>
@@ -725,20 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/CardSortGame.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="40" selection-start="151" selection-end="151" vertical-scroll-proportion="0.14348462" vertical-offset="0" max-vertical-offset="683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/cardsort/scores.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1443">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="58" selection-start="876" selection-end="876" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="322">
@@ -746,9 +713,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="34" selection-start="736" selection-end="748" vertical-scroll-proportion="0.7227139" vertical-offset="0" max-vertical-offset="678">
+          <folding>
+            <element signature="e#7#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="1" selection-start="85" selection-end="85" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1036">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="8" selection-start="897" selection-end="897" vertical-scroll-proportion="0.37079456" vertical-offset="0" max-vertical-offset="1397">
+          <folding>
+            <element signature="e#7#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="8" selection-start="953" selection-end="1143" vertical-scroll-proportion="0.3943662" vertical-offset="0" max-vertical-offset="1420">
+          <folding>
+            <element signature="e#7#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/CardSortGame.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="1" selection-start="154" selection-end="154" vertical-scroll-proportion="-5.478261" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/cardsort/scores.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="5" selection-start="437" selection-end="437" vertical-scroll-proportion="-15.217391" vertical-offset="0" max-vertical-offset="434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/cardsort/results.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.42394367" vertical-offset="0" max-vertical-offset="1420">
+        <state line="23" column="34" selection-start="449" selection-end="449" vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="770">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="39" selection-start="332" selection-end="347" vertical-scroll-proportion="-9.73913" vertical-offset="0" max-vertical-offset="630">
+          <folding>
+            <element signature="e#9#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/CardSortScore.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="41" selection-start="153" selection-end="153" vertical-scroll-proportion="0.06901409" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="53" selection-start="2107" selection-end="2133" vertical-scroll-proportion="-26.782608" vertical-offset="364" max-vertical-offset="1820">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/CardSortController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="65" selection-start="1529" selection-end="1529" vertical-scroll-proportion="0.3283582" vertical-offset="0" max-vertical-offset="1407">
           <folding />
         </state>
       </provider>

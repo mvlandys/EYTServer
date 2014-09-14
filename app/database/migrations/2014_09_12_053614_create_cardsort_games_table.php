@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCardsortGamesTable extends Migration {
 
@@ -34,7 +35,13 @@ class CreateCardsortGamesTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('vocab_games');
+        if (Schema::hasTable('cardsort_scores')) {
+            Schema::drop('cardsort_scores');
+        }
+
+        if (Schema::hasTable('cardsort_games')) {
+            Schema::drop('cardsort_games');
+        }
 	}
 
 }

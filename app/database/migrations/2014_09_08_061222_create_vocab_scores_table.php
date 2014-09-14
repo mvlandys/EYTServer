@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVocabScoresTable extends Migration {
 
@@ -32,7 +33,7 @@ class CreateVocabScoresTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('vocab_scores');
+        Schema::drop('vocab_scores');
 	}
 
 }
