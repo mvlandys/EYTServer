@@ -37,10 +37,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+              <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/public/js/app.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="46" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.9121813" vertical-offset="0" max-vertical-offset="826">
+                    <state line="46" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="826">
                       <folding>
                         <element signature="n#!!block;n#login#0" expanded="false" />
                       </folding>
@@ -48,10 +48,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
+              <file leaf-file-name="database.php" pinned="false" current="true" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/config/database.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="28" column="6" selection-start="871" selection-end="871" vertical-scroll-proportion="-17.043478" vertical-offset="0" max-vertical-offset="1834">
+                    <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.5944363" vertical-offset="0" max-vertical-offset="1834">
                       <folding />
                     </state>
                   </provider>
@@ -134,12 +134,12 @@
         <option value="$PROJECT_DIR$/app/filters.php" />
         <option value="$PROJECT_DIR$/app/views/login.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
-        <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/VocabController.php" />
         <option value="$PROJECT_DIR$/app/views/vocab/results.blade.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/app/config/database.php" />
       </list>
     </option>
   </component>
@@ -743,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="6" selection-start="871" selection-end="871" vertical-scroll-proportion="-17.043478" vertical-offset="0" max-vertical-offset="1834">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="7" selection-start="917" selection-end="917" vertical-scroll-proportion="-20.695652" vertical-offset="0" max-vertical-offset="742">
@@ -784,10 +777,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.9121813" vertical-offset="0" max-vertical-offset="826">
+        <state line="46" column="0" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="826">
           <folding>
             <element signature="n#!!block;n#login#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.5944363" vertical-offset="0" max-vertical-offset="1834">
+          <folding />
         </state>
       </provider>
     </entry>
