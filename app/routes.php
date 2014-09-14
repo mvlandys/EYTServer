@@ -12,6 +12,9 @@
 */
 
 
+Route::get("/support", function() {
+    return View::make("support");
+});
 
 Route::get("/login", function() {
     return View::make("login");
