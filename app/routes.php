@@ -45,9 +45,12 @@ Route::group(array("before" => "auth"), function()
     Route::get("/cardsort", "CardSortController@showResults");
 
     // Questionnaire Routes
-    Route::get("/questions", "QuestionsController@displayForm");
+    Route::get("/questionnaire", "QuestionnaireController@showResults");
+    Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
+    Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
 });
 
 // App POST routes
 Route::post("/vocab/save", "VocabController@saveGames");
 Route::post("/cardsort/save", "CardSortController@saveGame");
+Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");

@@ -11,6 +11,7 @@ $(document).ready(function() {
     $("#btnCardSortFilter").on("click", filterCardSort);
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
+    $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
         formSetup();
@@ -127,5 +128,11 @@ function vocabCSV() {
 function cardsortCSV() {
     $.colorbox({
         href: "/cardsort/csv"
+    });
+}
+
+function questionnaireCSV() {
+    $.colorbox({
+        href: "/questionnaire/csv"
     });
 }
