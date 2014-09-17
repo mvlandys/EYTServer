@@ -15,7 +15,7 @@
     @foreach ($scores as $score)
     <tr>
         <td>{{ $score->question }}</td>
-        <td>{{ $score->answer }}</td>
+        <td>{{ ($score->answer == -1) ? '.' : $score->answer }}</td>
     </tr>
     @endforeach
     </tbody>

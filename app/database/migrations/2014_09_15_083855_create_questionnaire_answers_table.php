@@ -18,7 +18,7 @@ class CreateQuestionnaireAnswersTable extends Migration {
             $table->integer("game_id");
             $table->foreign('game_id')->references('id')->on('questionnaire');
             $table->integer("question");
-            $table->integer("answer");
+            $table->string("answer");
 			$table->timestamps();
 		});
 	}
