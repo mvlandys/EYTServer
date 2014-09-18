@@ -148,7 +148,7 @@ class QuestionnaireController extends Controller
             ));
         }
 
-        View::make("alert", array(
+        return View::make("alert", array(
             "msg" => "Thank You",
             "type" => "success"
         ));
