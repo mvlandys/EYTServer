@@ -121,4 +121,36 @@ class QuestionnaireController extends Controller
             "filename" => $filename
         ));
     }
+
+    public function showForm()
+    {
+        return View::make("questionnaire/form");
+    }
+
+    public function submitForm()
+    {
+        $result             = new Questionnaire();
+        $result->subject_id = Input::get("subject_id");
+        $result->session_id = Input::get("session_id");
+        $result->grade      = Input::get("grade");
+        $result->sex        = Input::get("sex");
+        $result->test_name  = Input::get("test_name");
+        $result->played_at  = date("Y-m-d H:i:s");
+        $result->age        = (Input::get("age") == "") ? 0 : Input::get("age");
+        $result->dob        =  Input::get("dob");
+        $result->save();
+
+        for ($q = 1; $q < 41; $q++) {
+            QuestionnaireAnswer::create(array(
+                "game_id"   => $result->id,
+                "question"  => $q,
+                "answer"    => Input::get($q)
+            ));
+        }
+
+        View::make("alert", array(
+            "msg" => "Thank You",
+            "type" => "success"
+        ));
+    }
 }

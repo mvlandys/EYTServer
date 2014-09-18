@@ -22,6 +22,10 @@ Route::get("/login", function() {
 Route::post("/login/submit", "UserController@login");
 Route::get("/logout", "UserController@logout");
 
+// Questionnaire Web Form
+Route::get("/questionnaire/form", "QuestionnaireController@showForm");
+Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
+
 Route::group(array("before" => "auth"), function()
 {
     // Default Route
