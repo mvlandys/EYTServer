@@ -23,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="QuestionnaireController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="QuestionnaireController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/QuestionnaireController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="88" selection-start="1372" selection-end="1372" vertical-scroll-proportion="0.29577464" vertical-offset="0" max-vertical-offset="2254">
+            <state line="30" column="88" selection-start="1372" selection-end="1372" vertical-scroll-proportion="-18.26087" vertical-offset="0" max-vertical-offset="2254">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scores.blade.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="scores.blade.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/questionnaire/scores.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="35" selection-start="316" selection-end="316" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="406">
+            <state line="23" column="5" selection-start="373" selection-end="373" vertical-scroll-proportion="0.22676057" vertical-offset="0" max-vertical-offset="1420">
               <folding />
             </state>
           </provider>
@@ -740,16 +740,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/questionnaire/scores.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionnaireController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="35" selection-start="316" selection-end="316" vertical-scroll-proportion="-10.347826" vertical-offset="0" max-vertical-offset="406">
+        <state line="30" column="88" selection-start="1372" selection-end="1372" vertical-scroll-proportion="-18.26087" vertical-offset="0" max-vertical-offset="2254">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionnaireController.php">
+    <entry file="file://$PROJECT_DIR$/app/views/questionnaire/scores.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="88" selection-start="1372" selection-end="1372" vertical-scroll-proportion="0.29577464" vertical-offset="0" max-vertical-offset="2254">
+        <state line="23" column="5" selection-start="373" selection-end="373" vertical-scroll-proportion="0.22676057" vertical-offset="0" max-vertical-offset="1420">
           <folding />
         </state>
       </provider>
