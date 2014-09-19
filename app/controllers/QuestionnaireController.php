@@ -28,7 +28,7 @@ class QuestionnaireController extends Controller
                 QuestionnaireAnswer::create(array(
                     "game_id"   => $result->id,
                     "question"  => $q,
-                    "answer"    => ($resultData[$q] < 0) ? "." : intval($resultData[$q])
+                    "answer"    => ($resultData[$q] == 0) ? "." : intval($resultData[$q])
                 ));
             }
         }
