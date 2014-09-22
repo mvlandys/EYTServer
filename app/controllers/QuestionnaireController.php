@@ -26,9 +26,9 @@ class QuestionnaireController extends Controller
 
             for ($q = 1; $q < 41; $q++) {
                 QuestionnaireAnswer::create(array(
-                    "game_id"   => $result->id,
-                    "question"  => $q,
-                    "answer"    => ($resultData[$q] == 0) ? "." : intval($resultData[$q])
+                    "game_id"  => $result->id,
+                    "question" => $q,
+                    "answer"   => ($resultData[$q] == 0) ? "." : intval($resultData[$q])
                 ));
             }
         }
@@ -56,7 +56,7 @@ class QuestionnaireController extends Controller
         } else if (!empty($test_name)) {
             $results = Questionnaire::where("test_name", "=", $test_name)->get();
         } else {
-            $results = Questionnaire::all();
+            $results = Questionnaire::all()->sortBy("played_at DESC");
         }
 
         return $results;
@@ -73,13 +73,13 @@ class QuestionnaireController extends Controller
 
     public function makeCSV($test_name = null, $start = null, $end = null)
     {
-        $results = $this->getResults($test_name, $start, $end);
+        $results  = $this->getResults($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
-        $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $fp     = fopen(public_path() . "/tmp/" . $filename, 'w');
         $qCount = array();
 
-        for($x=1;$x<41;$x++) {
+        for ($x = 1; $x < 41; $x++) {
             $qCount[] = "Question_" . $x;
         }
 
@@ -95,7 +95,7 @@ class QuestionnaireController extends Controller
             "DOT",
         ), $qCount));
 
-        foreach($results as $result) {
+        foreach ($results as $result) {
             $answers = array();
 
             foreach ($result->answers()->orderBy("question")->get() as $answer) {
@@ -124,7 +124,16 @@ class QuestionnaireController extends Controller
 
     public function showForm()
     {
-        return View::make("questionnaire/form");
+        return View::make("questionnaire/form", array(
+            "test_name"  => (Input::has("test_name")) ? Input::get("test_name") : "",
+            "subject_id" => (Input::has("subject_id")) ? Input::get("subject_id") : "",
+            "session_id" => (Input::has("session_id")) ? Input::get("session_id") : "",
+            "grade"      => (Input::has("grade")) ? Input::get("grade") : "",
+            "dob"        => (Input::has("dob")) ? Input::get("dob") : "",
+            "age"        => (Input::has("age")) ? Input::get("age") : "",
+            "sex"        => (Input::has("sex")) ? Input::get("sex") : "",
+            "type"       => (Input::has("type")) ? Input::get("type") : ""
+        ));
     }
 
     public function submitForm()
@@ -137,19 +146,19 @@ class QuestionnaireController extends Controller
         $result->test_name  = Input::get("test_name");
         $result->played_at  = date("Y-m-d H:i:s");
         $result->age        = (Input::get("age") == "") ? 0 : Input::get("age");
-        $result->dob        =  Input::get("dob");
+        $result->dob        = (Input::get("dob") == "") ? null : \DateTime::createFromFormat("d/m/Y", Input::get("dob"))->format("Y-m-d");
         $result->save();
 
         for ($q = 1; $q < 41; $q++) {
             QuestionnaireAnswer::create(array(
-                "game_id"   => $result->id,
-                "question"  => $q,
-                "answer"    => Input::get($q)
+                "game_id"  => $result->id,
+                "question" => $q,
+                "answer"   => Input::get($q)
             ));
         }
 
         return View::make("alert", array(
-            "msg" => "Thank You",
+            "msg"  => "Thank You",
             "type" => "success"
         ));
     }

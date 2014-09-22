@@ -16,7 +16,39 @@ $(document).ready(function() {
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
         formSetup();
     }
+
+    if (route.indexOf("/questionnaire/form") > -1) {
+        qFormSetup();
+        changeAnswerType()
+    }
 });
+
+function qFormSetup() {
+    $("[name=dob]").datepicker({
+        dateFormat: "dd/mm/yy"
+    });
+}
+
+function changeAnswerType() {
+    var type = $("#responseType :selected").val();
+
+    if (type == 2) {
+        $("select").each(function() {
+
+            if ($(this).attr("name") == "sex" || $(this).attr("id") == "responseType") {
+                return;
+            }
+
+            $(this).html(
+                "<option value='.'>Please Select</option>" +
+                "<option value='1'>Not True</option>" +
+                "<option value='2'>A Little True</option>" +
+                "<option value='3'>Moderately True</option>" +
+                "<option value='4'>Mostly True</option>" +
+                "<option value='5'>Completely True</option>");
+        });
+    }
+}
 
 function formSetup() {
     $("#date_start").datepicker({
