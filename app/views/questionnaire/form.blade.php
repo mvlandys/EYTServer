@@ -12,25 +12,25 @@
     <div class="well">
         <div class="row">
             <div class="col-sm-3">
-                <input type="text" name="test_name" class="form-control" placeholder="Test Name..." />
+                <input type="text" name="test_name" class="form-control" placeholder="Test Name..." value="{{{ $test_name }}}" />
             </div>
             <div class="col-sm-3">
                 <input type="text" name="subject_id" class="form-control" placeholder="Subject ID..." value="{{{ $subject_id }}}" />
             </div>
             <div class="col-sm-3">
-                <input type="text" name="session_id" class="form-control" placeholder="Session ID..." />
+                <input type="text" name="session_id" class="form-control" placeholder="Session ID..." value="{{{ $session_id }}}" />
             </div>
             <div class="col-sm-3">
-                <input type="text" name="grade" class="form-control" placeholder="Grade..." />
+                <input type="text" name="grade" class="form-control" placeholder="Grade..." value="{{{ $grade }}}" />
             </div>
         </div>
         <br/>
         <div class="row">
             <div class="col-sm-3">
-                <input type="text" name="dob" class="form-control" placeholder="dd/mm/yyyy" />
+                <input type="text" name="dob" class="form-control" placeholder="dd/mm/yyyy" value="{{{ $dob }}}" />
             </div>
             <div class="col-sm-3">
-                <input type="text" name="age" class="form-control" placeholder="Age..." />
+                <input type="text" name="age" class="form-control" placeholder="Age..." value="{{{ $age }}}" />
             </div>
             <div class="col-sm-3">
                 <select name="sex" class="form-control">

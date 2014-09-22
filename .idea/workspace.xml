@@ -59,7 +59,7 @@
           <file leaf-file-name="form.blade.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/questionnaire/form.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="61" column="21" selection-start="2453" selection-end="2453" vertical-scroll-proportion="0.2169014" vertical-offset="546" max-vertical-offset="8736">
+                <state line="32" column="103" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.31549296" vertical-offset="0" max-vertical-offset="8736">
                   <folding />
                 </state>
               </provider>
@@ -633,7 +633,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/questionnaire/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="21" selection-start="2453" selection-end="2453" vertical-scroll-proportion="0.2169014" vertical-offset="546" max-vertical-offset="8736">
+        <state line="32" column="103" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.31549296" vertical-offset="0" max-vertical-offset="8736">
           <folding />
         </state>
       </provider>
