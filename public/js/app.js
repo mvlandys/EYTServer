@@ -12,6 +12,7 @@ $(document).ready(function() {
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
+    $("#responseType").on("change", changeAnswerType);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
         formSetup();
@@ -32,7 +33,7 @@ function qFormSetup() {
 function changeAnswerType() {
     var type = $("#responseType :selected").val();
 
-    if (type == 2) {
+    if (type == 1) {
         $("select").each(function() {
 
             if ($(this).attr("name") == "sex" || $(this).attr("id") == "responseType") {
@@ -41,11 +42,24 @@ function changeAnswerType() {
 
             $(this).html(
                 "<option value='.'>Please Select</option>" +
-                "<option value='1'>Not True</option>" +
-                "<option value='2'>A Little True</option>" +
-                "<option value='3'>Moderately True</option>" +
-                "<option value='4'>Mostly True</option>" +
-                "<option value='5'>Completely True</option>");
+                    "<option value='1'>Not True</option>" +
+                    "<option value='3'>Somewhat True</option>" +
+                    "<option value='5'>Certainly True</option>");
+        });
+    } else if (type == 2) {
+        $("select").each(function() {
+
+            if ($(this).attr("name") == "sex" || $(this).attr("id") == "responseType") {
+                return;
+            }
+
+            $(this).html(
+                "<option value='.'>Please Select</option>" +
+                    "<option value='1'>Not True</option>" +
+                    "<option value='2'>A Little True</option>" +
+                    "<option value='3'>Moderately True</option>" +
+                    "<option value='4'>Mostly True</option>" +
+                    "<option value='5'>Completely True</option>");
         });
     }
 }

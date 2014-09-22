@@ -57,8 +57,8 @@
             <select name="1" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -71,8 +71,8 @@
             <select name="2" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -85,8 +85,8 @@
             <select name="3" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -99,8 +99,8 @@
             <select name="4" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -113,8 +113,8 @@
             <select name="5" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -127,8 +127,8 @@
             <select name="6" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -141,8 +141,8 @@
             <select name="7" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -155,8 +155,8 @@
             <select name="8" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -169,8 +169,8 @@
             <select name="9" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -183,8 +183,8 @@
             <select name="10" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -197,8 +197,8 @@
             <select name="11" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -211,8 +211,8 @@
             <select name="12" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -225,8 +225,8 @@
             <select name="13" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -239,8 +239,8 @@
             <select name="14" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -253,8 +253,8 @@
             <select name="15" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -267,8 +267,8 @@
             <select name="16" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -281,8 +281,8 @@
             <select name="17" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -295,8 +295,8 @@
             <select name="18" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -309,8 +309,8 @@
             <select name="19" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -323,8 +323,8 @@
             <select name="20" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -337,8 +337,8 @@
             <select name="21" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -351,8 +351,8 @@
             <select name="22" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -365,8 +365,8 @@
             <select name="23" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -379,8 +379,8 @@
             <select name="24" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -393,8 +393,8 @@
             <select name="25" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -407,8 +407,8 @@
             <select name="26" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -421,8 +421,8 @@
             <select name="27" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -435,8 +435,8 @@
             <select name="28" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -449,8 +449,8 @@
             <select name="29" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -463,8 +463,8 @@
             <select name="30" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -477,8 +477,8 @@
             <select name="31" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -491,8 +491,8 @@
             <select name="32" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -505,8 +505,8 @@
             <select name="33" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -519,8 +519,8 @@
             <select name="34" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -533,8 +533,8 @@
             <select name="35" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -547,8 +547,8 @@
             <select name="36" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -561,8 +561,8 @@
             <select name="37" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -575,8 +575,8 @@
             <select name="38" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -589,8 +589,8 @@
             <select name="39" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
@@ -603,8 +603,8 @@
             <select name="40" class="form-control">
                 <option value=".">Please Select</option>
                 <option value="1">Not True</option>
-                <option value="2">Somewhat True</option>
-                <option value="3">Certainly True</option>
+                <option value="3">Somewhat True</option>
+                <option value="5">Certainly True</option>
             </select>
         </div>
     </div>
