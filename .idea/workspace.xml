@@ -28,11 +28,10 @@
           <file leaf-file-name="FishSharkController.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="52" selection-start="779" selection-end="779" vertical-scroll-proportion="0.18732394" vertical-offset="14" max-vertical-offset="1820">
+                <state line="130" column="68" selection-start="4907" selection-end="4907" vertical-scroll-proportion="0.95522386" vertical-offset="224" max-vertical-offset="1974">
                   <folding>
                     <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
                     <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
-                    <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -56,7 +55,7 @@
               <file leaf-file-name="2014_09_27_043623_create_fishshark_games_table.php" pinned="false" current="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_27_043623_create_fishshark_games_table.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="27" column="37" selection-start="853" selection-end="862" vertical-scroll-proportion="0.5329429" vertical-offset="0" max-vertical-offset="686">
+                    <state line="26" column="39" selection-start="811" selection-end="811" vertical-scroll-proportion="0.5124451" vertical-offset="0" max-vertical-offset="686">
                       <folding />
                     </state>
                   </provider>
@@ -869,27 +868,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_27_043623_create_fishshark_games_table.php">
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="37" selection-start="853" selection-end="862" vertical-scroll-proportion="0.5329429" vertical-offset="0" max-vertical-offset="686">
+        <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.3704246" vertical-offset="139" max-vertical-offset="1834">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_27_043623_create_fishshark_games_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.17816901" vertical-offset="139" max-vertical-offset="1834">
+        <state line="26" column="39" selection-start="811" selection-end="811" vertical-scroll-proportion="0.5124451" vertical-offset="0" max-vertical-offset="686">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="52" selection-start="779" selection-end="779" vertical-scroll-proportion="0.18732394" vertical-offset="14" max-vertical-offset="1820">
+        <state line="130" column="68" selection-start="4907" selection-end="4907" vertical-scroll-proportion="0.95522386" vertical-offset="224" max-vertical-offset="1974">
           <folding>
             <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
             <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
-            <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

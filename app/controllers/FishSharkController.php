@@ -125,10 +125,10 @@ class FishSharkController extends Controller
                 (empty($game->dob)) ? "." : $game->dob,
                 (empty($game->age)) ? "." : $game->age,
                 (empty($game->sex)) ? "." : $game->sex,
-                (empty($game->played_at)) ? "." : $game->played_at,
+                (empty($game->played_at)) ? "." : $game->played_at/*,
                 (empty($game->animation)) ? "." : $game->animation
                 (empty($game->blank_min)) ? "." : $game->blank_min
-                (empty($game->blank_max)) ? "." : $game->blank_max
+                (empty($game->blank_max)) ? "." : $game->blank_max*/
             ), $scores));
         }
 
