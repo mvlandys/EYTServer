@@ -13,6 +13,7 @@ $(document).ready(function() {
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
     $("#btnMrAntCSV").on("click", mrAntCSV);
+    $("#btnFishSharkCSV").on("click", fishSharkCSV);
     $("#responseType").on("change", changeAnswerType);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
@@ -187,5 +188,11 @@ function questionnaireCSV() {
 function mrAntCSV() {
     $.colorbox({
         href: "/mrant/csv"
+    });
+}
+
+function fishSharkCSV() {
+    $.colorbox({
+        href: "/fishshark/csv"
     });
 }

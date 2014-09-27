@@ -53,10 +53,15 @@ Route::group(array("before" => "auth"), function()
     Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
     Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
 
-    // Questionnaire Routes
+    // MrAnt Routes
     Route::get("/mrant", "MrAntController@showResults");
     Route::get("/mrant/game/{id}", "MrAntController@viewScores");
     Route::get("/mrant/csv", "MrAntController@makeCSV");
+
+    // Fish Shark Routes
+    Route::get("/fishshark", "FishSharkController@showResults");
+    Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
+    Route::get("/fishshark/csv", "FishSharkController@makeCSV");
 });
 
 // App POST routes
@@ -64,3 +69,4 @@ Route::post("/vocab/save", "VocabController@saveGames");
 Route::post("/cardsort/save", "CardSortController@saveGame");
 Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
 Route::post("/mrant/save", "MrAntController@saveAnswers");
+Route::post("/fishshark/save", "FishSharkController@saveGames");
