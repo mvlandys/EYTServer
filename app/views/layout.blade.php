@@ -34,6 +34,7 @@
                     <li><a href="/vocab">Vocab Data</a></li>
                     <li><a href="/cardsort">CardSort Data</a></li>
                     <li><a href="/questionnaire">Questionnaire Data</a></li>
+                    <li><a href="/mrant">MrAnt Data</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/logout">Logout</a></li>

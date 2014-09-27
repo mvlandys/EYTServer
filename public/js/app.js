@@ -12,9 +12,10 @@ $(document).ready(function() {
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
+    $("#btnMrAntCSV").on("click", mrAntCSV);
     $("#responseType").on("change", changeAnswerType);
 
-    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1) {
+    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
         formSetup();
     }
 
@@ -180,5 +181,11 @@ function cardsortCSV() {
 function questionnaireCSV() {
     $.colorbox({
         href: "/questionnaire/csv"
+    });
+}
+
+function mrAntCSV() {
+    $.colorbox({
+        href: "/mrant/csv"
     });
 }

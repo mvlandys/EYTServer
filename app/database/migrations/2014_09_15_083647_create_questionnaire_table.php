@@ -23,6 +23,7 @@ class CreateQuestionnaireTable extends Migration {
             $table->integer("age")->nullable();
             $table->integer("sex")->nullable();
             $table->dateTime("played_at")->nullable();
+            $table->integer("type")->nullable();
             $table->timestamps();
 		});
 	}

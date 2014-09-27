@@ -52,9 +52,15 @@ Route::group(array("before" => "auth"), function()
     Route::get("/questionnaire", "QuestionnaireController@showResults");
     Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
     Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
+
+    // Questionnaire Routes
+    Route::get("/mrant", "MrAntController@showResults");
+    Route::get("/mrant/game/{id}", "MrAntController@viewScores");
+    Route::get("/mrant/csv", "MrAntController@makeCSV");
 });
 
 // App POST routes
 Route::post("/vocab/save", "VocabController@saveGames");
 Route::post("/cardsort/save", "CardSortController@saveGame");
 Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
+Route::post("/mrant/save", "MrAntController@saveAnswers");
