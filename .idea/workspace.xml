@@ -37,27 +37,8 @@
           <file leaf-file-name="MrAntController.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="142" column="1" selection-start="4956" selection-end="4956" vertical-scroll-proportion="0.828169" vertical-offset="0" max-vertical-offset="1420">
-                  <folding>
-                    <element signature="n#saveAnswers#0;n#MrAntController#0;n#!!top" expanded="false" />
-                    <element signature="e#142#635#0" expanded="false" />
-                    <element signature="e#160#634#1" expanded="false" />
-                    <element signature="e#646#1173#0" expanded="false" />
-                    <element signature="e#736#1111#0" expanded="false" />
-                    <element signature="e#793#1096#0" expanded="false" />
-                    <element signature="e#812#1095#1" expanded="false" />
-                    <element signature="e#1122#1173#0" expanded="false" />
-                    <element signature="n#showResults#0;n#MrAntController#0;n#!!top" expanded="false" />
-                    <element signature="e#1342#1749#0" expanded="false" />
-                    <element signature="e#1370#1748#0" expanded="false" />
-                    <element signature="n#getGames#0;n#MrAntController#0;n#!!top" expanded="false" />
-                    <element signature="e#1849#2263#0" expanded="false" />
-                    <element signature="e#2066#2263#0" expanded="false" />
-                    <element signature="e#2178#2263#0" expanded="false" />
-                    <element signature="n#viewScores#0;n#MrAntController#0;n#!!top" expanded="false" />
-                    <element signature="e#2477#2553#0" expanded="false" />
-                    <element signature="e#2504#2552#0" expanded="false" />
-                  </folding>
+                <state line="124" column="26" selection-start="4354" selection-end="4354" vertical-scroll-proportion="1.2338308" vertical-offset="0" max-vertical-offset="2072">
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -862,27 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="1" selection-start="4956" selection-end="4956" vertical-scroll-proportion="0.828169" vertical-offset="0" max-vertical-offset="1420">
-          <folding>
-            <element signature="n#saveAnswers#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#142#635#0" expanded="false" />
-            <element signature="e#160#634#1" expanded="false" />
-            <element signature="e#646#1173#0" expanded="false" />
-            <element signature="e#736#1111#0" expanded="false" />
-            <element signature="e#793#1096#0" expanded="false" />
-            <element signature="e#812#1095#1" expanded="false" />
-            <element signature="e#1122#1173#0" expanded="false" />
-            <element signature="n#showResults#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#1342#1749#0" expanded="false" />
-            <element signature="e#1370#1748#0" expanded="false" />
-            <element signature="n#getGames#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#1849#2263#0" expanded="false" />
-            <element signature="e#2066#2263#0" expanded="false" />
-            <element signature="e#2178#2263#0" expanded="false" />
-            <element signature="n#viewScores#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#2477#2553#0" expanded="false" />
-            <element signature="e#2504#2552#0" expanded="false" />
-          </folding>
+        <state line="124" column="26" selection-start="4354" selection-end="4354" vertical-scroll-proportion="1.2338308" vertical-offset="0" max-vertical-offset="2072">
+          <folding />
         </state>
       </provider>
     </entry>
