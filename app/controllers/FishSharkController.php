@@ -6,12 +6,14 @@ class FishSharkController extends Controller
 {
     public function saveGames()
     {
+        $dob = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));
+
         $game = FishSharkGame::create(array(
             "subject_id" => Input::get("subject_id"),
             "session_id" => Input::get("session"),
             "test_name"  => Input::get("studyName"),
             "grade"      => Input::get("grade"),
-            "dob"        => Input::get("birthdate"),
+            "dob"        => (!$dob) ? "" : $dob->format("Y-m-d"),
             "age"        => Input::get("age"),
             "sex"        => Input::get("sex"),
             "played_at"  => Input::get("date") . ":00",

@@ -25,25 +25,15 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="FishSharkController.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="FishSharkController.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="63" column="5" selection-start="2304" selection-end="2304" vertical-scroll-proportion="-7.9130435" vertical-offset="0" max-vertical-offset="1344">
+                <state line="20" column="52" selection-start="779" selection-end="779" vertical-scroll-proportion="0.18732394" vertical-offset="14" max-vertical-offset="1820">
                   <folding>
-                    <element signature="n#saveGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
                     <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
                     <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
                     <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="database.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/config/database.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.17816901" vertical-offset="139" max-vertical-offset="1834">
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -204,8 +194,8 @@
         <option value="$PROJECT_DIR$/app/views/fishshark/scores.blade.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/app/views/fishshark/results.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/FishSharkController.php" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
+        <option value="$PROJECT_DIR$/app/controllers/FishSharkController.php" />
       </list>
     </option>
   </component>
@@ -886,22 +876,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="5" selection-start="2304" selection-end="2304" vertical-scroll-proportion="-7.9130435" vertical-offset="0" max-vertical-offset="1344">
-          <folding>
-            <element signature="n#saveGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
-            <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
-            <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
-            <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="4" selection-start="869" selection-end="869" vertical-scroll-proportion="0.17816901" vertical-offset="139" max-vertical-offset="1834">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="52" selection-start="779" selection-end="779" vertical-scroll-proportion="0.18732394" vertical-offset="14" max-vertical-offset="1820">
+          <folding>
+            <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
