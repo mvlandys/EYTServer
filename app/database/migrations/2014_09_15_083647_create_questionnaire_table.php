@@ -19,11 +19,11 @@ class CreateQuestionnaireTable extends Migration {
             $table->string("session_id")->nullable();
             $table->string("test_name")->nullable();
             $table->string("grade")->nullable();
-            $table->date("dob")->nullable();
-            $table->integer("age")->nullable();
-            $table->integer("sex")->nullable();
-            $table->dateTime("played_at")->nullable();
-            $table->integer("type")->nullable();
+            $table->string("dob")->nullable();
+            $table->string("age")->nullable();
+            $table->string("sex")->nullable();
+            $table->string("played_at")->nullable();
+            $table->string("type")->nullable();
             $table->timestamps();
 		});
 	}

@@ -20,10 +20,10 @@ class CreateMrantGamesTable extends Migration
             $table->string("session_id")->nullable();
             $table->string("test_name")->nullable();
             $table->string("grade")->nullable();
-            $table->date("dob")->nullable();
-            $table->integer("age")->nullable();
+            $table->string("dob")->nullable();
+            $table->string("age")->nullable();
             $table->string("sex")->nullable();
-            $table->dateTime("played_at")->nullable();
+            $table->string("played_at")->nullable();
             $table->string("score")->nullable();
             $table->string("ts_start")->nullable();
             $table->string("ts_lvl1_start")->nullable();

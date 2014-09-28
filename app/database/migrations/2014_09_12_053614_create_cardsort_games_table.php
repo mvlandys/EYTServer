@@ -20,17 +20,17 @@ class CreateCardsortGamesTable extends Migration {
             $table->string("session_id")->nullable();
             $table->string("test_name")->nullable();
             $table->string("grade")->nullable();
-            $table->date("dob")->nullable();
-            $table->integer("age")->nullable();
-            $table->integer("sex")->nullable();
-            $table->dateTime("played_at")->nullable();
-            $table->datetime("ts_start")->nullable();
-            $table->datetime("ts_lvl1_start")->nullable();
-            $table->datetime("ts_lvl1_end")->nullable();
-            $table->datetime("ts_lvl2_start")->nullable();
-            $table->datetime("ts_lvl2_end")->nullable();
-            $table->datetime("ts_lvl3_start")->nullable();
-            $table->datetime("ts_lvl3_end")->nullable();
+            $table->string("dob")->nullable();
+            $table->string("age")->nullable();
+            $table->string("sex")->nullable();
+            $table->string("played_at")->nullable();
+            $table->string("ts_start")->nullable();
+            $table->string("ts_lvl1_start")->nullable();
+            $table->string("ts_lvl1_end")->nullable();
+            $table->string("ts_lvl2_start")->nullable();
+            $table->string("ts_lvl2_end")->nullable();
+            $table->string("ts_lvl3_start")->nullable();
+            $table->string("ts_lvl3_end")->nullable();
             $table->timestamps();
 		});
 	}
