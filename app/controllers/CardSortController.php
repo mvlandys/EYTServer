@@ -35,23 +35,13 @@ class CardSortController extends Controller
             // Loop through each level
             for ($x = 1; $x < 4; $x++) {
                 // Loop through the 6 tests
-                $z = 0;
                 for ($y = 1; $y < 7; $y++) {
-                    if ($x < 3 && $z == 0) {
-                        $y--;
-                        $z++;
-                    }
-
                     $cardScore          = new CardSortScore();
                     $cardScore->game_id = $game->id;
                     $cardScore->level   = $x;
                     $cardScore->card    = $y;
                     $cardScore->value   = (isset($gameData["score_data"][$x . "-" . $y])) ? $gameData["score_data"][$x . "-" . $y] : 0;
                     $cardScore->save();
-
-                    if ($x < 3 && $y == 5) {
-                        $y = 7;
-                    }
                 }
             }
         }
