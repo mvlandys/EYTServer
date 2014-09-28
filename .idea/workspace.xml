@@ -23,10 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="2014_09_22_093313_create_mrant_games_table.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="46" selection-start="697" selection-end="697" vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="896">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="database.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.18802817" vertical-offset="139" max-vertical-offset="1834">
+            <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.2859155" vertical-offset="0" max-vertical-offset="1834">
               <folding />
             </state>
           </provider>
@@ -42,7 +51,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/TestController.php" />
         <option value="$PROJECT_DIR$/app/controllers/QuestionsController.php" />
         <option value="$PROJECT_DIR$/app/views/test.blade.php" />
         <option value="$PROJECT_DIR$/app/views/scores.blade.php" />
@@ -88,10 +96,11 @@
         <option value="$PROJECT_DIR$/app/models/FishSharkGame.php" />
         <option value="$PROJECT_DIR$/app/views/fishshark/results.blade.php" />
         <option value="$PROJECT_DIR$/app/controllers/FishSharkController.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php" />
         <option value="$PROJECT_DIR$/app/controllers/MrAntController.php" />
         <option value="$PROJECT_DIR$/app/models/MrAntGame.php" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
       </list>
     </option>
@@ -157,25 +166,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -190,64 +181,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fishshark" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GamesDB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,6 +257,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -437,16 +388,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1443" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/tmp/1410667743.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/tmp/1410667888.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706" />
@@ -665,13 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="37" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-25.565218" vertical-offset="0" max-vertical-offset="896">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="189" column="71" selection-start="7512" selection-end="8005" vertical-scroll-proportion="-51.391304" vertical-offset="568" max-vertical-offset="1988">
@@ -697,34 +631,6 @@
             <element signature="e#8303#8374#0" expanded="false" />
             <element signature="e#8321#8373#0" expanded="false" />
             <element signature="n#getGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="16" selection-start="3988" selection-end="3988" vertical-scroll-proportion="-26.173914" vertical-offset="0" max-vertical-offset="2016">
-          <folding>
-            <element signature="e#3569#3971#0" expanded="false" />
-            <element signature="e#3627#3956#0" expanded="false" />
-            <element signature="e#3646#3955#1" expanded="false" />
-            <element signature="n#showResults#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#4202#4609#0" expanded="false" />
-            <element signature="e#4230#4608#0" expanded="false" />
-            <element signature="n#getGames#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="n#viewScores#0;n#MrAntController#0;n#!!top" expanded="false" />
-            <element signature="e#5337#5413#0" expanded="false" />
-            <element signature="e#5364#5412#0" expanded="false" />
-            <element signature="e#5718#5877#0" expanded="false" />
-            <element signature="e#5759#5867#0" expanded="false" />
-            <element signature="e#5887#6045#0" expanded="false" />
-            <element signature="e#5928#6035#0" expanded="false" />
-            <element signature="e#6884#7234#0" expanded="false" />
-            <element signature="e#6929#7220#0" expanded="false" />
-            <element signature="e#7248#7612#0" expanded="false" />
-            <element signature="e#7293#7598#0" expanded="false" />
-            <element signature="e#9573#9644#0" expanded="false" />
-            <element signature="e#9591#9643#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -757,9 +663,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/paths.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1443">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="782" selection-end="782" vertical-scroll-proportion="0.3943662" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="16" selection-start="3988" selection-end="3988" vertical-scroll-proportion="0.42394367" vertical-offset="0" max-vertical-offset="2016">
+          <folding>
+            <element signature="e#3569#3971#0" expanded="false" />
+            <element signature="e#3627#3956#0" expanded="false" />
+            <element signature="e#3646#3955#1" expanded="false" />
+            <element signature="n#showResults#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#4202#4609#0" expanded="false" />
+            <element signature="e#4230#4608#0" expanded="false" />
+            <element signature="n#getGames#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="n#viewScores#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#5337#5413#0" expanded="false" />
+            <element signature="e#5364#5412#0" expanded="false" />
+            <element signature="e#5718#5877#0" expanded="false" />
+            <element signature="e#5759#5867#0" expanded="false" />
+            <element signature="e#5887#6045#0" expanded="false" />
+            <element signature="e#5928#6035#0" expanded="false" />
+            <element signature="e#6884#7234#0" expanded="false" />
+            <element signature="e#6929#7220#0" expanded="false" />
+            <element signature="e#7248#7612#0" expanded="false" />
+            <element signature="e#7293#7598#0" expanded="false" />
+            <element signature="e#9573#9644#0" expanded="false" />
+            <element signature="e#9591#9643#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="46" selection-start="697" selection-end="697" vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="896">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.18802817" vertical-offset="139" max-vertical-offset="1834">
+        <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.2859155" vertical-offset="0" max-vertical-offset="1834">
           <folding />
         </state>
       </provider>
