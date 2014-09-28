@@ -26,6 +26,13 @@ class CreateFishsharkGamesTable extends Migration {
             $table->integer("animation")->nullable();
             $table->string("blank_min")->nullable();
             $table->string("blank_max")->nullable();
+            $table->datetime("ts_start")->nullable();
+            $table->datetime("ts_lvl1_start")->nullable();
+            $table->datetime("ts_lvl1_end")->nullable();
+            $table->datetime("ts_lvl2_start")->nullable();
+            $table->datetime("ts_lvl2_end")->nullable();
+            $table->datetime("ts_lvl3_start")->nullable();
+            $table->datetime("ts_lvl3_end")->nullable();
 			$table->timestamps();
 		});
 	}

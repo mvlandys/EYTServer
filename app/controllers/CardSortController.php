@@ -14,15 +14,22 @@ class CardSortController extends Controller
         $games = Input::get("games");
 
         foreach ($games as $gameData) {
-            $game             = new CardSortGame();
-            $game->subject_id = $gameData["user_data"]["subject_id"];
-            $game->session_id = $gameData["user_data"]["session_id"];
-            $game->grade      = $gameData["user_data"]["grade"];
-            $game->sex        = $gameData["user_data"]["sex"];
-            $game->test_name  = $gameData["user_data"]["test_name"];
-            $game->played_at  = \DateTime::createFromFormat("Y-m-d H:i:s", $gameData["played_at"]);
-            $game->age        = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
-            $game->dob        = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
+            $game                = new CardSortGame();
+            $game->subject_id    = $gameData["user_data"]["subject_id"];
+            $game->session_id    = $gameData["user_data"]["session_id"];
+            $game->grade         = $gameData["user_data"]["grade"];
+            $game->sex           = $gameData["user_data"]["sex"];
+            $game->test_name     = $gameData["user_data"]["test_name"];
+            $game->played_at     = \DateTime::createFromFormat("Y-m-d H:i:s", $gameData["played_at"]);
+            $game->age           = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
+            $game->dob           = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
+            $game->ts_start      = (empty($gameData["timestamps"]["start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["start"]));
+            $game->ts_lvl1_start = (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"]));
+            $game->ts_lvl1_end   = (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"]));
+            $game->ts_lvl2_start = (empty($gameData["timestamps"]["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 Start"]));
+            $game->ts_lvl3_end   = (empty($gameData["timestamps"]["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 End"]));
+            $game->ts_lvl3_start = (empty($gameData["timestamps"]["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 Start"]));
+            $game->ts_lvl3_end   = (empty($gameData["timestamps"]["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 End"]));
             $game->save();
 
             // Loop through each level
@@ -35,11 +42,11 @@ class CardSortController extends Controller
                         $z++;
                     }
 
-                    $cardScore            = new CardSortScore();
-                    $cardScore->game_id   = $game->id;
-                    $cardScore->level     = $x;
-                    $cardScore->card      = $y;
-                    $cardScore->value     = (isset($gameData["score_data"][$x . "-" . $y])) ? $gameData["score_data"][$x . "-" . $y] : 0;
+                    $cardScore          = new CardSortScore();
+                    $cardScore->game_id = $game->id;
+                    $cardScore->level   = $x;
+                    $cardScore->card    = $y;
+                    $cardScore->value   = (isset($gameData["score_data"][$x . "-" . $y])) ? $gameData["score_data"][$x . "-" . $y] : 0;
                     $cardScore->save();
 
                     if ($x < 3 && $y == 5) {
@@ -49,7 +56,7 @@ class CardSortController extends Controller
             }
         }
 
-        return array("success");//CardSortScore::all();
+        return array("success"); //CardSortScore::all();
     }
 
     public function showResults($test_name = null, $start = null, $end = null)
@@ -89,10 +96,10 @@ class CardSortController extends Controller
 
     public function makeCSV($test_name = null, $start = null, $end = null)
     {
-        $games = $this->getGames($test_name, $start, $end);
+        $games    = $this->getGames($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
-        $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $fp    = fopen(public_path() . "/tmp/" . $filename, 'w');
         $cards = array();
 
         // Loop through each level
@@ -104,7 +111,6 @@ class CardSortController extends Controller
         }
 
         // Response Time = RT
-
         fputcsv($fp, array_merge(array(
             "game_id",
             "subject_id",
@@ -115,15 +121,41 @@ class CardSortController extends Controller
             "age",
             "sex",
             "DOT",
-            "TOT"
+            "TOT",
+            "TS_Start",
+            "TS_Lvl1_Start",
+            "TS_Lvl1_End",
+            "TS_Lvl2_Start",
+            "TS_Lvl2_End",
+            "TS_Lvl3_Start",
+            "TS_Lvl3_End"
         ), $cards));
 
-        foreach($games as $game) {
-            $scores = CardSortScore::where("game_id", "=", $game->id)->orderBy("level")->orderBy("card")->get();
+        foreach ($games as $game) {
+            $scores    = CardSortScore::where("game_id", "=", $game->id)->orderBy("level")->orderBy("card")->get();
             $scoreData = array();
 
-            foreach($scores as $score) {
-                $scoreData[] = $score->value;
+            $level       = 1;
+            $part        = 1;
+            $l2Incorrect = 0;
+
+            foreach ($scores as $score) {
+                if ($level == 2 && $score->value == 0) {
+                    $l2Incorrect++;
+                }
+
+                if ($level == 3 && $l2Incorrect > 2) {
+                    $scoreData[] = ".";
+                } else {
+                    $scoreData[] = $score->value;
+                }
+
+
+                $part++;
+                if ($part == 7) {
+                    $level++;
+                    $part = 1;
+                }
             }
 
             $played_at = DateTime::createFromFormat("Y-m-d H:i:s", $game->played_at);
@@ -138,7 +170,14 @@ class CardSortController extends Controller
                 (empty($game->age)) ? "." : $game->age,
                 (empty($game->sex)) ? "." : $game->sex,
                 (empty($game->played_at)) ? "." : $played_at->format("d/m/Y"),
-                (empty($game->played_at)) ? "." : $played_at->format("H:i")
+                (empty($game->played_at)) ? "." : $played_at->format("H:i"),
+                (empty($game->ts_start)) ? "." : $game->ts_start,
+                (empty($game->ts_lvl1_start)) ? "." : $game->ts_lvl1_start,
+                (empty($game->ts_lvl1_end)) ? "." : $game->ts_lvl1_end,
+                (empty($game->ts_lvl2_start)) ? "." : $game->ts_lvl2_start,
+                (empty($game->ts_lvl2_end)) ? "." : $game->ts_lvl2_end,
+                (empty($game->ts_lvl3_start)) ? "." : $game->ts_lvl3_start,
+                (empty($game->ts_lvl3_end)) ? "." : $game->ts_lvl3_end,
             ), $scoreData));
         }
 

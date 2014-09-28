@@ -22,6 +22,7 @@ class CreateFishsharkScoresTable extends Migration {
             $table->integer("value");
             $table->string("responseTime");
             $table->string("blankTime");
+            $table->integer("is_shark");
 			$table->timestamps();
 		});
 	}
