@@ -15,7 +15,7 @@
             <input type="text" name="username" class="form-control" placeholder="Username..." />
         </div>
         <div class="col-sm-4">
-            <label>Username:</label>
+            <label>Password:</label>
             <input type="password" name="password" class="form-control" placeholder="Password..." />
         </div>
         <div class="col-sm-4">
