@@ -132,7 +132,7 @@ class VocabController extends Controller
         } else if (!empty($test_name)) {
             $games = VocabGame::where("test_name", "=", $test_name)->get();
         } else {
-            $games = VocabGame::all();
+            $games = VocabGame::orderBy("played_at", "DESC")->get();
         }
 
         return $games;

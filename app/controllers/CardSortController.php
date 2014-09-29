@@ -78,7 +78,7 @@ class CardSortController extends Controller
         } else if (!empty($test_name)) {
             $games = CardSortGame::where("test_name", "=", $test_name)->get();
         } else {
-            $games = CardSortGame::all();
+            $games = CardSortGame::orderBy("played_at", "DESC")->get();
         }
 
         return $games;

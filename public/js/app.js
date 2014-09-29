@@ -15,6 +15,7 @@ $(document).ready(function() {
     $("#btnMrAntCSV").on("click", mrAntCSV);
     $("#btnFishSharkCSV").on("click", fishSharkCSV);
     $("#responseType").on("change", changeAnswerType);
+    $("#btnNewUser").on("click", createNewUser);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
         formSetup();
@@ -158,6 +159,7 @@ function login() {
 
             if (json.error) {
                 alert(json.error);
+                $.colorbox.close();
             } else {
                 window.location.pathname = "/";
             }
@@ -194,5 +196,73 @@ function mrAntCSV() {
 function fishSharkCSV() {
     $.colorbox({
         href: "/fishshark/csv"
+    });
+}
+
+function createNewUser() {
+    $.ajax({
+        url:        "/admin/newuser/submit",
+        type:       "POST",
+        data:       $("#frmNewUser").serialize(),
+        beforeSend: function() {
+            var username = $("[name=username]").val();
+            var password = $("[name=password]").val();
+
+            if (username == "") {
+                alert("Please enter a valid username");
+                return false;
+            }
+
+            if (password == "") {
+                alert("Please enter a valid password");
+                return false;
+            }
+
+            cBoxLoading();
+
+            return true;
+        },
+        complete: function(data) {
+            try {
+                var json = $.parseJSON(data.responseText);
+            } catch (e) {
+                alert("JSON Error");
+                console.log(data.responseText);
+            }
+
+            if (json.errorMsg) {
+                alert(json.errorMsg);
+            } else if (json.success == 1) {
+                renderAlert("success", "Successfully Created New User", "/admin/users");
+            }
+        }
+    })
+}
+
+function renderAlert(type, msg, redirect) {
+    var onclick = "";
+    var href = "";
+
+    if (redirect == false) {
+        onclick = 'onclick="$.colorbox.close()"';
+        href = "#";
+    } else {
+        href = redirect;
+    }
+
+    var view = '<div class="alert alert-' + type + '">' + msg + '<br/><br/><div class="text-center">';
+    view += '<a class="btn btn-default" ' + onclick + ' href="' + href + '">OK</a></div>';
+
+    $.colorbox({
+        html: view
+    });
+}
+
+function cBoxLoading() {
+    $.colorbox({
+        html: '<div class="well text-center"><img src="/vendor/colorbox/images/loading.gif" /></div>',
+        onComplete: function () {
+            $.colorbox.resize();
+        }
     });
 }

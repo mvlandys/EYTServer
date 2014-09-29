@@ -22,17 +22,79 @@
     <favorites_list name="GamesDB" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="CardSortController.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/CardSortController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="43" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.35492957" vertical-offset="0" max-vertical-offset="2590">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="33" column="49" selection-start="1065" selection-end="1065" vertical-scroll-proportion="-20.086956" vertical-offset="0" max-vertical-offset="1400">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="database.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/config/database.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="89" column="79" selection-start="2506" selection-end="2506" vertical-scroll-proportion="-54.173912" vertical-offset="0" max-vertical-offset="1834">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="list_users.blade.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/users/list_users.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="22" column="12" selection-start="489" selection-end="489" vertical-scroll-proportion="-13.391304" vertical-offset="0" max-vertical-offset="434">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="filters.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/filters.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="102" column="1" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.8028169" vertical-offset="162" max-vertical-offset="1582">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/routes.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="23" selection-start="418" selection-end="418" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1162">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/public/js/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="161" column="35" selection-start="4536" selection-end="4536" vertical-scroll-proportion="0.0" vertical-offset="1218" max-vertical-offset="3822">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="2014_09_28_105343_create_users_table.php" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="20" column="35" selection-start="453" selection-end="459" vertical-scroll-proportion="0.18732394" vertical-offset="0" max-vertical-offset="1420">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -42,21 +104,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/QuestionsController.php" />
-        <option value="$PROJECT_DIR$/app/views/test.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/scores.blade.php" />
         <option value="$PROJECT_DIR$/app/models/CardSortGame.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php" />
         <option value="$PROJECT_DIR$/app/models/CardSortScore.php" />
         <option value="$PROJECT_DIR$/app/views/vocab/scores.blade.php" />
-        <option value="$PROJECT_DIR$/app/filters.php" />
         <option value="$PROJECT_DIR$/app/views/login.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/views/csv.blade.php" />
         <option value="$PROJECT_DIR$/app/views/vocab/results.blade.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_08_061222_create_vocab_scores_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php" />
-        <option value="$PROJECT_DIR$/app/controllers/VocabController.php" />
         <option value="$PROJECT_DIR$/app/views/support.php" />
         <option value="$PROJECT_DIR$/app/models/Questionnaire.php" />
         <option value="$PROJECT_DIR$/app/models/QuestionnaireAnswer.php" />
@@ -73,10 +129,7 @@
         <option value="$PROJECT_DIR$/app/views/cardsort/results.blade.php" />
         <option value="$PROJECT_DIR$/app/views/mrant/results.blade.php" />
         <option value="$PROJECT_DIR$/app/views/mrant/scores.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/views/fishshark/scores.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_27_043710_create_fishshark_scores_table.php" />
         <option value="$PROJECT_DIR$/app/models/FishSharkScore.php" />
         <option value="$PROJECT_DIR$/app/models/FishSharkGame.php" />
@@ -85,14 +138,23 @@
         <option value="$PROJECT_DIR$/app/controllers/MrAntController.php" />
         <option value="$PROJECT_DIR$/app/models/MrAntGame.php" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
-        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php" />
-        <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_22_093313_create_mrant_games_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_15_083647_create_questionnaire_table.php" />
         <option value="$PROJECT_DIR$/app/database/migrations/2014_09_27_043623_create_fishshark_games_table.php" />
         <option value="$PROJECT_DIR$/app/storage/logs/laravel.log" />
         <option value="$PROJECT_DIR$/app/controllers/CardSortController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/VocabController.php" />
+        <option value="$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php" />
+        <option value="$PROJECT_DIR$/app/views/users/new_user.blade.php" />
+        <option value="$PROJECT_DIR$/app/models/User.php" />
+        <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/app/views/layout.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/users/list_users.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/config/database.php" />
+        <option value="$PROJECT_DIR$/app/filters.php" />
       </list>
     </option>
   </component>
@@ -157,6 +219,104 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colorbox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="colorbox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -189,7 +349,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -207,11 +367,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storage" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,7 +447,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -359,11 +537,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -383,36 +561,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/tmp/1410667888.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/tmp/1410667794.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="74" selection-end="74" vertical-scroll-proportion="0.019830028" vertical-offset="0" max-vertical-offset="706" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/csv.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="73" selection-start="134" selection-end="134" vertical-scroll-proportion="0.06149341" vertical-offset="0" max-vertical-offset="683" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/vocab/results.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="467" selection-end="467" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/support.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="5" selection-start="92" selection-end="92" vertical-scroll-proportion="0.059154928" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="0" selection-end="665" vertical-scroll-proportion="0.20704225" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CardSortScore.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="1" selection-start="155" selection-end="155" vertical-scroll-proportion="0.07887324" vertical-offset="0" max-vertical-offset="1420" />
@@ -438,19 +586,9 @@
         <state line="9" column="22" selection-start="114" selection-end="137" vertical-scroll-proportion="0.08873239" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="1" selection-start="656" selection-end="656" vertical-scroll-proportion="0.26619717" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/questionnaire/results.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="69" selection-start="1131" selection-end="1150" vertical-scroll-proportion="-20.695652" vertical-offset="0" max-vertical-offset="1120" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/alert.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="200" selection-end="200" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/.gitignore">
@@ -466,11 +604,6 @@
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_15_083855_create_questionnaire_answers_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="0" selection-start="570" selection-end="570" vertical-scroll-proportion="0.23661971" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionnaireController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="32" selection-start="1729" selection-end="1729" vertical-scroll-proportion="0.23880596" vertical-offset="280" max-vertical-offset="2380" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_08_060638_create_vocab_games_table.php">
@@ -503,24 +636,9 @@
         <state line="49" column="82" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.48756218" vertical-offset="0" max-vertical-offset="1407" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="31" selection-start="2016" selection-end="2016" vertical-scroll-proportion="0.15920398" vertical-offset="0" max-vertical-offset="1407" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/mrant/scores.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="22" selection-start="181" selection-end="181" vertical-scroll-proportion="0.1084507" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="43" selection-start="1874" selection-end="1874" vertical-scroll-proportion="0.36478874" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/VocabGame.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="37" selection-start="113" selection-end="146" vertical-scroll-proportion="0.07887324" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_27_035036_create_mrant_scores_table.php">
@@ -533,19 +651,9 @@
         <state line="14" column="9" selection-start="250" selection-end="250" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="61" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.6112676" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_27_043710_create_fishshark_scores_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="37" selection-start="675" selection-end="683" vertical-scroll-proportion="0.4714495" vertical-offset="0" max-vertical-offset="683" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="1" selection-start="4995" selection-end="4995" vertical-scroll-proportion="0.6015246" vertical-offset="0" max-vertical-offset="1443" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CardSortGame.php">
@@ -556,11 +664,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/fishshark/results.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="75" selection-start="2428" selection-end="2428" vertical-scroll-proportion="0.81991214" vertical-offset="420" max-vertical-offset="1148" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="71" selection-start="7512" selection-end="8005" vertical-scroll-proportion="-51.391304" vertical-offset="568" max-vertical-offset="1988" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/FishSharkScore.php">
@@ -578,29 +681,9 @@
         <state line="11" column="99" selection-start="516" selection-end="516" vertical-scroll-proportion="0.1084507" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="79" selection-start="951" selection-end="951" vertical-scroll-proportion="0.3056338" vertical-offset="0" max-vertical-offset="2800" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap/paths.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1443" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="782" selection-end="782" vertical-scroll-proportion="0.3943662" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="21" selection-start="418" selection-end="474" vertical-scroll-proportion="0.14925373" vertical-offset="0" max-vertical-offset="2016" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="8" selection-start="852" selection-end="949" vertical-scroll-proportion="0.3253521" vertical-offset="0" max-vertical-offset="1420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_15_083647_create_questionnaire_table.php">
@@ -618,16 +701,6 @@
         <state line="51" column="0" selection-start="1427" selection-end="1427" vertical-scroll-proportion="-30.434782" vertical-offset="0" max-vertical-offset="784" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="5" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.3253521" vertical-offset="0" max-vertical-offset="1420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="6" selection-start="894" selection-end="894" vertical-scroll-proportion="0.2859155" vertical-offset="0" max-vertical-offset="1834" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel.log">
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -636,9 +709,295 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1416" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/start/artisan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1443">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="6" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.42394367" vertical-offset="0" max-vertical-offset="2800">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_062811_create_cardsort_scores_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="79" selection-start="511" selection-end="578" vertical-scroll-proportion="0.20704225" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_12_053614_create_cardsort_games_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="5" selection-start="1187" selection-end="1187" vertical-scroll-proportion="0.34507042" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/FishSharkController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="211" column="72" selection-start="8854" selection-end="8890" vertical-scroll-proportion="-12.782609" vertical-offset="0" max-vertical-offset="448">
+          <folding>
+            <element signature="n#saveGames#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="e#222#2009#0" expanded="false" />
+            <element signature="e#244#2008#1" expanded="false" />
+            <element signature="e#2020#2694#0" expanded="false" />
+            <element signature="e#2110#2632#0" expanded="false" />
+            <element signature="e#2168#2617#0" expanded="false" />
+            <element signature="e#2191#2616#1" expanded="false" />
+            <element signature="e#2643#2694#0" expanded="false" />
+            <element signature="n#showResults#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="e#2863#3278#0" expanded="false" />
+            <element signature="e#2895#3277#0" expanded="false" />
+            <element signature="n#viewScores#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="e#3449#3529#0" expanded="false" />
+            <element signature="e#3480#3528#0" expanded="false" />
+            <element signature="n#makeCSV#0;n#FishSharkController#0;n#!!top" expanded="false" />
+            <element signature="e#4041#4236#0" expanded="false" />
+            <element signature="e#4082#4226#0" expanded="false" />
+            <element signature="e#4419#4617#0" expanded="false" />
+            <element signature="e#4461#4607#0" expanded="false" />
+            <element signature="e#4646#4840#0" expanded="false" />
+            <element signature="e#4687#4830#0" expanded="false" />
+            <element signature="e#4869#5066#0" expanded="false" />
+            <element signature="e#4911#5056#0" expanded="false" />
+            <element signature="e#5076#5613#0" expanded="false" />
+            <element signature="e#5089#5612#0" expanded="false" />
+            <element signature="e#5101#5598#0" expanded="false" />
+            <element signature="e#5509#5588#0" expanded="false" />
+            <element signature="e#5624#8264#0" expanded="false" />
+            <element signature="e#6040#6220#0" expanded="false" />
+            <element signature="e#6086#6206#0" expanded="false" />
+            <element signature="e#6264#6444#0" expanded="false" />
+            <element signature="e#6310#6430#0" expanded="false" />
+            <element signature="e#6487#6681#0" expanded="false" />
+            <element signature="e#6533#6667#0" expanded="false" />
+            <element signature="e#6725#6919#0" expanded="false" />
+            <element signature="e#6771#6905#0" expanded="false" />
+            <element signature="e#6933#8253#0" expanded="false" />
+            <element signature="e#6946#8252#0" expanded="false" />
+            <element signature="e#6958#8242#0" expanded="false" />
+            <element signature="e#8022#8228#0" expanded="false" />
+            <element signature="e#8303#8374#0" expanded="false" />
+            <element signature="e#8321#8373#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/MrAntController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="67" selection-start="4768" selection-end="4768" vertical-scroll-proportion="0.118309855" vertical-offset="0" max-vertical-offset="1420">
+          <folding>
+            <element signature="n#saveAnswers#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#174#3468#0" expanded="false" />
+            <element signature="e#192#3467#1" expanded="false" />
+            <element signature="e#3479#4033#0" expanded="false" />
+            <element signature="e#3569#3971#0" expanded="false" />
+            <element signature="e#3627#3956#0" expanded="false" />
+            <element signature="e#3646#3955#1" expanded="false" />
+            <element signature="e#3982#4033#0" expanded="false" />
+            <element signature="n#showResults#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#4202#4609#0" expanded="false" />
+            <element signature="e#4230#4608#0" expanded="false" />
+            <element signature="n#viewScores#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#5337#5413#0" expanded="false" />
+            <element signature="e#5364#5412#0" expanded="false" />
+            <element signature="n#makeCSV#0;n#MrAntController#0;n#!!top" expanded="false" />
+            <element signature="e#5718#5877#0" expanded="false" />
+            <element signature="e#5759#5867#0" expanded="false" />
+            <element signature="e#5887#6045#0" expanded="false" />
+            <element signature="e#5928#6035#0" expanded="false" />
+            <element signature="e#6055#6801#0" expanded="false" />
+            <element signature="e#6068#6800#0" expanded="false" />
+            <element signature="e#6080#6786#0" expanded="false" />
+            <element signature="e#6812#9534#0" expanded="false" />
+            <element signature="e#6884#7234#0" expanded="false" />
+            <element signature="e#6929#7220#0" expanded="false" />
+            <element signature="e#7248#7612#0" expanded="false" />
+            <element signature="e#7293#7598#0" expanded="false" />
+            <element signature="e#7626#9523#0" expanded="false" />
+            <element signature="e#7639#9522#0" expanded="false" />
+            <element signature="e#7651#9512#0" expanded="false" />
+            <element signature="e#9573#9644#0" expanded="false" />
+            <element signature="e#9591#9643#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/QuestionnaireController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="40" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420">
+          <folding>
+            <element signature="n#saveAnswers#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#142#244#0" expanded="false" />
+            <element signature="e#297#1414#0" expanded="false" />
+            <element signature="e#1116#1404#0" expanded="false" />
+            <element signature="e#1162#1389#0" expanded="false" />
+            <element signature="e#1190#1388#1" expanded="false" />
+            <element signature="n#showResults#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#1617#2038#0" expanded="false" />
+            <element signature="e#1653#2037#0" expanded="false" />
+            <element signature="n#viewScores#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#2772#2856#0" expanded="false" />
+            <element signature="e#2807#2855#0" expanded="false" />
+            <element signature="n#makeCSV#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#3155#3236#0" expanded="false" />
+            <element signature="e#3246#3496#0" expanded="false" />
+            <element signature="e#3259#3495#0" expanded="false" />
+            <element signature="e#3271#3485#0" expanded="false" />
+            <element signature="e#3507#4393#0" expanded="false" />
+            <element signature="e#3584#3746#0" expanded="false" />
+            <element signature="e#3760#4382#0" expanded="false" />
+            <element signature="e#3773#4381#0" expanded="false" />
+            <element signature="e#3785#4370#0" expanded="false" />
+            <element signature="e#4432#4503#0" expanded="false" />
+            <element signature="e#4450#4502#0" expanded="false" />
+            <element signature="n#showForm#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#4564#5251#0" expanded="false" />
+            <element signature="e#4597#5250#0" expanded="false" />
+            <element signature="n#submitForm#0;n#QuestionnaireController#0;n#!!top" expanded="false" />
+            <element signature="e#5922#6146#0" expanded="false" />
+            <element signature="e#5964#6135#0" expanded="false" />
+            <element signature="e#5992#6134#1" expanded="false" />
+            <element signature="e#6163#6267#0" expanded="false" />
+            <element signature="e#6183#6266#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/VocabController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="34" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.5366197" vertical-offset="610" max-vertical-offset="2030">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/CardSortController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="43" selection-start="2388" selection-end="2388" vertical-scroll-proportion="0.35492957" vertical-offset="0" max-vertical-offset="2590">
+        <state line="80" column="71" selection-start="4200" selection-end="4236" vertical-scroll-proportion="0.1971831" vertical-offset="0" max-vertical-offset="1420">
+          <folding>
+            <element signature="n#saveGame#0;n#CardSortController#0;n#!!top" expanded="false" />
+            <element signature="e#135#235#0" expanded="false" />
+            <element signature="e#284#2859#0" expanded="false" />
+            <element signature="e#2316#2849#0" expanded="false" />
+            <element signature="e#2405#2835#0" expanded="false" />
+            <element signature="n#showResults#0;n#CardSortController#0;n#!!top" expanded="false" />
+            <element signature="e#3086#3499#0" expanded="false" />
+            <element signature="e#3117#3498#0" expanded="false" />
+            <element signature="n#viewScores#0;n#CardSortController#0;n#!!top" expanded="false" />
+            <element signature="e#3644#3723#0" expanded="false" />
+            <element signature="e#3674#3722#0" expanded="false" />
+            <element signature="n#makeCSV#0;n#CardSortController#0;n#!!top" expanded="false" />
+            <element signature="e#4599#4792#0" expanded="false" />
+            <element signature="e#4680#4782#0" expanded="false" />
+            <element signature="e#4832#5291#0" expanded="false" />
+            <element signature="e#4845#5290#0" expanded="false" />
+            <element signature="e#4857#5281#0" expanded="false" />
+            <element signature="e#5302#7367#0" expanded="false" />
+            <element signature="e#5584#6067#0" expanded="false" />
+            <element signature="e#5630#5724#0" expanded="false" />
+            <element signature="e#5742#5913#0" expanded="false" />
+            <element signature="e#5839#5913#0" expanded="false" />
+            <element signature="e#5957#6053#0" expanded="false" />
+            <element signature="e#6168#7356#0" expanded="false" />
+            <element signature="e#6181#7355#0" expanded="false" />
+            <element signature="e#6193#7342#0" expanded="false" />
+            <element signature="e#7406#7477#0" expanded="false" />
+            <element signature="e#7424#7476#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/alert.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="5" selection-start="0" selection-end="200" vertical-scroll-proportion="0.13802817" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="5" selection-start="0" selection-end="665" vertical-scroll-proportion="0.20704225" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/VocabGame.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="4" selection-start="113" selection-end="146" vertical-scroll-proportion="0.07887324" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="29" selection-start="138" selection-end="138" vertical-scroll-proportion="0.08873239" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="35" selection-start="4536" selection-end="4536" vertical-scroll-proportion="0.0" vertical-offset="1218" max-vertical-offset="3822">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/new_user.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="41" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="10" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.45771143" vertical-offset="0" max-vertical-offset="1407">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/list_users.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="12" selection-start="489" selection-end="489" vertical-scroll-proportion="-13.391304" vertical-offset="0" max-vertical-offset="434">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="23" selection-start="418" selection-end="418" vertical-scroll-proportion="-3.0434783" vertical-offset="0" max-vertical-offset="1162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/database/migrations/2014_09_28_105343_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="35" selection-start="453" selection-end="459" vertical-scroll-proportion="0.18732394" vertical-offset="0" max-vertical-offset="1420">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="79" selection-start="2506" selection-end="2506" vertical-scroll-proportion="-54.173912" vertical-offset="0" max-vertical-offset="1834">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="49" selection-start="1065" selection-end="1065" vertical-scroll-proportion="-20.086956" vertical-offset="0" max-vertical-offset="1400">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/filters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="1" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.8028169" vertical-offset="162" max-vertical-offset="1582">
           <folding />
         </state>
       </provider>

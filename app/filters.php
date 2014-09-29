@@ -40,6 +40,62 @@ Route::filter('auth', function()
     }
 });
 
+Route::filter("admin", function()
+{
+    if (User::all()->count() > 0) {
+        $user = User::find(Session::get("user_id"));
+
+        if ($user->admin == 0) {
+            return Redirect::to("/")->withErrors(['Access Denied']);
+        }
+    }
+});
+
+Route::filter("cardsort", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->cardsort == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("fishshark", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->fishshark == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("vocab", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->vocab == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("questionnaire", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->questionnaire == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("mrant", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->mrant == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

@@ -12,11 +12,11 @@
 */
 
 
-Route::get("/support", function() {
+Route::get("/support", function () {
     return View::make("support");
 });
 
-Route::get("/login", function() {
+Route::get("/login", function () {
     return View::make("login");
 });
 Route::post("/login/submit", "UserController@login");
@@ -26,42 +26,57 @@ Route::get("/logout", "UserController@logout");
 Route::get("/questionnaire/form", "QuestionnaireController@showForm");
 Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
 
-Route::group(array("before" => "auth"), function()
-{
+Route::group(array("before" => "auth"), function () {
     // Default Route
-    Route::any('/', function()
-    {
+    Route::any('/', function () {
         return View::make("layout");
     });
 
     // Vocab Routes
-    Route::get("/vocab/game/{id}", "VocabController@viewScores");
-    Route::get("/vocab/csv", "VocabController@makeCSV");
-    Route::get("/vocab/{test_name}", "VocabController@showResults");
-    Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
-    Route::get("/vocab", "VocabController@showResults");
+    Route::group(array("before" => "vocab"), function () {
+        Route::get("/vocab/game/{id}", "VocabController@viewScores");
+        Route::get("/vocab/csv", "VocabController@makeCSV");
+        Route::get("/vocab/{test_name}", "VocabController@showResults");
+        Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
+        Route::get("/vocab", "VocabController@showResults");
+    });
 
     // CardSort Routes
-    Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
-    Route::get("/cardsort/csv", "CardSortController@makeCSV");
-    Route::get("/cardsort/{test_name}", "CardSortController@showResults");
-    Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
-    Route::get("/cardsort", "CardSortController@showResults");
+    Route::group(array("before" => "cardsort"), function () {
+        Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
+        Route::get("/cardsort/csv", "CardSortController@makeCSV");
+        Route::get("/cardsort/{test_name}", "CardSortController@showResults");
+        Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
+        Route::get("/cardsort", "CardSortController@showResults");
+    });
 
     // Questionnaire Routes
-    Route::get("/questionnaire", "QuestionnaireController@showResults");
-    Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
-    Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
+    Route::group(array("before" => "questionnaire"), function () {
+        Route::get("/questionnaire", "QuestionnaireController@showResults");
+        Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
+        Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
+    });
 
     // MrAnt Routes
-    Route::get("/mrant", "MrAntController@showResults");
-    Route::get("/mrant/game/{id}", "MrAntController@viewScores");
-    Route::get("/mrant/csv", "MrAntController@makeCSV");
+    Route::group(array("before" => "mrant"), function () {
+        Route::get("/mrant", "MrAntController@showResults");
+        Route::get("/mrant/game/{id}", "MrAntController@viewScores");
+        Route::get("/mrant/csv", "MrAntController@makeCSV");
+    });
 
     // Fish Shark Routes
-    Route::get("/fishshark", "FishSharkController@showResults");
-    Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
-    Route::get("/fishshark/csv", "FishSharkController@makeCSV");
+    Route::group(array("before" => "fishshark"), function () {
+        Route::get("/fishshark", "FishSharkController@showResults");
+        Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
+        Route::get("/fishshark/csv", "FishSharkController@makeCSV");
+    });
+
+    // Admin Routes
+    Route::group(array("before" => "admin"), function () {
+        Route::get("/admin/users", "UserController@listUsers");
+        Route::get("/admin/newuser", "UserController@newUser");
+        Route::post("/admin/newuser/submit", "UserController@submitNewUser");
+    });
 });
 
 // App POST routes

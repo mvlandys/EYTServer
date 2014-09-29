@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration {
             $table->string("username");
             $table->string("password");
             $table->integer("admin");
+            $table->integer("delete");
             $table->integer("cardsort");
             $table->integer("fishshark");
             $table->integer("mrant");

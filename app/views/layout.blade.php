@@ -38,6 +38,7 @@
                     <li><a href="/fishshark">Fish Shark Data</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/admin/users">Admin</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -46,6 +47,9 @@
     </nav>
     @endif
     <div class="container">
+        @if($errors->any())
+        <div class="alert alert-danger"><b>Error:</b> {{$errors->first()}}</div><br/>
+        @endif
         @yield('content')
     </div>
 </body>
