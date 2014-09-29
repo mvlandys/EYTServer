@@ -25,10 +25,19 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="UserController.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="105" column="22" selection-start="3125" selection-end="3125" vertical-scroll-proportion="0.9408451" vertical-offset="134" max-vertical-offset="1610">
+                <state line="14" column="36" selection-start="325" selection-end="325" vertical-scroll-proportion="-2.6956522" vertical-offset="134" max-vertical-offset="1610">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="database.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/config/database.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="23" column="39" selection-start="758" selection-end="758" vertical-scroll-proportion="0.22676057" vertical-offset="0" max-vertical-offset="1834">
                   <folding />
                 </state>
               </provider>
@@ -56,7 +65,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="261" column="13" selection-start="6919" selection-end="6919" vertical-scroll-proportion="0.64102566" vertical-offset="2729" max-vertical-offset="4172">
@@ -131,12 +140,12 @@
         <option value="$PROJECT_DIR$/app/filters.php" />
         <option value="$PROJECT_DIR$/app/controllers/CardSortController.php" />
         <option value="$PROJECT_DIR$/app/views/users/new_user.blade.php" />
-        <option value="$PROJECT_DIR$/app/config/database.php" />
         <option value="$PROJECT_DIR$/app/views/users/list_users.blade.php" />
         <option value="$PROJECT_DIR$/app/views/users/view_user.blade.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/app/config/database.php" />
       </list>
     </option>
   </component>
@@ -260,6 +269,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GamesDB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -736,13 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="60" selection-start="626" selection-end="626" vertical-scroll-proportion="0.1971831" vertical-offset="0" max-vertical-offset="1834">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/new_user.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="36" selection-start="0" selection-end="2560" vertical-scroll-proportion="0.12816902" vertical-offset="0" max-vertical-offset="1420">
@@ -792,16 +830,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="22" selection-start="3125" selection-end="3125" vertical-scroll-proportion="0.9408451" vertical-offset="134" max-vertical-offset="1638">
+        <state line="261" column="13" selection-start="6919" selection-end="6919" vertical-scroll-proportion="0.64102566" vertical-offset="2729" max-vertical-offset="4172">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="13" selection-start="6919" selection-end="6919" vertical-scroll-proportion="0.64102566" vertical-offset="2729" max-vertical-offset="4172">
+        <state line="14" column="36" selection-start="325" selection-end="325" vertical-scroll-proportion="-2.6956522" vertical-offset="134" max-vertical-offset="1610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="39" selection-start="758" selection-end="758" vertical-scroll-proportion="0.22676057" vertical-offset="0" max-vertical-offset="1834">
           <folding />
         </state>
       </provider>
