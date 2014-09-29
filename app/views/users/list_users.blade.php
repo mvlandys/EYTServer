@@ -16,7 +16,7 @@
     <tbody>
     @foreach ($users as $user)
     <tr>
-        <td>{{ $user->username }}</td>
+        <td><a href="/admin/user/{{ $user->id }}">{{ $user->username }}</a></td>
         <td>{{ ($user->admin == 1) ? "YES" : "NO" }}</td>
     </tr>
     @endforeach

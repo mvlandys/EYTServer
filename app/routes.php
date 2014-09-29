@@ -76,6 +76,8 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/admin/users", "UserController@listUsers");
         Route::get("/admin/newuser", "UserController@newUser");
         Route::post("/admin/newuser/submit", "UserController@submitNewUser");
+        Route::get("/admin/user/{user_id}", "UserController@viewUser");
+        Route::post("/admin/user/{user_id}/update", "UserController@updateUser");
     });
 });
 

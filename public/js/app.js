@@ -16,6 +16,7 @@ $(document).ready(function() {
     $("#btnFishSharkCSV").on("click", fishSharkCSV);
     $("#responseType").on("change", changeAnswerType);
     $("#btnNewUser").on("click", createNewUser);
+    $("#btnUpdateUser").on("click", updateUser);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
         formSetup();
@@ -234,6 +235,30 @@ function createNewUser() {
                 alert(json.errorMsg);
             } else if (json.success == 1) {
                 renderAlert("success", "Successfully Created New User", "/admin/users");
+            }
+        }
+    })
+}
+
+function updateUser() {
+    var user_id = $(this).data("user_id");
+
+    $.ajax({
+        url:        "/admin/user/" + user_id + "/update",
+        type:       "POST",
+        data:       $("#frmUpdateUser").serialize(),
+        complete: function(data) {
+            try {
+                var json = $.parseJSON(data.responseText);
+            } catch (e) {
+                alert("JSON Error");
+                console.log(data.responseText);
+            }
+
+            if (json.errorMsg) {
+                alert(json.errorMsg);
+            } else if (json.success == 1) {
+                renderAlert("success", "Successfully Updated User", "/admin/users");
             }
         }
     })

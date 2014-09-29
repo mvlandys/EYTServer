@@ -90,6 +90,21 @@ class UserController extends Controller
 
     public function updateUser($user_id)
     {
+        $user                = User::find($user_id);
+        $user->admin         = Input::get("admin");
+        $user->delete        = Input::get("delete");
+        $user->cardsort      = Input::get("cardsort");
+        $user->fishshark     = Input::get("fishshark");
+        $user->mrant         = Input::get("mrant");
+        $user->questionnaire = Input::get("questionnaire");
+        $user->vocab         = Input::get("vocab");
 
+        if (!empty(Input::get("password"))) {
+            $user->password = Hash::make(Input::get("password"));
+        }
+
+        $user->save();
+
+        return ["success" => 1];
     }
 }
