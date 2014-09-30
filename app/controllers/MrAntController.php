@@ -193,4 +193,12 @@ class MrAntController extends Controller
             "filename" => $filename
         ));
     }
+
+    public function deleteGame($game_id)
+    {
+        MrAntScore::where("game_id", "=", $game_id)->delete();
+        MrAntGame::where("id", "=", $game_id)->delete();
+
+        return ["success" => true];
+    }
 }

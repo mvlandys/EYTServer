@@ -186,4 +186,12 @@ class CardSortController extends Controller
             "filename" => $filename
         ));
     }
+
+    public function deleteGame($game_id)
+    {
+        CardSortScore::where("game_id", "=", $game_id)->delete();
+        CardSortGame::where("id", "=", $game_id)->delete();
+
+        return ["success" => true];
+    }
 }

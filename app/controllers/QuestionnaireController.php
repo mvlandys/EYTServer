@@ -162,4 +162,12 @@ class QuestionnaireController extends Controller
             "type" => "success"
         ));
     }
+
+    public function deleteGame($game_id)
+    {
+        Questionnaire::where("game_id", "=", $game_id)->delete();
+        QuestionnaireAnswer::where("id", "=", $game_id)->delete();
+
+        return ["success" => true];
+    }
 }

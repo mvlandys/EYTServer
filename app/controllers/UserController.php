@@ -55,10 +55,12 @@ class UserController extends Controller
             return ["errorMsg" => "No Username or Password specified"];
         }
 
+        $userCount = User::all()->count();
+
         $user                = new User();
         $user->username      = Input::get("username");
         $user->password      = Hash::make(Input::get("password"));
-        $user->admin         = Input::get("admin");
+        $user->admin         = ($userCount == 0) ? 1 : Input::get("admin");
         $user->delete        = Input::get("delete");
         $user->cardsort      = Input::get("cardsort");
         $user->fishshark     = Input::get("fishshark");
@@ -66,6 +68,10 @@ class UserController extends Controller
         $user->questionnaire = Input::get("questionnaire");
         $user->vocab         = Input::get("vocab");
         $user->save();
+
+        if ($userCount == 0) {
+            return ["redirect" => "/logout"];
+        }
 
         return ["success" => 1];
     }

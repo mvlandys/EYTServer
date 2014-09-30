@@ -1,7 +1,6 @@
-
 $.ajax({ cache: false });
 
-$(document).ready(function() {
+$(document).ready(function () {
     var route = window.location.pathname;
 
     $("[href='" + route + "']").parent().addClass("active");
@@ -17,6 +16,7 @@ $(document).ready(function() {
     $("#responseType").on("change", changeAnswerType);
     $("#btnNewUser").on("click", createNewUser);
     $("#btnUpdateUser").on("click", updateUser);
+    $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
         formSetup();
@@ -38,7 +38,7 @@ function changeAnswerType() {
     var type = $("#responseType :selected").val();
 
     if (type == 1) {
-        $("select").each(function() {
+        $("select").each(function () {
 
             if ($(this).attr("name") == "sex" || $(this).attr("id") == "responseType") {
                 return;
@@ -51,7 +51,7 @@ function changeAnswerType() {
                     "<option value='5'>Certainly True</option>");
         });
     } else if (type == 2) {
-        $("select").each(function() {
+        $("select").each(function () {
 
             if ($(this).attr("name") == "sex" || $(this).attr("id") == "responseType") {
                 return;
@@ -78,34 +78,34 @@ function formSetup() {
 }
 
 function filterVocab() {
-    var test  = $("#test_name").val();
+    var test = $("#test_name").val();
     var start = $("#date_start");
-    var end   = $("#date_end");
+    var end = $("#date_end");
 
-    if (test == "" || start.val()== "" || end.val() == "") {
+    if (test == "" || start.val() == "" || end.val() == "") {
         alert("Please fill in all fields");
         return false;
     }
 
     $.colorbox({
-        onOpen:function() {
+        onOpen: function () {
             window.location.pathname = "/vocab/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
         }
     });
 }
 
 function filterCardSort() {
-    var test  = $("#test_name").val();
+    var test = $("#test_name").val();
     var start = $("#date_start");
-    var end   = $("#date_end");
+    var end = $("#date_end");
 
-    if (test == "" || start.val()== "" || end.val() == "") {
+    if (test == "" || start.val() == "" || end.val() == "") {
         alert("Please fill in all fields");
         return false;
     }
 
     $.colorbox({
-        onOpen:function() {
+        onOpen: function () {
             window.location.pathname = "/cardsort/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
         }
     });
@@ -126,13 +126,13 @@ function login() {
     var form = $("#frmLogin");
 
     $.ajax({
-        url:  "/login/submit",
+        url: "/login/submit",
         type: "POST",
         data: form.serialize(),
-        beforeSend: function() {
+        beforeSend: function () {
             var returnVal = true;
 
-            $("input").each(function() {
+            $("input").each(function () {
                 if ($(this).val() == "") {
                     returnVal = false;
                 }
@@ -148,7 +148,7 @@ function login() {
 
             return returnVal;
         },
-        complete: function(data) {
+        complete: function (data) {
             try {
                 var json = $.parseJSON(data.responseText);
             } catch (e) {
@@ -202,10 +202,10 @@ function fishSharkCSV() {
 
 function createNewUser() {
     $.ajax({
-        url:        "/admin/newuser/submit",
-        type:       "POST",
-        data:       $("#frmNewUser").serialize(),
-        beforeSend: function() {
+        url: "/admin/newuser/submit",
+        type: "POST",
+        data: $("#frmNewUser").serialize(),
+        beforeSend: function () {
             var username = $("[name=username]").val();
             var password = $("[name=password]").val();
 
@@ -223,7 +223,7 @@ function createNewUser() {
 
             return true;
         },
-        complete: function(data) {
+        complete: function (data) {
             try {
                 var json = $.parseJSON(data.responseText);
             } catch (e) {
@@ -235,6 +235,8 @@ function createNewUser() {
                 alert(json.errorMsg);
             } else if (json.success == 1) {
                 renderAlert("success", "Successfully Created New User", "/admin/users");
+            } else if (json.redirect) {
+                renderAlert("success", "Successfully Created New User", "/logout");
             }
         }
     })
@@ -244,10 +246,10 @@ function updateUser() {
     var user_id = $(this).data("user_id");
 
     $.ajax({
-        url:        "/admin/user/" + user_id + "/update",
-        type:       "POST",
-        data:       $("#frmUpdateUser").serialize(),
-        complete: function(data) {
+        url: "/admin/user/" + user_id + "/update",
+        type: "POST",
+        data: $("#frmUpdateUser").serialize(),
+        complete: function (data) {
             try {
                 var json = $.parseJSON(data.responseText);
             } catch (e) {
@@ -290,4 +292,41 @@ function cBoxLoading() {
             $.colorbox.resize();
         }
     });
+}
+
+function deleteGame() {
+    var game = $(this).data("game_type");
+    var id = $(this).data("game_id");
+    var confirm = $(this).data("confirm");
+
+    if (confirm == 0) {
+        $.colorbox({
+            html: '<div class="well"><h3>Are you sure you want to delete this game?</h3><br/>' +
+                '<a class="btn btn-danger pull-right btnDeleteGame" data-game_type="'+game+'" data-game_id="'+id+'" data-confirm="1"><i class="glyphicon glyphicon-trash"></i> YES: DELETE</a>' +
+                '<a class="btn btn-default" onclick="$.colorbox.close();">NO: Cancel</a> </div>'
+        })
+    }
+
+    if (confirm == 1) {
+        $.ajax({
+            url:    "/" + game + "/game/" + id + "/delete",
+            type:   "GET",
+            beforeSend: function() {
+                cBoxLoading();
+            },
+            complete: function(data) {
+                try {
+                    var json = $.parseJSON(data.responseText);
+                } catch (e) {
+                    alert("JSON Error");
+                    console.log(data.responseText);
+                }
+
+                if (json.success) {
+                    renderAlert("success", "You have successfully deleted this game", "/" + game);
+                }
+            }
+        });
+    }
+
 }

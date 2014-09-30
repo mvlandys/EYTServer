@@ -96,6 +96,15 @@ Route::filter("mrant", function()
     }
 });
 
+Route::filter("delete", function()
+{
+   $user = User::find(Session::get("user_id"));
+
+    if ($user->admin == 0 && $user->delete == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

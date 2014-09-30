@@ -214,4 +214,12 @@ class FishSharkController extends Controller
 
         return $games;
     }
+
+    public function deleteGame($game_id)
+    {
+        FishSharkScore::where("game_id", "=", $game_id)->delete();
+        FishSharkGame::where("id", "=", $game_id)->delete();
+
+        return ["success" => true];
+    }
 }

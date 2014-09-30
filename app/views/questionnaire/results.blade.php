@@ -41,6 +41,7 @@
         <th>Age</th>
         <th>Sex</th>
         <th>Played At</th>
+        <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
     </tr>
     </thead>
     <tbody>
@@ -67,6 +68,7 @@
                 @endif
             </td>
             <td>{{ date("h:i A, d/m/Y",strtotime($result->played_at)) }}</td>
+            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-game_id="{{ $result->id }}" data-game_type="questionnaire" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
         </tr>
     @endforeach
     </tbody>

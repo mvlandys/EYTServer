@@ -73,14 +73,14 @@ class VocabController extends Controller
 
     public function makeCSV($test_name = null, $start = null, $end = null)
     {
-        $games = $this->getGames($test_name, $start, $end);
+        $games    = $this->getGames($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
-        $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();
 
-        for($x=0;$x<48;$x++) {
-            $gamesCount[] = "Item" . ($x+1) . "_Acc";
+        for ($x = 0; $x < 48; $x++) {
+            $gamesCount[] = "Item" . ($x + 1) . "_Acc";
         }
 
         fputcsv($fp, array_merge(array(
@@ -96,11 +96,11 @@ class VocabController extends Controller
             "score"
         ), $gamesCount));
 
-        foreach($games as $game) {
+        foreach ($games as $game) {
             $scores = array();
 
-            for($x = 0; $x < 48; $x++) {
-                $score = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $x)->first();
+            for ($x = 0; $x < 48; $x++) {
+                $score    = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $x)->first();
                 $scores[] = (isset($score->value)) ? $score->value : ".";
             }
 
@@ -136,5 +136,13 @@ class VocabController extends Controller
         }
 
         return $games;
+    }
+
+    public function deleteGame($game_id)
+    {
+        VocabScore::where("game_id", "=", $game_id)->delete();
+        VocabGame::where("id", "=", $game_id)->delete();
+
+        return ["success" => true];
     }
 }
