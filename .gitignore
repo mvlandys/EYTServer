@@ -5,5 +5,5 @@ composer.phar
 .env.php
 .DS_Store
 Thumbs.db
-.idea/
+/.idea
 public/tmp
