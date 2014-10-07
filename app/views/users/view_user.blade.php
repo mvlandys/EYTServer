@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-sm-4">
             <label>Email Address:</label>
-            <input type="email" name="email" class="form-control" placeholder="Username..." required value="{{ $user->email }}" />
+            <input type="email" name="email" class="form-control" placeholder="Email Address..." required value="{{ $user->email }}" />
         </div>
         <div class="col-sm-4">
             <label>Administrator Access:</label>
