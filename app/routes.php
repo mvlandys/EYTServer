@@ -21,6 +21,11 @@ Route::get("/login", function () {
 });
 Route::post("/login/submit", "UserController@login");
 Route::get("/logout", "UserController@logout");
+Route::get("/passwordreset/request", "UserController@requestPasswordReset");
+Route::post("/passwordreset/request/submit", "UserController@submitPasswordResetRequest");
+Route::get("/passwordreset/{code}", "UserController@resetPassword");
+Route::post("/passwordreset/submit", "UserController@processResetPassword");
+
 
 // Questionnaire Web Form
 Route::get("/questionnaire/form", "QuestionnaireController@showForm");

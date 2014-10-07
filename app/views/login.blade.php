@@ -14,6 +14,8 @@
                 <input name="password" type="password" class="form-control" placeholder="Password..." required>
                 <br/>
                 <a class="btn btn-lg btn-primary btn-block" id="btnLogin">Sign in</a>
+                <br/>
+                <a href="/passwordreset/request">Forgot Password</a>
             </form>
         </div>
     </div>

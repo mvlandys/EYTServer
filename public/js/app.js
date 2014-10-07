@@ -16,6 +16,8 @@ $(document).ready(function () {
     $("#responseType").on("change", changeAnswerType);
     $("#btnNewUser").on("click", createNewUser);
     $("#btnUpdateUser").on("click", updateUser);
+    $("#btnSubmitPasswordResetRequest").on("click", requestPasswordReset);
+    $("#btnSubmitPasswordReset").on("click", submitPasswordReset);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
@@ -208,6 +210,7 @@ function createNewUser() {
         beforeSend: function () {
             var username = $("[name=username]").val();
             var password = $("[name=password]").val();
+            var password2 = $("[name=password2]").val();
 
             if (username == "") {
                 alert("Please enter a valid username");
@@ -216,6 +219,11 @@ function createNewUser() {
 
             if (password == "") {
                 alert("Please enter a valid password");
+                return false;
+            }
+
+            if (password != password2) {
+                alert("Passwords do not match!");
                 return false;
             }
 
@@ -329,4 +337,77 @@ function deleteGame() {
         });
     }
 
+}
+
+function requestPasswordReset() {
+    $.ajax({
+        url: "/passwordreset/request/submit",
+        type: "POST",
+        data: $("#frmPasswordResetRequest").serialize(),
+        beforeSend: function() {
+            var email = $("[name=email]").val();
+
+            if (email == "") {
+                alert("Please enter an email address");
+                return false;
+            }
+
+            cBoxLoading();
+
+            return true;
+        },
+        complete: function(data) {
+            try {
+                var json = $.parseJSON(data.responseText);
+            } catch (e) {
+                alert("Json Error");
+                console.log(data.responseText);
+                return;
+            }
+
+            if (json.error) {
+                alert(json.error);
+                console.log(json.error);
+            } else if (json.success) {
+                renderAlert("success", "Successfully requested a password reset. Please check your email", "/");
+            }
+        }
+    });
+}
+
+function submitPasswordReset() {
+    $.ajax({
+        url: "/passwordreset/submit",
+        type: "POST",
+        data: $("#frmPasswordReset").serialize(),
+        beforeSend: function() {
+            var password = $("[name=password]").val();
+            var password2 = $("[name=password2]").val();
+
+            if (password != password2) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            cBoxLoading();
+
+            return true;
+        },
+        complete: function(data) {
+            try {
+                var json = $.parseJSON(data.responseText);
+            } catch (e) {
+                alert("Json Error");
+                console.log(data.responseText);
+                return;
+            }
+
+            if (json.error) {
+                alert(json.error);
+                console.log(json.error);
+            } else if (json.success) {
+                renderAlert("success", "Successfully reset password", "/");
+            }
+        }
+    });
 }

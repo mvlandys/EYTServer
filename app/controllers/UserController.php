@@ -51,14 +51,15 @@ class UserController extends Controller
 
     public function submitNewUser()
     {
-        if (!Input::has("username") || !Input::has("password")) {
-            return ["errorMsg" => "No Username or Password specified"];
+        if (!Input::has("username") || !Input::has("password") || !Input::has("email")) {
+            return ["errorMsg" => "No Username, Email or Password specified"];
         }
 
         $userCount = User::all()->count();
 
         $user                = new User();
         $user->username      = Input::get("username");
+        $user->email         = Input::get("email");
         $user->password      = Hash::make(Input::get("password"));
         $user->admin         = ($userCount == 0) ? 1 : Input::get("admin");
         $user->delete        = Input::get("delete");
@@ -112,5 +113,83 @@ class UserController extends Controller
         $user->save();
 
         return ["success" => 1];
+    }
+
+    public function requestPasswordReset()
+    {
+        return View::make("users/password_reset");
+    }
+
+    public function submitPasswordResetRequest()
+    {
+        if (!Input::has("email")) {
+            return ["error" => "Please enter an email address"];
+        }
+
+        $user = User::where("email", "=", Input::get("email"))->first();
+
+        if (empty($user)) {
+            return ["error" => "No user account with that email address exists"];
+        }
+
+        $resetCode = $this->generateRandomString();
+        $userReset = new UserPasswordReset();
+        $expires   = new DateTime();
+        $expires->add(DateInterval::createFromDateString("1 hour"));
+
+        $userReset->user_id    = $user->id;
+        $userReset->reset_code = $resetCode;
+        $userReset->expires_at = $expires->format("Y-m-d H:i:s");
+        $userReset->save();
+
+        Mail::send("users/password_reset_email", ["user" => $user, "code" => $resetCode], function ($message) use ($user) {
+            $message->to($user->email);
+        });
+
+        return ["success" => true];
+    }
+
+    public function resetPassword($code)
+    {
+        $reset = UserPasswordReset::where("reset_code", "=", $code)->where("expires_at", ">", date("Y-m-d H:i:s"))->first();
+
+        if (empty($reset)) {
+            return View::make("alert", ["type" => "danger", "msg" => "This reset code has expired"]);
+        } else {
+            return View::make("users/password_reset_submit", ["code" => $code]);
+        }
+    }
+
+    public function processResetPassword()
+    {
+        if (!Input::has("code") || !Input::has("password")) {
+            return ["error" => "Form Error"];
+        }
+
+        $code  = Input::get("code");
+        $reset = UserPasswordReset::where("reset_code", "=", $code)->where("expires_at", ">", date("Y-m-d H:i:s"))->first();
+
+        if (empty($reset)) {
+            return ["error" => "This reset code has expired"];
+        }
+
+        $user = User::find($reset->user_id);
+        $user->password = Hash::make(Input::get("password"));
+        $user->save();
+        $reset->delete();
+
+        Session::flash("alert", "Successfully changed password");
+
+        return ["success" => true];
+    }
+
+    private function generateRandomString($length = 10)
+    {
+        $characters   = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 }
