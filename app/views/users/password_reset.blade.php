@@ -11,7 +11,7 @@
                 <br/>
                 <input name="email" type="email" class="form-control" placeholder="Email Address..." required autofocus>
                 <br/>
-                <a class="btn btn-lg btn-primary btn-block" id="btnSubmitPasswordResetRequest">Sign in</a>
+                <a class="btn btn-lg btn-primary btn-block" id="btnSubmitPasswordResetRequest">Submit Password Reset Request</a>
             </form>
         </div>
     </div>
