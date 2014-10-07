@@ -98,6 +98,7 @@ class UserController extends Controller
     public function updateUser($user_id)
     {
         $user                = User::find($user_id);
+        $user->email         = Input::get("email");
         $user->admin         = Input::get("admin");
         $user->delete        = Input::get("delete");
         $user->cardsort      = Input::get("cardsort");

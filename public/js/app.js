@@ -257,6 +257,19 @@ function updateUser() {
         url: "/admin/user/" + user_id + "/update",
         type: "POST",
         data: $("#frmUpdateUser").serialize(),
+        beforeSend: function() {
+            var password1 = $("[name=password]").val();
+            var password2 = $("[name=password2]").val();
+
+            if (password1 != password2) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            cBoxLoading();
+
+            return true;
+        },
         complete: function (data) {
             try {
                 var json = $.parseJSON(data.responseText);
