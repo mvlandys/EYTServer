@@ -17,7 +17,7 @@ Download & install the Heroku toolbelt from:
 
 [https://toolbelt.heroku.com](https://toolbelt.heroku.com)
 
-## 1. Heroku Setup
+## 2. Heroku Setup
 
 1. Sign up to Heroku (http://www.heroku.com)
 2. Create a new app
@@ -42,7 +42,7 @@ Download & install the Heroku toolbelt from:
 
 
 
-## 1. Download & Configure the EYT Server
+## 3. Download & Configure the EYT Server
 
 1. Open the Terminal app
 2. Download the EYT Server source code using GIT
@@ -76,7 +76,7 @@ git push heroku master
 ```
 
 
-## 1. Test your EYT Server
+## 4. Test your EYT Server
 
 1. Open your internet browser
 2. Go to http://AppName.herokuapp.com/
@@ -88,7 +88,7 @@ git push heroku master
 
 
 
-## 1. Configure the EYT apps
+## 5. Configure the EYT apps
 
 1. Open the settings screen of the EYT app
   - Click on the (i) button in the bottom right corner
