@@ -57,13 +57,21 @@ class MrAntController extends Controller
     public function showResults($test_name = null, $start = null, $end = null)
     {
         $games = $this->getGames($test_name, $start, $end);
+        $tests     = MrAntGame::all(array("test_name"))->toArray();
+        $testNames = array();
+
+        foreach ($tests as $test) {
+            if (!isset($testNames[$test["test_name"]])) {
+                $testNames[$test["test_name"]] = $test;
+            }
+        }
 
         return View::make("mrant/results", array(
             "games"     => $games,
             "test_name" => $test_name,
             "start"     => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
             "end"       => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
-            "tests"     => MrAntGame::all(array("test_name"))
+            "tests"     => $tests
         ));
     }
 

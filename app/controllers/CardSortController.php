@@ -61,7 +61,6 @@ class CardSortController extends Controller
             }
         }
 
-
         return View::make("cardsort/results", array(
             "games"     => $games,
             "test_name" => $test_name,
