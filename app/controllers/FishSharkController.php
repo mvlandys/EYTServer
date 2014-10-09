@@ -65,7 +65,7 @@ class FishSharkController extends Controller
             "test_name" => $test_name,
             "start"     => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
             "end"       => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
-            "tests"     => $tests
+            "tests"     => $testNames
         ));
     }
 
