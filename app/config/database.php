@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	//'default' => 'sqlite',
-	'default' => 'pgsql',
+	'default' => 'sqlite',
+	//'default' => 'pgsql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,16 +64,17 @@ return array(
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-            'host'     => 'ec2-107-20-214-225.compute-1.amazonaws.com',
-            'database' => 'd88r114e9pa4et',
-            'username' => 'zqqlmebjnlneun',
-            'password' => '6XPwvTYOhHeN_rLLCo8Low5UVu',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
+        'pgsql' => array(
+            'driver'   => 'pgsql',
+            'host'     => 'localhost',
+            'port'     => '',
+            'database' => 'database',
+            'username' => 'root',
+            'password' => '',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ),
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',

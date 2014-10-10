@@ -1,5 +1,13 @@
 
-## EYT Server – Heroku Setup
+## EYT Server
+
+### Support
+
+Setup & support start from AUD $299.
+
+For professional server setup please contact Mathew Vlandys <mvlandys@gmail.com>.
+
+## Heroku Setup
 
 ### Installation on Mac OS X
 
