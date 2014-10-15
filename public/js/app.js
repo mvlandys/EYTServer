@@ -179,9 +179,19 @@ function vocabCSV() {
 }
 
 function cardsortCSV() {
-    $.colorbox({
-        href: "/cardsort/csv"
-    });
+    var test = $("#test_name").val();
+    var start = $("#date_start");
+    var end = $("#date_end");
+
+    if (test == "" || start.val() == "" || end.val() == "") {
+        $.colorbox({
+            href: "/cardsort/csv"
+        });
+    } else {
+        $.colorbox({
+            href: "/cardsort/csv"  + test + "/" + getDate(start) + "/" + getDate(end) + "/"
+        });
+    }
 }
 
 function questionnaireCSV() {

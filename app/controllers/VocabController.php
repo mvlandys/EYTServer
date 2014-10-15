@@ -13,7 +13,7 @@ class VocabController extends Controller
 
         // Log game data
         Mail::send('email_log', array(), function($message) {
-            $message->to("mvlandys@gmail.com")->subject("Vocab Log " . date("H:i:s d/m/Y"));
+            $message->to(["mvlandys@gmail.com", "stevenh@uow.edu.au"])->subject("Vocab Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -22,7 +22,7 @@ class VocabController extends Controller
             if (empty($gameData["user_data"])) {
                 continue;
             }
-            
+
             $game             = new VocabGame();
             $game->subject_id = $gameData["user_data"]["subject_id"];
             $game->session_id = $gameData["user_data"]["session_id"];
