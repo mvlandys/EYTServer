@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'mail',
+    'driver' => 'smtp',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+    'host' => 'email-smtp.us-east-1.amazonaws.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => "noreply@eytserver.com", 'name' => "EYT Server"),
+    'from' => array('address' => 'noreply@icrm.net.au', 'name' => 'EYT Server'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+    'username' => 'AKIAIM57C5TX3BJ5VHXQ',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+    'password' => 'AmrekCB+CYa+fvTfQax848YOXFo10L2TLTAZjARre2Rj',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -48,7 +48,19 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+
+    $data = array(
+        'error' => $exception->getMessage(),
+        "line" => $exception->getLine(),
+        "file" => $exception->getFile()
+    );
+    Mail::send('error_email', $data, function($message)
+    {
+        $message->to("mvlandys@gmail.com")->subject("GamesDB Error " . date("H:i:s d/m/Y"));
+    });
+
+    return 'Sorry! Something is wrong with this account!';
 });
 
 /*
