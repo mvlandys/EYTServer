@@ -10,9 +10,18 @@ class QuestionnaireController extends Controller
             return array("error" => "No Game Data specified");
         }
 
+        // Log game data
+        Mail::send('email_log', array(), function($message) {
+            $message->to("mvlandys@gmail.com")->subject("Questionnaire Log " . date("H:i:s d/m/Y"));
+        });
+
         $results = Input::get("results");
 
         foreach ($results as $resultData) {
+            if (empty($resultData["user_data"])) {
+                continue;
+            }
+
             $result             = new Questionnaire();
             $result->subject_id = $resultData["user_data"]["subject_id"];
             $result->session_id = $resultData["user_data"]["session_id"];

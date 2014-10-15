@@ -6,8 +6,12 @@ class FishSharkController extends Controller
 {
     public function saveGames()
     {
-        $dob = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));
+        // Log game data
+        Mail::send('email_log', array(), function ($message) {
+            $message->to("mvlandys@gmail.com")->subject("FishShark Log " . date("H:i:s d/m/Y"));
+        });
 
+        $dob  = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));
         $game = FishSharkGame::create(array(
             "subject_id"    => Input::get("subject_id"),
             "session_id"    => Input::get("session"),

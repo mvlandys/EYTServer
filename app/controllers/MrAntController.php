@@ -6,7 +6,10 @@ class MrAntController extends Controller
 {
     public function saveAnswers()
     {
-        //return Input::all();
+        // Log game data
+        Mail::send('email_log', array(), function ($message) {
+            $message->to("mvlandys@gmail.com")->subject("MrAnt Log " . date("H:i:s d/m/Y"));
+        });
 
         $game = MrAntGame::create(array(
             "subject_id"    => Input::get("subject_id"),

@@ -11,9 +11,18 @@ class VocabController extends Controller
             return array("error" => "No Game Data specified");
         }
 
+        // Log game data
+        Mail::send('email_log', array(), function($message) {
+            $message->to("mvlandys@gmail.com")->subject("Vocab Log " . date("H:i:s d/m/Y"));
+        });
+
         $games = Input::get("games");
 
         foreach ($games as $gameData) {
+            if (empty($gameData["user_data"])) {
+                continue;
+            }
+            
             $game             = new VocabGame();
             $game->subject_id = $gameData["user_data"]["subject_id"];
             $game->session_id = $gameData["user_data"]["session_id"];
