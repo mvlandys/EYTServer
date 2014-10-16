@@ -63,7 +63,7 @@ class VocabController extends Controller
 
         foreach ($tests as $test) {
             if (!isset($testNames[$test["test_name"]])) {
-                $testNames[urlencode($test["test_name"])] = $test;
+                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
             }
         }
 
