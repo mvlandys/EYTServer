@@ -12,7 +12,7 @@ class QuestionnaireController extends Controller
 
         // Log game data
         Mail::send('email_log', array(), function($message) {
-            $message->to(["mvlandys@gmail.com", "stevenh@uow.edu.au"])->subject("Questionnaire Log " . date("H:i:s d/m/Y"));
+            $message->to(["mvlandys@gmail.com"])->subject("Questionnaire Log " . date("H:i:s d/m/Y"));
         });
 
         $results = Input::get("results");

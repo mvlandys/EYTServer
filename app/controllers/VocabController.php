@@ -12,8 +12,8 @@ class VocabController extends Controller
         }
 
         // Log game data
-        Mail::send('email_log', array(), function($message) {
-            $message->to(["mvlandys@gmail.com", "stevenh@uow.edu.au"])->subject("Vocab Log " . date("H:i:s d/m/Y"));
+        Mail::send('email_log', array(), function ($message) {
+            $message->to(["mvlandys@gmail.com"])->subject("Vocab Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -30,9 +30,8 @@ class VocabController extends Controller
             $game->sex        = $gameData["user_data"]["sex"];
             $game->test_name  = $gameData["user_data"]["test_name"];
             $game->played_at  = $gameData["played_at"];
-
-            $game->age = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
-            $game->dob = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
+            $game->age        = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
+            $game->dob        = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
 
             $score = 0;
 
@@ -60,7 +59,7 @@ class VocabController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games = $this->getGames($test_name, $start, $end);
+        $games     = $this->getGames($test_name, $start, $end);
         $tests     = VocabGame::all(array("test_name"))->toArray();
         $testNames = array();
 

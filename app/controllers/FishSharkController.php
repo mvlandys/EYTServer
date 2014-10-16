@@ -8,7 +8,7 @@ class FishSharkController extends Controller
     {
         // Log game data
         Mail::send('email_log', array(), function ($message) {
-            $message->to(["mvlandys@gmail.com", "stevenh@uow.edu.au"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
+            $message->to(["mvlandys@gmail.com"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
         });
 
         $dob  = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));

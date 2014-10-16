@@ -13,7 +13,7 @@ class CardSortController extends Controller
 
         // Log game data
         Mail::send('email_log', array(), function($message) {
-            $message->to(["mvlandys@gmail.com", "stevenh@uow.edu.au"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
+            $message->to(["mvlandys@gmail.com"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
