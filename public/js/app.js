@@ -3,7 +3,7 @@ $.ajax({ cache: false });
 $(document).ready(function () {
     var route = window.location.pathname;
 
-    $("[href='" + route + "']").parent().addClass("active");
+    //$("[href='" + route + "']").parent().addClass("active");
 
     $("#btnLogin").on("click", login);
     $("#btnVocabFilter").on("click", filterVocab);
@@ -212,7 +212,7 @@ function vocabCSV() {
     var test    = $("#test_name").val();
     var start   = $("#date_start");
     var end     = $("#date_end");
-    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/vocab/csv" : "/vocab/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/vocab/csv" : "/vocab/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
@@ -223,7 +223,7 @@ function cardsortCSV() {
     var test    = $("#test_name").val();
     var start   = $("#date_start");
     var end     = $("#date_end");
-    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/cardsort/csv" : "/cardsort/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/cardsort/csv" : "/cardsort/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
@@ -234,7 +234,7 @@ function questionnaireCSV() {
     var test    = $("#test_name").val();
     var start   = $("#date_start");
     var end     = $("#date_end");
-    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/questionnaire/csv" : "/questionnaire/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/questionnaire/csv" : "/questionnaire/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
@@ -245,7 +245,7 @@ function mrAntCSV() {
     var test    = $("#test_name").val();
     var start   = $("#date_start");
     var end     = $("#date_end");
-    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/mrant/csv" : "/mrant/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/mrant/csv" : "/mrant/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
@@ -256,7 +256,7 @@ function fishSharkCSV() {
     var test    = $("#test_name").val();
     var start   = $("#date_start");
     var end     = $("#date_end");
-    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/fishshark/csv" : "/fishshark/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/fishshark/csv" : "/fishshark/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
