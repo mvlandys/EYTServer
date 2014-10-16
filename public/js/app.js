@@ -9,6 +9,7 @@ $(document).ready(function () {
     $("#btnVocabFilter").on("click", filterVocab);
     $("#btnCardSortFilter").on("click", filterCardSort);
     $("#btnMrAntFilter").on("click", filterMrAnt);
+    $("#btnFishSharkFilter").on("click", filterFishShark);
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
@@ -21,7 +22,7 @@ $(document).ready(function () {
     $("#btnSubmitPasswordReset").on("click", submitPasswordReset);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
-    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1) {
+    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1) {
         formSetup();
     }
 
@@ -127,6 +128,23 @@ function filterMrAnt() {
     $.colorbox({
         onOpen: function () {
             window.location.pathname = "/mrant/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
+        }
+    });
+}
+
+function filterFishShark() {
+    var test  = $("#test_name").val();
+    var start = $("#date_start");
+    var end   = $("#date_end");
+
+    if (test == "" || start.val() == "" || end.val() == "") {
+        alert("Please fill in all fields");
+        return false;
+    }
+
+    $.colorbox({
+        onOpen: function () {
+            window.location.pathname = "/fishshark/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
         }
     });
 }
