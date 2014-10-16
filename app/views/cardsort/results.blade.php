@@ -10,8 +10,8 @@
             <label>Test Name:</label>
             <select id="test_name">
                 <option value="">All Tests</option>
-                @foreach ($tests as $test)
-                <option {{{ ($test_name == $test["test_name"]) ? "selected" : "" }}} value="{{ $test["test_name"] }}">{{ $test["test_name"] }}</option>
+                @foreach ($tests as $key => $test)
+                <option {{{ ($test_name == $test["test_name"]) ? "selected" : "" }}} value="{{ $key }}">{{ $test["test_name"] }}</option>
                 @endforeach
             </select>
         </div>

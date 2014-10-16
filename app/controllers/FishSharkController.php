@@ -60,7 +60,7 @@ class FishSharkController extends Controller
 
         foreach ($tests as $test) {
             if (!isset($testNames[$test["test_name"]])) {
-                $testNames[$test["test_name"]] = $test;
+                $testNames[urlencode($test["test_name"])] = $test;
             }
         }
 
