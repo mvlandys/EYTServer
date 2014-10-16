@@ -69,17 +69,23 @@ Route::group(array("before" => "auth"), function () {
     // MrAnt Routes
     Route::group(array("before" => "mrant"), function () {
         Route::get("/mrant/game/{id}/delete", array("before" => "delete", "uses" => "MrAntController@deleteGame"));
-        Route::get("/mrant", "MrAntController@showResults");
         Route::get("/mrant/game/{id}", "MrAntController@viewScores");
+        Route::get("/mrant/{test_name}", "MrAntController@showResults");
+        Route::get("/mrant/{test_name}/{start}/{end}", "MrAntController@showResults");
+        Route::get("/mrant/csv/{test_name}/{start}/{end}", "MrAntController@makeCSV");
         Route::get("/mrant/csv", "MrAntController@makeCSV");
+        Route::get("/mrant", "MrAntController@showResults");
     });
 
     // Fish Shark Routes
     Route::group(array("before" => "fishshark"), function () {
         Route::get("/fishshark/game/{id}/delete", array("before" => "delete", "uses" => "FishSharkController@deleteGame"));
-        Route::get("/fishshark", "FishSharkController@showResults");
         Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
+        Route::get("/fishshark/{test_name}", "FishSharkController@showResults");
+        Route::get("/fishshark/{test_name}/{start}/{end}", "FishSharkController@showResults");
+        Route::get("/fishshark/csv/{test_name}/{start}/{end}", "FishSharkController@makeCSV");
         Route::get("/fishshark/csv", "FishSharkController@makeCSV");
+        Route::get("/fishshark", "FishSharkController@showResults");
     });
 
     // Admin Routes

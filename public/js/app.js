@@ -8,6 +8,7 @@ $(document).ready(function () {
     $("#btnLogin").on("click", login);
     $("#btnVocabFilter").on("click", filterVocab);
     $("#btnCardSortFilter").on("click", filterCardSort);
+    $("#btnMrAntFilter").on("click", filterMrAnt);
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
@@ -113,6 +114,23 @@ function filterCardSort() {
     });
 }
 
+function filterMrAnt() {
+    var test  = $("#test_name").val();
+    var start = $("#date_start");
+    var end   = $("#date_end");
+
+    if (test == "" || start.val() == "" || end.val() == "") {
+        alert("Please fill in all fields");
+        return false;
+    }
+
+    $.colorbox({
+        onOpen: function () {
+            window.location.pathname = "/mrant/" + test + "/" + getDate(start) + "/" + getDate(end) + "/"
+        }
+    });
+}
+
 function getDate(input) {
     var dateObj = input.datepicker("getDate");
     var month = dateObj.getMonth() + 1;
@@ -173,42 +191,57 @@ function login() {
 }
 
 function vocabCSV() {
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/vocab/csv" : "/vocab/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+
     $.colorbox({
-        href: "/vocab/csv"
+        href: url
     });
 }
 
 function cardsortCSV() {
-    var test = $("#test_name").val();
-    var start = $("#date_start");
-    var end = $("#date_end");
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/cardsort/csv" : "/cardsort/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
 
-    if (test == "" || start.val() == "" || end.val() == "") {
-        $.colorbox({
-            href: "/cardsort/csv"
-        });
-    } else {
-        $.colorbox({
-            href: "/cardsort/csv"  + test + "/" + getDate(start) + "/" + getDate(end) + "/"
-        });
-    }
+    $.colorbox({
+        href: url
+    });
 }
 
 function questionnaireCSV() {
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/questionnaire/csv" : "/questionnaire/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+
     $.colorbox({
-        href: "/questionnaire/csv"
+        href: url
     });
 }
 
 function mrAntCSV() {
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/mrant/csv" : "/mrant/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+
     $.colorbox({
-        href: "/mrant/csv"
+        href: url
     });
 }
 
 function fishSharkCSV() {
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (test == "" || start.val() == "" || end.val() == "") ? "/fishshark/csv" : "/fishshark/csv/"  + encodeURIComponent(test) + "/" + getDate(start) + "/" + getDate(end) + "/";
+
     $.colorbox({
-        href: "/fishshark/csv"
+        href: url
     });
 }
 
