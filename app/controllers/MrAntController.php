@@ -59,7 +59,7 @@ class MrAntController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games = $this->getGames($test_name, $start, $end);
+        $games     = $this->getGames($test_name, $start, $end);
         $tests     = MrAntGame::all(array("test_name"))->toArray();
         $testNames = array();
 
@@ -81,8 +81,10 @@ class MrAntController extends Controller
     private function getGames($test_name = null, $start = null, $end = null)
     {
         if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $games = MrAntGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
-        } else if (!empty($test_name)) {
+            $games = ($test_name == "all")
+                ? MrAntGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->get()
+                : MrAntGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+        } else if (!empty($test_name) && $test_name != "all") {
             $games = MrAntGame::where("test_name", "=", $test_name)->get();
         } else {
             $games = MrAntGame::orderBy("played_at", "DESC")->get();

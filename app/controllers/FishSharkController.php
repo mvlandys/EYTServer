@@ -217,7 +217,9 @@ class FishSharkController extends Controller
     private function getGames($test_name = null, $start = null, $end = null)
     {
         if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $games = FishSharkGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+            $games = ($test_name == "all")
+                ? FishSharkGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->get()
+                : FishSharkGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
         } else if (!empty($test_name)) {
             $games = FishSharkGame::where("test_name", "=", $test_name)->get();
         } else {

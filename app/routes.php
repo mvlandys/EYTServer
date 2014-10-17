@@ -43,6 +43,8 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/vocab/game/{id}", "VocabController@viewScores");
         Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
         Route::get("/vocab/{test_name}", "VocabController@showResults");
+        Route::get("/vocab/csv/{test_name}/{start}/{end}", "VocabController@makeCSV");
+        Route::get("/vocab/csv/{test_name}", "VocabController@makeCSV");
         Route::get("/vocab/csv", "VocabController@makeCSV");
         Route::get("/vocab", "VocabController@showResults");
     });
@@ -52,6 +54,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/cardsort/game/{id}/delete", array("before" => "delete", "uses" => "CardSortController@deleteGame"));
         Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
         Route::get("/cardsort/csv/{test_name}/{start}/{end}", "CardSortController@makeCSV");
+        Route::get("/cardsort/csv/{test_name}", "CardSortController@makeCSV");
         Route::get("/cardsort/csv", "CardSortController@makeCSV");
         Route::get("/cardsort/{test_name}", "CardSortController@showResults");
         Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
@@ -73,6 +76,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/mrant/{test_name}", "MrAntController@showResults");
         Route::get("/mrant/{test_name}/{start}/{end}", "MrAntController@showResults");
         Route::get("/mrant/csv/{test_name}/{start}/{end}", "MrAntController@makeCSV");
+        Route::get("/mrant/csv/{test_name}", "MrAntController@makeCSV");
         Route::get("/mrant/csv", "MrAntController@makeCSV");
         Route::get("/mrant", "MrAntController@showResults");
     });
@@ -84,6 +88,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/fishshark/{test_name}", "FishSharkController@showResults");
         Route::get("/fishshark/{test_name}/{start}/{end}", "FishSharkController@showResults");
         Route::get("/fishshark/csv/{test_name}/{start}/{end}", "FishSharkController@makeCSV");
+        Route::get("/fishshark/csv/{test_name}", "FishSharkController@makeCSV");
         Route::get("/fishshark/csv", "FishSharkController@makeCSV");
         Route::get("/fishshark", "FishSharkController@showResults");
     });

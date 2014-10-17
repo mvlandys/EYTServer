@@ -9,7 +9,7 @@
         <div class="col-sm-3">
             <label>Test Name:</label>
             <select id="test_name">
-                <option value="">All Tests</option>
+                <option value="all">All Tests</option>
                 @foreach ($tests as $key => $test)
                     <option {{{ ($test_name == $test["test_name"]) ? "selected" : "" }}} value="{{ $key }}">{{ $test["test_name"] }}</option>
                 @endforeach
