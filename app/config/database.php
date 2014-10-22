@@ -66,10 +66,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-            'host'     => 'ec2-107-20-214-225.compute-1.amazonaws.com',
-            'database' => 'd88r114e9pa4et',
-            'username' => 'zqqlmebjnlneun',
-            'password' => '6XPwvTYOhHeN_rLLCo8Low5UVu',
+            'host'     => 'ec2-54-83-204-244.compute-1.amazonaws.com',
+            'database' => 'd535qa0oq8n66o',
+            'username' => 'cgnooxztyzhjze',
+            'password' => 'zaAIkdurTZlHlukPqY2lOeFHTK',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
