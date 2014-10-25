@@ -93,7 +93,7 @@ class VocabController extends Controller
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();
 
-        for ($x = 0; $x < 48; $x++) {
+        for ($x = 0; $x < 49; $x++) {
             $gamesCount[] = "Item" . ($x + 1) . "_Acc";
         }
 
@@ -113,7 +113,7 @@ class VocabController extends Controller
         foreach ($games as $game) {
             $scores = array();
 
-            for ($x = 0; $x < 48; $x++) {
+            for ($x = 0; $x < 49; $x++) {
                 $score    = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $x)->first();
                 $scores[] = (isset($score->value)) ? $score->value : ".";
             }
