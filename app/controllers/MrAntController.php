@@ -159,17 +159,26 @@ class MrAntController extends Controller
         foreach ($games as $game) {
             $scores = array();
 
+            $gameScores = array();
+            foreach(MrAntScore::where("game_id", "=", $game->id) as $gameScore) {
+                if (empty($gameScores[$gameScore->level])) {
+                    $gameScores[$gameScore->level] = array();
+                }
+
+                $gameScores[$gameScore->level][$gameScore->part] = $gameScore;
+            }
+
             for ($x = 1; $x < 9; $x++) {
                 for ($y = 1; $y < 4; $y++) {
-                    $score    = MrAntScore::where("game_id", "=", $game->id)->where("level", "=", $x)->where("part", "=", $y)->first();
-                    $scores[] = (isset($score->value) && $score->responseTime != "0") ? $score->value : ".";
+                    $score    = (isset($gameScores[$x][$y])) ? $gameScores[$x][$y] : null;
+                    $scores[] = ($score != null && isset($score->value) && $score->responseTime != "0") ? $score->value : ".";
                 }
             }
 
             for ($x = 1; $x < 9; $x++) {
                 for ($y = 1; $y < 4; $y++) {
-                    $score    = MrAntScore::where("game_id", "=", $game->id)->where("level", "=", $x)->where("part", "=", $y)->first();
-                    $scores[] = (isset($score->responseTime) && $score->responseTime != "0") ? $score->responseTime : ".";
+                    $score    = (isset($gameScores[$x][$y])) ? $gameScores[$x][$y] : null;
+                    $scores[] = ($score != null && isset($score->responseTime) && $score->responseTime != "0") ? $score->responseTime : ".";
                 }
             }
 
