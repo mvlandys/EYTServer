@@ -6,37 +6,41 @@ class FishSharkController extends Controller
 {
     public function saveGames()
     {
+        if (!Input::has("games")) {
+            return array("error" => "No Game Data specified");
+        }
+
         // Log game data
         Mail::send('email_log', array(), function ($message) {
             $message->to(["mvlandys@gmail.com"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
         });
 
-        $dob  = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));
-        $game = FishSharkGame::create(array(
-            "subject_id"    => Input::get("subject_id"),
-            "session_id"    => Input::get("session"),
-            "test_name"     => Input::get("studyName"),
-            "grade"         => Input::get("grade"),
-            "dob"           => (!$dob) ? "" : $dob->format("Y-m-d"),
-            "age"           => Input::get("age"),
-            "sex"           => Input::get("sex"),
-            "played_at"     => Input::get("date") . ":00",
-            "animation"     => Input::get("animation"),
-            "blank_min"     => Input::get("blank_min"),
-            "blank_max"     => Input::get("blank_max"),
-            "ts_start"      => (empty(Input::get("timestamps")["Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Start"])),
-            "ts_lvl1_start" => (empty(Input::get("timestamps")["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 1 Start"])),
-            "ts_lvl1_end"   => (empty(Input::get("timestamps")["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 1 End"])),
-            "ts_lvl2_start" => (empty(Input::get("timestamps")["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 2 Start"])),
-            "ts_lvl2_end"   => (empty(Input::get("timestamps")["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 2 End"])),
-            "ts_lvl3_start" => (empty(Input::get("timestamps")["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 3 Start"])),
-            "ts_lvl3_end"   => (empty(Input::get("timestamps")["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 3 End"]))
-        ));
+        $games = Input::get("games");
 
-        if (!empty($game->id)) {
-            echo "Game ID = " . $game->id . "\n\n";
+        foreach ($games as $gameData) {
+            $dob  = DateTime::createFromFormat("d-m-Y", Input::get("birthdate"));
+            $game = FishSharkGame::create(array(
+                "subject_id"    => $gameData["subject_id"],
+                "session_id"    => $gameData["session"],
+                "test_name"     => $gameData["studyName"],
+                "grade"         => $gameData["grade"],
+                "dob"           => (!$dob) ? "" : $dob->format("Y-m-d"),
+                "age"           => $gameData["age"],
+                "sex"           => $gameData["sex"],
+                "played_at"     => $gameData["date"] . ":00",
+                "animation"     => $gameData["animation"],
+                "blank_min"     => $gameData["blank_min"],
+                "blank_max"     => $gameData["blank_max"],
+                "ts_start"      => (empty($gameData["timestamps"]["Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Start"])),
+                "ts_lvl1_start" => (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"])),
+                "ts_lvl1_end"   => (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"])),
+                "ts_lvl2_start" => (empty($gameData["timestamps"]["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 Start"])),
+                "ts_lvl2_end"   => (empty($gameData["timestamps"]["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 End"])),
+                "ts_lvl3_start" => (empty($gameData["timestamps"]["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 Start"])),
+                "ts_lvl3_end"   => (empty($gameData["timestamps"]["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 End"]))
+            ));
 
-            foreach (Input::get("tries") as $score) {
+            foreach ($gameData["tries"] as $score) {
                 FishSharkScore::create(array(
                     "game_id"      => $game->id,
                     "level"        => $score["setNumber"],
@@ -47,9 +51,9 @@ class FishSharkController extends Controller
                     "is_shark"     => $score["isShark"]
                 ));
             }
-        } else {
-            print_r(Input::all());
         }
+
+        return array("success");
     }
 
     public function showResults($test_name = null, $start = null, $end = null)
