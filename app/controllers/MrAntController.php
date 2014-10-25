@@ -6,44 +6,48 @@ class MrAntController extends Controller
 {
     public function saveAnswers()
     {
+        if (!Input::has("games")) {
+            return array("error" => "No Game Data specified");
+        }
+
         // Log game data
         Mail::send('email_log', array(), function ($message) {
             $message->to(["mvlandys@gmail.com"])->subject("MrAnt Log " . date("H:i:s d/m/Y"));
         });
 
-        $game = MrAntGame::create(array(
-            "subject_id"    => Input::get("subject_id"),
-            "session_id"    => Input::get("session"),
-            "test_name"     => Input::get("studyName"),
-            "grade"         => Input::get("grade"),
-            "dob"           => Input::get("birthdate"),
-            "age"           => Input::get("age"),
-            "sex"           => Input::get("sex"),
-            "played_at"     => Input::get("date") . ":00",
-            "score"         => Input::get("score"),
-            "ts_start"      => (empty(Input::get("timestamps")["Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Start"])),
-            "ts_lvl1_start" => (empty(Input::get("timestamps")["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 1 Start"])),
-            "ts_lvl1_end"   => (empty(Input::get("timestamps")["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 1 End"])),
-            "ts_lvl2_start" => (empty(Input::get("timestamps")["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 2 Start"])),
-            "ts_lvl2_end"   => (empty(Input::get("timestamps")["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 2 End"])),
-            "ts_lvl3_start" => (empty(Input::get("timestamps")["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 3 Start"])),
-            "ts_lvl3_end"   => (empty(Input::get("timestamps")["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 3 End"])),
-            "ts_lvl4_start" => (empty(Input::get("timestamps")["Level 4 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 4 Start"])),
-            "ts_lvl4_end"   => (empty(Input::get("timestamps")["Level 4 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 4 End"])),
-            "ts_lvl5_start" => (empty(Input::get("timestamps")["Level 5 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 5 Start"])),
-            "ts_lvl5_end"   => (empty(Input::get("timestamps")["Level 5 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 5 End"])),
-            "ts_lvl6_start" => (empty(Input::get("timestamps")["Level 6 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 6 Start"])),
-            "ts_lvl6_end"   => (empty(Input::get("timestamps")["Level 6 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 6 End"])),
-            "ts_lvl7_start" => (empty(Input::get("timestamps")["Level 7 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 7 Start"])),
-            "ts_lvl7_end"   => (empty(Input::get("timestamps")["Level 7 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 7 End"])),
-            "ts_lvl8_start" => (empty(Input::get("timestamps")["Level 8 Start"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 8 Start"])),
-            "ts_lvl8_end"   => (empty(Input::get("timestamps")["Level 8 End"])) ? null : date("Y-m-d H:i:s", strtotime(Input::get("timestamps")["Level 8 End"]))
-        ));
+        $games = Input::get("games");
 
-        if (!empty($game->id)) {
-            echo "Game ID = " . $game->id . "\n\n";
+        foreach ($games as $gameData) {
+            $game = MrAntGame::create(array(
+                "subject_id"    => $gameData["subject_id"],
+                "session_id"    => $gameData["session"],
+                "test_name"     => $gameData["studyName"],
+                "grade"         => $gameData["grade"],
+                "dob"           => $gameData["birthdate"],
+                "age"           => $gameData["age"],
+                "sex"           => $gameData["sex"],
+                "played_at"     => $gameData["date"] . ":00",
+                "score"         => $gameData["score"],
+                "ts_start"      => (empty($gameData["timestamps"]["Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Start"])),
+                "ts_lvl1_start" => (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"])),
+                "ts_lvl1_end"   => (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"])),
+                "ts_lvl2_start" => (empty($gameData["timestamps"]["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 Start"])),
+                "ts_lvl2_end"   => (empty($gameData["timestamps"]["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 End"])),
+                "ts_lvl3_start" => (empty($gameData["timestamps"]["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 Start"])),
+                "ts_lvl3_end"   => (empty($gameData["timestamps"]["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 End"])),
+                "ts_lvl4_start" => (empty($gameData["timestamps"]["Level 4 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 4 Start"])),
+                "ts_lvl4_end"   => (empty($gameData["timestamps"]["Level 4 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 4 End"])),
+                "ts_lvl5_start" => (empty($gameData["timestamps"]["Level 5 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 5 Start"])),
+                "ts_lvl5_end"   => (empty($gameData["timestamps"]["Level 5 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 5 End"])),
+                "ts_lvl6_start" => (empty($gameData["timestamps"]["Level 6 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 6 Start"])),
+                "ts_lvl6_end"   => (empty($gameData["timestamps"]["Level 6 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 6 End"])),
+                "ts_lvl7_start" => (empty($gameData["timestamps"]["Level 7 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 7 Start"])),
+                "ts_lvl7_end"   => (empty($gameData["timestamps"]["Level 7 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 7 End"])),
+                "ts_lvl8_start" => (empty($gameData["timestamps"]["Level 8 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 8 Start"])),
+                "ts_lvl8_end"   => (empty($gameData["timestamps"]["Level 8 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 8 End"]))
+            ));
 
-            foreach (Input::get("tries") as $score) {
+            foreach ($gameData["tries"] as $score) {
                 MrAntScore::create(array(
                     "game_id"      => $game->id,
                     "level"        => $score["setNumber"],
@@ -52,9 +56,9 @@ class MrAntController extends Controller
                     "responseTime" => $score["responseTime"]
                 ));
             }
-        } else {
-            print_r(Input::all());
         }
+
+        return array("success");
     }
 
     public function showResults($test_name = null, $start = null, $end = null)
