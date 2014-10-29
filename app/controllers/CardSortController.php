@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Routing\Controller;
-
-class CardSortController extends Controller
+class CardSortController extends BaseController
 {
 
     public function saveGame()

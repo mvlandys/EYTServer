@@ -82,6 +82,13 @@
                 <option value="1" {{ ($user->vocab == 1) ? "selected" : "" }}>ENABLED</option>
             </select>
         </div>
+        <div class="col-sm-4">
+            <label>NotThis Data:</label>
+            <select class="form-control" name="notthis">
+                <option value="0" {{ ($user->notthis == 0) ? "selected" : "" }}>DISABLED</option>
+                <option value="1" {{ ($user->notthis == 1) ? "selected" : "" }}>ENABLED</option>
+            </select>
+        </div>
     </div><br/>
 
 </form>

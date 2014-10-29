@@ -96,6 +96,15 @@ Route::filter("mrant", function()
     }
 });
 
+Route::filter("notthis", function()
+{
+    $user = User::find(Session::get("user_id"));
+
+    if (User::all()->count() > 0 && $user->notthis == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
 Route::filter("delete", function()
 {
    $user = User::find(Session::get("user_id"));

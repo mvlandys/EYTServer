@@ -68,6 +68,7 @@ class UserController extends Controller
         $user->mrant         = Input::get("mrant");
         $user->questionnaire = Input::get("questionnaire");
         $user->vocab         = Input::get("vocab");
+        $user->notthis       = Input::get("notthis");
         $user->save();
 
         if ($userCount == 0) {
@@ -106,6 +107,7 @@ class UserController extends Controller
         $user->mrant         = Input::get("mrant");
         $user->questionnaire = Input::get("questionnaire");
         $user->vocab         = Input::get("vocab");
+        $user->notthis       = Input::get("notthis");
 
         if (!empty(Input::get("password"))) {
             $user->password = Hash::make(Input::get("password"));

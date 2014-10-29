@@ -84,6 +84,13 @@
                 <option value="1">ENABLED</option>
             </select>
         </div>
+        <div class="col-sm-4">
+            <label>NotThis Data:</label>
+            <select class="form-control" name="notthis">
+                <option value="0">DISABLED</option>
+                <option value="1">ENABLED</option>
+            </select>
+        </div>
     </div><br/>
 
 </form>

@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Routing\Controller;
-
-class MrAntController extends Controller
+class MrAntController extends BaseController
 {
     public function saveAnswers()
     {
@@ -27,7 +25,7 @@ class MrAntController extends Controller
                 "age"           => $gameData["age"],
                 "sex"           => $gameData["sex"],
                 "played_at"     => $gameData["date"] . ":00",
-                "score"         => $gameData["score"],
+                "score"         => (! empty($gameData["score"])) ? $gameData["score"] : "",
                 "ts_start"      => (empty($gameData["timestamps"]["Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Start"])),
                 "ts_lvl1_start" => (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"])),
                 "ts_lvl1_end"   => (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"])),

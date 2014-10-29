@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Routing\Controller;
-
-class FishSharkController extends Controller
+class FishSharkController extends BaseController
 {
     public function saveGames()
     {

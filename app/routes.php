@@ -93,6 +93,18 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/fishshark", "FishSharkController@showResults");
     });
 
+    // NotThos Routes
+    Route::group(array("before" => "notthis"), function () {
+        Route::get("/notthis/game/{id}/delete", array("before" => "delete", "uses" => "NotThisController@deleteGame"));
+        Route::get("/notthis/game/{id}", "NotThisController@viewScores");
+        Route::get("/notthis/{test_name}", "NotThisController@showResults");
+        Route::get("/notthis/{test_name}/{start}/{end}", "NotThisController@showResults");
+        Route::get("/notthis/csv/{test_name}/{start}/{end}", "NotThisController@makeCSV");
+        Route::get("/notthis/csv/{test_name}", "NotThisController@makeCSV");
+        Route::get("/notthis/csv", "NotThisController@makeCSV");
+        Route::get("/notthis", "NotThisController@showResults");
+    });
+
     // Admin Routes
     Route::group(array("before" => "admin"), function () {
         Route::get("/admin/users", "UserController@listUsers");
@@ -109,3 +121,13 @@ Route::post("/cardsort/save", "CardSortController@saveGame");
 Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
 Route::post("/mrant/save", "MrAntController@saveAnswers");
 Route::post("/fishshark/save", "FishSharkController@saveGames");
+Route::post("/notthis/save", "NotThisController@saveGames");
+
+// Remove Duplicates
+Route::get("/duplicate_fix", function() {
+    $games = MrAntGame::all();
+
+    // Loop through each game
+    // Check for non-conflicting demographic data
+    // Remove duplicate entry
+});

@@ -10,11 +10,13 @@ $(document).ready(function () {
     $("#btnCardSortFilter").on("click", filterCardSort);
     $("#btnMrAntFilter").on("click", filterMrAnt);
     $("#btnFishSharkFilter").on("click", filterFishShark);
+    $("#btnNotThisFilter").on("click", filterNotThis);
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
     $("#btnMrAntCSV").on("click", mrAntCSV);
     $("#btnFishSharkCSV").on("click", fishSharkCSV);
+    $("#btnNotThisCSV").on("click", notThisCSV);
     $("#responseType").on("change", changeAnswerType);
     $("#btnNewUser").on("click", createNewUser);
     $("#btnUpdateUser").on("click", updateUser);
@@ -22,7 +24,7 @@ $(document).ready(function () {
     $("#btnSubmitPasswordReset").on("click", submitPasswordReset);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
-    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1) {
+    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1 || route.indexOf("/notthis") > -1) {
         formSetup();
     }
 
@@ -157,6 +159,25 @@ function filterFishShark() {
     });
 }
 
+function filterNotThis() {
+    var test  = $("#test_name").val();
+    var start = $("#date_start");
+    var end   = $("#date_end");
+    var url = "";
+
+    if (start.val() != "" && end.val() != "") {
+        url = "/notthis/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+    } else {
+        url = "/notthis/" + test + "/";
+    }
+
+    $.colorbox({
+        onOpen: function () {
+            window.location.pathname = url;
+        }
+    });
+}
+
 function getDate(input) {
     var dateObj = input.datepicker("getDate");
     var month = dateObj.getMonth() + 1;
@@ -265,6 +286,17 @@ function fishSharkCSV() {
     var start   = $("#date_start");
     var end     = $("#date_end");
     var url     = (start.val() == "" && end.val() == "") ? "/fishshark/csv/" + test : "/fishshark/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+
+    $.colorbox({
+        href: url
+    });
+}
+
+function notThisCSV() {
+    var test    = $("#test_name").val();
+    var start   = $("#date_start");
+    var end     = $("#date_end");
+    var url     = (start.val() == "" && end.val() == "") ? "/notthis/csv/" + test : "/notthis/csv/"  + test + "/" + getDate(start) + "/" + getDate(end) + "/";
 
     $.colorbox({
         href: url
