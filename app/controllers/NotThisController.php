@@ -72,7 +72,7 @@ class NotThisController extends BaseController
 
     public function viewScores($game_id)
     {
-        $scores = NotThisScore::where("game_id", "=", $game_id)->orderBy("level", "ASC")->get();
+        $scores = NotThisScore::where("game_id", "=", $game_id)->orderBy("rep", "ASC")->get();
 
         return View::make("notthis/scores", array(
             "scores" => $scores
