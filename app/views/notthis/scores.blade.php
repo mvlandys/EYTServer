@@ -4,11 +4,11 @@
 
 @section('content')
 
-<table class="table table-bordered table-stiped">
+<table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th>Set</th>
-        <th>Rep</th>
+        <th>Level</th>
+        <th>Trial</th>
         <th>Value</th>
         <th>Response Time</th>
         <th>Attempted</th>
@@ -21,7 +21,7 @@
         <td>{{ $score->rep }}</td>
         <td>{{ ($score->correct == 1) ? "Correct" : "InCorrect" }}</td>
         <td>{{ $score->responseTime }}</td>
-        <td>{{ ($score->attempted == 1) ? "Attempted" : "Not Attempted" }}</td>
+        <td>{{ ($score->attempted == 1) ? "Attempted" : "." }}</td>
     </tr>
     @endforeach
     </tbody>

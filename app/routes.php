@@ -97,11 +97,11 @@ Route::group(array("before" => "auth"), function () {
     Route::group(array("before" => "notthis"), function () {
         Route::get("/notthis/game/{id}/delete", array("before" => "delete", "uses" => "NotThisController@deleteGame"));
         Route::get("/notthis/game/{id}", "NotThisController@viewScores");
-        Route::get("/notthis/{test_name}", "NotThisController@showResults");
-        Route::get("/notthis/{test_name}/{start}/{end}", "NotThisController@showResults");
         Route::get("/notthis/csv/{test_name}/{start}/{end}", "NotThisController@makeCSV");
         Route::get("/notthis/csv/{test_name}", "NotThisController@makeCSV");
         Route::get("/notthis/csv", "NotThisController@makeCSV");
+        Route::get("/notthis/{test_name}", "NotThisController@showResults");
+        Route::get("/notthis/{test_name}/{start}/{end}", "NotThisController@showResults");
         Route::get("/notthis", "NotThisController@showResults");
     });
 

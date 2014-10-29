@@ -72,7 +72,7 @@ class NotThisController extends BaseController
 
     public function viewScores($game_id)
     {
-        $scores = NotThisScore::where("game_id", "=", $game_id)->orderBy("rep", "ASC")->get();
+        $scores = NotThisScore::where("game_id", "=", $game_id)->orderBy("set", "ASC")->orderBy("rep", "ASC")->get();
 
         return View::make("notthis/scores", array(
             "scores" => $scores
@@ -91,7 +91,15 @@ class NotThisController extends BaseController
         for ($x = 1; $x < 9; $x++) {
             // Loop through the 5 reps
             for ($y = 1; $y < 6; $y++) {
-                $cards[] = "Set" . $x . "_" . $y . "Acc";
+                $cards[] = "Level" . $x . "_" . $y . "Acc";
+            }
+        }
+
+        // Loop through each set
+        for ($x = 1; $x < 9; $x++) {
+            // Loop through the 5 reps
+            for ($y = 1; $y < 6; $y++) {
+                $cards[] = "Level" . $x . "_" . $y . "Resp";
             }
         }
 
@@ -110,14 +118,15 @@ class NotThisController extends BaseController
         ), $cards));
 
         foreach ($games as $game) {
-            $scores    = NotThisScore::where("game_id", "=", $game->id)->orderBy("set")->orderBy("rep")->get();
+            $scores    = NotThisScore::where("game_id", "=", $game->id)->get();//->orderBy("set", "ASC")->orderBy("rep", "ASC")->get();
             $scoreData = array();
-
-            $set = 1;
-            $rep = 1;
 
             foreach ($scores as $score) {
                 $scoreData[] = ($score->correct == 0) ? "." : 1;
+            }
+
+            foreach ($scores as $score) {
+                $scoreData[] = ($score->responseTime == 0 || empty($score->responseTime)) ? "." : $score->responseTime;
             }
 
             $played_at = DateTime::createFromFormat("Y-m-d H:i:s", $game->played_at);
