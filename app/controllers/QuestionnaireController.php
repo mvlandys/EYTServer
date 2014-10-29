@@ -60,12 +60,14 @@ class QuestionnaireController extends Controller
 
     private function getResults($test_name = null, $start = null, $end = null)
     {
+        $order = (Input::has("order")) ? Input::get("order") : "played_at";
+
         if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $results = Questionnaire::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+            $results = Questionnaire::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
         } else if (!empty($test_name)) {
-            $results = Questionnaire::where("test_name", "=", $test_name)->get();
+            $results = Questionnaire::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
         } else {
-            $results = Questionnaire::all()->sortBy("played_at DESC");
+            $results = Questionnaire::orderBy($order, "DESC")->get();
         }
 
         return $results;

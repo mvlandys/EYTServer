@@ -145,14 +145,16 @@ class NotThisController extends BaseController
 
     private function getGames($test_name = null, $start = null, $end = null)
     {
+        $order = (Input::has("order")) ? Input::get("order") : "played_at";
+
         if (!empty($test_name) && !empty($start) && !empty($end)) {
             $games = ($test_name == "all")
-                ? NotThisGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->get()
-                : NotThisGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+                ? NotThisGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
+                : NotThisGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
         } else if (!empty($test_name)) {
-            $games = NotThisGame::where("test_name", "=", $test_name)->get();
+            $games = NotThisGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
         } else {
-            $games = NotThisGame::orderBy("played_at", "DESC")->get();
+            $games = NotThisGame::orderBy($order, "DESC")->get();
         }
 
         return $games;

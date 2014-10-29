@@ -141,14 +141,16 @@ class VocabController extends Controller
 
     private function getGames($test_name = null, $start = null, $end = null)
     {
+        $order = (Input::has("order")) ? Input::get("order") : "played_at";
+
         if (!empty($test_name) && !empty($start) && !empty($end)) {
             $games = ($test_name == "all")
-                ? VocabGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->get()
-                : VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+                ? VocabGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
+                : VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
         } else if (!empty($test_name) && $test_name != "all") {
-            $games = VocabGame::where("test_name", "=", $test_name)->get();
+            $games = VocabGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
         } else {
-            $games = VocabGame::orderBy("played_at", "DESC")->get();
+            $games = VocabGame::orderBy($order, "DESC")->get();
         }
 
         return $games;

@@ -33,14 +33,15 @@
     <thead>
     <tr>
         <th><a class="btn btn-warning btn-xs" id="btnCardSortCSV">CSV</a></th>
-        <th>Study Name</th>
-        <th>Subject ID</th>
-        <th>Session ID</th>
-        <th>Grade</th>
-        <th>DOB</th>
-        <th>Age</th>
-        <th>Sex</th>
-        <th>Played At</th>
+        <th><a href="?order=test_name">Study Name</a></th>
+        <th><a href="?order=subject_id">Subject ID</a></th>
+        <th><a href="?order=session_id">Session ID</a></th>
+        <th><a href="?order=grade">Grade</a></th>
+        <th><a href="?order=dob">DOB</a></th>
+        <th><a href="?order=age">Age</a></th>
+        <th><a href="?order=sex">Sex</a></th>
+        <th><a href="?order=score">Score</a></th>
+        <th><a href="?order=played_at">Played At</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
     </tr>
     </thead>

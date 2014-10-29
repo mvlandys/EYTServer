@@ -82,14 +82,16 @@ class MrAntController extends BaseController
 
     private function getGames($test_name = null, $start = null, $end = null)
     {
+        $order = (Input::has("order")) ? Input::get("order") : "played_at";
+
         if (!empty($test_name) && !empty($start) && !empty($end)) {
             $games = ($test_name == "all")
-                ? MrAntGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->get()
-                : MrAntGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->get();
+                ? MrAntGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
+                : MrAntGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
         } else if (!empty($test_name) && $test_name != "all") {
-            $games = MrAntGame::where("test_name", "=", $test_name)->get();
+            $games = MrAntGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
         } else {
-            $games = MrAntGame::orderBy("played_at", "DESC")->get();
+            $games = MrAntGame::orderBy($order, "DESC")->get();
         }
 
         return $games;
