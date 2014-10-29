@@ -128,32 +128,20 @@ Route::get("/duplicate_fix", function() {
     $games = MrAntGame::all();
 
     // Loop through each game
-    $x = 0;
     foreach($games as $game) {
         if (empty(MrAntGame::find($game->id))) {
             continue;
         }
 
-        $duplicates = MrAntGame::where("id", "!=", $game->id)
-                        ->where("subject_id", "=", $game->subject_id)
-                        ->where("session_id", "=", $game->session_id)
-                        ->where("test_name", "=", $game->test_name)
-                        ->where("grade", "=", $game->grade)
-                        ->where("dob", "=", $game->dob)
-                        ->where("age", "=", $game->age)
-                        ->where("sex", "=", $game->sex)
-                        ->where("played_at", "=", $game->played_at)
-                        ->where("score", "=", $game->score)->get();
-
-        if (count($duplicates) > 0) {
-            var_dump($duplicates);
-        }
-
-        /*$x++;
-        if ($x > 10) {
-            break;
-        }*/
+        MrAntGame::where("id", "!=", $game->id)
+            ->where("subject_id", "=", $game->subject_id)
+            ->where("session_id", "=", $game->session_id)
+            ->where("test_name", "=", $game->test_name)
+            ->where("grade", "=", $game->grade)
+            ->where("dob", "=", $game->dob)
+            ->where("age", "=", $game->age)
+            ->where("sex", "=", $game->sex)
+            ->where("played_at", "=", $game->played_at)
+            ->where("score", "=", $game->score)->delete();
     }
-    // Check for non-conflicting demographic data
-    // Remove duplicate entry
 });
