@@ -144,7 +144,7 @@ Route::get("/duplicate_fix", function() {
             ->where("played_at", "=", $game->played_at)
             ->where("score", "=", $game->score);
 
-        foreach($duplicate as $gameData) {
+        foreach($duplicate->get() as $gameData) {
             MrAntScore::where("game_id", "=", $gameData->id)->delete();
         }
 
