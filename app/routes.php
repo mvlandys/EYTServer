@@ -129,7 +129,7 @@ Route::get("/duplicate_fix", function() {
 
     // Loop through each game
     foreach($games as $game) {
-        if (empty(MrAntGame::find($game->id)->get()->id)) {
+        if (empty(MrAntGame::find($game->id)->id)) {
             continue;
         }
 
