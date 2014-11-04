@@ -84,98 +84,60 @@ function formSetup() {
 }
 
 function filterVocab() {
-    var test  = $("#test_name").val();
-    var start = $("#date_start");
-    var end   = $("#date_end");
-    var url = "";
-
-    if (start.val() != "" && end.val() != "") {
-        url = "/vocab/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
-    } else {
-        url = "/vocab/" + test + "/";
-    }
-
     $.colorbox({
         onOpen: function () {
-            window.location.pathname = url;
+            window.location.pathname = filterURL("vocab");
         }
     });
 }
 
 function filterCardSort() {
-    var test  = $("#test_name").val();
-    var start = $("#date_start");
-    var end   = $("#date_end");
-    var url = "";
-
-    if (start.val() != "" && end.val() != "") {
-        url = "/cardsort/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
-    } else {
-        url = "/cardsort/" + test + "/";
-    }
-
     $.colorbox({
         onOpen: function () {
-            window.location.pathname = url;
+            window.location.pathname = filterURL("cardsort");
         }
     });
 }
 
 function filterMrAnt() {
-    var test  = $("#test_name").val();
-    var start = $("#date_start");
-    var end   = $("#date_end");
-    var url = "";
-
-    if (start.val() != "" && end.val() != "") {
-        url = "/mrant/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
-    } else {
-        url = "/mrant/" + test + "/";
-    }
-
     $.colorbox({
         onOpen: function () {
-            window.location.pathname = url;
+            window.location.pathname = filterURL("mrant");
         }
     });
 }
 
 function filterFishShark() {
-    var test  = $("#test_name").val();
-    var start = $("#date_start");
-    var end   = $("#date_end");
-    var url = "";
-
-    if (start.val() != "" && end.val() != "") {
-        url = "/fishshark/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
-    } else {
-        url = "/fishshark/" + test + "/";
-    }
-
     $.colorbox({
         onOpen: function () {
-            window.location.pathname = url;
+            window.location.pathname = filterURL("fishshark");
         }
     });
 }
 
 function filterNotThis() {
+    $.colorbox({
+        onOpen: function () {
+            window.location.pathname = filterURL("notthis");
+        }
+    });
+}
+
+function filterURL(game) {
     var test  = $("#test_name").val();
     var start = $("#date_start");
     var end   = $("#date_end");
-    var url = "";
+    var url   = "";
 
     if (start.val() != "" && end.val() != "") {
-        url = "/notthis/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+        url = "/" + game +"/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+    } else if (test != "") {
+        url = "/" + game +"/" + test + "/";
     } else {
-        url = "/notthis/" + test + "/";
+        url = "/" + game + "/";
     }
 
-    $.colorbox({
-        onOpen: function () {
-            window.location.pathname = url;
-        }
-    });
+    return url;
 }
 
 function getDate(input) {
@@ -420,11 +382,12 @@ function deleteGame() {
     var game = $(this).data("game_type");
     var id = $(this).data("game_id");
     var confirm = $(this).data("confirm");
+    var last_id = $(this).data("last_id");
 
     if (confirm == 0) {
         $.colorbox({
             html: '<div class="well"><h3>Are you sure you want to delete this game?</h3><br/>' +
-                '<a class="btn btn-danger pull-right btnDeleteGame" data-game_type="'+game+'" data-game_id="'+id+'" data-confirm="1"><i class="glyphicon glyphicon-trash"></i> YES: DELETE</a>' +
+                '<a class="btn btn-danger pull-right btnDeleteGame" data-last_id="' + last_id + '" data-game_type="'+game+'" data-game_id="'+id+'" data-confirm="1"><i class="glyphicon glyphicon-trash"></i> YES: DELETE</a>' +
                 '<a class="btn btn-default" onclick="$.colorbox.close();">NO: Cancel</a> </div>'
         })
     }
@@ -445,12 +408,11 @@ function deleteGame() {
                 }
 
                 if (json.success) {
-                    renderAlert("success", "You have successfully deleted this game", "/" + game);
+                    renderAlert("success", "You have successfully deleted this game", filterURL(game) + "#row" + last_id);
                 }
             }
         });
     }
-
 }
 
 function requestPasswordReset() {

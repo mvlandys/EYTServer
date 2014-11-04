@@ -46,6 +46,7 @@
     </tr>
     </thead>
     <tbody>
+    <?php $lastID = 0; ?>
     @foreach ($games as $game)
         <tr>
             <td><a class="btn btn-info btn-sm" href="/notthis/game/{{ $game->id }}">View Scores</a></td>
@@ -70,7 +71,8 @@
             </td>
             <td>{{ $game->score }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
-            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-game_id="{{ $game->id }}" data-game_type="notthis" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $game->id }}" data-game_type="notthis" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <?php $lastID = $game->id; ?>
         </tr>
     @endforeach
     </tbody>
