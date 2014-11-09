@@ -95,7 +95,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/fishshark", "FishSharkController@showResults");
     });
 
-    // NotThos Routes
+    // NotThis Routes
     Route::group(array("before" => "notthis"), function () {
         Route::get("/notthis/game/{id}/delete", array("before" => "delete", "uses" => "NotThisController@deleteGame"));
         Route::get("/notthis/game/{id}", "NotThisController@viewScores");
@@ -126,11 +126,11 @@ Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
 
 // Remove Duplicates
-Route::get("/duplicate_fix", function() {
+Route::get("/duplicate_fix", function () {
     $games = MrAntGame::all();
 
     // Loop through each game
-    foreach($games as $game) {
+    foreach ($games as $game) {
         if (empty(MrAntGame::find($game->id)->id)) {
             continue;
         }
@@ -146,11 +146,34 @@ Route::get("/duplicate_fix", function() {
             ->where("played_at", "=", $game->played_at)
             ->where("score", "=", $game->score);
 
-        foreach($duplicate->get() as $gameData) {
+        foreach ($duplicate->get() as $gameData) {
             MrAntScore::where("game_id", "=", $gameData->id)->delete();
         }
 
         $duplicate->delete();
+    }
+
+    echo "Done";
+});
+
+Route::get("/temp", function () {
+    Eloquent::unguard();
+    $games = VocabGame::all();
+
+    foreach ($games as $game) {
+        $gameData = $game->toArray();
+        unset($gameData["id"]);
+        unset($gameData["created_at"]);
+        unset($gameData["updated_at"]);
+        $newGame = VocabGame::create($gameData);
+        $scores  = VocabScore::where("game_id", "=", $game->id)->get();
+
+        foreach ($scores as $score) {
+            $scoreData = $score->toArray();
+            unset($scoreData["id"]);
+            $scoreData["game_id"] = $newGame->id;
+            VocabScore::create($scoreData);
+        }
     }
 
     echo "Done";

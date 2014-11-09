@@ -48,7 +48,7 @@
     <tbody>
     <?php $lastID = 0; ?>
     @foreach ($results as $result)
-        <tr>
+        <tr id="row{{ $result->id }}">
             <td class="text-center"><a class="btn btn-info btn-sm" href="/questionnaire/game/{{ $result->id }}">View Scores</a></td>
             <td>{{{ empty($result->test_name) ? '.' : $result->test_name }}}</td>
             <td>{{{ empty($result->subject_id) ? '.' : $result->subject_id }}}</td>
