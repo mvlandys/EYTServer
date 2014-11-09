@@ -130,11 +130,11 @@ function filterURL(game) {
     var url   = "";
 
     if (start.val() != "" && end.val() != "") {
-        url = "/" + game +"/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+        url = "/" + game +"/" + test + "/" + getDate(start) + "/" + getDate(end);
     } else if (test != "") {
-        url = "/" + game +"/" + test + "/";
+        url = "/" + game +"/" + test;
     } else {
-        url = "/" + game + "/";
+        url = "/" + game;
     }
 
     return url;
