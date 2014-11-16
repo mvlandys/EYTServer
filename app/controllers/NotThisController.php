@@ -8,6 +8,8 @@ class NotThisController extends BaseController
             return array("error" => "No Game Data specified");
         }
 
+        //return Input::get("games");
+
         // Log game data
         Mail::send('email_log', array(), function ($message) {
             $message->to(["mvlandys@gmail.com"])->subject("NotThis Log " . date("H:i:s d/m/Y"));
@@ -35,7 +37,7 @@ class NotThisController extends BaseController
                 $gameScore->rep          = $score["repNumber"];
                 $gameScore->correct      = $score["correct"];
                 $gameScore->responseTime = $score["responseTime"];
-                $gameScore->attempted    = $score["attempted"];
+                $gameScore->attempted    = 1;//$score["attempted"];
                 $gameScore->save();
 
                 if ($score["correct"] == 1) {

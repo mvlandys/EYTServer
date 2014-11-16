@@ -155,26 +155,3 @@ Route::get("/duplicate_fix", function () {
 
     echo "Done";
 });
-
-Route::get("/temp", function () {
-    Eloquent::unguard();
-    $games = VocabGame::all();
-
-    foreach ($games as $game) {
-        $gameData = $game->toArray();
-        unset($gameData["id"]);
-        unset($gameData["created_at"]);
-        unset($gameData["updated_at"]);
-        $newGame = VocabGame::create($gameData);
-        $scores  = VocabScore::where("game_id", "=", $game->id)->get();
-
-        foreach ($scores as $score) {
-            $scoreData = $score->toArray();
-            unset($scoreData["id"]);
-            $scoreData["game_id"] = $newGame->id;
-            VocabScore::create($scoreData);
-        }
-    }
-
-    echo "Done";
-});

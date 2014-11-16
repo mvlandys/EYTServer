@@ -21,6 +21,8 @@ class CardSortController extends BaseController
                 continue;
             }
 
+            $existing = 1;
+
             $game                = new CardSortGame();
             $game->subject_id    = $gameData["user_data"]["subject_id"];
             $game->session_id    = $gameData["user_data"]["session_id"];
