@@ -112,10 +112,16 @@ class VocabController extends Controller
 
         foreach ($games as $game) {
             $scores = array();
+            $scoreData = VocabScore::where("game_id", "=", $game->id)->orderBy("card", "ASC")->get();
+
+            foreach($scoreData as $score) {
+                $scores[] = $score->value;
+            }
 
             for ($x = 0; $x < 49; $x++) {
-                $score    = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $x)->first();
-                $scores[] = (isset($score->value)) ? $score->value : ".";
+                if (empty($scores[$x])) {
+                    $scores[$x] = ".";
+                }
             }
 
             fputcsv($fp, array_merge(array(
