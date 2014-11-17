@@ -351,21 +351,16 @@ function updateUser() {
 }
 
 function renderAlert(type, msg, redirect) {
-    var onclick = "";
-    var href = "";
-
-    if (redirect == false) {
-        onclick = 'onclick="$.colorbox.close()"';
-        href = "#";
-    } else {
-        href = redirect;
-    }
-
     var view = '<div class="alert alert-' + type + '">' + msg + '<br/><br/><div class="text-center">';
-    view += '<a class="btn btn-default" ' + onclick + ' href="' + href + '">OK</a></div>';
+    view += '<a class="btn btn-default" onclick="$.colorbox.close()">OK</a></div>';
 
     $.colorbox({
-        html: view
+        html: view,
+        onCleanup: function() {
+            if (redirect != false) {
+                window.location.href = redirect;
+            }
+        }
     });
 }
 
