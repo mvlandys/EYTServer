@@ -4,6 +4,7 @@ class MrAntController extends BaseController
 {
     public function saveAnswers()
     {
+        /*
         if (!Input::has("games")) {
             return array("error" => "No Game Data specified");
         }
@@ -13,8 +14,8 @@ class MrAntController extends BaseController
             $message->to(["mvlandys@gmail.com"])->subject("MrAnt Log " . date("H:i:s d/m/Y"));
         });
 
-        $games = Input::get("games");
-        //$games = Input::all();
+        $games = Input::get("games");*/
+        $games = Input::all();
 
         foreach ($games as $gameData) {
             $game = MrAntGame::create(array(

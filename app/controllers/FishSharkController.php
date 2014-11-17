@@ -4,6 +4,7 @@ class FishSharkController extends BaseController
 {
     public function saveGames()
     {
+        /*
         if (!Input::has("games")) {
             return array("error" => "No Game Data specified");
         }
@@ -13,8 +14,8 @@ class FishSharkController extends BaseController
             $message->to(["mvlandys@gmail.com"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
         });
 
-        $games = Input::get("games");
-        //$games = Input::all();
+        $games = Input::get("games");*/
+        $games = Input::all();
 
         foreach ($games as $gameData) {
             $dob  = DateTime::createFromFormat("d-m-Y", (Input::has("birthdate")) ? Input::get("birthdate") : $gameData["birthdate"]);
