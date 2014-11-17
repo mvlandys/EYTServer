@@ -2,9 +2,62 @@
 
 class FishSharkController extends BaseController
 {
+    /**
+     * TEMP CODE
+     *
+     * Used for importing data from another database
+     *
+     * @return array
+     */
+    public function importGames()
+    {
+        $results = array();
+        $games = Input::all();
+
+        foreach ($games as $gameData) {
+            $dob = DateTime::createFromFormat("d-m-Y", (Input::has("birthdate")) ? Input::get("birthdate") : $gameData["birthdate"]);
+
+            $game                = new FishSharkGame();
+            $game->subject_id    = $gameData["subject_id"];
+            $game->session_id    = $gameData["session"];
+            $game->test_name     = $gameData["studyName"];
+            $game->grade         = $gameData["grade"];
+            $game->dob           = (!$dob) ? "" : $dob->format("Y-m-d");
+            $game->age           = $gameData["age"];
+            $game->sex           = $gameData["sex"];
+            $game->played_at     = $gameData["date"] . ":00";
+            $game->animation     = $gameData["animation"];
+            $game->blank_min     = $gameData["blank_min"];
+            $game->blank_max     = $gameData["blank_max"];
+            $game->ts_start      = (empty($gameData["timestamps"]["Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Start"]));
+            $game->ts_lvl1_start = (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"]));
+            $game->ts_lvl1_end   = (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"]));
+            $game->ts_lvl2_start = (empty($gameData["timestamps"]["Level 2 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 Start"]));
+            $game->ts_lvl2_end   = (empty($gameData["timestamps"]["Level 2 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 2 End"]));
+            $game->ts_lvl3_start = (empty($gameData["timestamps"]["Level 3 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 Start"]));
+            $game->ts_lvl3_end   = (empty($gameData["timestamps"]["Level 3 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 3 End"]));
+            $game->save();
+
+            foreach ($gameData["tries"] as $score) {
+                FishSharkScore::create(array(
+                    "game_id"      => $game->id,
+                    "level"        => $score["setNumber"],
+                    "part"         => $score["repNumber"],
+                    "value"        => $score["correct"],
+                    "responseTime" => $score["responseTime"],
+                    "blankTime"    => $score["blankTime"],
+                    "is_shark"     => $score["isShark"]
+                ));
+            }
+
+            $results[] = $game->id;
+        }
+
+        return $results;
+    }
+
     public function saveGames()
     {
-        /*
         if (!Input::has("games")) {
             return array("error" => "No Game Data specified");
         }
@@ -14,24 +67,10 @@ class FishSharkController extends BaseController
             $message->to(["mvlandys@gmail.com"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
         });
 
-        $games = Input::get("games");*/
-        $games = Input::all();
+        $games = Input::get("games");
 
         foreach ($games as $gameData) {
             $dob  = DateTime::createFromFormat("d-m-Y", (Input::has("birthdate")) ? Input::get("birthdate") : $gameData["birthdate"]);
-
-            $duplicate = FishSharkGame::where("subject_id", "=", $gameData["subject_id"])
-                ->where("session_id", "=", $gameData["session"])
-                ->where("test_name", "=", $gameData["studyName"])
-                ->where("grade", "=", $gameData["grade"])
-                ->where("dob", "=", (!$dob) ? "" : $dob->format("Y-m-d"))
-                ->where("age", "=", $gameData["age"])
-                ->where("sex", "=", $gameData["sex"])
-                ->count();
-
-            if ($duplicate > 0) {
-                continue;
-            }
 
             $game = FishSharkGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
