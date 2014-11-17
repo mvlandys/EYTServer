@@ -18,6 +18,19 @@ class MrAntController extends BaseController
         $games = Input::all();
 
         foreach ($games as $gameData) {
+            $duplicate = MrAntGame::where("subject_id", "=", $gameData["subject_id"])
+                ->where("session_id", "=", $gameData["session"])
+                ->where("test_name", "=", $gameData["studyName"])
+                ->where("grade", "=", $gameData["grade"])
+                ->where("dob", "=", $gameData["birthdate"])
+                ->where("age", "=", $gameData["age"])
+                ->where("sex", "=", $gameData["sex"])
+                ->count();
+
+            if ($duplicate > 0) {
+                continue;
+            }
+
             $game = MrAntGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
                 "session_id"    => $gameData["session"],

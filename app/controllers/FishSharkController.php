@@ -19,6 +19,20 @@ class FishSharkController extends BaseController
 
         foreach ($games as $gameData) {
             $dob  = DateTime::createFromFormat("d-m-Y", (Input::has("birthdate")) ? Input::get("birthdate") : $gameData["birthdate"]);
+
+            $duplicate = FishSharkGame::where("subject_id", "=", $gameData["subject_id"])
+                ->where("session_id", "=", $gameData["session"])
+                ->where("test_name", "=", $gameData["studyName"])
+                ->where("grade", "=", $gameData["grade"])
+                ->where("dob", "=", (!$dob) ? "" : $dob->format("Y-m-d"))
+                ->where("age", "=", $gameData["age"])
+                ->where("sex", "=", $gameData["sex"])
+                ->where("played_at", "=", $gameData["date"] . ":00")->count();
+
+            if ($duplicate > 0) {
+                continue;
+            }
+
             $game = FishSharkGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
                 "session_id"    => $gameData["session"],
