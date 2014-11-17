@@ -163,7 +163,9 @@ class NotThisController extends BaseController
                 ? NotThisGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
                 : NotThisGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
         } else if (!empty($test_name)) {
-            $games = NotThisGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
+            $games = ($test_name == "all")
+                ? NotThisGame::orderBy($order, "DESC")->get()
+                : NotThisGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
         } else {
             $games = NotThisGame::orderBy($order, "DESC")->get();
         }
