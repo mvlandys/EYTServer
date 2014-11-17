@@ -206,4 +206,34 @@ class CardSortController extends BaseController
 
         return ["success" => true];
     }
+
+    public function fixDuplicates()
+    {
+        $games = CardSortGame::all();
+
+        // Loop through each game
+        foreach ($games as $game) {
+            if (empty(CardSortGame::find($game->id)->id)) {
+                continue;
+            }
+
+            $duplicate = CardSortGame::where("id", "!=", $game->id)
+                ->where("subject_id", "=", $game->subject_id)
+                ->where("session_id", "=", $game->session_id)
+                ->where("test_name", "=", $game->test_name)
+                ->where("grade", "=", $game->grade)
+                ->where("dob", "=", $game->dob)
+                ->where("age", "=", $game->age)
+                ->where("sex", "=", $game->sex)
+                ->where("played_at", "=", $game->played_at);
+
+            foreach ($duplicate->get() as $gameData) {
+                CardSortScore::where("game_id", "=", $gameData->id)->delete();
+            }
+
+            $duplicate->delete();
+        }
+
+        echo "Done";
+    }
 }

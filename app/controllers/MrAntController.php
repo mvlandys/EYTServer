@@ -285,4 +285,35 @@ class MrAntController extends BaseController
 
         return ["success" => true];
     }
+
+    public function fixDuplicates()
+    {
+        $games = MrAntGame::all();
+
+        // Loop through each game
+        foreach ($games as $game) {
+            if (empty(MrAntGame::find($game->id)->id)) {
+                continue;
+            }
+
+            $duplicate = MrAntGame::where("id", "!=", $game->id)
+                ->where("subject_id", "=", $game->subject_id)
+                ->where("session_id", "=", $game->session_id)
+                ->where("test_name", "=", $game->test_name)
+                ->where("grade", "=", $game->grade)
+                ->where("dob", "=", $game->dob)
+                ->where("age", "=", $game->age)
+                ->where("sex", "=", $game->sex)
+                ->where("played_at", "=", $game->played_at)
+                ->where("score", "=", $game->score);
+
+            foreach ($duplicate->get() as $gameData) {
+                MrAntScore::where("game_id", "=", $gameData->id)->delete();
+            }
+
+            $duplicate->delete();
+        }
+
+        echo "Done";
+    }
 }

@@ -46,6 +46,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/vocab/csv/{test_name}/{start}/{end}", "VocabController@makeCSV");
         Route::get("/vocab/csv/{test_name}", "VocabController@makeCSV");
         Route::get("/vocab/csv", "VocabController@makeCSV");
+        Route::get("/vocab/duplicates", "VocabController@fixDuplicates");
         Route::get("/vocab/{test_name}/{start}/{end}", "VocabController@showResults");
         Route::get("/vocab/{test_name}", "VocabController@showResults");
         Route::get("/vocab", "VocabController@showResults");
@@ -58,6 +59,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/cardsort/csv/{test_name}/{start}/{end}", "CardSortController@makeCSV");
         Route::get("/cardsort/csv/{test_name}", "CardSortController@makeCSV");
         Route::get("/cardsort/csv", "CardSortController@makeCSV");
+        Route::get("/cardsort/duplicates", "CardSortController@fixDuplicates");
         Route::get("/cardsort/{test_name}", "CardSortController@showResults");
         Route::get("/cardsort/{test_name}/{start}/{end}", "CardSortController@showResults");
         Route::get("/cardsort", "CardSortController@showResults");
@@ -77,6 +79,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/mrant/game/{id}", "MrAntController@viewScores");
         Route::get("/mrant/csv/{test_name}/{start}/{end}", "MrAntController@makeCSV");
         Route::get("/mrant/csv/{test_name}", "MrAntController@makeCSV");
+        Route::get("/mrant/duplicates", "MrAntController@fixDuplicates");
         Route::get("/mrant/csv", "MrAntController@makeCSV");
         Route::get("/mrant/{test_name}", "MrAntController@showResults");
         Route::get("/mrant/{test_name}/{start}/{end}", "MrAntController@showResults");
@@ -89,6 +92,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
         Route::get("/fishshark/csv/{test_name}/{start}/{end}", "FishSharkController@makeCSV");
         Route::get("/fishshark/csv/{test_name}", "FishSharkController@makeCSV");
+        Route::get("/fishshark/duplicates", "FishSharkController@fixDuplicates");
         Route::get("/fishshark/csv", "FishSharkController@makeCSV");
         Route::get("/fishshark/{test_name}", "FishSharkController@showResults");
         Route::get("/fishshark/{test_name}/{start}/{end}", "FishSharkController@showResults");
@@ -101,6 +105,7 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/notthis/game/{id}", "NotThisController@viewScores");
         Route::get("/notthis/csv/{test_name}/{start}/{end}", "NotThisController@makeCSV");
         Route::get("/notthis/csv/{test_name}", "NotThisController@makeCSV");
+        Route::get("/notthis/duplicates", "NotThisController@fixDuplicates");
         Route::get("/notthis/csv", "NotThisController@makeCSV");
         Route::get("/notthis/{test_name}", "NotThisController@showResults");
         Route::get("/notthis/{test_name}/{start}/{end}", "NotThisController@showResults");
@@ -124,63 +129,3 @@ Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
 Route::post("/mrant/save", "MrAntController@saveAnswers");
 Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
-
-// Remove Duplicates
-Route::get("/duplicate_fix", function () {
-    $games = MrAntGame::all();
-
-    // Loop through each game
-    foreach ($games as $game) {
-        if (empty(MrAntGame::find($game->id)->id)) {
-            continue;
-        }
-
-        $duplicate = MrAntGame::where("id", "!=", $game->id)
-            ->where("subject_id", "=", $game->subject_id)
-            ->where("session_id", "=", $game->session_id)
-            ->where("test_name", "=", $game->test_name)
-            ->where("grade", "=", $game->grade)
-            ->where("dob", "=", $game->dob)
-            ->where("age", "=", $game->age)
-            ->where("sex", "=", $game->sex)
-            ->where("played_at", "=", $game->played_at)
-            ->where("score", "=", $game->score);
-
-        foreach ($duplicate->get() as $gameData) {
-            MrAntScore::where("game_id", "=", $gameData->id)->delete();
-        }
-
-        $duplicate->delete();
-    }
-
-    echo "Done";
-});
-
-Route::get("/duplicate_fix2", function () {
-    $games = FishSharkGame::all();
-
-    // Loop through each game
-    foreach ($games as $game) {
-        if (empty(FishSharkGame::find($game->id)->id)) {
-            continue;
-        }
-
-        $duplicate = FishSharkGame::where("id", "!=", $game->id)
-            ->where("subject_id", "=", $game->subject_id)
-            ->where("session_id", "=", $game->session_id)
-            ->where("test_name", "=", $game->test_name)
-            ->where("grade", "=", $game->grade)
-            ->where("dob", "=", $game->dob)
-            ->where("age", "=", $game->age)
-            ->where("sex", "=", $game->sex)
-            ->where("played_at", "=", $game->played_at);
-
-        foreach ($duplicate->get() as $gameData) {
-            FishSharkScore::where("game_id", "=", $gameData->id)->delete();
-        }
-
-        $duplicate->delete();
-    }
-
-    echo "Done";
-});
