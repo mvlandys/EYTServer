@@ -124,7 +124,7 @@ class NotThisController extends BaseController
             $scoreData = array();
 
             foreach ($scores as $score) {
-                $scoreData[] = ($score->correct == 0) ? "." : 1;
+                $scoreData[] = $score->correct;//($score->correct == 0) ? "." : 1;
             }
 
             foreach ($scores as $score) {
