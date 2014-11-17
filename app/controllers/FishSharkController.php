@@ -27,7 +27,7 @@ class FishSharkController extends BaseController
                 ->where("dob", "=", (!$dob) ? "" : $dob->format("Y-m-d"))
                 ->where("age", "=", $gameData["age"])
                 ->where("sex", "=", $gameData["sex"])
-                ->where("played_at", "=", $gameData["date"] . ":00")->count();
+                ->count();
 
             if ($duplicate > 0) {
                 continue;
