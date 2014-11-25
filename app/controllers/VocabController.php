@@ -172,6 +172,7 @@ class VocabController extends Controller
 
     public function fixDuplicates()
     {
+        /*
         $games = VocabGame::all();
 
         // Loop through each game
@@ -195,6 +196,46 @@ class VocabController extends Controller
             }
 
             $duplicate->delete();
+        }
+        */
+
+        $games = VocabGame::all();
+
+        // Loop through each game
+        foreach ($games as $game) {
+            $scores = VocabScore::where("game_id", "=", $game->id)->get();
+
+            foreach($scores as $score) {
+                if (empty(VocabScore::find($score->id)->id)) {
+                    continue;
+                }
+
+                $duplicates = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $score->card);
+                $keep = array();
+                $delete = array();
+
+                if ($duplicates->count() == 2) {
+                    foreach($duplicates->get() as $duplicateScore) {
+                        if (empty($keep)) {
+                            $keep = $duplicateScore;
+                            continue;
+                        }
+
+                        $keepDate = DateTime::createFromFormat("Y-m-d H:i:s", $keep->updated_at);
+                        $newDate  = DateTime::createFromFormat("Y-m-d H:i:s", $duplicateScore->updated_at);
+
+                        if ($newDate > $keepDate) {
+                            $delete = $keep;
+                            $keep = $duplicateScore;
+                        }
+                    }
+                }
+
+                if (!empty($delete->id)) {
+                    VocabScore::find($delete->id)->delete();
+                    echo "Deleted VocabScore: " . $delete->id;
+                }
+            }
         }
 
         echo "Done";

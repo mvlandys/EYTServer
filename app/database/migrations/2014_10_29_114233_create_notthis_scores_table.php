@@ -16,7 +16,6 @@ class CreateNotthisScoresTable extends Migration {
         {
             $table->increments('id');
             $table->integer("game_id");
-            $table->foreign('game_id')->references('id')->on('notthis_games');
             $table->integer("set");
             $table->integer("rep");
             $table->integer("correct");

@@ -16,7 +16,6 @@ class CreateMrantScoresTable extends Migration
         Schema::create('mrant_scores', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("game_id");
-            $table->foreign('game_id')->references('id')->on('mrant_games');
             $table->integer("level");
             $table->integer("part");
             $table->integer("value");

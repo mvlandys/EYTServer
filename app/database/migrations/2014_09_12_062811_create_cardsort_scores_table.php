@@ -19,7 +19,6 @@ class CreateCardsortScoresTable extends Migration {
             $table->increments('id');
             $table->timestamps();
             $table->integer("game_id");
-            $table->foreign('game_id')->references('id')->on('cardsort_games');
             $table->integer("level");
             $table->integer("card");
             $table->integer("value");

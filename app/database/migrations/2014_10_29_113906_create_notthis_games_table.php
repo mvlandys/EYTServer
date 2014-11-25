@@ -20,7 +20,7 @@ class CreateNotthisGamesTable extends Migration {
             $table->string("session_id")->nullable();
             $table->string("test_name")->nullable();
             $table->string("grade")->nullable();
-            $table->date("dob")->nullable();
+            $table->string("dob")->nullable();
             $table->integer("age")->nullable();
             $table->integer("sex")->nullable();
             $table->dateTime("played_at")->nullable();

@@ -21,7 +21,20 @@ class CardSortController extends BaseController
                 continue;
             }
 
-            $existing = 1;
+            $played_at = \DateTime::createFromFormat("Y-m-d H:i:s", $gameData["played_at"]);
+            $existing = CardSortGame::where("subject_id", "=", $gameData["user_data"]["subject_id"])
+                ->where("session_id", "=", $gameData["user_data"]["session_id"])
+                ->where("test_name", "=", $gameData["user_data"]["test_name"])
+                ->where("grade", "=", $gameData["user_data"]["grade"])
+                ->where("dob", "=", (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]))
+                ->where("age", "=", $gameData["user_data"]["sex"])
+                ->where("sex", "=", $gameData["user_data"]["sex"])
+                ->where("played_at", "=", $played_at->format("Y-m-d H:i:s"))
+                ->get();
+
+            if (!empty($existing->id)) {
+                continue;
+            }
 
             $game                = new CardSortGame();
             $game->subject_id    = $gameData["user_data"]["subject_id"];

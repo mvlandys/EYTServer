@@ -1,4 +1,0 @@
-game_id,subject_id,session_id,study_name,grade,DOB,age,sex,DOT,TOT,Level1_1Acc,Level1_2Acc,Level1_3Acc,Level1_4Acc,Level1_5Acc,Level1_6Acc,Level2_1Acc,Level2_2Acc,Level2_3Acc,Level2_4Acc,Level2_5Acc,Level2_6Acc,Level3_1Acc,Level3_2Acc,Level3_3Acc,Level3_4Acc,Level3_5Acc,Level3_6Acc
-1,1,.,Mat-Test,.,.,.,.,14/09/2014,15:34,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1
-2,1,.,Mat-Test,.,.,.,.,14/09/2014,15:34,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1
-3,1,.,Mat-Test,.,.,.,.,14/09/2014,15:34,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,1

@@ -16,7 +16,6 @@ class CreateFishsharkScoresTable extends Migration {
 		{
 			$table->increments('id');
             $table->integer("game_id");
-            $table->foreign('game_id')->references('id')->on('fishshark_games');
             $table->integer("level");
             $table->integer("part");
             $table->integer("value");

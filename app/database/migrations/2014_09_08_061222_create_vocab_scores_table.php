@@ -18,7 +18,6 @@ class CreateVocabScoresTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
             $table->integer("game_id");
-            $table->foreign('game_id')->references('id')->on('vocab_games');
             $table->integer("card");
             $table->integer("value");
             $table->string("additional");
