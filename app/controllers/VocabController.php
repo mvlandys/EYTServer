@@ -176,7 +176,6 @@ class VocabController extends Controller
 
     public function fixDuplicates()
     {
-        /*
         $games = VocabGame::all();
 
         // Loop through each game
@@ -201,7 +200,6 @@ class VocabController extends Controller
 
             $duplicate->delete();
         }
-        */
 
         $games = VocabGame::where("id", ">", 400)->get();
 
