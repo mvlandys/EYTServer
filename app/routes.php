@@ -11,6 +11,12 @@
 |
 */
 
+Route::get("/test", function() {
+    $games = new Games(new CardSortGame());
+
+    var_dump($games->getGames("test-101"));
+});
+
 // Static Pages
 Route::get("/support", function () {
     return View::make("support");

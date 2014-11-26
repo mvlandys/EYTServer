@@ -2,9 +2,9 @@
 
 use \Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class UserPermissions extends Model
 {
     protected $fillable = [];
 
-    protected $table = "users";
+    protected $table = "user_permissions";
 }

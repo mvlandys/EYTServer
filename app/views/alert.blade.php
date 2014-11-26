@@ -1,9 +1,3 @@
-
-
-@extends('layout')
-
-@section('content')
-
 <br/><br/>
 
 <div class="row">
@@ -11,5 +5,3 @@
         <div class="alert alert-{{ $type }}">{{ $msg }}</div>
     </div>
 </div>
-
-@stop

@@ -119,8 +119,10 @@ class MrAntController extends BaseController
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games     = $this->getGames($test_name, $start, $end);
-        $tests     = MrAntGame::all(array("test_name"))->toArray();
+        $gameRep   = new Games(new MrAntGame());
+        $games     = $gameRep->getGames($test_name, $start, $end);
+        $user_id   = Session::get("user_id");
+        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
         $testNames = array();
 
         foreach ($tests as $test) {
@@ -138,23 +140,6 @@ class MrAntController extends BaseController
         ));
     }
 
-    private function getGames($test_name = null, $start = null, $end = null)
-    {
-        $order = (Input::has("order")) ? Input::get("order") : "played_at";
-
-        if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $games = ($test_name == "all")
-                ? MrAntGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
-                : MrAntGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
-        } else if (!empty($test_name) && $test_name != "all") {
-            $games = MrAntGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
-        } else {
-            $games = MrAntGame::orderBy($order, "DESC")->get();
-        }
-
-        return $games;
-    }
-
     public function viewScores($game_id)
     {
         $scores = MrAntScore::where("game_id", "=", $game_id)->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
@@ -166,7 +151,8 @@ class MrAntController extends BaseController
 
     public function makeCSV($test_name = null, $start = null, $end = null)
     {
-        $games    = $this->getGames($test_name, $start, $end);
+        $gameRep  = new Games(new MrAntGame());
+        $games    = $gameRep->getGames($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');

@@ -1,4 +1,5 @@
-<?php use Illuminate\Routing\Controller;
+<?php
+use Illuminate\Routing\Controller;
 
 class VocabController extends Controller
 {
@@ -57,8 +58,10 @@ class VocabController extends Controller
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $games     = $this->getGames($test_name, $start, $end);
-        $tests     = VocabGame::all(array("test_name"))->toArray();
+        $gameRep   = new Games(new VocabGame());
+        $games     = $gameRep->getGames($test_name, $start, $end);
+        $user_id   = Session::get("user_id");
+        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
         $testNames = array();
 
         foreach ($tests as $test) {
@@ -87,7 +90,8 @@ class VocabController extends Controller
 
     public function makeCSV($test_name = null, $start = null, $end = null)
     {
-        $games    = $this->getGames($test_name, $start, $end);
+        $gameRep   = new Games(new VocabGame());
+        $games     = $gameRep->getGames($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
@@ -111,10 +115,10 @@ class VocabController extends Controller
         ), $gamesCount));
 
         foreach ($games as $game) {
-            $scores = array();
+            $scores    = array();
             $scoreData = VocabScore::where("game_id", "=", $game->id)->orderBy("card", "ASC")->get();
 
-            foreach($scoreData as $score) {
+            foreach ($scoreData as $score) {
                 $scores[] = $score->value;
             }
 
@@ -199,23 +203,23 @@ class VocabController extends Controller
         }
         */
 
-        $games = VocabGame::all();
+        $games = VocabGame::where("id", ">", 400)->get();
 
         // Loop through each game
         foreach ($games as $game) {
             $scores = VocabScore::where("game_id", "=", $game->id)->get();
 
-            foreach($scores as $score) {
+            foreach ($scores as $score) {
                 if (empty(VocabScore::find($score->id)->id)) {
                     continue;
                 }
 
-                $duplicates = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $score->card);
-                $keep = array();
-                $delete = array();
+                $duplicates = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $score->card)->get();
+                $keep       = array();
+                $delete     = array();
 
-                if ($duplicates->count() == 2) {
-                    foreach($duplicates->get() as $duplicateScore) {
+                if (count($duplicates) == 2) {
+                    foreach ($duplicates as $duplicateScore) {
                         if (empty($keep)) {
                             $keep = $duplicateScore;
                             continue;
@@ -226,14 +230,16 @@ class VocabController extends Controller
 
                         if ($newDate > $keepDate) {
                             $delete = $keep;
-                            $keep = $duplicateScore;
+                            $keep   = $duplicateScore;
                         }
                     }
-                }
 
-                if (!empty($delete->id)) {
-                    VocabScore::find($delete->id)->delete();
-                    echo "Deleted VocabScore: " . $delete->id;
+                    if (!empty($delete->id)) {
+                        $delete->delete();
+                        echo "Deleted VocabScore: " . $delete->id;
+                    }
+                } else {
+                    break;
                 }
             }
         }

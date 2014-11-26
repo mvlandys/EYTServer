@@ -7,10 +7,12 @@
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
     <link href="/vendor/colorbox/colorbox.css" rel="stylesheet">
+    <link href="/vendor/chosen/chosen.min.css" rel="stylesheet">
 
     <script src="/vendor/jquery/jquery-2.1.1.min.js" type="application/javascript"></script>
     <script src="/vendor/jquery-ui/jquery-ui.min.js" type="application/javascript"></script>
     <script src="/vendor/colorbox/jquery.colorbox-min.js" type="application/javascript"></script>
+    <script src="/vendor/chosen/chosen.jquery.min.js" type="application/javascript"></script>
     <script src="/js/app.js" type="application/javascript"></script>
 </head>
 <body>

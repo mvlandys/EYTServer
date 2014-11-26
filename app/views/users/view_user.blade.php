@@ -91,8 +91,21 @@
         </div>
     </div><br/>
 
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Study Permissions</label><br/>
+            <select name="perms[]" multiple class="form-control">
+            @foreach ($tests as $test)
+                <option {{ (in_array($test, $perms)) ? "selected" : "" }} value="{{ $test }}">{{ $test }}</option>
+            @endforeach
+            </select>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a class="btn btn-success btn-lg" id="btnUpdateUser" data-user_id="{{ $user->id }}">Update User</a>
+        </div>
+    </div>
 </form>
 
-<a class="btn btn-success btn-lg" id="btnUpdateUser" data-user_id="{{ $user->id }}">Update User</a>
+
 
 @stop

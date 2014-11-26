@@ -89,10 +89,17 @@ class UserController extends Controller
 
     public function viewUser($user_id)
     {
-        $user = User::find($user_id);
+        $permissions = array();
+        $userPerms   = UserPermissions::where("user_id", "=", $user_id)->get();
+
+        foreach($userPerms as $perm) {
+            $permissions[] = $perm->test_name;
+        }
 
         return View::make("users/view_user", array(
-            "user" => $user
+            "user"  => User::find($user_id),
+            "perms" => $permissions,
+            "tests" => $this->getAllTestNames()
         ));
     }
 
@@ -114,6 +121,17 @@ class UserController extends Controller
         }
 
         $user->save();
+
+        if (!empty(Input::get("perms"))) {
+            UserPermissions::where("user_id", "=", $user_id)->delete();
+
+            foreach (Input::get("perms") as $perm) {
+                $userPerm            = new UserPermissions();
+                $userPerm->user_id   = $user_id;
+                $userPerm->test_name = $perm;
+                $userPerm->save();
+            }
+        }
 
         return ["success" => 1];
     }
@@ -176,7 +194,7 @@ class UserController extends Controller
             return ["error" => "This reset code has expired"];
         }
 
-        $user = User::find($reset->user_id);
+        $user           = User::find($reset->user_id);
         $user->password = Hash::make(Input::get("password"));
         $user->save();
         $reset->delete();
@@ -194,5 +212,30 @@ class UserController extends Controller
             $randomString .= $characters[rand(0, strlen($characters) - 1)];
         }
         return $randomString;
+    }
+
+    private function getAllTestNames()
+    {
+        $testNames = array();
+        $tests     = array();
+        $games     = array(
+            new CardSortGame(),
+            new FishSharkGame(),
+            new MrAntGame(),
+            new NotThisGame(),
+            new VocabGame()
+        );
+
+        foreach ($games as $game) {
+            $tests = array_merge($tests, $game::groupBy("test_name")->get(["test_name"])->toArray());
+        }
+
+        foreach ($tests as $val) {
+            $testNames[$val["test_name"]] = $val["test_name"];
+        }
+
+        ksort($testNames);
+
+        return $testNames;
     }
 }

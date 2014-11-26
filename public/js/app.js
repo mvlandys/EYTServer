@@ -32,6 +32,10 @@ $(document).ready(function () {
         qFormSetup();
         changeAnswerType()
     }
+
+    if (route.indexOf("/admin/user/") > -1) {
+        $("[name='perms[]']").chosen();
+    }
 });
 
 function qFormSetup() {
@@ -315,11 +319,22 @@ function createNewUser() {
 
 function updateUser() {
     var user_id = $(this).data("user_id");
+    var perms = [];
+    var form = $("#frmUpdateUser").serialize();
+
+    /*
+    $("#perms :selected").each(function() {
+        perms.push($(this).val());
+    });
+
+    form.perms = perms;*/
+
+    console.log(form);
 
     $.ajax({
         url: "/admin/user/" + user_id + "/update",
         type: "POST",
-        data: $("#frmUpdateUser").serialize(),
+        data: form,
         beforeSend: function() {
             var password1 = $("[name=password]").val();
             var password2 = $("[name=password2]").val();
