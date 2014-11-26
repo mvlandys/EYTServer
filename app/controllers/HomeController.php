@@ -7,7 +7,7 @@ class HomeController extends BaseController
         return View::make("layout");
     }
 
-    public function makeCSV($test_name = null, $start = null, $end = null)
+    public function makeCSV($test_name = '', $start = '', $end = '')
     {
         $csv_files = array();
         $games = array(

@@ -150,124 +150,126 @@ class FishSharkController extends BaseController
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();
 
-        $game_id = $games[0]->id;
-        $fishes  = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "0")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+        if (count($games) > 0) {
+            $game_id = $games[0]->id;
+            $fishes  = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "0")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
 
-        $part = 1;
-        foreach ($fishes as $fish) {
-            if ($fish->level > 3) {
-                $gamesCount[] = "GO" . ($fish->level - 3) . "_" . $part . "_Acc";
-                $part++;
-            }
-        }
-
-        $sharks = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "1")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
-        $part   = 1;
-        foreach ($sharks as $shark) {
-            if ($shark->level > 3) {
-                $gamesCount[] = "NG" . ($shark->level - 3) . "_" . $part . "_Acc";
-                $part++;
-            }
-        }
-
-        $part = 1;
-        foreach ($fishes as $fish) {
-            if ($fish->level > 3) {
-                $gamesCount[] = "GO" . ($fish->level - 3) . "_" . $part . "_RT";
-                $part++;
-            }
-        }
-
-        $part = 1;
-        foreach ($sharks as $shark) {
-            if ($shark->level > 3) {
-                $gamesCount[] = "NG" . ($shark->level - 3) . "_" . $part . "_RT";
-                $part++;
-            }
-        }
-
-        fputcsv($fp, array_merge(array(
-            "game_id",
-            "subject_id",
-            "session_id",
-            "study_name",
-            "grade",
-            "DOB",
-            "age",
-            "sex",
-            "DOT",
-            "TS_Start",
-            "TS_Lvl1_Start",
-            "TS_Lvl1_End",
-            "TS_Lvl2_Start",
-            "TS_Lvl2_End",
-            "TS_Lvl3_Start",
-            "TS_Lvl3_End"
-            /*,
-            "animation",
-            "blank_min",
-            "blank_max"*/
-        ), $gamesCount));
-
-        foreach ($games as $game) {
-            $scores = array();
-
-            $fishes = FishSharkScore::where("game_id", "=", $game->id)->where("is_shark", "=", "0")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
-            $sharks = FishSharkScore::where("game_id", "=", $game->id)->where("is_shark", "=", "1")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
-
-            // Fish Accuracy
-            foreach ($fishes as $score) {
-                if ($score->level > 3) {
-                    $scores[] = (isset($score->value)) ? $score->value : ".";
+            $part = 1;
+            foreach ($fishes as $fish) {
+                if ($fish->level > 3) {
+                    $gamesCount[] = "GO" . ($fish->level - 3) . "_" . $part . "_Acc";
+                    $part++;
                 }
             }
 
-            // Shark Accuracy
-            foreach ($sharks as $score) {
-                if ($score->level > 3) {
-                    $scores[] = (isset($score->value)) ? $score->value : ".";
+            $sharks = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "1")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+            $part   = 1;
+            foreach ($sharks as $shark) {
+                if ($shark->level > 3) {
+                    $gamesCount[] = "NG" . ($shark->level - 3) . "_" . $part . "_Acc";
+                    $part++;
                 }
             }
 
-            // Fish Response
-            foreach ($fishes as $score) {
-                if ($score->level > 3) {
-                    $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
+            $part = 1;
+            foreach ($fishes as $fish) {
+                if ($fish->level > 3) {
+                    $gamesCount[] = "GO" . ($fish->level - 3) . "_" . $part . "_RT";
+                    $part++;
                 }
             }
 
-            // Shark Response
-            foreach ($sharks as $score) {
-                if ($score->level > 3) {
-                    $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
+            $part = 1;
+            foreach ($sharks as $shark) {
+                if ($shark->level > 3) {
+                    $gamesCount[] = "NG" . ($shark->level - 3) . "_" . $part . "_RT";
+                    $part++;
                 }
             }
 
             fputcsv($fp, array_merge(array(
-                $game->id,
-                (empty($game->subject_id)) ? "." : $game->subject_id,
-                (empty($game->session_id)) ? "." : $game->session_id,
-                (empty($game->test_name)) ? "." : $game->test_name,
-                (empty($game->grade)) ? "." : $game->grade,
-                (empty($game->dob)) ? "." : $game->dob,
-                (empty($game->age)) ? "." : $game->age,
-                (empty($game->sex)) ? "." : $game->sex,
-                (empty($game->played_at)) ? "." : $game->played_at,
-                (empty($game->ts_start)) ? "." : $game->ts_start,
-                (empty($game->ts_lvl1_start)) ? "." : $game->ts_lvl1_start,
-                (empty($game->ts_lvl1_end)) ? "." : $game->ts_lvl1_end,
-                (empty($game->ts_lvl2_start)) ? "." : $game->ts_lvl2_start,
-                (empty($game->ts_lvl2_end)) ? "." : $game->ts_lvl2_end,
-                (empty($game->ts_lvl3_start)) ? "." : $game->ts_lvl3_start,
-                (empty($game->ts_lvl3_end)) ? "." : $game->ts_lvl3_end,
+                "game_id",
+                "subject_id",
+                "session_id",
+                "study_name",
+                "grade",
+                "DOB",
+                "age",
+                "sex",
+                "DOT",
+                "TS_Start",
+                "TS_Lvl1_Start",
+                "TS_Lvl1_End",
+                "TS_Lvl2_Start",
+                "TS_Lvl2_End",
+                "TS_Lvl3_Start",
+                "TS_Lvl3_End"
                 /*,
-                (empty($game->animation)) ? "." : $game->animation
-                (empty($game->blank_min)) ? "." : $game->blank_min
-                (empty($game->blank_max)) ? "." : $game->blank_max*/
-            ), $scores));
-        }
+                "animation",
+                "blank_min",
+                "blank_max"*/
+            ), $gamesCount));
 
-        fclose($fp);
+            foreach ($games as $game) {
+                $scores = array();
+
+                $fishes = FishSharkScore::where("game_id", "=", $game->id)->where("is_shark", "=", "0")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+                $sharks = FishSharkScore::where("game_id", "=", $game->id)->where("is_shark", "=", "1")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+
+                // Fish Accuracy
+                foreach ($fishes as $score) {
+                    if ($score->level > 3) {
+                        $scores[] = (isset($score->value)) ? $score->value : ".";
+                    }
+                }
+
+                // Shark Accuracy
+                foreach ($sharks as $score) {
+                    if ($score->level > 3) {
+                        $scores[] = (isset($score->value)) ? $score->value : ".";
+                    }
+                }
+
+                // Fish Response
+                foreach ($fishes as $score) {
+                    if ($score->level > 3) {
+                        $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
+                    }
+                }
+
+                // Shark Response
+                foreach ($sharks as $score) {
+                    if ($score->level > 3) {
+                        $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
+                    }
+                }
+
+                fputcsv($fp, array_merge(array(
+                    $game->id,
+                    (empty($game->subject_id)) ? "." : $game->subject_id,
+                    (empty($game->session_id)) ? "." : $game->session_id,
+                    (empty($game->test_name)) ? "." : $game->test_name,
+                    (empty($game->grade)) ? "." : $game->grade,
+                    (empty($game->dob)) ? "." : $game->dob,
+                    (empty($game->age)) ? "." : $game->age,
+                    (empty($game->sex)) ? "." : $game->sex,
+                    (empty($game->played_at)) ? "." : $game->played_at,
+                    (empty($game->ts_start)) ? "." : $game->ts_start,
+                    (empty($game->ts_lvl1_start)) ? "." : $game->ts_lvl1_start,
+                    (empty($game->ts_lvl1_end)) ? "." : $game->ts_lvl1_end,
+                    (empty($game->ts_lvl2_start)) ? "." : $game->ts_lvl2_start,
+                    (empty($game->ts_lvl2_end)) ? "." : $game->ts_lvl2_end,
+                    (empty($game->ts_lvl3_start)) ? "." : $game->ts_lvl3_start,
+                    (empty($game->ts_lvl3_end)) ? "." : $game->ts_lvl3_end,
+                    /*,
+                    (empty($game->animation)) ? "." : $game->animation
+                    (empty($game->blank_min)) ? "." : $game->blank_min
+                    (empty($game->blank_max)) ? "." : $game->blank_max*/
+                ), $scores));
+            }
+
+            fclose($fp);
+        }
 
         if ($returnFile == true) {
             return $filename;
