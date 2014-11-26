@@ -18,14 +18,10 @@ Route::get("/test", function() {
 });
 
 // Static Pages
-Route::get("/support", function () {
-    return View::make("support");
-});
+Route::get("/support", "HomeController@supportPage");
 
 // Login Routes
-Route::get("/login", function () {
-    return View::make("login");
-});
+Route::get("/login", "UserController@loginPage");
 Route::post("/login/submit", "UserController@login");
 Route::get("/logout", "UserController@logout");
 
@@ -40,10 +36,9 @@ Route::get("/questionnaire/form", "QuestionnaireController@showForm");
 Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
 
 Route::group(array("before" => "auth"), function () {
-    // Default Route
-    Route::any('/', function () {
-        return View::make("layout");
-    });
+    // Home Route
+    Route::get('/', "HomeController@homePage");
+    Route::get("/csv", "HomeController@makeCSV");
 
     // Vocab Routes
     Route::group(array("before" => "vocab"), function () {

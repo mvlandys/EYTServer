@@ -141,7 +141,7 @@ class FishSharkController extends BaseController
         ));
     }
 
-    public function makeCSV($test_name = null, $start = null, $end = null)
+    public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
         $gameRep   = new Games(new FishSharkGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
@@ -269,9 +269,13 @@ class FishSharkController extends BaseController
 
         fclose($fp);
 
-        return View::make("csv", array(
-            "filename" => $filename
-        ));
+        if ($returnFile == true) {
+            return $filename;
+        } else {
+            return View::make("csv", array(
+                "filename" => $filename
+            ));
+        }
     }
 
     public function deleteGame($game_id)

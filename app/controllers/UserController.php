@@ -4,6 +4,10 @@ use Illuminate\Routing\Controller;
 
 class UserController extends Controller
 {
+    public function loginPage()
+    {
+        return View::make("login");
+    }
 
     public function login()
     {

@@ -88,7 +88,7 @@ class VocabController extends Controller
         ));
     }
 
-    public function makeCSV($test_name = null, $start = null, $end = null)
+    public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
         $gameRep   = new Games(new VocabGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
@@ -144,26 +144,13 @@ class VocabController extends Controller
 
         fclose($fp);
 
-        return View::make("csv", array(
-            "filename" => $filename
-        ));
-    }
-
-    private function getGames($test_name = null, $start = null, $end = null)
-    {
-        $order = (Input::has("order")) ? Input::get("order") : "played_at";
-
-        if (!empty($test_name) && !empty($start) && !empty($end)) {
-            $games = ($test_name == "all")
-                ? VocabGame::where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get()
-                : VocabGame::where("test_name", "=", $test_name)->where("played_at", ">=", $start)->where("played_at", "<=", $end)->orderBy($order, "DESC")->get();
-        } else if (!empty($test_name) && $test_name != "all") {
-            $games = VocabGame::where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
+        if ($returnFile == true) {
+            return $filename;
         } else {
-            $games = VocabGame::orderBy($order, "DESC")->get();
+            return View::make("csv", array(
+                "filename" => $filename
+            ));
         }
-
-        return $games;
     }
 
     public function deleteGame($game_id)

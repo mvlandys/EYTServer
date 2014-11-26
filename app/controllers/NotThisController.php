@@ -37,7 +37,7 @@ class NotThisController extends BaseController
                 $gameScore->rep          = $score["repNumber"];
                 $gameScore->correct      = $score["correct"];
                 $gameScore->responseTime = $score["responseTime"];
-                $gameScore->attempted    = 1;//$score["attempted"];
+                $gameScore->attempted    = 1; //$score["attempted"];
                 $gameScore->save();
 
                 if ($score["correct"] == 1) {
@@ -83,10 +83,10 @@ class NotThisController extends BaseController
         ));
     }
 
-    public function makeCSV($test_name = null, $start = null, $end = null)
+    public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
-        $gameRep   = new Games(new NotThisGame());
-        $games     = $gameRep->getGames($test_name, $start, $end);
+        $gameRep  = new Games(new NotThisGame());
+        $games    = $gameRep->getGames($test_name, $start, $end);
         $filename = date("U") . ".csv";
 
         $fp    = fopen(public_path() . "/tmp/" . $filename, 'w');
@@ -123,11 +123,11 @@ class NotThisController extends BaseController
         ), $cards));
 
         foreach ($games as $game) {
-            $scores    = NotThisScore::where("game_id", "=", $game->id)->get();//->orderBy("set", "ASC")->orderBy("rep", "ASC")->get();
+            $scores    = NotThisScore::where("game_id", "=", $game->id)->get(); //->orderBy("set", "ASC")->orderBy("rep", "ASC")->get();
             $scoreData = array();
 
             foreach ($scores as $score) {
-                $scoreData[] = $score->correct;//($score->correct == 0) ? "." : 1;
+                $scoreData[] = $score->correct; //($score->correct == 0) ? "." : 1;
             }
 
             foreach ($scores as $score) {
@@ -152,9 +152,13 @@ class NotThisController extends BaseController
 
         fclose($fp);
 
-        return View::make("csv", array(
-            "filename" => $filename
-        ));
+        if ($returnFile == true) {
+            return $filename;
+        } else {
+            return View::make("csv", array(
+                "filename" => $filename
+            ));
+        }
     }
 
     public function deleteGame($game_id)
