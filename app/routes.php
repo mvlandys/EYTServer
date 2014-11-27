@@ -38,6 +38,8 @@ Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
 Route::group(array("before" => "auth"), function () {
     // Home Route
     Route::get('/', "HomeController@homePage");
+    Route::get("/csv/{test_name}/{start}/{end}", "HomeController@makeCSV");
+    Route::get("/csv/{test_name}", "HomeController@makeCSV");
     Route::get("/csv", "HomeController@makeCSV");
 
     // Vocab Routes

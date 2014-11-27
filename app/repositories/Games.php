@@ -12,6 +12,7 @@ class Games
         $user_id     = Session::get("user_id");
         $permData    = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
         $this->model = $game;
+        $this->perms = array();
 
         foreach($permData as $perm) {
             $this->perms[] = $perm->test_name;

@@ -22,6 +22,7 @@ $(document).ready(function () {
     $("#btnUpdateUser").on("click", updateUser);
     $("#btnSubmitPasswordResetRequest").on("click", requestPasswordReset);
     $("#btnSubmitPasswordReset").on("click", submitPasswordReset);
+    $("#btnAllGameData").on("click", allGameDate);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1 || route.indexOf("/notthis") > -1) {
@@ -36,7 +37,41 @@ $(document).ready(function () {
     if (route.indexOf("/admin/user/") > -1) {
         $("[name='perms[]']").chosen();
     }
+
+    if (route == "/" && $("[name=test_name]").length) {
+        $("[name=start]").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+        $("[name=end]").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+    }
 });
+
+function allGameDate() {
+    $.colorbox();
+
+    var test  = $("[name=test_name]").val();
+    var start = $("[name=start]");
+    var end   = $("[name=end]");
+    var url   = "";
+
+    if (start.val() != "" && end.val() != "") {
+        url = "/csv/" + test + "/" + getDate(start) + "/" + getDate(end);
+    } else {
+        url = "/csv/" + test;
+    }
+
+    $.ajax({
+        url:    url,
+        type:   "GET",
+        complete: function(data) {
+            $.colorbox({
+                href: data.responseText
+            });
+        }
+    });
+}
 
 function qFormSetup() {
     $("[name=dob]").datepicker({
