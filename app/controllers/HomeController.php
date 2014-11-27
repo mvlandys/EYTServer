@@ -48,7 +48,7 @@ class HomeController extends BaseController
         $zipper->close();
 
         return View::make("download", array(
-            "url" => $zip_file
+            "url" => "/tmp/" . $zip_file
         ));
     }
 
