@@ -47,7 +47,9 @@ class HomeController extends BaseController
 
         $zipper->close();
 
-        echo '<a href="/tmp/' . $zip_file . '">Download</a>';
+        return View::make("download", array(
+            "url" => $zip_file
+        ));
     }
 
     public function supportPage()
