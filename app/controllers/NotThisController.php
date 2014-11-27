@@ -87,7 +87,7 @@ class NotThisController extends BaseController
     {
         $gameRep  = new Games(new NotThisGame());
         $games    = $gameRep->getGames($test_name, $start, $end);
-        $filename = date("U") . ".csv";
+        $filename = "notthis_" . date("U") . ".csv";
 
         $fp    = fopen(public_path() . "/tmp/" . $filename, 'w');
         $cards = array();

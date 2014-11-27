@@ -153,7 +153,7 @@ class MrAntController extends BaseController
     {
         $gameRep  = new Games(new MrAntGame());
         $games    = $gameRep->getGames($test_name, $start, $end);
-        $filename = date("U") . ".csv";
+        $filename = "mrant_" . date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();

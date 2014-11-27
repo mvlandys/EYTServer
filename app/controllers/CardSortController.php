@@ -107,7 +107,7 @@ class CardSortController extends BaseController
     {
         $gameRep   = new Games(new CardSortGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $filename = date("U") . ".csv";
+        $filename = "cardsort_" . date("U") . ".csv";
 
         $fp    = fopen(public_path() . "/tmp/" . $filename, 'w');
         $cards = array();

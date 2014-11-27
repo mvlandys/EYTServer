@@ -92,7 +92,7 @@ class VocabController extends Controller
     {
         $gameRep   = new Games(new VocabGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $filename = date("U") . ".csv";
+        $filename = "vocab_" . date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();

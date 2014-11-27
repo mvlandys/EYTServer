@@ -145,7 +145,7 @@ class FishSharkController extends BaseController
     {
         $gameRep   = new Games(new FishSharkGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $filename = date("U") . ".csv";
+        $filename = "fishshark_" . date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();
