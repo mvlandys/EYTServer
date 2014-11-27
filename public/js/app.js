@@ -59,7 +59,7 @@ function allGameDate() {
     if (start.val() != "" && end.val() != "") {
         url = "/csv/" + test + "/" + getDate(start) + "/" + getDate(end);
     } else {
-        url = "/csv/" + test;
+        url = (test == "all") ? "/csv" : "/csv/" + test;
     }
 
     $.ajax({
