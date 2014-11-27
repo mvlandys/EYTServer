@@ -67,7 +67,7 @@ function allGameDate() {
         type:   "GET",
         complete: function(data) {
             $.colorbox({
-                href: data.responseText
+                html: data.responseText
             });
         }
     });
