@@ -31,8 +31,7 @@ class Games
                     ->where("played_at", "<=", $end)
                     ->orderBy($order, "DESC")->get();
             } else {
-                $permArray = explode(",", $this->perms);
-                if (!in_array($test_name, $permArray)) {
+                if (!in_array($test_name, $this->perms)) {
                     echo View::make("alert", array(
                        "type" => "danger",
                         "msg" => "Access Denied"
