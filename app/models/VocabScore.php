@@ -8,4 +8,8 @@ class VocabScore extends Model {
 
     protected $table = "vocab_scores";
 
+    public function game()
+    {
+        return $this->hasOne("VocabGame", "id", "game_id");
+    }
 }

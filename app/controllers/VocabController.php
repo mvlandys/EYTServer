@@ -116,15 +116,14 @@ class VocabController extends Controller
 
         foreach ($games as $game) {
             $scores    = array();
-            $scoreData = VocabScore::where("game_id", "=", $game->id)->orderBy("card", "ASC")->get();
 
-            foreach ($scoreData as $score) {
+            foreach ($game->scores as $score) {
                 $scores[] = $score->value;
             }
 
             for ($x = 0; $x < 49; $x++) {
                 if (empty($scores[$x])) {
-                    $scores[$x] = ".";
+                    $scores[$x] = "0";
                 }
             }
 
@@ -163,68 +162,25 @@ class VocabController extends Controller
 
     public function fixDuplicates()
     {
-        $games = VocabGame::all();
+        $games = VocabGame::with("scores")->get();
 
         // Loop through each game
         foreach ($games as $game) {
-            if (empty(VocabGame::find($game->id)->id)) {
-                continue;
-            }
+            $sorted_scores = array();
+            $scores = $game->scores;
 
-            $duplicate = VocabGame::where("id", "!=", $game->id)
-                ->where("subject_id", "=", $game->subject_id)
-                ->where("session_id", "=", $game->session_id)
-                ->where("test_name", "=", $game->test_name)
-                ->where("grade", "=", $game->grade)
-                ->where("dob", "=", $game->dob)
-                ->where("age", "=", $game->age)
-                ->where("sex", "=", $game->sex)
-                ->where("played_at", "=", $game->played_at);
-
-            foreach ($duplicate->get() as $gameData) {
-                VocabScore::where("game_id", "=", $gameData->id)->delete();
-            }
-
-            $duplicate->delete();
-        }
-
-        $games = VocabGame::where("id", ">", 400)->get();
-
-        // Loop through each game
-        foreach ($games as $game) {
-            $scores = VocabScore::where("game_id", "=", $game->id)->get();
-
+            // Organise scores by card
             foreach ($scores as $score) {
-                if (empty(VocabScore::find($score->id)->id)) {
-                    continue;
+                if (empty($sorted_scores[$score->card])) {
+                    $sorted_scores[$score->card] = array();
                 }
+                $sorted_scores[$score->card][] = $score;
+            }
 
-                $duplicates = VocabScore::where("game_id", "=", $game->id)->where("card", "=", $score->card)->get();
-                $keep       = array();
-                $delete     = array();
-
-                if (count($duplicates) == 2) {
-                    foreach ($duplicates as $duplicateScore) {
-                        if (empty($keep)) {
-                            $keep = $duplicateScore;
-                            continue;
-                        }
-
-                        $keepDate = DateTime::createFromFormat("Y-m-d H:i:s", $keep->updated_at);
-                        $newDate  = DateTime::createFromFormat("Y-m-d H:i:s", $duplicateScore->updated_at);
-
-                        if ($newDate > $keepDate) {
-                            $delete = $keep;
-                            $keep   = $duplicateScore;
-                        }
-                    }
-
-                    if (!empty($delete->id)) {
-                        $delete->delete();
-                        echo "Deleted VocabScore: " . $delete->id;
-                    }
-                } else {
-                    break;
+            // Check for duplicates
+            foreach($sorted_scores as $sorted_score) {
+                if (count($sorted_score) > 1) {
+                    VocabScore::where("id", "=", $sorted_score[1]->id)->delete();
                 }
             }
         }
