@@ -97,7 +97,7 @@ class VocabController extends Controller
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');
         $gamesCount = array();
 
-        for ($x = 0; $x < 49; $x++) {
+        for ($x = 0; $x < 54; $x++) {
             $gamesCount[] = "Item" . ($x + 1) . "_Acc";
         }
 

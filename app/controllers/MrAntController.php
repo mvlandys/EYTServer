@@ -204,7 +204,7 @@ class MrAntController extends BaseController
             $scores     = array();
             $gameScores = array();
 
-            foreach (MrAntScore::where("game_id", "=", $game->id)->get() as $gameScore) {
+            foreach ($game->scores as $gameScore) {
                 if (empty($gameScores[$gameScore->level])) {
                     $gameScores[$gameScore->level] = array();
                 }
