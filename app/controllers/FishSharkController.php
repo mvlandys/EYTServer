@@ -151,8 +151,12 @@ class FishSharkController extends BaseController
         $gamesCount = array();
 
         if (count($games) > 0) {
-            $game_id = $games[0]->id;
-            $fishes  = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "0")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+            $fishes = array();
+            foreach ($games[0]->scores as $score) {
+                if ($score->is_shark == 0) {
+                    $fishes[] = $score;
+                }
+            }
 
             $part = 1;
             foreach ($fishes as $fish) {
@@ -162,7 +166,12 @@ class FishSharkController extends BaseController
                 }
             }
 
-            $sharks = FishSharkScore::where("game_id", "=", $game_id)->where("is_shark", "=", "1")->orderBy("level", "ASC")->orderBy("part", "ASC")->get();
+            $sharks = array();
+            foreach ($games[0]->scores as $score) {
+                if ($score->is_shark == 1) {
+                    $sharks[] = $score;
+                }
+            }
             $part   = 1;
             foreach ($sharks as $shark) {
                 if ($shark->level > 3) {
