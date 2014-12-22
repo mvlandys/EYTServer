@@ -230,21 +230,21 @@ class FishSharkController extends BaseController
                 }
 
                 // Shark Accuracy
-                foreach ($sharks as $score) {
+                foreach ($game->scores as $score) {
                     if ($score->level > 3 && $score->is_shark == 1) {
                         $scores[] = (isset($score->value)) ? $score->value : ".";
                     }
                 }
 
                 // Fish Response
-                foreach ($fishes as $score) {
+                foreach ($game->scores as $score) {
                     if ($score->level > 3 && $score->is_shark == 0) {
                         $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
                     }
                 }
 
                 // Shark Response
-                foreach ($sharks as $score) {
+                foreach ($game->scores as $score) {
                     if ($score->level > 3 && $score->is_shark == 1) {
                         $scores[] = (isset($score->responseTime)) ? $score->responseTime : ".";
                     }
