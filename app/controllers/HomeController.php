@@ -6,13 +6,12 @@ class HomeController extends BaseController
 {
     public function homePage()
     {
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            if (!isset($testNames[$test->test_name])) {
+                $testNames[str_replace("+", "%20", urlencode($test->test_name))] = $test;
             }
         }
 

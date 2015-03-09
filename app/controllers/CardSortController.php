@@ -2,7 +2,6 @@
 
 class CardSortController extends BaseController
 {
-
     public function saveGame()
     {
         if (!Input::has("games")) {
@@ -11,7 +10,7 @@ class CardSortController extends BaseController
 
         // Log game data
         Mail::send('email_log', array(), function($message) {
-            $message->to(["mvlandys@gmail.com"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
+            $message->to(["mathew@icrm.net.au"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -75,13 +74,13 @@ class CardSortController extends BaseController
     {
         $gameRep   = new Games(new CardSortGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            $key = str_replace("+", "%20", urlencode($test->test_name));
+            if (!isset($testNames[$key])) {
+                $testNames[$key] = $test;
             }
         }
 
@@ -147,14 +146,19 @@ class CardSortController extends BaseController
 
             $level       = 1;
             $part        = 1;
+            $l1Incorrect = 0;
             $l2Incorrect = 0;
 
             foreach ($scores as $score) {
+                if ($level == 1 && $score->value == 0) {
+                    $l1Incorrect++;
+                }
+
                 if ($level == 2 && $score->value == 0) {
                     $l2Incorrect++;
                 }
 
-                if ($level == 3 && $l2Incorrect > 2) {
+                if ($level == 3 && ($l2Incorrect >= 2 ||  $l1Incorrect >= 2)){
                     $scoreData[] = ".";
                 } else {
                     $scoreData[] = $score->value;

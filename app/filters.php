@@ -11,15 +11,58 @@
 |
 */
 
-App::before(function($request)
-{
-	//
+App::before(function ($request) {
+    Event::listen('illuminate.query', function ($query, $bindings, $time, $name) {
+        $data = compact('bindings', 'time', 'name');
+
+        // Format binding data for sql insertion
+        foreach ($bindings as $i => $binding) {
+            if ($binding instanceof \DateTime) {
+                $bindings[$i] = $binding->format('\'Y-m-d H:i:s\'');
+            } else if (is_string($binding)) {
+                $bindings[$i] = "'$binding'";
+            }
+        }
+
+        // Insert bindings into query
+        $query = str_replace(array('%', '?'), array('%%', '%s'), $query);
+        $query = vsprintf($query, $bindings);
+
+        //echo $query . "<br/>";
+
+        //Log::info($query, $data);
+    });
+
+    if (Session::has("user_id")) {
+        App::bind("user", function () {
+            return User::find(Session::get("user_id"));
+        });
+
+        App::bind('perms', function () {
+            $user = App::make("user");
+
+            if ($user->admin == 1) {
+                $userController = new UserController();
+                $allPerms       = $userController->getAllTestNames();
+                $perms          = array();
+
+                foreach ($allPerms as $perm) {
+                    $obj            = new stdClass();
+                    $obj->test_name = $perm;
+                    $perms[]        = $obj;
+                }
+            } else {
+                $perms = UserPermissions::where("user_id", "=", Session::get("user_id"))->remember(5)->get(["test_name"]);
+            }
+
+            return $perms;
+        });
+    }
 });
 
 
-App::after(function($request, $response)
-{
-	//
+App::after(function ($request, $response) {
+    //
 });
 
 /*
@@ -33,81 +76,78 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-	if (!Session::has("user_id")) {
+Route::filter('auth', function () {
+    if (!Session::has("user_id")) {
         return Redirect::to("/login");
     }
 });
 
-Route::filter("admin", function()
-{
-    if (User::all()->count() > 0) {
-        $user = User::find(Session::get("user_id"));
+Route::filter("admin", function () {
+    $user = App::make("user");
 
-        if ($user->admin == 0) {
-            return Redirect::to("/")->withErrors(['Access Denied']);
-        }
-    }
-});
-
-Route::filter("cardsort", function()
-{
-    $user = User::find(Session::get("user_id"));
-
-    if (User::all()->count() > 0 && $user->cardsort == 0 && $user->admin == 0) {
+    if ($user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("fishshark", function()
-{
-    $user = User::find(Session::get("user_id"));
+Route::filter("cardsort", function () {
+    $user = App::make("user");
 
-    if (User::all()->count() > 0 && $user->fishshark == 0 && $user->admin == 0) {
+    if ($user->cardsort == 0 && $user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("vocab", function()
-{
-    $user = User::find(Session::get("user_id"));
+Route::filter("fishshark", function () {
+    $user = App::make("user");
 
-    if (User::all()->count() > 0 && $user->vocab == 0 && $user->admin == 0) {
+    if ($user->fishshark == 0 && $user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("questionnaire", function()
-{
-    $user = User::find(Session::get("user_id"));
+Route::filter("vocab", function () {
+    $user = App::make("user");
 
-    if (User::all()->count() > 0 && $user->questionnaire == 0 && $user->admin == 0) {
+    if ($user->vocab == 0 && $user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("mrant", function()
-{
-    $user = User::find(Session::get("user_id"));
+Route::filter("questionnaire", function () {
+    $user = App::make("user");
 
-    if (User::all()->count() > 0 && $user->mrant == 0 && $user->admin == 0) {
+    if ($user->questionnaire == 0 && $user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("notthis", function()
-{
-    $user = User::find(Session::get("user_id"));
+Route::filter("mrant", function () {
+    $user = App::make("user");
 
-    if (User::all()->count() > 0 && $user->notthis == 0 && $user->admin == 0) {
+    if ($user->mrant == 0 && $user->admin == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
     }
 });
 
-Route::filter("delete", function()
-{
-   $user = User::find(Session::get("user_id"));
+Route::filter("notthis", function () {
+    $user = App::make("user");
+
+    if ($user->notthis == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("ecers", function () {
+    $user = App::make("user");
+
+    if ($user->ecers == 0 && $user->admin == 0) {
+        return Redirect::to("/")->withErrors(['Access Denied']);
+    }
+});
+
+Route::filter("delete", function () {
+    $user = App::make("user");
 
     if ($user->admin == 0 && $user->delete == 0) {
         return Redirect::to("/")->withErrors(['Access Denied']);
@@ -125,10 +165,8 @@ Route::filter("delete", function()
 |
 */
 
-Route::filter('csrf', function()
-{
-	if (Session::token() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+Route::filter('csrf', function () {
+    if (Session::token() != Input::get('_token')) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });

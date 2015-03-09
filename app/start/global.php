@@ -47,17 +47,25 @@ Log::useFiles(storage_path() . '/logs/laravel.log');
 |
 */
 
-App::error(function (Exception $exception, $code) {
+App::error(function (Exception $exception, $code)
+{
+    if ($code == 404 || $code == 405) {
+        return;
+    }
+
     Log::error($exception);
 
     $data = array(
-        'url'   => Request::path(),
+        "url"   => Request::path(),
         'error' => $exception->getMessage(),
         "line"  => $exception->getLine(),
-        "file"  => $exception->getFile()
+        "file"  => $exception->getFile(),
+        "type"  => Request::method(),
+        "code"  => $code
     );
+
     Mail::send('error_email', $data, function ($message) {
-        $message->to("mvlandys@gmail.com")->subject("GamesDB Error " . date("H:i:s d/m/Y"));
+        $message->to(["mathew@icrm.net.au"])->subject("EYT Error " . date("H:i:s d/m/Y"));
     });
 });
 

@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Games Database</a>
+                <a class="navbar-brand" href="/">Games Database</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -39,6 +39,7 @@
                     <li><a href="/mrant">MrAnt Data</a></li>
                     <li><a href="/fishshark">Fish Shark Data</a></li>
                     <li><a href="/notthis">NotThis Data</a></li>
+                    <li><a href="/ecers">Ecers Data</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/admin/users">Admin</a></li>

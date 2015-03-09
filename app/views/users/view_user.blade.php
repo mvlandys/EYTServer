@@ -92,6 +92,18 @@
     </div><br/>
 
     <div class="row">
+        <div class="col-sm-4">
+            <label>ECERS Data:</label>
+            <select class="form-control" name="ecers">
+                <option value="0" {{ ($user->ecers == 0) ? "selected" : "" }}>DISABLED</option>
+                <option value="1" {{ ($user->ecers == 1) ? "selected" : "" }}>ENABLED</option>
+            </select>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+    </div><br/>
+
+    <div class="row">
         <div class="col-sm-6">
             <label>Study Permissions</label><br/>
             <select name="perms[]" multiple class="form-control">
@@ -100,7 +112,10 @@
             @endforeach
             </select>
         </div>
-        <div class="col-sm-6 text-right">
+        <div class="col-sm-3 text-center">
+            <a class="btn btn-danger btn-lg" id="btnDeleteUser" data-user_id="{{ $user->id }}">Delete User</a>
+        </div>
+        <div class="col-sm-3 text-right">
             <a class="btn btn-success btn-lg" id="btnUpdateUser" data-user_id="{{ $user->id }}">Update User</a>
         </div>
     </div>

@@ -10,8 +10,8 @@
         <th>Level</th>
         <th>Part</th>
         <th>Value</th>
+        <th>Fish/Shark</th>
         <th>Response Time</th>
-        <th>Blank Time</th>
     </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
         <td>{{ $score->level }}</td>
         <td>{{ $score->part }}</td>
         <td>{{ $score->value }}</td>
+        <td>{{ ($score->is_shark == 1) ? "SHARK" : "FISH" }}</td>
         <td>{{ $score->responseTime }}</td>
-        <td>{{ $score->blankTime }}</td>
     </tr>
     @endforeach
     </tbody>

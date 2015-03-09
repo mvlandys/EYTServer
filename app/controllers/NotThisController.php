@@ -12,7 +12,7 @@ class NotThisController extends BaseController
 
         // Log game data
         Mail::send('email_log', array(), function ($message) {
-            $message->to(["mvlandys@gmail.com"])->subject("NotThis Log " . date("H:i:s d/m/Y"));
+            $message->to(["mathew@icrm.net.au"])->subject("NotThis Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -55,13 +55,13 @@ class NotThisController extends BaseController
     {
         $gameRep   = new Games(new NotThisGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            $key = str_replace("+", "%20", urlencode($test->test_name));
+            if (!isset($testNames[$key])) {
+                $testNames[$key] = $test;
             }
         }
 
@@ -127,7 +127,17 @@ class NotThisController extends BaseController
             $scoreData = array();
 
             foreach ($scores as $score) {
-                $scoreData[] = $score->correct; //($score->correct == 0) ? "." : 1;
+                $value = $score->correct;
+
+                // Set 1, Rep 1, Response Time = 0
+                if ($score->set == 1 && $score->rep == 1 && $score->responseTime == 0) {
+                    // Do Nothing
+                // All other sets/reps where Response Time = 0
+                } else if ($score->set > 1 && $score->responseTime == 0) {
+                    $value = ".";
+                }
+
+                $scoreData[] = $value;
             }
 
             foreach ($scores as $score) {

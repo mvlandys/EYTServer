@@ -15,28 +15,19 @@ class UserController extends Controller
             return array("error" => "Input Error");
         }
 
-        if (User::all()->count() > 0) {
-            $user = User::where("username", "=", Input::get("username"));
+        $user = User::where("username", "=", Input::get("username"));
 
-            if ($user->count() == 0) {
-                return array("error" => "Username does not exist");
-            }
+        if ($user->count() == 0) {
+            return array("error" => "Username does not exist");
+        }
 
-            $user = $user->first();
+        $user = $user->first();
 
-            if (Hash::check(Input::get("password"), $user->password)) {
-                Session::set("user_id", $user->id);
-                return array("error" => false);
-            } else {
-                return array("error" => "Password is incorrect");
-            }
+        if (Hash::check(Input::get("password"), $user->password)) {
+            Session::set("user_id", $user->id);
+            return array("error" => false);
         } else {
-            if (Input::get("username") == "admin" && Input::get("password") == "admin") {
-                Session::set("user_id", 1);
-                return array("error" => false);
-            } else {
-                return array("error" => "Wrong username or password");
-            }
+            return array("error" => "Password is incorrect");
         }
     }
 
@@ -119,6 +110,7 @@ class UserController extends Controller
         $user->questionnaire = Input::get("questionnaire");
         $user->vocab         = Input::get("vocab");
         $user->notthis       = Input::get("notthis");
+        $user->ecers         = Input::get("ecers");
 
         if (!empty(Input::get("password"))) {
             $user->password = Hash::make(Input::get("password"));
@@ -218,7 +210,7 @@ class UserController extends Controller
         return $randomString;
     }
 
-    private function getAllTestNames()
+    public function getAllTestNames()
     {
         $testNames = array();
         $tests     = array();
@@ -236,6 +228,11 @@ class UserController extends Controller
 
         foreach ($tests as $val) {
             $testNames[$val["test_name"]] = $val["test_name"];
+        }
+
+        $ecers = EcersEntry::groupBy("study")->get(["study"])->toArray();
+        foreach ($ecers as $entry) {
+            $testNames[$entry["study"]] = $entry["study"];
         }
 
         ksort($testNames);

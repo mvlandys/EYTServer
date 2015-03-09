@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	//'default' => 'mysql',
-	'default' => 'pgsql',
+	'default' => 'mysql',
+	//'default' => 'pgsql',
 
 	/*
 	|--------------------------------------------------------------------------

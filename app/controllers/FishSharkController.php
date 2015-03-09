@@ -64,7 +64,7 @@ class FishSharkController extends BaseController
 
         // Log game data
         Mail::send('email_log', array(), function ($message) {
-            $message->to(["mvlandys@gmail.com"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
+            $message->to(["mathew@icrm.net.au"])->subject("FishShark Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -113,13 +113,13 @@ class FishSharkController extends BaseController
     {
         $gameRep   = new Games(new FishSharkGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            $key = str_replace("+", "%20", urlencode($test->test_name));
+            if (!isset($testNames[$key])) {
+                $testNames[$key] = $test;
             }
         }
 
@@ -144,7 +144,7 @@ class FishSharkController extends BaseController
     public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
         $gameRep   = new Games(new FishSharkGame());
-        $games     = $gameRep->getGames($test_name, $start, $end);
+        $games     = $gameRep->getGames($test_name, $start, $end, "scores");
         $filename = "fishshark_" . date("U") . ".csv";
 
         $fp         = fopen(public_path() . "/tmp/" . $filename, 'w');

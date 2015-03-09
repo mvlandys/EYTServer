@@ -68,7 +68,7 @@ class MrAntController extends BaseController
 
         // Log game data
         Mail::send('email_log', array(), function ($message) {
-            $message->to(["mvlandys@gmail.com"])->subject("MrAnt Log " . date("H:i:s d/m/Y"));
+            $message->to(["mathew@icrm.net.au"])->subject("MrAnt Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -121,13 +121,13 @@ class MrAntController extends BaseController
     {
         $gameRep   = new Games(new MrAntGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            $key = str_replace("+", "%20", urlencode($test->test_name));
+            if (!isset($testNames[$key])) {
+                $testNames[$key] = $test;
             }
         }
 

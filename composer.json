@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-ide-helper" : "1.*",
 		"way/generators": "~3.0",
-        "Chumper/Zipper": "0.5.0"
+        "Chumper/Zipper": "0.5.0",
+        "barryvdh/laravel-debugbar" : "1.*"
 	},
 	"autoload": {
 		"classmap": [

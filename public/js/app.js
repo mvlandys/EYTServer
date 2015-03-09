@@ -23,6 +23,7 @@ $(document).ready(function () {
     $("#btnSubmitPasswordResetRequest").on("click", requestPasswordReset);
     $("#btnSubmitPasswordReset").on("click", submitPasswordReset);
     $("#btnAllGameData").on("click", allGameDate);
+    $("#btnDeleteUser").on("click", deleteUser);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
 
     if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1 || route.indexOf("/notthis") > -1) {
@@ -47,6 +48,10 @@ $(document).ready(function () {
         });
     }
 });
+
+function deleteUser() {
+    $.colorbox();
+}
 
 function allGameDate() {
     $.colorbox();
@@ -190,7 +195,7 @@ function getDate(input) {
     return dateObj.getFullYear() + "-" + month + "-" + day;
 }
 
-function login() {
+function login() { console.log("a");
     var form = $("#frmLogin");
 
     $.ajax({
@@ -200,11 +205,13 @@ function login() {
         beforeSend: function () {
             var returnVal = true;
 
-            $("input").each(function () {
-                if ($(this).val() == "") {
-                    returnVal = false;
-                }
-            });
+            var username = $("[name=username]").val();
+            var password = $("[name=password]").val();
+
+            if (username == "" || password == "") {
+                returnVal = false;
+                alert("Please enter a valid username and password");
+            }
 
             if (returnVal == true) {
                 $.colorbox({
@@ -213,6 +220,8 @@ function login() {
                     closeButton: false
                 });
             }
+
+            console.log("b");
 
             return returnVal;
         },

@@ -11,12 +11,6 @@
 |
 */
 
-Route::get("/test", function() {
-    $games = new Games(new CardSortGame());
-
-    var_dump($games->getGames("test-101"));
-});
-
 // Static Pages
 Route::get("/support", "HomeController@supportPage");
 
@@ -115,6 +109,12 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/notthis", "NotThisController@showResults");
     });
 
+    // ECERS Routes
+    Route::group(array("before" => "ecers"), function () {
+        Route::get("/ecers", "EcersController@showResults");
+        Route::get("/ecers/entry/{entry_id}", "EcersController@viewEntry");
+    });
+
     // Admin Routes
     Route::group(array("before" => "admin"), function () {
         Route::get("/admin/users", "UserController@listUsers");
@@ -132,3 +132,11 @@ Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
 Route::post("/mrant/save", "MrAntController@saveAnswers");
 Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
+Route::post("/ecers/save", "EcersController@saveEntries");
+
+Route::get("/mail", function() {
+    // Log game data
+    Mail::send('email_log', array(), function($message) {
+        $message->to(["mvlandys@gmail.com", "mathew@oztechit.com.au", "mathew@icrm.net.au"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
+    });
+});

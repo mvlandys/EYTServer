@@ -12,7 +12,7 @@ class VocabController extends Controller
 
         // Log game data
         Mail::send('email_log', array(), function ($message) {
-            $message->to(["mvlandys@gmail.com"])->subject("Vocab Log " . date("H:i:s d/m/Y"));
+            $message->to(["mathew@icrm.net.au"])->subject("Vocab Log " . date("H:i:s d/m/Y"));
         });
 
         $games = Input::get("games");
@@ -60,13 +60,13 @@ class VocabController extends Controller
     {
         $gameRep   = new Games(new VocabGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
-        $user_id   = Session::get("user_id");
-        $tests     = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $tests     = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
-            if (!isset($testNames[$test["test_name"]])) {
-                $testNames[str_replace("+", "%20", urlencode($test["test_name"]))] = $test;
+            $key = str_replace("+", "%20", urlencode($test->test_name));
+            if (!isset($testNames[$key])) {
+                $testNames[$key] = $test;
             }
         }
 

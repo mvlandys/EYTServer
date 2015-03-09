@@ -9,8 +9,7 @@ class Games
 
     public function __construct(Model $game)
     {
-        $user_id     = Session::get("user_id");
-        $permData    = UserPermissions::where("user_id", "=", $user_id)->get(["test_name"]);
+        $permData    = App::make('perms');
         $this->model = $game;
         $this->perms = array();
 
@@ -19,7 +18,7 @@ class Games
         }
     }
 
-    public function getGames($test_name = null, $start = null, $end = null)
+    public function getGames($test_name = null, $start = null, $end = null, $with = [])
     {
         $order = (Input::has("order")) ? Input::get("order") : "played_at";
 
@@ -29,6 +28,7 @@ class Games
                     ->whereIn("test_name", $this->perms)
                     ->where("played_at", ">=", $start)
                     ->where("played_at", "<=", $end)
+                    ->with($with)
                     ->orderBy($order, "DESC")->get();
             } else {
                 if (!in_array($test_name, $this->perms)) {
@@ -43,6 +43,7 @@ class Games
                     ->where("test_name", "=", $test_name)
                     ->where("played_at", ">=", $start)
                     ->where("played_at", "<=", $end)
+                    ->with($with)
                     ->orderBy($order, "DESC")->get();
             }
         } else if (!empty($test_name) && $test_name != "all") {
@@ -54,9 +55,15 @@ class Games
                 exit(0);
             }
 
-            $games = $this->model->where("test_name", "=", $test_name)->orderBy($order, "DESC")->get();
+            $games = $this->model
+                ->where("test_name", "=", $test_name)
+                ->with($with)
+                ->orderBy($order, "DESC")->get();
         } else {
-            $games = $this->model->whereIn("test_name", $this->perms)->orderBy($order, "DESC")->get();
+            $games = $this->model
+                ->whereIn("test_name", $this->perms)
+                ->with($with)
+                ->orderBy($order, "DESC")->get();
         }
 
         return $games;

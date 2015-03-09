@@ -36,11 +36,11 @@ class CreateNotthisGamesTable extends Migration {
 	public function down()
 	{
         if (Schema::hasTable('notthis_scores')) {
-            Schema::drop('vocab_scores');
+            Schema::drop('notthis_scores');
         }
 
         if (Schema::hasTable('notthis_games')) {
-            Schema::drop('vocab_games');
+            Schema::drop('notthis_games');
         }
 	}
 
