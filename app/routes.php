@@ -122,6 +122,7 @@ Route::group(array("before" => "auth"), function () {
         Route::post("/admin/newuser/submit", "UserController@submitNewUser");
         Route::get("/admin/user/{user_id}", "UserController@viewUser");
         Route::post("/admin/user/{user_id}/update", "UserController@updateUser");
+        Route::get("/admin/apps", "UserController@listAppUsers");
     });
 });
 
@@ -134,9 +135,7 @@ Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
 Route::post("/ecers/save", "EcersController@saveEntries");
 
-Route::get("/mail", function() {
-    // Log game data
-    Mail::send('email_log', array(), function($message) {
-        $message->to(["mvlandys@gmail.com", "mathew@oztechit.com.au", "mathew@icrm.net.au"])->subject("CardSort Log " . date("H:i:s d/m/Y"));
-    });
+Route::get("/test", function() {
+    $ecers = new EcersController();
+    return $ecers->makeCSV();
 });

@@ -37,7 +37,8 @@
         <th><a href="?order=centre">Centre</a></th>
         <th><a href="?order=room">Room</a></th>
         <th><a href="?order=observer">Observer</a></th>
-        <th><a href="?order=played_at">Played At</a></th>
+        <th><a href="?order=start">Start</a></th>
+        <th><a href="?order=end">End</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
     </tr>
     </thead>
@@ -50,7 +51,8 @@
             <td>{{{ empty($entry->centre) ? '.' : $entry->centre }}}</td>
             <td>{{{ empty($entry->room) ? '.' : $entry->room }}}</td>
             <td>{{{ empty($entry->observer) ? '.' : $entry->observer }}}</td>
-            <td>{{ date("h:i A, d/m/Y",strtotime($entry->played_at)) }}</td>
+            <td>{{ date("h:i A, d/m/Y",strtotime($entry->start)) }}</td>
+            <td>{{ date("h:i A, d/m/Y",strtotime($entry->end)) }}</td>
             <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteEntry" data-last_id="{{ $lastID }}" data-entry_id="{{ $entry->id }}" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
             <?php $lastID = $entry->id; ?>
         </tr>

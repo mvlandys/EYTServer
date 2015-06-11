@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
- * Generated for Laravel 4.2.11 on 2014-10-15.
+ * Generated for Laravel 4.2.11 on 2014-11-27.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2844,7 +2844,7 @@ namespace {
          */
         public static function useDefaultQueryGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::useDefaultQueryGrammar();
+            \Illuminate\Database\PostgresConnection::useDefaultQueryGrammar();
         }
         
         /**
@@ -2855,7 +2855,7 @@ namespace {
          */
         public static function useDefaultSchemaGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::useDefaultSchemaGrammar();
+            \Illuminate\Database\PostgresConnection::useDefaultSchemaGrammar();
         }
         
         /**
@@ -2866,7 +2866,7 @@ namespace {
          */
         public static function useDefaultPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::useDefaultPostProcessor();
+            \Illuminate\Database\PostgresConnection::useDefaultPostProcessor();
         }
         
         /**
@@ -2877,7 +2877,7 @@ namespace {
          */
         public static function getSchemaBuilder(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getSchemaBuilder();
+            return \Illuminate\Database\PostgresConnection::getSchemaBuilder();
         }
         
         /**
@@ -2889,7 +2889,7 @@ namespace {
          */
         public static function table($table){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::table($table);
+            return \Illuminate\Database\PostgresConnection::table($table);
         }
         
         /**
@@ -2901,7 +2901,7 @@ namespace {
          */
         public static function raw($value){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::raw($value);
+            return \Illuminate\Database\PostgresConnection::raw($value);
         }
         
         /**
@@ -2914,7 +2914,7 @@ namespace {
          */
         public static function selectOne($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::selectOne($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::selectOne($query, $bindings);
         }
         
         /**
@@ -2927,7 +2927,7 @@ namespace {
          */
         public static function selectFromWriteConnection($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::selectFromWriteConnection($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::selectFromWriteConnection($query, $bindings);
         }
         
         /**
@@ -2941,7 +2941,7 @@ namespace {
          */
         public static function select($query, $bindings = array(), $useReadPdo = true){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::select($query, $bindings, $useReadPdo);
+            return \Illuminate\Database\PostgresConnection::select($query, $bindings, $useReadPdo);
         }
         
         /**
@@ -2954,7 +2954,7 @@ namespace {
          */
         public static function insert($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::insert($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::insert($query, $bindings);
         }
         
         /**
@@ -2967,7 +2967,7 @@ namespace {
          */
         public static function update($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::update($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::update($query, $bindings);
         }
         
         /**
@@ -2980,7 +2980,7 @@ namespace {
          */
         public static function delete($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::delete($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::delete($query, $bindings);
         }
         
         /**
@@ -2993,7 +2993,7 @@ namespace {
          */
         public static function statement($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::statement($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::statement($query, $bindings);
         }
         
         /**
@@ -3006,7 +3006,7 @@ namespace {
          */
         public static function affectingStatement($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::affectingStatement($query, $bindings);
+            return \Illuminate\Database\PostgresConnection::affectingStatement($query, $bindings);
         }
         
         /**
@@ -3018,7 +3018,7 @@ namespace {
          */
         public static function unprepared($query){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::unprepared($query);
+            return \Illuminate\Database\PostgresConnection::unprepared($query);
         }
         
         /**
@@ -3030,7 +3030,7 @@ namespace {
          */
         public static function prepareBindings($bindings){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::prepareBindings($bindings);
+            return \Illuminate\Database\PostgresConnection::prepareBindings($bindings);
         }
         
         /**
@@ -3043,7 +3043,7 @@ namespace {
          */
         public static function transaction($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::transaction($callback);
+            return \Illuminate\Database\PostgresConnection::transaction($callback);
         }
         
         /**
@@ -3054,7 +3054,7 @@ namespace {
          */
         public static function beginTransaction(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::beginTransaction();
+            \Illuminate\Database\PostgresConnection::beginTransaction();
         }
         
         /**
@@ -3065,7 +3065,7 @@ namespace {
          */
         public static function commit(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::commit();
+            \Illuminate\Database\PostgresConnection::commit();
         }
         
         /**
@@ -3076,7 +3076,7 @@ namespace {
          */
         public static function rollBack(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::rollBack();
+            \Illuminate\Database\PostgresConnection::rollBack();
         }
         
         /**
@@ -3087,7 +3087,7 @@ namespace {
          */
         public static function transactionLevel(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::transactionLevel();
+            return \Illuminate\Database\PostgresConnection::transactionLevel();
         }
         
         /**
@@ -3099,7 +3099,7 @@ namespace {
          */
         public static function pretend($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::pretend($callback);
+            return \Illuminate\Database\PostgresConnection::pretend($callback);
         }
         
         /**
@@ -3113,7 +3113,7 @@ namespace {
          */
         public static function logQuery($query, $bindings, $time = null){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::logQuery($query, $bindings, $time);
+            \Illuminate\Database\PostgresConnection::logQuery($query, $bindings, $time);
         }
         
         /**
@@ -3125,7 +3125,7 @@ namespace {
          */
         public static function listen($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::listen($callback);
+            \Illuminate\Database\PostgresConnection::listen($callback);
         }
         
         /**
@@ -3138,7 +3138,7 @@ namespace {
          */
         public static function getDoctrineColumn($table, $column){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getDoctrineColumn($table, $column);
+            return \Illuminate\Database\PostgresConnection::getDoctrineColumn($table, $column);
         }
         
         /**
@@ -3149,7 +3149,7 @@ namespace {
          */
         public static function getDoctrineSchemaManager(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getDoctrineSchemaManager();
+            return \Illuminate\Database\PostgresConnection::getDoctrineSchemaManager();
         }
         
         /**
@@ -3160,7 +3160,7 @@ namespace {
          */
         public static function getDoctrineConnection(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getDoctrineConnection();
+            return \Illuminate\Database\PostgresConnection::getDoctrineConnection();
         }
         
         /**
@@ -3171,7 +3171,7 @@ namespace {
          */
         public static function getPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getPdo();
+            return \Illuminate\Database\PostgresConnection::getPdo();
         }
         
         /**
@@ -3182,7 +3182,7 @@ namespace {
          */
         public static function getReadPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getReadPdo();
+            return \Illuminate\Database\PostgresConnection::getReadPdo();
         }
         
         /**
@@ -3194,7 +3194,7 @@ namespace {
          */
         public static function setPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::setPdo($pdo);
+            return \Illuminate\Database\PostgresConnection::setPdo($pdo);
         }
         
         /**
@@ -3206,7 +3206,7 @@ namespace {
          */
         public static function setReadPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::setReadPdo($pdo);
+            return \Illuminate\Database\PostgresConnection::setReadPdo($pdo);
         }
         
         /**
@@ -3218,7 +3218,7 @@ namespace {
          */
         public static function setReconnector($reconnector){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::setReconnector($reconnector);
+            return \Illuminate\Database\PostgresConnection::setReconnector($reconnector);
         }
         
         /**
@@ -3229,7 +3229,7 @@ namespace {
          */
         public static function getName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getName();
+            return \Illuminate\Database\PostgresConnection::getName();
         }
         
         /**
@@ -3241,7 +3241,7 @@ namespace {
          */
         public static function getConfig($option){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getConfig($option);
+            return \Illuminate\Database\PostgresConnection::getConfig($option);
         }
         
         /**
@@ -3252,7 +3252,7 @@ namespace {
          */
         public static function getDriverName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getDriverName();
+            return \Illuminate\Database\PostgresConnection::getDriverName();
         }
         
         /**
@@ -3263,7 +3263,7 @@ namespace {
          */
         public static function getQueryGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getQueryGrammar();
+            return \Illuminate\Database\PostgresConnection::getQueryGrammar();
         }
         
         /**
@@ -3275,7 +3275,7 @@ namespace {
          */
         public static function setQueryGrammar($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setQueryGrammar($grammar);
+            \Illuminate\Database\PostgresConnection::setQueryGrammar($grammar);
         }
         
         /**
@@ -3286,7 +3286,7 @@ namespace {
          */
         public static function getSchemaGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getSchemaGrammar();
+            return \Illuminate\Database\PostgresConnection::getSchemaGrammar();
         }
         
         /**
@@ -3298,7 +3298,7 @@ namespace {
          */
         public static function setSchemaGrammar($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setSchemaGrammar($grammar);
+            \Illuminate\Database\PostgresConnection::setSchemaGrammar($grammar);
         }
         
         /**
@@ -3309,7 +3309,7 @@ namespace {
          */
         public static function getPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getPostProcessor();
+            return \Illuminate\Database\PostgresConnection::getPostProcessor();
         }
         
         /**
@@ -3321,7 +3321,7 @@ namespace {
          */
         public static function setPostProcessor($processor){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setPostProcessor($processor);
+            \Illuminate\Database\PostgresConnection::setPostProcessor($processor);
         }
         
         /**
@@ -3332,7 +3332,7 @@ namespace {
          */
         public static function getEventDispatcher(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getEventDispatcher();
+            return \Illuminate\Database\PostgresConnection::getEventDispatcher();
         }
         
         /**
@@ -3344,7 +3344,7 @@ namespace {
          */
         public static function setEventDispatcher($events){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setEventDispatcher($events);
+            \Illuminate\Database\PostgresConnection::setEventDispatcher($events);
         }
         
         /**
@@ -3355,7 +3355,7 @@ namespace {
          */
         public static function getPaginator(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getPaginator();
+            return \Illuminate\Database\PostgresConnection::getPaginator();
         }
         
         /**
@@ -3367,7 +3367,7 @@ namespace {
          */
         public static function setPaginator($paginator){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setPaginator($paginator);
+            \Illuminate\Database\PostgresConnection::setPaginator($paginator);
         }
         
         /**
@@ -3378,7 +3378,7 @@ namespace {
          */
         public static function getCacheManager(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getCacheManager();
+            return \Illuminate\Database\PostgresConnection::getCacheManager();
         }
         
         /**
@@ -3390,7 +3390,7 @@ namespace {
          */
         public static function setCacheManager($cache){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setCacheManager($cache);
+            \Illuminate\Database\PostgresConnection::setCacheManager($cache);
         }
         
         /**
@@ -3401,7 +3401,7 @@ namespace {
          */
         public static function pretending(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::pretending();
+            return \Illuminate\Database\PostgresConnection::pretending();
         }
         
         /**
@@ -3412,7 +3412,7 @@ namespace {
          */
         public static function getFetchMode(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getFetchMode();
+            return \Illuminate\Database\PostgresConnection::getFetchMode();
         }
         
         /**
@@ -3424,7 +3424,7 @@ namespace {
          */
         public static function setFetchMode($fetchMode){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::setFetchMode($fetchMode);
+            return \Illuminate\Database\PostgresConnection::setFetchMode($fetchMode);
         }
         
         /**
@@ -3435,7 +3435,7 @@ namespace {
          */
         public static function getQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getQueryLog();
+            return \Illuminate\Database\PostgresConnection::getQueryLog();
         }
         
         /**
@@ -3446,7 +3446,7 @@ namespace {
          */
         public static function flushQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::flushQueryLog();
+            \Illuminate\Database\PostgresConnection::flushQueryLog();
         }
         
         /**
@@ -3457,7 +3457,7 @@ namespace {
          */
         public static function enableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::enableQueryLog();
+            \Illuminate\Database\PostgresConnection::enableQueryLog();
         }
         
         /**
@@ -3468,7 +3468,7 @@ namespace {
          */
         public static function disableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::disableQueryLog();
+            \Illuminate\Database\PostgresConnection::disableQueryLog();
         }
         
         /**
@@ -3479,7 +3479,7 @@ namespace {
          */
         public static function logging(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::logging();
+            return \Illuminate\Database\PostgresConnection::logging();
         }
         
         /**
@@ -3490,7 +3490,7 @@ namespace {
          */
         public static function getDatabaseName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getDatabaseName();
+            return \Illuminate\Database\PostgresConnection::getDatabaseName();
         }
         
         /**
@@ -3502,7 +3502,7 @@ namespace {
          */
         public static function setDatabaseName($database){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::setDatabaseName($database);
+            return \Illuminate\Database\PostgresConnection::setDatabaseName($database);
         }
         
         /**
@@ -3513,7 +3513,7 @@ namespace {
          */
         public static function getTablePrefix(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::getTablePrefix();
+            return \Illuminate\Database\PostgresConnection::getTablePrefix();
         }
         
         /**
@@ -3525,7 +3525,7 @@ namespace {
          */
         public static function setTablePrefix($prefix){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\SQLiteConnection::setTablePrefix($prefix);
+            \Illuminate\Database\PostgresConnection::setTablePrefix($prefix);
         }
         
         /**
@@ -3537,7 +3537,7 @@ namespace {
          */
         public static function withTablePrefix($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\SQLiteConnection::withTablePrefix($grammar);
+            return \Illuminate\Database\PostgresConnection::withTablePrefix($grammar);
         }
         
     }
@@ -6542,7 +6542,7 @@ namespace {
          * Overrides the PHP global variables according to this request instance.
          * 
          * It overrides $_GET, $_POST, $_REQUEST, $_SERVER, $_COOKIE.
-         * $_FILES is never override, see rfc1867
+         * $_FILES is never overridden, see rfc1867
          *
          * @api 
          * @static 
@@ -6656,6 +6656,9 @@ namespace {
          * 
          * Be warned that enabling this feature might lead to CSRF issues in your code.
          * Check that you are using CSRF tokens when required.
+         * If the HTTP method parameter override is enabled, an html-form with method "POST" can be altered
+         * and used to send a "PUT" or "DELETE" request via the _method request parameter.
+         * If these methods are not protected against CSRF, this presents a possible vulnerability.
          * 
          * The HTTP method can only be overridden when the real HTTP method is POST.
          *
@@ -7350,7 +7353,7 @@ namespace {
         /**
          * Returns true if the request is a XMLHttpRequest.
          * 
-         * It works if your JavaScript library set an X-Requested-With HTTP header.
+         * It works if your JavaScript library sets an X-Requested-With HTTP header.
          * It is known to work with common JavaScript frameworks:
          *
          * @link http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
@@ -9174,7 +9177,7 @@ namespace {
          * Overrides the PHP global variables according to this request instance.
          * 
          * It overrides $_GET, $_POST, $_REQUEST, $_SERVER, $_COOKIE.
-         * $_FILES is never override, see rfc1867
+         * $_FILES is never overridden, see rfc1867
          *
          * @api 
          * @static 
@@ -9288,6 +9291,9 @@ namespace {
          * 
          * Be warned that enabling this feature might lead to CSRF issues in your code.
          * Check that you are using CSRF tokens when required.
+         * If the HTTP method parameter override is enabled, an html-form with method "POST" can be altered
+         * and used to send a "PUT" or "DELETE" request via the _method request parameter.
+         * If these methods are not protected against CSRF, this presents a possible vulnerability.
          * 
          * The HTTP method can only be overridden when the real HTTP method is POST.
          *
@@ -9982,7 +9988,7 @@ namespace {
         /**
          * Returns true if the request is a XMLHttpRequest.
          * 
-         * It works if your JavaScript library set an X-Requested-With HTTP header.
+         * It works if your JavaScript library sets an X-Requested-With HTTP header.
          * It is known to work with common JavaScript frameworks:
          *
          * @link http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript

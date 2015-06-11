@@ -13,6 +13,7 @@
     <script src="/vendor/jquery-ui/jquery-ui.min.js" type="application/javascript"></script>
     <script src="/vendor/colorbox/jquery.colorbox-min.js" type="application/javascript"></script>
     <script src="/vendor/chosen/chosen.jquery.min.js" type="application/javascript"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/app.js" type="application/javascript"></script>
 </head>
 <body>
@@ -42,7 +43,13 @@
                     <li><a href="/ecers">Ecers Data</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/admin/users">Admin</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/admin/users">EYT Access</a></li>
+                            <li><a href="/admin/apps">App Access</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

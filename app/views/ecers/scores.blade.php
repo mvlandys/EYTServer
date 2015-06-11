@@ -17,7 +17,7 @@
     @foreach ($entryData as $data)
     <tr>
         <td>{{ $data->test }}</td>
-        <td>{{ $data->page }}</td>
+        <td>{{ $pageData[$data->test][$data->page] }}</td>
         <td>{{ $data->item }}.{{ $data->item_num }}</td>
         <td>
             @if ($data->value == 0)

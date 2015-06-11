@@ -27,7 +27,6 @@ return array(
 	*/
 
 	'default' => 'mysql',
-	//'default' => 'pgsql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -49,7 +48,7 @@ return array(
 
 		'sqlite' => array(
 			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
+			'database' => __DIR__.'/../database/ecers.sqlite',
 			'prefix'   => '',
 		),
 
@@ -62,48 +61,7 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),
-        /*
-        'pgsql' => array(
-            'driver'   => 'pgsql',
-            'host'     => 'localhost',
-            'database' => 'gamesdb',
-            'username' => 'root',
-            'password' => 'root',
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-        ),
-        /*
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-            'host'     => 'ec2-54-83-204-244.compute-1.amazonaws.com',
-            'database' => 'd535qa0oq8n66o',
-            'username' => 'cgnooxztyzhjze',
-            'password' => 'zaAIkdurTZlHlukPqY2lOeFHTK',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
-        //*/
-        'pgsql' => array(
-            'driver'   => 'pgsql',
-            'host'     => 'ec2-54-221-249-3.compute-1.amazonaws.com',
-            'database' => 'ddai9r4hrghfd7',
-            'username' => 'nkqfykzksrvftf',
-            'password' => 'Ip4ppMYCykntQeqdfhVNi76PQB',
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-        ),
-		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
-			'prefix'   => '',
-		),
+		)
 
 	),
 

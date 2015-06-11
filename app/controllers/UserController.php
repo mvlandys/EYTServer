@@ -87,7 +87,7 @@ class UserController extends Controller
         $permissions = array();
         $userPerms   = UserPermissions::where("user_id", "=", $user_id)->get();
 
-        foreach($userPerms as $perm) {
+        foreach ($userPerms as $perm) {
             $permissions[] = $perm->test_name;
         }
 
@@ -238,5 +238,23 @@ class UserController extends Controller
         ksort($testNames);
 
         return $testNames;
+    }
+
+    public function deleteUser()
+    {
+    }
+
+    public function listAppUsers()
+    {
+        $file = fopen(base_path() . "/.htpasswd", "r") or die("Unable to open file!");
+        $users = array();
+
+        while ($data = fgets($file)) {
+            $users[] = explode(":", $data)[0];
+        }
+
+        var_dump($users);
+
+        fclose($file);
     }
 }
