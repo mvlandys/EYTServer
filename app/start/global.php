@@ -64,6 +64,8 @@ App::error(function (Exception $exception, $code)
         "code"  => $code
     );
 
+    Log::info("Sending email");
+
     Mail::send('error_email', $data, function ($message) {
         $message->to(["mathew@icrm.net.au"])->subject("EYT Error " . date("H:i:s d/m/Y"));
     });

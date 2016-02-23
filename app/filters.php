@@ -11,7 +11,13 @@
 |
 */
 
-App::before(function ($request) {
+App::before(function ($request)
+{
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+    header('Access-Control-Allow-Credentials: true');
+
     Event::listen('illuminate.query', function ($query, $bindings, $time, $name) {
         $data = compact('bindings', 'time', 'name');
 
@@ -55,6 +61,12 @@ App::before(function ($request) {
                 $perms = UserPermissions::where("user_id", "=", Session::get("user_id"))->remember(5)->get(["test_name"]);
             }
 
+            if (empty($perms)) {
+                $obj            = new stdClass();
+                $obj->test_name = "test";
+                $perms[]        = $obj;
+            }
+
             return $perms;
         });
     }
@@ -62,7 +74,10 @@ App::before(function ($request) {
 
 
 App::after(function ($request, $response) {
-    //
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+    header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+    header('Access-Control-Allow-Credentials: true');
 });
 
 /*

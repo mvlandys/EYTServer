@@ -278,32 +278,31 @@ class MrAntController extends BaseController
 
     public function fixDuplicates()
     {
-        $games = MrAntGame::all();
+        ini_set('max_execution_time', 300); // 5 minutes
 
-        // Loop through each game
-        foreach ($games as $game) {
-            if (empty(MrAntGame::find($game->id)->id)) {
+        $games = MrAntGame::all();
+        $deleted = array();
+
+        foreach($games as $game) {
+            if (in_array($game->id, $deleted)) {
                 continue;
             }
 
-            $duplicate = MrAntGame::where("id", "!=", $game->id)
+            $duplicates = MrAntGame::where("id","!=",$game->id)
                 ->where("subject_id", "=", $game->subject_id)
                 ->where("session_id", "=", $game->session_id)
                 ->where("test_name", "=", $game->test_name)
-                ->where("grade", "=", $game->grade)
-                ->where("dob", "=", $game->dob)
-                ->where("age", "=", $game->age)
-                ->where("sex", "=", $game->sex)
                 ->where("played_at", "=", $game->played_at)
-                ->where("score", "=", $game->score);
+                ->get();
 
-            foreach ($duplicate->get() as $gameData) {
-                MrAntScore::where("game_id", "=", $gameData->id)->delete();
+            foreach($duplicates as $duplicate) {
+                MrAntScore::where("game_id", "=", $duplicate->id)->delete();
+                MrAntGame::where("id", "=", $duplicate->id)->delete();
+
+                $deleted[] = $duplicate->id;
             }
-
-            $duplicate->delete();
         }
 
-        echo "Done";
+        echo "Removed " . count($deleted) . " duplicates";
     }
 }

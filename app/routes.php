@@ -31,13 +31,22 @@ Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
 
 Route::group(array("before" => "auth"), function () {
     // Home Route
-    Route::get('/', "HomeController@homePage");
+    Route::get('/home', "HomeController@homePage");
     Route::get("/csv/{test_name}/{start}/{end}", "HomeController@makeCSV");
     Route::get("/csv/{test_name}", "HomeController@makeCSV");
     Route::get("/csv", "HomeController@makeCSV");
 
     // Vocab Routes
     Route::group(array("before" => "vocab"), function () {
+        /*
+        Route::get("/vocab/new", "VocabController@showResultsNew");
+        Route::get("/vocab/new/duplicates", "VocabController@fixDuplicatesNew");
+        Route::get("/vocab/new/game/{id}", "VocabController@viewScoresNew");
+        Route::get("/vocab/new/csv/{test_name}", "VocabController@makeCSVNew");
+        Route::get("/vocab/new/csv", "VocabController@makeCSVNew");
+        Route::get("/vocab/new/{test_name}", "VocabController@showResultsNew");
+        */
+
         Route::get("/vocab/game/{id}/delete", array("before" => "delete", "uses" => "VocabController@deleteGame"));
         Route::get("/vocab/game/{id}", "VocabController@viewScores");
         Route::get("/vocab/csv/{test_name}/{start}/{end}", "VocabController@makeCSV");
@@ -111,22 +120,35 @@ Route::group(array("before" => "auth"), function () {
 
     // ECERS Routes
     Route::group(array("before" => "ecers"), function () {
-        Route::get("/ecers", "EcersController@showResults");
         Route::get("/ecers/entry/{entry_id}", "EcersController@viewEntry");
+        Route::get("/ecers/game/{entry_id}/delete", "EcersController@deleteEntry");
+        Route::get("/ecers/csv/{test_name}", "EcersController@makeCSV");
+        Route::get("/ecers/csv/{test_name}/{start}/{end}", "EcersController@makeCSV");
+        Route::get("/ecers/csv", "EcersController@makeCSV");
+        Route::get("/ecers/duplicates", "EcersController@fixDuplicates");
+        Route::get("/ecers/{test_name}", "EcersController@showResults");
+        Route::get("/ecers/{test_name}/{start}/{end}", "EcersController@showResults");
+        Route::get("/ecers", "EcersController@showResults");
     });
 
     // Admin Routes
     Route::group(array("before" => "admin"), function () {
+        Route::get("/admin/users/delete/{user_id}", "UserController@deleteUser");
         Route::get("/admin/users", "UserController@listUsers");
         Route::get("/admin/newuser", "UserController@newUser");
         Route::post("/admin/newuser/submit", "UserController@submitNewUser");
         Route::get("/admin/user/{user_id}", "UserController@viewUser");
         Route::post("/admin/user/{user_id}/update", "UserController@updateUser");
         Route::get("/admin/apps", "UserController@listAppUsers");
+        Route::get("/admin/newappuser", "UserController@newAppUser");
+        Route::post("/admin/newappuser/submit", "UserController@addAppUser");
+        Route::get("/admin/appuser/password/{id}/{password}", "UserController@passwordAppUser");
     });
 });
 
 // App POST routes
+Route::get("/vocab/copy/{date}", "VocabController@migrateOldToNew");
+//Route::post("/vocab/new/save", "VocabController@saveGamesNew");
 Route::post("/vocab/save", "VocabController@saveGames");
 Route::post("/cardsort/save", "CardSortController@saveGame");
 Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
@@ -135,7 +157,10 @@ Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
 Route::post("/ecers/save", "EcersController@saveEntries");
 
-Route::get("/test", function() {
-    $ecers = new EcersController();
-    return $ecers->makeCSV();
+Route::get("/", function() {
+    if (!Session::has("user_id")) {
+        return Redirect::to('http://www.eytoolbox.com.au');
+    } else {
+        return Redirect::to('/home');
+    }
 });

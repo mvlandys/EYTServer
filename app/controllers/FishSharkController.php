@@ -143,6 +143,8 @@ class FishSharkController extends BaseController
 
     public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
+        ini_set('max_execution_time', 300); // 5 minutes
+
         $gameRep   = new Games(new FishSharkGame());
         $games     = $gameRep->getGames($test_name, $start, $end, "scores");
         $filename = "fishshark_" . date("U") . ".csv";
@@ -296,31 +298,31 @@ class FishSharkController extends BaseController
 
     public function fixDuplicates()
     {
-        $games = FishSharkGame::all();
+        ini_set('max_execution_time', 300); // 5 minutes
 
-        // Loop through each game
-        foreach ($games as $game) {
-            if (empty(FishSharkGame::find($game->id)->id)) {
+        $games = FishSharkGame::all();
+        $deleted = array();
+
+        foreach($games as $game) {
+            if (in_array($game->id, $deleted)) {
                 continue;
             }
 
-            $duplicate = FishSharkGame::where("id", "!=", $game->id)
+            $duplicates = FishSharkGame::where("id","!=",$game->id)
                 ->where("subject_id", "=", $game->subject_id)
                 ->where("session_id", "=", $game->session_id)
                 ->where("test_name", "=", $game->test_name)
-                ->where("grade", "=", $game->grade)
-                ->where("dob", "=", $game->dob)
-                ->where("age", "=", $game->age)
-                ->where("sex", "=", $game->sex)
-                ->where("played_at", "=", $game->played_at);
+                ->where("played_at", "=", $game->played_at)
+                ->get();
 
-            foreach ($duplicate->get() as $gameData) {
-                FishSharkScore::where("game_id", "=", $gameData->id)->delete();
+            foreach($duplicates as $duplicate) {
+                FishSharkScore::where("game_id", "=", $duplicate->id)->delete();
+                FishSharkGame::where("id", "=", $duplicate->id)->delete();
+
+                $deleted[] = $duplicate->id;
             }
-
-            $duplicate->delete();
         }
 
-        echo "Done";
+        echo "Removed " . count($deleted) . " duplicates";
     }
 }

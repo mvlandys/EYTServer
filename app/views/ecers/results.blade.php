@@ -24,7 +24,7 @@
             <input type="text" id="date_end" placeholder="dd/mm/yyyy" value="{{{ $end or '' }}}" />
         </div>
         <div class="col-sm-3">
-            <a class="btn btn-primary" id="btnVocabFilter">Submit</a>
+            <a class="btn btn-primary" id="btnEcersFilter">Submit</a>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
             <td>{{{ empty($entry->observer) ? '.' : $entry->observer }}}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($entry->start)) }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($entry->end)) }}</td>
-            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteEntry" data-last_id="{{ $lastID }}" data-entry_id="{{ $entry->id }}" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-game_type="ecers" data-last_id="{{ $lastID }}" data-entry_id="{{ $entry->id }}" data-game_id="{{ $entry->id }}" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
             <?php $lastID = $entry->id; ?>
         </tr>
     @endforeach

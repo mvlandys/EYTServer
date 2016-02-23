@@ -15,7 +15,7 @@
     <tbody>
     @foreach ($scores as $score)
     <tr>
-        <td>{{ ($score->card + 1) }}</td>
+        <td>{{ $names[($score->card)] }}_{{ $score->card + 1 }}</td>
         <td>{{ $score->value }}</td>
         <td>{{ $score->additional }}</td>
     </tr>

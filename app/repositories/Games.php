@@ -68,4 +68,55 @@ class Games
 
         return $games;
     }
+
+    public function getEcersEntries($test_name = null, $start = null, $end = null, $with = [])
+    {
+        $order = (Input::has("order")) ? Input::get("order") : "start";
+
+        if (!empty($test_name) && !empty($start) && !empty($end)) {
+            if ($test_name == "all") {
+                $games = $this->model
+                    ->whereIn("study", $this->perms)
+                    ->where("start", ">=", $start)
+                    ->where("start", "<=", $end)
+                    ->with($with)
+                    ->orderBy($order, "DESC")->get();
+            } else {
+                if (!in_array($test_name, $this->perms)) {
+                    echo View::make("alert", array(
+                        "type" => "danger",
+                        "msg" => "Access Denied"
+                    ));
+                    exit(0);
+                }
+
+                $games = $this->model
+                    ->where("study", "=", $test_name)
+                    ->where("start", ">=", $start)
+                    ->where("start", "<=", $end)
+                    ->with($with)
+                    ->orderBy($order, "DESC")->get();
+            }
+        } else if (!empty($test_name) && $test_name != "all") {
+            if (!in_array($test_name, $this->perms)) {
+                echo View::make("alert", array(
+                    "type" => "danger",
+                    "msg" => "Access Denied"
+                ));
+                exit(0);
+            }
+
+            $games = $this->model
+                ->where("study", "=", $test_name)
+                ->with($with)
+                ->orderBy($order, "DESC")->get();
+        } else {
+            $games = $this->model
+                ->whereIn("study", $this->perms)
+                ->with($with)
+                ->orderBy($order, "DESC")->get();
+        }
+
+        return $games;
+    }
 } 

@@ -4,7 +4,8 @@ class EcersController extends BaseController
 {
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $entries   = EcersEntry::all();
+        $gameRep   = new Games(new EcersEntry());
+        $entries   = $gameRep->getEcersEntries($test_name, $start, $end);
         $tests     = App::make('perms');
         $testNames = array();
 
@@ -38,16 +39,28 @@ class EcersController extends BaseController
             $ecersEntry->centre   = $entry["user_info"]["centre"];
             $ecersEntry->room     = $entry["user_info"]["room"];
             $ecersEntry->observer = $entry["user_info"]["observer"];
-            $ecersEntry->study    = Input::get("study");
+            $ecersEntry->study    = (Input::has("study")) ? Input::get("study") : "data-upload";
             $ecersEntry->start    = (!empty($entry["date"])) ? $entry["date"] . ":00" : date("Y-m-d H:i:s");
             $ecersEntry->end      = (!empty($entry["end"])) ? $entry["end"] . ":00" : date("Y-m-d H:i:s");
             $ecersEntry->save();
 
             $dataEntries = array();
 
+            if (empty($entry["saved_data"])) {
+                echo "<pre>";
+                echo "Skipping " . $entry["id"];
+                //print_r($entry);
+                echo "</pre>";
+                continue;
+            }
+
             foreach ($entry["saved_data"] as $test => $pages) {
                 foreach ($pages as $page_no => $pageData) {
                     foreach ($pageData as $itemData => $value) {
+                        if ($itemData == "page_na") {
+                            continue;
+                        }
+
                         $item     = explode(".", $itemData)[0];
                         $item_num = explode(".", $itemData)[1];
 
@@ -94,16 +107,16 @@ class EcersController extends BaseController
         ));
     }
 
-    public function makeCSV()
+    public function makeCSV($test_name = null, $start = null, $end = null)
     {
         ini_set('max_execution_time', 300); // 5 minutes
 
-        $ecersEntries = EcersEntry::all();
+        $gameRep      = new Games(new EcersEntry());
+        $ecersEntries = $gameRep->getEcersEntries($test_name, $start, $end);
         $ecersModel   = new Ecers();
         $tests        = $ecersModel->getTests();
         $csvHeader    = $this->getCSVHeader();
         $csvData      = array();
-
 
         foreach ($ecersEntries as $ecersEntry) {
             $catScores = array();
@@ -123,14 +136,37 @@ class EcersController extends BaseController
                         "average" => 0
                     );
 
-                    $entries = EcersData::whereIn("page", $pages)->orderBy("page")->orderBy("item")->orderBy("item_num")->get();
+                    $entries  = EcersData::where("entry_id", "=", $ecersEntry->id)->where("test", "=", $test->test)->whereIn("page", $pages)->orderBy("page")->orderBy("item")->orderBy("item_num")->get();
+                    $pageData = array();
 
                     foreach ($entries as $entry) {
-                        $catScores[$catCount]["scores"][$entry->page . ": " . $entry->item . "." . $entry->item_num] = $entry->value;
+
+                        if (empty($pageData[$entry->page])) {
+                            $pageData[$entry->page] = array();
+                        }
+
+                        $pageData[$entry->page][] = $entry;
                     }
 
-                    $catScores[$catCount]["average"] = array_sum($catScores[$catCount]["scores"]) / count($catScores[$catCount]["scores"]);
-                    $csvRow[]                        = $catScores[$catCount]["average"];
+                    foreach ($pageData as $page => $pageEntries) {
+                        $score = $this->getPageScore($pageEntries);
+
+                        if ($score != 0) {
+                            $catScores[$catCount]["scores"][$page] = $this->getPageScore($pageEntries);
+                        }
+                    }
+
+                    if (count($entries) == 0) {
+                        $catScores[$catCount]["average"] = ".";
+                    } elseif (count($catScores[$catCount]["scores"]) == 0) {
+                        $catScores[$catCount]["average"] = 0;
+                    } else {
+
+                        $catScores[$catCount]["average"] = array_sum($catScores[$catCount]["scores"]) / count($catScores[$catCount]["scores"]);
+                    }
+
+
+                    $csvRow[] = $catScores[$catCount]["average"];
                     $catCount++;
                 }
             }
@@ -139,7 +175,7 @@ class EcersController extends BaseController
             // Get the special score (as per Steven Howard's algorithm)
             // ************************************************
             foreach ($tests as $test) {
-                $testData = EcersData::where("test", "=", $test->test)->where("entry_id","=", $ecersEntry->id)->get();
+                $testData = EcersData::where("test", "=", $test->test)->where("entry_id", "=", $ecersEntry->id)->get();
                 $pages    = $ecersModel->getPageDataForTest($test->test);
 
                 foreach ($pages as $page => $page_name) {
@@ -156,15 +192,33 @@ class EcersController extends BaseController
                     $L7Count = $Level7["count"];
                     $L7Yes   = $Level7["yes"];
 
-                    //echo "TEST ID: " . $ecersEntry->id . ", Test(" . $test->test . ") Page:" . $page;
+                    // ********************************************
+                    // Count Whole Page N/A as a full-stop
+                    // ********************************************
+                    $count   = count($entry);
+                    $naCount = 0;
+
+                    foreach ($entry as $entryData) {
+                        $count++;
+                        if ($entryData["value"] == 2 || $entryData["value"] == 9) {
+                            $naCount++;
+                        }
+                    }
+
+                    if ($count == $naCount) {
+                        $score = ".";
+                        $next  = true;
+                    }
 
                     // ********************************************
                     // If any Level 1 items are YES then Score = 1
                     // ********************************************
-                    foreach ($entry as $entryData) {
-                        if ($entryData->item == 1 && $entryData->value == 0) {
-                            $score = 1;
-                            $next  = true;
+                    if ($next == false) {
+                        foreach ($entry as $entryData) {
+                            if ($entryData->item == 1 && $entryData->value == 0) {
+                                $score = 1;
+                                $next  = true;
+                            }
                         }
                     }
                     // *************************************************************
@@ -233,10 +287,127 @@ class EcersController extends BaseController
             $csvData[] = $csvRow;
         }
 
+        $filename = "ecers__" . date("U") . ".csv";
+        $fp       = fopen(public_path() . "/tmp/" . $filename, 'w');
+
+
+        fputcsv($fp, $csvHeader);
+
+        foreach($csvData as $data) {
+            fputcsv($fp, $data);
+        }
+
+        return View::make("csv", array(
+            "filename" => $filename
+        ));
+
         return View::make("ecers/test_csv", array(
             "header" => $csvHeader,
             "rows"   => $csvData
         ));
+    }
+
+    private function getPageScore($pageData)
+    {
+        $next    = false;
+        $score   = 0;
+        $Level3  = $this->pageValueCount($pageData, 3);
+        $L3Count = $Level3["count"];
+        $L3Yes   = $Level3["yes"];
+        $Level5  = $this->pageValueCount($pageData, 5);
+        $L5Count = $Level5["count"];
+        $L5Yes   = $Level5["yes"];
+        $Level7  = $this->pageValueCount($pageData, 7);
+        $L7Count = $Level7["count"];
+        $L7Yes   = $Level7["yes"];
+
+
+        // ********************************************
+        // Count Whole Page N/A as a full-stop
+        // ********************************************
+        $count   = count($pageData);
+        $naCount = 0;
+
+        foreach ($pageData as $entryData) {
+            $count++;
+            if ($entryData["value"] == 2 || $entryData["value"] == 9) {
+                $naCount++;
+            }
+        }
+
+        if ($count == $naCount) {
+            return 0;
+        }
+
+        // ********************************************
+        // If any Level 1 items are YES then Score = 1
+        // ********************************************
+        foreach ($pageData as $entryData) {
+            if ($entryData->item == 1 && $entryData->value == 0) {
+                $score = 1;
+                $next  = true;
+            }
+        }
+        // *************************************************************
+        // Else if less than 50% of Level 3 items are YES then Score = 1
+        // *************************************************************
+        if ($score == 0 && $next == false) {
+            if ($L3Yes < ($L3Count * 0.5)) {
+                $score = 1;
+                $next  = true;
+            }
+        }
+
+        // *************************************************************
+        // If => 50% but < 100% of level 3 items are YES then Score = 2
+        // *************************************************************
+        if ($next == false) {
+            if ($L3Yes >= ($L3Count * 0.5) && $L3Yes < $L3Count) {
+                $score = 2;
+                $next  = true;
+            } else if ($L3Yes < $L3Count) {
+                // If < 100% of level 3 items are YES then <END>
+                $next = true;
+            }
+        }
+
+        // ---------------------------------------
+        // OR If all level 3 items are yes, then…
+        // ---------------------------------------
+
+        // *************************************************************
+        // If less than 50% of level 5 items are yes (1), then score = 3
+        // If => 50% but < 100% of level 5 items are yes (1), then score = 4
+        // *************************************************************
+        if ($next == false) {
+            if ($L5Yes < ($L5Count * 0.5)) {
+                $score = 3;
+                $next  = true;
+            } else if ($L5Yes >= ($L5Count * 0.5) && $L5Yes < $L5Count) {
+                $score = 4;
+                $next  = true;
+            }
+        }
+
+        // ---------------------------------------
+        // OR If all level 5 items are yes, then…
+        // ---------------------------------------
+
+        // **************************************************************
+        // If less than 50% of level 7 items are YES, then score = 5
+        // If => 50% but < 100% of level 7 items are yes then score = 6
+        // **************************************************************
+        if ($next == false) {
+            if ($L7Yes < ($L7Count * 0.5)) {
+                $score = 5;
+            } else if ($L7Yes >= ($L7Count * 0.5) && $L7Yes < $L7Count) {
+                $score = 6;
+            } else if ($L7Yes == $L7Count) {
+                $score = 7;
+            }
+        }
+
+        return $score;
     }
 
     private function getCSVHeader()
@@ -293,6 +464,10 @@ class EcersController extends BaseController
 
         foreach ($pageData as $entryData) {
             if ($entryData["item"] == $item) {
+                if ($entryData["value"] == 2) {
+                    continue;
+                }
+
                 $count++;
                 if ($entryData["value"] == 0) {
                     $yes++;
@@ -304,5 +479,45 @@ class EcersController extends BaseController
             "count" => $count,
             "yes"   => $yes
         );
+    }
+
+    public function fixDuplicates()
+    {
+        ini_set('max_execution_time', 300); // 5 minutes
+
+        $games = EcersEntry::all();
+        $deleted = array();
+
+        foreach($games as $game) {
+            if (in_array($game->id, $deleted)) {
+                continue;
+            }
+
+            $duplicates = EcersEntry::where("id","!=",$game->id)
+                ->where("centre", "=", $game->centre)
+                ->where("room", "=", $game->room)
+                ->where("observer", "=", $game->observer)
+                ->where("study", "=", $game->study)
+                ->where("start", "=", $game->start)
+                ->where("end", "=", $game->end)
+                ->get();
+
+            foreach($duplicates as $duplicate) {
+                EcersData::where("entry_id", "=", $duplicate->id)->delete();
+                EcersEntry::where("id", "=", $duplicate->id)->delete();
+
+                $deleted[] = $duplicate->id;
+            }
+        }
+
+        echo "Removed " . count($deleted) . " duplicates";
+    }
+
+    public function deleteEntry($entry_id)
+    {
+        EcersData::where("entry_id", "=", $entry_id)->delete();
+        EcersEntry::where("id", "=", $entry_id)->delete();
+
+        return ["success" => true];
     }
 }

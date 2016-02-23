@@ -1,0 +1,9 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine on
+
+DirectoryIndex index.html
+
+AuthType Basic
+AuthName "Protected Area"
+AuthUserFile /var/www/html/GamesDB/.htpasswd
+Require valid-user

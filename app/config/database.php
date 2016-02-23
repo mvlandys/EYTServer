@@ -52,6 +52,19 @@ return array(
 			'prefix'   => '',
 		),
 
+
+        'pgsql' => array(
+            'driver'   => 'pgsql',
+            'host'     => 'ec2-54-221-249-3.compute-1.amazonaws.com',
+            'database' => 'ddai9r4hrghfd7',
+            'username' => 'nkqfykzksrvftf',
+            'password' => 'Ip4ppMYCykntQeqdfhVNi76PQB',
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ),
+
+        /**/
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
@@ -61,8 +74,18 @@ return array(
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		)
-
+		),
+        /*
+        'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'games2',
+            'username'  => 'root',
+            'password'  => 'root',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        )*/
 	),
 
 	/*

@@ -216,31 +216,31 @@ class CardSortController extends BaseController
 
     public function fixDuplicates()
     {
-        $games = CardSortGame::all();
+        ini_set('max_execution_time', 300); // 5 minutes
 
-        // Loop through each game
-        foreach ($games as $game) {
-            if (empty(CardSortGame::find($game->id)->id)) {
+        $games = CardSortGame::all();
+        $deleted = array();
+
+        foreach($games as $game) {
+            if (in_array($game->id, $deleted)) {
                 continue;
             }
 
-            $duplicate = CardSortGame::where("id", "!=", $game->id)
+            $duplicates = CardSortGame::where("id","!=",$game->id)
                 ->where("subject_id", "=", $game->subject_id)
                 ->where("session_id", "=", $game->session_id)
                 ->where("test_name", "=", $game->test_name)
-                ->where("grade", "=", $game->grade)
-                ->where("dob", "=", $game->dob)
-                ->where("age", "=", $game->age)
-                ->where("sex", "=", $game->sex)
-                ->where("played_at", "=", $game->played_at);
+                ->where("played_at", "=", $game->played_at)
+                ->get();
 
-            foreach ($duplicate->get() as $gameData) {
-                CardSortScore::where("game_id", "=", $gameData->id)->delete();
+            foreach($duplicates as $duplicate) {
+                CardSortScore::where("game_id", "=", $duplicate->id)->delete();
+                CardSortGame::where("id", "=", $duplicate->id)->delete();
+
+                $deleted[] = $duplicate->id;
             }
-
-            $duplicate->delete();
         }
 
-        echo "Done";
+        echo "Removed " . count($deleted) . " duplicates";
     }
 }

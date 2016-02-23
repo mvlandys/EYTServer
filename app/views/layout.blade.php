@@ -14,6 +14,8 @@
     <script src="/vendor/colorbox/jquery.colorbox-min.js" type="application/javascript"></script>
     <script src="/vendor/chosen/chosen.jquery.min.js" type="application/javascript"></script>
     <script src="/vendor/bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/plist_parser.js" type="application/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="application/javascript"></script>
     <script src="/js/app.js" type="application/javascript"></script>
 </head>
 <body>
@@ -34,7 +36,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/vocab">Vocab Data</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vocab <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/vocab">Vocab Old</a></li>
+                            <li><a href="/vocab/new">Vocab New</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/cardsort">CardSort Data</a></li>
                     <li><a href="/questionnaire">Questionnaire Data</a></li>
                     <li><a href="/mrant">MrAnt Data</a></li>
