@@ -4,9 +4,9 @@ class EcersController extends BaseController
 {
     public function showResults($test_name = null, $start = null, $end = null)
     {
-        $gameRep   = new Games(new EcersEntry());
-        $entries   = $gameRep->getEcersEntries($test_name, $start, $end);
-        $tests     = App::make('perms');
+        $gameRep = new Games(new EcersEntry());
+        $entries = $gameRep->getEcersEntries($test_name, $start, $end);
+        $tests = App::make('perms');
         $testNames = array();
 
         foreach ($tests as $test) {
@@ -17,11 +17,11 @@ class EcersController extends BaseController
         }
 
         return View::make("ecers/results", array(
-            "entries"   => $entries,
+            "entries" => $entries,
             "test_name" => $test_name,
-            "start"     => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
-            "end"       => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
-            "tests"     => $testNames
+            "start" => (!empty($start)) ? DateTime::createFromFormat("Y-m-d", $start)->format("d/m/Y") : null,
+            "end" => (!empty($end)) ? DateTime::createFromFormat("Y-m-d", $end)->format("d/m/Y") : null,
+            "tests" => $testNames
         ));
     }
 
@@ -35,14 +35,30 @@ class EcersController extends BaseController
         $entries = Input::get("entries");
 
         foreach ($entries as $entry) {
-            $ecersEntry           = new EcersEntry();
-            $ecersEntry->centre   = $entry["user_info"]["centre"];
-            $ecersEntry->room     = $entry["user_info"]["room"];
+            $ecersEntry = new EcersEntry();
+            $ecersEntry->centre = $entry["user_info"]["centre"];
+            $ecersEntry->room = $entry["user_info"]["room"];
             $ecersEntry->observer = $entry["user_info"]["observer"];
-            $ecersEntry->study    = (Input::has("study")) ? Input::get("study") : "data-upload";
-            $ecersEntry->start    = (!empty($entry["date"])) ? $entry["date"] . ":00" : date("Y-m-d H:i:s");
-            $ecersEntry->end      = (!empty($entry["end"])) ? $entry["end"] . ":00" : date("Y-m-d H:i:s");
+            $ecersEntry->study = (Input::has("study")) ? Input::get("study") : "data-upload";
+            $ecersEntry->start = (!empty($entry["date"])) ? $entry["date"] . ":00" : date("Y-m-d H:i:s");
+            $ecersEntry->end = (!empty($entry["end"])) ? $entry["end"] . ":00" : date("Y-m-d H:i:s");
             $ecersEntry->save();
+
+            foreach ($entry["app_notes"] as $note) {
+                $appNote = new EcersAppNote();
+                $appNote->game_id = $ecersEntry->id;
+                $appNote->note = $note;
+                $appNote->save();
+            }
+
+            foreach ($entry["notes"] as $note) {
+                $ecersNote = new EcersNote();
+                $ecersNote->game_id = $ecersEntry->id;
+                $ecersNote->test = $note["test"];
+                $ecersNote->page = $note["page"];
+                $ecersNote->note = $note["note"];
+                $ecersNote->save();
+            }
 
             $dataEntries = array();
 
@@ -61,29 +77,29 @@ class EcersController extends BaseController
                             continue;
                         }
 
-                        $item     = explode(".", $itemData)[0];
+                        $item = explode(".", $itemData)[0];
                         $item_num = explode(".", $itemData)[1];
 
                         $dataEntries[] = array(
                             "entry_id" => $ecersEntry->id,
-                            "test"     => $test,
-                            "page"     => $page_no,
-                            "item"     => $item,
+                            "test" => $test,
+                            "page" => $page_no,
+                            "item" => $item,
                             "item_num" => $item_num,
-                            "value"    => $value
+                            "value" => $value
                         );
                     }
                 }
             }
 
             foreach ($dataEntries as $entry) {
-                $ecersData           = new EcersData();
+                $ecersData = new EcersData();
                 $ecersData->entry_id = $entry["entry_id"];
-                $ecersData->test     = $entry["test"];
-                $ecersData->page     = $entry["page"];
-                $ecersData->item     = $entry["item"];
+                $ecersData->test = $entry["test"];
+                $ecersData->page = $entry["page"];
+                $ecersData->item = $entry["item"];
                 $ecersData->item_num = $entry["item_num"];
-                $ecersData->value    = $entry["value"];
+                $ecersData->value = $entry["value"];
                 $ecersData->save();
             }
         }
@@ -94,16 +110,18 @@ class EcersController extends BaseController
     public function viewEntry($entry_id)
     {
         $ecersModel = new Ecers;
-        $entryData  = EcersData::where("entry_id", "=", $entry_id)
+        $entryData = EcersData::where("entry_id", "=", $entry_id)
             ->orderBy("test", "ASC")
             ->orderBy("page", "ASC")
             ->orderBy("item", "ASC")
             ->orderBy("item_num", "ASC")->get();
-        $pageData   = $ecersModel->getPageData();
+        $pageData = $ecersModel->getPageData();
 
         return View::make("ecers/scores", array(
             "entryData" => $entryData,
-            "pageData"  => $pageData
+            "pageData" => $pageData,
+            "appNotes" => EcersAppNote::where("game_id", "=", $entry_id)->get(),
+            "notes" => EcersNote::where("game_id", "=", $entry_id)->get(),
         ));
     }
 
@@ -111,32 +129,32 @@ class EcersController extends BaseController
     {
         ini_set('max_execution_time', 300); // 5 minutes
 
-        $gameRep      = new Games(new EcersEntry());
+        $gameRep = new Games(new EcersEntry());
         $ecersEntries = $gameRep->getEcersEntries($test_name, $start, $end);
-        $ecersModel   = new Ecers();
-        $tests        = $ecersModel->getTests();
-        $csvHeader    = $this->getCSVHeader();
-        $csvData      = array();
+        $ecersModel = new Ecers();
+        $tests = $ecersModel->getTests();
+        $csvHeader = $this->getCSVHeader();
+        $csvData = array();
 
         foreach ($ecersEntries as $ecersEntry) {
             $catScores = array();
-            $csvRow    = array($ecersEntry->centre, $ecersEntry->room, $ecersEntry->start, $ecersEntry->end);
+            $csvRow = array($ecersEntry->centre, $ecersEntry->room, $ecersEntry->start, $ecersEntry->end);
 
             // ************************************************
             // Get Average Score For Each Subscale (category)
             // - Score is the weighted score for each page (not the individual question answer)
             // ************************************************
             foreach ($tests as $test) {
-                $catCount   = 1;
+                $catCount = 1;
                 $categories = $ecersModel->getCategoryData($test->test);
 
                 foreach ($categories as $pages) {
                     $catScores[$catCount] = array(
-                        "scores"  => array(),
+                        "scores" => array(),
                         "average" => 0
                     );
 
-                    $entries  = EcersData::where("entry_id", "=", $ecersEntry->id)->where("test", "=", $test->test)->whereIn("page", $pages)->orderBy("page")->orderBy("item")->orderBy("item_num")->get();
+                    $entries = EcersData::where("entry_id", "=", $ecersEntry->id)->where("test", "=", $test->test)->whereIn("page", $pages)->orderBy("page")->orderBy("item")->orderBy("item_num")->get();
                     $pageData = array();
 
                     foreach ($entries as $entry) {
@@ -176,26 +194,26 @@ class EcersController extends BaseController
             // ************************************************
             foreach ($tests as $test) {
                 $testData = EcersData::where("test", "=", $test->test)->where("entry_id", "=", $ecersEntry->id)->get();
-                $pages    = $ecersModel->getPageDataForTest($test->test);
+                $pages = $ecersModel->getPageDataForTest($test->test);
 
                 foreach ($pages as $page => $page_name) {
-                    $next    = false;
-                    $entry   = $this->getEntryDataForPage($testData, $page);
-                    $score   = 0;
-                    $Level3  = $this->pageValueCount($entry, 3);
+                    $next = false;
+                    $entry = $this->getEntryDataForPage($testData, $page);
+                    $score = 0;
+                    $Level3 = $this->pageValueCount($entry, 3);
                     $L3Count = $Level3["count"];
-                    $L3Yes   = $Level3["yes"];
-                    $Level5  = $this->pageValueCount($entry, 5);
+                    $L3Yes = $Level3["yes"];
+                    $Level5 = $this->pageValueCount($entry, 5);
                     $L5Count = $Level5["count"];
-                    $L5Yes   = $Level5["yes"];
-                    $Level7  = $this->pageValueCount($entry, 7);
+                    $L5Yes = $Level5["yes"];
+                    $Level7 = $this->pageValueCount($entry, 7);
                     $L7Count = $Level7["count"];
-                    $L7Yes   = $Level7["yes"];
+                    $L7Yes = $Level7["yes"];
 
                     // ********************************************
                     // Count Whole Page N/A as a full-stop
                     // ********************************************
-                    $count   = count($entry);
+                    $count = count($entry);
                     $naCount = 0;
 
                     foreach ($entry as $entryData) {
@@ -207,7 +225,7 @@ class EcersController extends BaseController
 
                     if ($count == $naCount) {
                         $score = ".";
-                        $next  = true;
+                        $next = true;
                     }
 
                     // ********************************************
@@ -217,7 +235,7 @@ class EcersController extends BaseController
                         foreach ($entry as $entryData) {
                             if ($entryData->item == 1 && $entryData->value == 0) {
                                 $score = 1;
-                                $next  = true;
+                                $next = true;
                             }
                         }
                     }
@@ -227,7 +245,7 @@ class EcersController extends BaseController
                     if ($score == 0 && $next == false) {
                         if ($L3Yes < ($L3Count * 0.5)) {
                             $score = 1;
-                            $next  = true;
+                            $next = true;
                         }
                     }
 
@@ -237,7 +255,7 @@ class EcersController extends BaseController
                     if ($next == false) {
                         if ($L3Yes >= ($L3Count * 0.5) && $L3Yes < $L3Count) {
                             $score = 2;
-                            $next  = true;
+                            $next = true;
                         } else if ($L3Yes < $L3Count) {
                             // If < 100% of level 3 items are YES then <END>
                             $next = true;
@@ -255,10 +273,10 @@ class EcersController extends BaseController
                     if ($next == false) {
                         if ($L5Yes < ($L5Count * 0.5)) {
                             $score = 3;
-                            $next  = true;
+                            $next = true;
                         } else if ($L5Yes >= ($L5Count * 0.5) && $L5Yes < $L5Count) {
                             $score = 4;
-                            $next  = true;
+                            $next = true;
                         }
                     }
 
@@ -288,12 +306,12 @@ class EcersController extends BaseController
         }
 
         $filename = "ecers__" . date("U") . ".csv";
-        $fp       = fopen(public_path() . "/tmp/" . $filename, 'w');
+        $fp = fopen(public_path() . "/tmp/" . $filename, 'w');
 
 
         fputcsv($fp, $csvHeader);
 
-        foreach($csvData as $data) {
+        foreach ($csvData as $data) {
             fputcsv($fp, $data);
         }
 
@@ -303,29 +321,29 @@ class EcersController extends BaseController
 
         return View::make("ecers/test_csv", array(
             "header" => $csvHeader,
-            "rows"   => $csvData
+            "rows" => $csvData
         ));
     }
 
     private function getPageScore($pageData)
     {
-        $next    = false;
-        $score   = 0;
-        $Level3  = $this->pageValueCount($pageData, 3);
+        $next = false;
+        $score = 0;
+        $Level3 = $this->pageValueCount($pageData, 3);
         $L3Count = $Level3["count"];
-        $L3Yes   = $Level3["yes"];
-        $Level5  = $this->pageValueCount($pageData, 5);
+        $L3Yes = $Level3["yes"];
+        $Level5 = $this->pageValueCount($pageData, 5);
         $L5Count = $Level5["count"];
-        $L5Yes   = $Level5["yes"];
-        $Level7  = $this->pageValueCount($pageData, 7);
+        $L5Yes = $Level5["yes"];
+        $Level7 = $this->pageValueCount($pageData, 7);
         $L7Count = $Level7["count"];
-        $L7Yes   = $Level7["yes"];
+        $L7Yes = $Level7["yes"];
 
 
         // ********************************************
         // Count Whole Page N/A as a full-stop
         // ********************************************
-        $count   = count($pageData);
+        $count = count($pageData);
         $naCount = 0;
 
         foreach ($pageData as $entryData) {
@@ -345,7 +363,7 @@ class EcersController extends BaseController
         foreach ($pageData as $entryData) {
             if ($entryData->item == 1 && $entryData->value == 0) {
                 $score = 1;
-                $next  = true;
+                $next = true;
             }
         }
         // *************************************************************
@@ -354,7 +372,7 @@ class EcersController extends BaseController
         if ($score == 0 && $next == false) {
             if ($L3Yes < ($L3Count * 0.5)) {
                 $score = 1;
-                $next  = true;
+                $next = true;
             }
         }
 
@@ -364,7 +382,7 @@ class EcersController extends BaseController
         if ($next == false) {
             if ($L3Yes >= ($L3Count * 0.5) && $L3Yes < $L3Count) {
                 $score = 2;
-                $next  = true;
+                $next = true;
             } else if ($L3Yes < $L3Count) {
                 // If < 100% of level 3 items are YES then <END>
                 $next = true;
@@ -382,10 +400,10 @@ class EcersController extends BaseController
         if ($next == false) {
             if ($L5Yes < ($L5Count * 0.5)) {
                 $score = 3;
-                $next  = true;
+                $next = true;
             } else if ($L5Yes >= ($L5Count * 0.5) && $L5Yes < $L5Count) {
                 $score = 4;
-                $next  = true;
+                $next = true;
             }
         }
 
@@ -413,13 +431,13 @@ class EcersController extends BaseController
     private function getCSVHeader()
     {
         $ecersModel = new Ecers();
-        $tests      = $ecersModel->getTests();
-        $csvHeader  = array(
+        $tests = $ecersModel->getTests();
+        $csvHeader = array(
             "Centre", "Room", "Date Start", "Date End"
         );
 
         foreach ($tests as $test) {
-            $catCount   = 1;
+            $catCount = 1;
             $categories = $ecersModel->getCategoryData($test->test);
 
             foreach ($categories as $category) {
@@ -460,7 +478,7 @@ class EcersController extends BaseController
     private function pageValueCount($pageData, $item)
     {
         $count = 0;
-        $yes   = 0;
+        $yes = 0;
 
         foreach ($pageData as $entryData) {
             if ($entryData["item"] == $item) {
@@ -477,7 +495,7 @@ class EcersController extends BaseController
 
         return array(
             "count" => $count,
-            "yes"   => $yes
+            "yes" => $yes
         );
     }
 
@@ -488,12 +506,12 @@ class EcersController extends BaseController
         $games = EcersEntry::all();
         $deleted = array();
 
-        foreach($games as $game) {
+        foreach ($games as $game) {
             if (in_array($game->id, $deleted)) {
                 continue;
             }
 
-            $duplicates = EcersEntry::where("id","!=",$game->id)
+            $duplicates = EcersEntry::where("id", "!=", $game->id)
                 ->where("centre", "=", $game->centre)
                 ->where("room", "=", $game->room)
                 ->where("observer", "=", $game->observer)
@@ -502,7 +520,7 @@ class EcersController extends BaseController
                 ->where("end", "=", $game->end)
                 ->get();
 
-            foreach($duplicates as $duplicate) {
+            foreach ($duplicates as $duplicate) {
                 EcersData::where("entry_id", "=", $duplicate->id)->delete();
                 EcersEntry::where("id", "=", $duplicate->id)->delete();
 

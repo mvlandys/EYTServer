@@ -36,13 +36,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vocab <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/vocab">Vocab Old</a></li>
-                            <li><a href="/vocab/new">Vocab New</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/vocab">Vocab</a></li>
                     <li><a href="/cardsort">CardSort Data</a></li>
                     <li><a href="/questionnaire">Questionnaire Data</a></li>
                     <li><a href="/mrant">MrAnt Data</a></li>

@@ -1,9 +1,10 @@
 <?php
+
 use Illuminate\Routing\Controller;
 
 class VocabController extends Controller
 {
-    public function saveGamesNew()
+    public function saveGames()
     {
         if (!Input::has("games")) {
             return array("error" => "No Game Data specified");
@@ -55,6 +56,7 @@ class VocabController extends Controller
         return array("success");
     }
 
+    /*
     public function saveGames()
     {
         ini_set('max_execution_time', '9999999999999');
@@ -108,8 +110,9 @@ class VocabController extends Controller
 
         return array("success");
     }
+    */
 
-    public function showResultsNew($test_name = null, $start = null, $end = null)
+    public function showResults($test_name = null, $start = null, $end = null)
     {
         $gameRep   = new Games(new VocabGameNew());
         $games     = $gameRep->getGames($test_name, $start, $end);
@@ -132,7 +135,7 @@ class VocabController extends Controller
         ));
     }
 
-    public function viewScoresNew($game_id)
+    public function viewScores($game_id)
     {
         $scores    = VocabScoreNew::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
         $incorrect = 0;
@@ -155,6 +158,7 @@ class VocabController extends Controller
         ));
     }
 
+    /*
     public function showResults($test_name = null, $start = null, $end = null)
     {
         $gameRep   = new Games(new VocabGame());
@@ -177,7 +181,9 @@ class VocabController extends Controller
             "tests"     => $testNames
         ));
     }
+    */
 
+    /*
     public function viewScores($game_id)
     {
         $scores = VocabScore::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
@@ -187,8 +193,9 @@ class VocabController extends Controller
             "names"  => array_values($this->cardNames())
         ));
     }
+    */
 
-    public function makeCSVNew($test_name = null, $start = null, $end = null, $returnFile = false)
+    public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
         $gameRep  = new Games(new VocabGameNew());
         $games    = $gameRep->getGames($test_name, $start, $end);
@@ -305,6 +312,7 @@ class VocabController extends Controller
         }
     }
 
+    /*
     public function makeCSV($test_name = null, $start = null, $end = null, $returnFile = false)
     {
         $gameRep  = new Games(new VocabGame());
@@ -369,6 +377,7 @@ class VocabController extends Controller
             ));
         }
     }
+    */
 
     public function deleteGame($game_id)
     {
@@ -378,6 +387,7 @@ class VocabController extends Controller
         return ["success" => true];
     }
 
+    /*
     public function fixDuplicates()
     {
         ini_set('max_execution_time', 300); // 5 minutes
@@ -407,8 +417,9 @@ class VocabController extends Controller
 
         echo "Removed " . count($deleted) . " duplicates";
     }
+    */
 
-    public function fixDuplicatesNew()
+    public function fixDuplicates()
     {
         ini_set('max_execution_time', 300); // 5 minutes
 
@@ -438,6 +449,7 @@ class VocabController extends Controller
         echo "Removed " . count($deleted) . " duplicates";
     }
 
+    /*
     private function cardNames()
     {
         return array("Banana", "Door", "Book", "Fish", "Flower", "Spider", "Kangeroo",
@@ -449,6 +461,7 @@ class VocabController extends Controller
             "Chimney", "River", "Harp", "Submarine", "Tweezers", "Flamingo", "Target",
             "Trumpet", "Violin", "Wrench");
     }
+    */
 
     private function cardNamesNew()
     {
