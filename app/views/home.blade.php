@@ -26,7 +26,7 @@
                         <option value="fishshark">Fish Shark</option>
                         <option value="mrant">Mr Ant</option>
                         <option value="notthis">Not This</option>
-                        <option value="vocab/new">Vocab</option>
+                        <option value="vocab">Vocab</option>
                     </select>
                 </div>
             </div>

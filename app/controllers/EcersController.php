@@ -525,10 +525,20 @@ class EcersController extends BaseController
                 EcersEntry::where("id", "=", $duplicate->id)->delete();
 
                 $deleted[] = $duplicate->id;
+
+                $info = array(
+                    "center" => $game->centre,
+                    "room" => $game->room,
+                    "observer" => $game->observer
+                );
+
+                echo "<pre>";
+                print_r($info);
+                echo "</pre>";
             }
         }
 
-        echo "Removed " . count($deleted) . " duplicates";
+        echo "Removed " . count($deleted) . " duplicates";exit();
     }
 
     public function deleteEntry($entry_id)

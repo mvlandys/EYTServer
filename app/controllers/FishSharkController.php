@@ -72,6 +72,10 @@ class FishSharkController extends BaseController
         foreach ($games as $gameData) {
             $dob  = DateTime::createFromFormat("d-m-Y", (Input::has("birthdate")) ? Input::get("birthdate") : $gameData["birthdate"]);
 
+            if (!empty($gameData["test_name"]) && empty($gameData["studyName"])) {
+                $gameData["studyName"] = $gameData["test_name"];
+            }
+
             $game = FishSharkGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
                 "session_id"    => $gameData["session"],
@@ -81,9 +85,9 @@ class FishSharkController extends BaseController
                 "age"           => $gameData["age"],
                 "sex"           => $gameData["sex"],
                 "played_at"     => $gameData["date"] . ":00",
-                "animation"     => $gameData["animation"],
-                "blank_min"     => $gameData["blank_min"],
-                "blank_max"     => $gameData["blank_max"],
+                "animation"     => (empty($gameData["animation"])) ? null : $gameData["animation"],
+                "blank_min"     => (empty($gameData["blank_min"])) ? null : $gameData["blank_min"],
+                "blank_max"     => (empty($gameData["blank_max"])) ? null : $gameData["blank_max"],
                 "ts_start"      => (empty($gameData["timestamps"]["Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Start"])),
                 "ts_lvl1_start" => (empty($gameData["timestamps"]["Level 1 Start"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 Start"])),
                 "ts_lvl1_end"   => (empty($gameData["timestamps"]["Level 1 End"])) ? null : date("Y-m-d H:i:s", strtotime($gameData["timestamps"]["Level 1 End"])),
@@ -100,8 +104,8 @@ class FishSharkController extends BaseController
                     "part"         => $score["repNumber"],
                     "value"        => $score["correct"],
                     "responseTime" => $score["responseTime"],
-                    "blankTime"    => $score["blankTime"],
-                    "is_shark"     => $score["isShark"]
+                    "blankTime"    => (empty($score["blankTime"])) ? null : $score["blankTime"],
+                    "is_shark"     => (empty($score["isShark"])) ? null : $score["isShark"]
                 ));
             }
         }

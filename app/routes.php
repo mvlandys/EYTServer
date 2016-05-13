@@ -29,7 +29,7 @@ Route::post("/passwordreset/submit", "UserController@processResetPassword");
 Route::get("/questionnaire/form", "QuestionnaireController@showForm");
 Route::post("/questionnaire/form/submit", "QuestionnaireController@submitForm");
 
-Route::group(array("before" => "auth"), function () {
+Route::group(array("before" => "auth"), function() {
     // Home Route
     Route::get('/home', "HomeController@homePage");
     Route::get("/csv/{test_name}/{start}/{end}", "HomeController@makeCSV");
@@ -37,7 +37,7 @@ Route::group(array("before" => "auth"), function () {
     Route::get("/csv", "HomeController@makeCSV");
 
     // Vocab Routes
-    Route::group(array("before" => "vocab"), function () {
+    Route::group(array("before" => "vocab"), function() {
         /*
         Route::get("/vocab/new", "VocabController@showResultsNew");
         Route::get("/vocab/new/duplicates", "VocabController@fixDuplicatesNew");
@@ -47,7 +47,8 @@ Route::group(array("before" => "auth"), function () {
         Route::get("/vocab/new/{test_name}", "VocabController@showResultsNew");
         */
 
-        Route::get("/vocab/game/{id}/delete", array("before" => "delete", "uses" => "VocabController@deleteGame"));
+        Route::get("/vocab/game/{id}/delete", array("before" => "delete",
+                                                    "uses"   => "VocabController@deleteGame"));
         Route::get("/vocab/game/{id}", "VocabController@viewScores");
         Route::get("/vocab/csv/{test_name}/{start}/{end}", "VocabController@makeCSV");
         Route::get("/vocab/csv/{test_name}", "VocabController@makeCSV");
@@ -59,8 +60,9 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // CardSort Routes
-    Route::group(array("before" => "cardsort"), function () {
-        Route::get("/cardsort/game/{id}/delete", array("before" => "delete", "uses" => "CardSortController@deleteGame"));
+    Route::group(array("before" => "cardsort"), function() {
+        Route::get("/cardsort/game/{id}/delete", array("before" => "delete",
+                                                       "uses"   => "CardSortController@deleteGame"));
         Route::get("/cardsort/game/{id}", "CardSortController@viewScores");
         Route::get("/cardsort/csv/{test_name}/{start}/{end}", "CardSortController@makeCSV");
         Route::get("/cardsort/csv/{test_name}", "CardSortController@makeCSV");
@@ -72,16 +74,18 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // Questionnaire Routes
-    Route::group(array("before" => "questionnaire"), function () {
-        Route::get("/questionnaire/game/{id}/delete", array("before" => "delete", "uses" => "QuestionnaireController@deleteGame"));
+    Route::group(array("before" => "questionnaire"), function() {
+        Route::get("/questionnaire/game/{id}/delete", array("before" => "delete",
+                                                            "uses"   => "QuestionnaireController@deleteGame"));
         Route::get("/questionnaire", "QuestionnaireController@showResults");
         Route::get("/questionnaire/game/{id}", "QuestionnaireController@viewScores");
         Route::get("/questionnaire/csv", "QuestionnaireController@makeCSV");
     });
 
     // MrAnt Routes
-    Route::group(array("before" => "mrant"), function () {
-        Route::get("/mrant/game/{id}/delete", array("before" => "delete", "uses" => "MrAntController@deleteGame"));
+    Route::group(array("before" => "mrant"), function() {
+        Route::get("/mrant/game/{id}/delete", array("before" => "delete",
+                                                    "uses"   => "MrAntController@deleteGame"));
         Route::get("/mrant/game/{id}", "MrAntController@viewScores");
         Route::get("/mrant/csv/{test_name}/{start}/{end}", "MrAntController@makeCSV");
         Route::get("/mrant/csv/{test_name}", "MrAntController@makeCSV");
@@ -93,8 +97,9 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // Fish Shark Routes
-    Route::group(array("before" => "fishshark"), function () {
-        Route::get("/fishshark/game/{id}/delete", array("before" => "delete", "uses" => "FishSharkController@deleteGame"));
+    Route::group(array("before" => "fishshark"), function() {
+        Route::get("/fishshark/game/{id}/delete", array("before" => "delete",
+                                                        "uses"   => "FishSharkController@deleteGame"));
         Route::get("/fishshark/game/{id}", "FishSharkController@viewScores");
         Route::get("/fishshark/csv/{test_name}/{start}/{end}", "FishSharkController@makeCSV");
         Route::get("/fishshark/csv/{test_name}", "FishSharkController@makeCSV");
@@ -106,8 +111,9 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // NotThis Routes
-    Route::group(array("before" => "notthis"), function () {
-        Route::get("/notthis/game/{id}/delete", array("before" => "delete", "uses" => "NotThisController@deleteGame"));
+    Route::group(array("before" => "notthis"), function() {
+        Route::get("/notthis/game/{id}/delete", array("before" => "delete",
+                                                      "uses"   => "NotThisController@deleteGame"));
         Route::get("/notthis/game/{id}", "NotThisController@viewScores");
         Route::get("/notthis/csv/{test_name}/{start}/{end}", "NotThisController@makeCSV");
         Route::get("/notthis/csv/{test_name}", "NotThisController@makeCSV");
@@ -119,7 +125,7 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // ECERS Routes
-    Route::group(array("before" => "ecers"), function () {
+    Route::group(array("before" => "ecers"), function() {
         Route::get("/ecers/entry/{entry_id}", "EcersController@viewEntry");
         Route::get("/ecers/game/{entry_id}/delete", "EcersController@deleteEntry");
         Route::get("/ecers/csv/{test_name}", "EcersController@makeCSV");
@@ -132,7 +138,7 @@ Route::group(array("before" => "auth"), function () {
     });
 
     // Admin Routes
-    Route::group(array("before" => "admin"), function () {
+    Route::group(array("before" => "admin"), function() {
         Route::get("/admin/users/delete/{user_id}", "UserController@deleteUser");
         Route::get("/admin/users", "UserController@listUsers");
         Route::get("/admin/newuser", "UserController@newUser");
@@ -163,4 +169,10 @@ Route::get("/", function() {
     } else {
         return Redirect::to('/home');
     }
+});
+
+Route::post("/game_data", function() {
+    $file = Input::file('game_data');
+
+    echo file_get_contents($file->getRealPath());
 });

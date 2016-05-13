@@ -41,8 +41,12 @@ class VocabController extends Controller
             $game->score = $score;
             $game->save();
 
+            if (count($gameData["score_data"]) > 45) {
+                $gameData["score_data"] = $this->convertOldToNew($gameData["score_data"]);
+            }
+
             foreach ($gameData["score_data"] as $card => $value) {
-                $card      = substr($card, 5);
+                $card      = (strlen($card) > 5) ? substr($card, 5) : $card;
                 $cardScore = new VocabScoreNew();
 
                 $cardScore->game_id    = $game->id;
@@ -140,7 +144,7 @@ class VocabController extends Controller
         $scores    = VocabScoreNew::where("game_id", "=", $game_id)->orderBy("card", "ASC")->get();
         $incorrect = 0;
 
-        foreach ($scores as $score) {
+        foreach ($scores as $key => $score) {
             if ($score->value === 0) {
                 $incorrect++;
             } else {
@@ -149,6 +153,10 @@ class VocabController extends Controller
 
             if ($incorrect > 6 && $score->value == 0) {
                 $score->value = ".";
+            }
+
+            if ($key > 45) {
+                unset($scores[$key]);
             }
         }
 
@@ -381,8 +389,8 @@ class VocabController extends Controller
 
     public function deleteGame($game_id)
     {
-        VocabScore::where("game_id", "=", $game_id)->delete();
-        VocabGame::where("id", "=", $game_id)->delete();
+        VocabScoreNew::where("game_id", "=", $game_id)->delete();
+        VocabGameNew::where("id", "=", $game_id)->delete();
 
         return ["success" => true];
     }
@@ -449,7 +457,6 @@ class VocabController extends Controller
         echo "Removed " . count($deleted) . " duplicates";
     }
 
-    /*
     private function cardNames()
     {
         return array("Banana", "Door", "Book", "Fish", "Flower", "Spider", "Kangeroo",
@@ -461,7 +468,6 @@ class VocabController extends Controller
             "Chimney", "River", "Harp", "Submarine", "Tweezers", "Flamingo", "Target",
             "Trumpet", "Violin", "Wrench");
     }
-    */
 
     private function cardNamesNew()
     {
@@ -472,6 +478,22 @@ class VocabController extends Controller
             "Screw", "Chain", "Chimney", "Parachute", "Cactus", "Violin", "Arrow",
             "Fountain", "Tweezers", "Flamingo", "Peacock", "Ruler", "Envelope", "Calendar",
             "Target", "Globe", "Harp", "");
+    }
+
+    public function convertOldToNew(array $scoreData)
+    {
+        $old_cards = array_values($this->cardNames());
+        $new_cards = $this->cardNamesNew();
+        $newScoreData = array();
+
+        foreach ($scoreData as $card => $value) {
+            $name = $old_cards[substr($card,5)];
+            if (array_search($name, $new_cards) !== false) {
+                $newScoreData[array_search($name, $new_cards)] = $value;
+            }
+        }
+
+        return $newScoreData;
     }
 
     public function migrateOldToNew($dateString)

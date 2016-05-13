@@ -105,7 +105,10 @@ function uploadGameData()
                 type: "POST",
                 data: formData,
                 complete: function(data) {
-                    $.colorbox({html:data.responseText});
+                    //$.colorbox({html:data.responseText});
+                    $.colorbox({
+                        html: '<div class="alert alert-success">Successfully uploaded data file</div>'
+                    });
                 }
             });
         }
