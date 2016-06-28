@@ -36,13 +36,26 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/vocab">Vocab</a></li>
-                    <li><a href="/cardsort">CardSort Data</a></li>
-                    <li><a href="/questionnaire">Questionnaire Data</a></li>
-                    <li><a href="/mrant">MrAnt Data</a></li>
-                    <li><a href="/fishshark">Fish Shark Data</a></li>
-                    <li><a href="/notthis">NotThis Data</a></li>
-                    <li><a href="/ecers">Ecers Data</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">EYT Apps<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/vocab">Vocab</a></li>
+                            <li><a href="/cardsort">CardSort</a></li>
+                            <li><a href="/questionnaire">Questionnaire</a></li>
+                            <li><a href="/mrant">MrAnt</a></li>
+                            <li><a href="/fishshark">Fish Shark</a></li>
+                            <li><a href="/notthis">NotThis</a></li>
+                            <li><a href="/ecers">Ecers</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BAS Apps<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/verbal">Verbal Comprehension</a></li>
+                            <li><a href="/numeracy">Early Numeracy</a></li>
+                            <li><a href="/numbers">Early Numbers</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>

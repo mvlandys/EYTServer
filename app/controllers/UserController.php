@@ -219,7 +219,10 @@ class UserController extends Controller
             new FishSharkGame(),
             new MrAntGame(),
             new NotThisGame(),
-            new VocabGameNew()
+            new VocabGameNew(),
+            new VerbalGame(),
+            new NumbersGame(),
+            new NumeracyGame()
         );
 
         foreach ($games as $game) {

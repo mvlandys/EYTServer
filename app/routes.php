@@ -59,6 +59,24 @@ Route::group(array("before" => "auth"), function() {
         Route::get("/vocab", "VocabController@showResults");
     });
 
+    // Verbal Comprehension Routes
+    Route::get("/verbal", "VerbalController@showResults");
+    Route::get("/verbal/game/{id}", "VerbalController@viewScores");
+    Route::get("/verbal/{test_name}", "VerbalController@showResults");
+    Route::get("/verbal/{test_name}/{start}/{end}", "VerbalController@showResults");
+
+    // Numeracy Routes
+    Route::get("/numeracy", "NumeracyController@showResults");
+    Route::get("/numeracy/game/{id}", "NumeracyController@viewScores");
+    Route::get("/numeracy/{test_name}", "NumeracyController@showResults");
+    Route::get("/numeracy/{test_name}/{start}/{end}", "NumeracyController@showResults");
+
+    // Numbers Routes
+    Route::get("/numbers", "NumbersController@showResults");
+    Route::get("/numbers/game/{id}", "NumbersController@viewScores");
+    Route::get("/numbers/{test_name}", "NumbersController@showResults");
+    Route::get("/numbers/{test_name}/{start}/{end}", "NumbersController@showResults");
+
     // CardSort Routes
     Route::group(array("before" => "cardsort"), function() {
         Route::get("/cardsort/game/{id}/delete", array("before" => "delete",
@@ -154,7 +172,7 @@ Route::group(array("before" => "auth"), function() {
 
 // App POST routes
 Route::get("/vocab/copy/{date}", "VocabController@migrateOldToNew");
-//Route::post("/vocab/new/save", "VocabController@saveGamesNew");
+Route::post("/vocab/new/save", "VocabController@saveGames");
 Route::post("/vocab/save", "VocabController@saveGames");
 Route::post("/cardsort/save", "CardSortController@saveGame");
 Route::post("/questionnaire/save", "QuestionnaireController@saveAnswers");
@@ -162,6 +180,9 @@ Route::post("/mrant/save", "MrAntController@saveAnswers");
 Route::post("/fishshark/save", "FishSharkController@saveGames");
 Route::post("/notthis/save", "NotThisController@saveGames");
 Route::post("/ecers/save", "EcersController@saveEntries");
+Route::post("/verbal/save", "VerbalController@saveEntries");
+Route::post("/numeracy/save", "NumeracyController@saveEntries");
+Route::post("/numbers/save", "NumbersController@saveEntries");
 
 Route::get("/", function() {
     if (!Session::has("user_id")) {
