@@ -104,8 +104,8 @@ class FishSharkController extends BaseController
                     "part"         => $score["repNumber"],
                     "value"        => $score["correct"],
                     "responseTime" => $score["responseTime"],
-                    "blankTime"    => (empty($score["blankTime"])) ? null : $score["blankTime"],
-                    "is_shark"     => (empty($score["isShark"])) ? null : $score["isShark"]
+                    "blankTime"    => (empty($score["blankTime"])) ? 0 : $score["blankTime"],
+                    "is_shark"     => (empty($score["isShark"])) ? 0 : $score["isShark"]
                 ));
             }
         }
