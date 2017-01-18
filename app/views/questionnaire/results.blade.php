@@ -4,14 +4,16 @@
 
 @section('content')
 
+    <input type="hidden" name="game" value="questionnaire" />
+
 <div class="well">
     <div class="row">
         <div class="col-sm-3">
             <label>Test Name:</label>
             <select id="test_name">
-                <option value="">All Tests</option>
-                @foreach ($tests as $test)
-                <option {{{ ($test_name == $test["test_name"]) ? "selected" : "" }}} value="{{ $test["test_name"] }}">{{ $test["test_name"] }}</option>
+                <option value="all">All Tests</option>
+                @foreach ($tests as $key => $test)
+                    <option {{{ ($test_name == $test->test_name) ? "selected" : "" }}} value="{{ $key }}">{{ $test->test_name }}</option>
                 @endforeach
             </select>
         </div>
@@ -24,7 +26,7 @@
             <input type="text" id="date_end" placeholder="dd/mm/yyyy" value="{{{ $end or '' }}}" />
         </div>
         <div class="col-sm-3">
-            <a class="btn btn-primary" id="btnCardSortFilter">Submit</a>
+            <a class="btn btn-primary" id="btnCSBQFilter">Submit</a>
         </div>
     </div>
 </div>
@@ -39,10 +41,12 @@
         <th><a href="?order=grade">Grade</a></th>
         <th><a href="?order=dob">DOB</a></th>
         <th><a href="?order=age">Age</a></th>
-        <th><a href="?order=sex">Sex</a></th>
         <th><a href="?order=score">Score</a></th>
         <th><a href="?order=played_at">Played At</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
+        <th class="text-center">
+            <a id="btnDeleteGames" class="btn btn-danger btn-block btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -71,6 +75,7 @@
             </td>
             <td>{{ date("h:i A, d/m/Y",strtotime($result->played_at)) }}</td>
             <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $result->id }}" data-game_type="questionnaire" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><input class="deleteGames" type="checkbox" data-game_id="{{ $result->id }}"></td>
             <?php $lastID = $result->id; ?>
         </tr>
     @endforeach

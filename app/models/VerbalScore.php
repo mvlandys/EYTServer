@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\VerbalScore whereValue($value)
  * @method static \Illuminate\Database\Query\Builder|\VerbalScore whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\VerbalScore whereUpdatedAt($value)
+ * @property string $response
+ * @method static \Illuminate\Database\Query\Builder|\VerbalScore whereResponse($value)
  */
 class VerbalScore extends Model {
 

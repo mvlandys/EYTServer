@@ -4,7 +4,7 @@
 
 @section('content')
 
-<input type="hidden" name="game" value="vocab" />
+<input type="hidden" name="game" value="early_numeracy" />
 
 <div class="well">
     <div class="row">
@@ -26,7 +26,7 @@
             <input type="text" id="date_end" placeholder="dd/mm/yyyy" value="{{{ $end or '' }}}" />
         </div>
         <div class="col-sm-3">
-            <a class="btn btn-primary" id="btnVocabFilter">Submit</a>
+            <a class="btn btn-primary" id="btnVerbalFilter">Submit</a>
         </div>
     </div>
 </div>
@@ -34,8 +34,10 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th colspan="2"><a class="btn btn-warning btn-xs btn-block" id="btnVocabCSV">CSV</a></th>
+        <th><a class="btn btn-warning btn-xs" id="btnVerbalCSV">CSV</a></th>
         <th><a href="?order=test_name">Study Name</a></th>
+        <th><a href="?order=centre">Centre</a></th>
+        <th><a href="?order=assessor">Assessor</a></th>
         <th><a href="?order=subject_id">Subject ID</a></th>
         <th><a href="?order=session_id">Session ID</a></th>
         <th><a href="?order=grade">Grade</a></th>
@@ -54,10 +56,11 @@
     <?php $lastID = 0; ?>
     @foreach ($games as $game)
         <tr id="row{{ $game->id }}">
-            <td><a class="btn btn-info btn-sm" href="/vocab/game/{{ $game->id }}">View Scores</a></td>
-            <td><button class="btnViewGame btn btn-primary btn-xs" data-game_id="{{$game->id}}" data-game_type="vocab"><i class="glyphicon glyphicon-info-sign"></i></button></td>
+            <td><a class="btn btn-info btn-sm" href="/early_numeracy/game/{{ $game->id }}">View Scores</a></td>
             <td>{{{ empty($game->test_name) ? '.' : $game->test_name }}}</td>
-            <td>{{{ empty($game->subject_id) ? '.' : $game->subject_id }}}</td>
+            <td>{{{ empty($game->centre) ? '.' : $game->centre }}}</td>
+            <td>{{{ empty($game->assessor) ? '.' : $game->assessor }}}</td>
+            <td>{{{ empty($game->child_id) ? '.' : $game->child_id }}}</td>
             <td>{{{ empty($game->session_id) ? '.' : $game->session_id }}}</td>
             <td>{{{ empty($game->grade) ? '.' : $game->grade }}}</td>
             <td>
@@ -77,7 +80,7 @@
             </td>
             <td>{{ $game->score }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
-            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $game->id }}" data-game_type="vocab" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $game->id }}" data-game_type="early_numeracy" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
             <td class="text-center"><input class="deleteGames" type="checkbox" data-game_id="{{ $game->id }}"></td>
             <?php $lastID = $game->id; ?>
         </tr>

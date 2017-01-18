@@ -4,6 +4,8 @@
 
 @section('content')
 
+<input type="hidden" name="game" value="notthis" />
+
 <div class="well">
     <div class="row">
         <div class="col-sm-3">
@@ -43,6 +45,9 @@
         <th><a href="?order=score">Score</a></th>
         <th><a href="?order=played_at">Played At</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
+        <th class="text-center">
+            <a id="btnDeleteGames" class="btn btn-danger btn-block btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -72,6 +77,7 @@
             <td>{{ $game->score }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
             <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $game->id }}" data-game_type="notthis" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><input class="deleteGames" type="checkbox" data-game_id="{{ $game->id }}"></td>
             <?php $lastID = $game->id; ?>
         </tr>
     @endforeach

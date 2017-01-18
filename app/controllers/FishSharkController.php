@@ -79,7 +79,7 @@ class FishSharkController extends BaseController
             $game = FishSharkGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
                 "session_id"    => $gameData["session"],
-                "test_name"     => $gameData["studyName"],
+                "test_name"     => (empty($gameData["studyName"])) ? "Untitled Test" : $gameData["studyName"],
                 "grade"         => $gameData["grade"],
                 "dob"           => (!$dob) ? "" : $dob->format("Y-m-d"),
                 "age"           => $gameData["age"],
@@ -218,7 +218,16 @@ class FishSharkController extends BaseController
                 "TS_Lvl2_Start",
                 "TS_Lvl2_End",
                 "TS_Lvl3_Start",
-                "TS_Lvl3_End"
+                "TS_Lvl3_End",
+                "ImpulseControl",
+                "Go_Acc",
+                "NG_Acc",
+                "Go_Blk1_Acc",
+                "Go_Blk2_Acc",
+                "Go_Blk3_Acc",
+                "NG_Blk1_Acc",
+                "NG_Blk2_Acc",
+                "NG_Blk3_Acc",
                 /*,
                 "animation",
                 "blank_min",
@@ -273,6 +282,15 @@ class FishSharkController extends BaseController
                     (empty($game->ts_lvl2_end)) ? "." : $game->ts_lvl2_end,
                     (empty($game->ts_lvl3_start)) ? "." : $game->ts_lvl3_start,
                     (empty($game->ts_lvl3_end)) ? "." : $game->ts_lvl3_end,
+                    "=J2*K2",
+                    "=AVERAGE(L2:N2)",
+                    "=AVERAGE(O2:Q2)",
+                    "=IF(OR(AND(R2>0.8,U2<0.2),AND(R2<0.2,U2>0.8)),".",R2)",
+                    "=IF(OR(AND(S2>0.8,V2<0.2),AND(S2<0.2,V2>0.8)),".",S2)",
+                    "=IF(OR(AND(T2>0.8,W2<0.2),AND(T2<0.2,W2>0.8)),".",T2)",
+                    "=IF(OR(AND(R2>0.8,U2<0.2),AND(R2<0.2,U2>0.8)),".",U2)",
+                    "=IF(OR(AND(S2>0.8,V2<0.2),AND(S2<0.2,V2>0.8)),".",V2)",
+                    "=IF(OR(AND(T2>0.8,W2<0.2),AND(T2<0.2,W2>0.8)),".",W2)",
                     /*,
                     (empty($game->animation)) ? "." : $game->animation
                     (empty($game->blank_min)) ? "." : $game->blank_min
@@ -328,5 +346,12 @@ class FishSharkController extends BaseController
         }
 
         echo "Removed " . count($deleted) . " duplicates";
+    }
+
+    public function deleteGames()
+    {
+        $games   = Input::get("game_ids");
+        $gameRep = new Games(new FishSharkGame());
+        return $gameRep->deleteGames(new FishSharkScore(), $games);
     }
 }

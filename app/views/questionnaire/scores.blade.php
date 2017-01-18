@@ -13,10 +13,12 @@
     </thead>
     <tbody>
     @foreach ($scores as $score)
-    <tr>
-        <td>{{ $score->question }}</td>
-        <td>{{ $score->answer }}</td>
-    </tr>
+        @if ($score->question < 35)
+            <tr>
+                <td>{{ $score->question }}</td>
+                <td>{{ $score->answer }}</td>
+            </tr>
+        @endif
     @endforeach
     </tbody>
 </table>

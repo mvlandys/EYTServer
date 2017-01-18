@@ -22,6 +22,12 @@ class Games
     {
         $order = (Input::has("order")) ? Input::get("order") : "played_at";
 
+        foreach($this->perms as $key => $val) {
+            if ($val == "Untitled Test (.)") {
+                $this->perms[$key] = '';
+            }
+        }
+
         if (!empty($test_name) && !empty($start) && !empty($end)) {
             if ($test_name == "all") {
                 $games = $this->model
@@ -118,5 +124,20 @@ class Games
         }
 
         return $games;
+    }
+
+    public function deleteGames(Model $scores, array $games)
+    {
+        if (count($games) > 0) {
+            $this->model->whereIn("id", $games)->delete();
+
+            if (get_class($scores) == "EcersData") {
+                $scores::whereIn("entry_id", $games)->delete();
+            } else {
+                $scores::whereIn("game_id", $games)->delete();
+            }
+        }
+
+        return View::make("alert", ["type"=>"success", "msg" => "Successfully deleted games"]);
     }
 } 

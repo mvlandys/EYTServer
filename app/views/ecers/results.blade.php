@@ -4,6 +4,8 @@
 
 @section('content')
 
+<input type="hidden" name="game" value="ecers" />
+
 <div class="well">
     <div class="row">
         <div class="col-sm-3">
@@ -40,6 +42,9 @@
         <th><a href="?order=start">Start</a></th>
         <th><a href="?order=end">End</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
+        <th class="text-center">
+            <a id="btnDeleteGames" class="btn btn-danger btn-block btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -54,6 +59,7 @@
             <td>{{ date("h:i A, d/m/Y",strtotime($entry->start)) }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($entry->end)) }}</td>
             <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-game_type="ecers" data-last_id="{{ $lastID }}" data-entry_id="{{ $entry->id }}" data-game_id="{{ $entry->id }}" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><input class="deleteGames" type="checkbox" data-game_id="{{ $entry->id }}"></td>
             <?php $lastID = $entry->id; ?>
         </tr>
     @endforeach

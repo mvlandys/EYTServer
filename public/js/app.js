@@ -13,6 +13,7 @@ $(document).ready(function ()
     $("#btnMrAntFilter").on("click", filterMrAnt);
     $("#btnFishSharkFilter").on("click", filterFishShark);
     $("#btnNotThisFilter").on("click", filterNotThis);
+    $("#btnCSBQFilter").on("click", filterCSBQ);
     $("#btnVocabCSV").on("click", vocabCSV);
     $("#btnCardSortCSV").on("click", cardsortCSV);
     $("#btnQuestionnaireCSV").on("click", questionnaireCSV);
@@ -28,13 +29,19 @@ $(document).ready(function ()
     $("#btnDeleteUser").on("click", deleteUser);
     $("#btnNewAppUser").on("click", newAppUser);
     $("#btnEcersCSV").on("click", ecersCSV);
+    $("#btnNumeracyCSV").on("click", numeracyCSV);
+    $("#btnVerbalCSV").on("click", verbalCSV);
+    $("#btnNumbersCSV").on("click", numbersCSV);
     $("#btnUploadGameData").on("click", uploadGameData);
     $(".btnSetAppUserPassword").on("click", setAppUserPassword);
+    $("#btnDeleteGames").on("click", deleteGames);
+    $(".btnViewGame").on("click", viewGame);
     $(document).delegate(".btnDeleteGame", "click", deleteGame);
     $(document).delegate("#btnSubmitNewAppUser", "click", submitNewAppUser);
     $(document).delegate("#btnUpdateAppUserPassword", "click", updateAppUserPassword);
+    $(document).delegate("#btnUpdateGame", "click", updateGame);
 
-    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1 || route.indexOf("/notthis") > -1 || route.indexOf("/ecers") > -1) {
+    if (route.indexOf("/vocab") > -1 || route.indexOf("/cardsort") > -1 || route.indexOf("/mrant") > -1 || route.indexOf("/fishshark") > -1 || route.indexOf("/notthis") > -1 || route.indexOf("/ecers") > -1 || route.indexOf("/questionnaire") > -1) {
         formSetup();
     }
 
@@ -56,6 +63,119 @@ $(document).ready(function ()
         });
     }
 });
+
+function updateGame()
+{
+    var game_id   = $(this).data("game_id");
+    var game_type = $(this).data("game_type");
+
+    $.ajax({
+        url: "/update_game",
+        type: "POST",
+        data: {
+            study       : $("[name=study]").val(),
+            child_id    : $("[name=child_id]").val(),
+            session_id  : $("[name=session_id]").val(),
+            grade       : $("[name=grade]").val(),
+            dob         : $("[name=dob]").val(),
+            age         : $("[name=age]").val(),
+            gender      : $("[name=gender]").val(),
+            game_id     : game_id,
+            type        : game_type
+        },
+        beforeSend: function() {
+            $.colorbox();
+        },
+        complete: function(data) {
+            $.colorbox({
+                html: data.responseText,
+                onClosed: function() {
+                    window.location.reload();
+                }
+            });
+        }
+    })
+}
+
+function viewGame()
+{
+    var game_id   = $(this).data("game_id");
+    var game_type = $(this).data("game_type");
+
+    $.colorbox({
+        href: "/game_data/" + game_type + "/" + game_id
+    });
+}
+
+function deleteGames()
+{
+    var game_ids = [];
+    var game     = $("[name=game]").val();
+
+    $(".deleteGames").each(function() {
+        if ($(this).is(":checked")) {
+            game_ids.push($(this).data("game_id"));
+        }
+    });
+
+    $.ajax({
+        url: "/" + game + "/delete",
+        type: "POST",
+        data: {
+            game_ids : game_ids
+        },
+        complete: function(data) {
+            $.colorbox({
+                html: data.responseText,
+                onClosed: function() {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+}
+
+function numeracyCSV()
+{
+    var test = $("#test_name").val();
+    var start = $("#date_start");
+    var end = $("#date_end");
+    var game = "/numeracy";
+
+    var url = (start.val() == "" && end.val() == "") ? game + "/csv/" + test : game + "/csv/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+
+    $.colorbox({
+        href: url
+    });
+}
+
+function numbersCSV()
+{
+    var test = $("#test_name").val();
+    var start = $("#date_start");
+    var end = $("#date_end");
+    var game = "/numbers";
+
+    var url = (start.val() == "" && end.val() == "") ? game + "/csv/" + test : game + "/csv/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+
+    $.colorbox({
+        href: url
+    });
+}
+
+function verbalCSV()
+{
+    var test = $("#test_name").val();
+    var start = $("#date_start");
+    var end = $("#date_end");
+    var game = "/verbal";
+
+    var url = (start.val() == "" && end.val() == "") ? game + "/csv/" + test : game + "/csv/" + test + "/" + getDate(start) + "/" + getDate(end) + "/";
+
+    $.colorbox({
+        href: url
+    });
+}
 
 function uploadGameData()
 {
@@ -282,6 +402,16 @@ function filterVocab()
         onOpen: function ()
         {
             window.location.pathname = filterURL("vocab");
+        }
+    });
+}
+
+function filterCSBQ()
+{
+    $.colorbox({
+        onOpen: function ()
+        {
+            window.location.pathname = filterURL("questionnaire");
         }
     });
 }

@@ -12,22 +12,23 @@ class UserController extends Controller
     public function login()
     {
         if (!Input::has("username") || !Input::has("password")) {
-            return array("error" => "Input Error");
+            return ["error" => "Input Error"];
         }
 
         $user = User::where("username", "=", Input::get("username"));
 
         if ($user->count() == 0) {
-            return array("error" => "Username does not exist");
+            return ["error" => "Username does not exist"];
         }
 
         $user = $user->first();
 
         if (Hash::check(Input::get("password"), $user->password)) {
             Session::set("user_id", $user->id);
-            return array("error" => false);
+
+            return ["error" => false];
         } else {
-            return array("error" => "Password is incorrect");
+            return ["error" => "Password is incorrect"];
         }
     }
 
@@ -64,6 +65,9 @@ class UserController extends Controller
         $user->questionnaire = Input::get("questionnaire");
         $user->vocab         = Input::get("vocab");
         $user->notthis       = Input::get("notthis");
+        $user->ecers         = Input::get("ecers");
+        $user->rde           = Input::get("rde");
+        $user->earlynum      = Input::get("earlynum");
         $user->save();
 
         if ($userCount == 0) {
@@ -77,25 +81,32 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return View::make("users/list_users", array(
-            "users" => $users
-        ));
+        return View::make("users/list_users", ["users" => $users]);
     }
 
     public function viewUser($user_id)
     {
-        $permissions = array();
+        $permissions = [];
         $userPerms   = UserPermissions::where("user_id", "=", $user_id)->get();
+        $tests       = $this->getAllTestNames();
 
         foreach ($userPerms as $perm) {
+            if ($perm->test_name == "") {
+                $perm->test_name = "Untitled Test (.)";
+            }
+
             $permissions[] = $perm->test_name;
         }
 
-        return View::make("users/view_user", array(
-            "user"  => User::find($user_id),
-            "perms" => $permissions,
-            "tests" => $this->getAllTestNames()
-        ));
+        foreach ($tests as $key => $val) {
+            if ($val == "") {
+                $tests[$key] = "Untitled Test (.)";
+            }
+        }
+
+        return View::make("users/view_user", ["user"  => User::find($user_id),
+                                              "perms" => $permissions,
+                                              "tests" => $tests]);
     }
 
     public function updateUser($user_id)
@@ -111,6 +122,8 @@ class UserController extends Controller
         $user->vocab         = Input::get("vocab");
         $user->notthis       = Input::get("notthis");
         $user->ecers         = Input::get("ecers");
+        $user->rde           = Input::get("rde");
+        $user->earlynum      = Input::get("earlynum");
 
         if (!empty(Input::get("password"))) {
             $user->password = Hash::make(Input::get("password"));
@@ -159,7 +172,8 @@ class UserController extends Controller
         $userReset->expires_at = $expires->format("Y-m-d H:i:s");
         $userReset->save();
 
-        Mail::send("users/password_reset_email", ["user" => $user, "code" => $resetCode], function ($message) use ($user) {
+        Mail::send("users/password_reset_email", ["user" => $user,
+                                                  "code" => $resetCode], function($message) use ($user) {
             $message->to($user->email);
         });
 
@@ -171,7 +185,8 @@ class UserController extends Controller
         $reset = UserPasswordReset::where("reset_code", "=", $code)->where("expires_at", ">", date("Y-m-d H:i:s"))->first();
 
         if (empty($reset)) {
-            return View::make("alert", ["type" => "danger", "msg" => "This reset code has expired"]);
+            return View::make("alert", ["type" => "danger",
+                                        "msg"  => "This reset code has expired"]);
         } else {
             return View::make("users/password_reset_submit", ["code" => $code]);
         }
@@ -207,23 +222,23 @@ class UserController extends Controller
         for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, strlen($characters) - 1)];
         }
+
         return $randomString;
     }
 
     public function getAllTestNames()
     {
-        $testNames = array();
-        $tests     = array();
-        $games     = array(
-            new CardSortGame(),
-            new FishSharkGame(),
-            new MrAntGame(),
-            new NotThisGame(),
-            new VocabGameNew(),
-            new VerbalGame(),
-            new NumbersGame(),
-            new NumeracyGame()
-        );
+        $testNames = [];
+        $tests     = [];
+        $games     = [new CardSortGame(),
+                      new FishSharkGame(),
+                      new MrAntGame(),
+                      new NotThisGame(),
+                      new VocabGameNew(),
+                      new VerbalGame(),
+                      new NumbersGame(),
+                      new NumeracyGame(),
+                      new EarlyNumeracyGame()];
 
         foreach ($games as $game) {
             $tests = array_merge($tests, $game::groupBy("test_name")->get(["test_name"])->toArray());
@@ -253,9 +268,7 @@ class UserController extends Controller
     {
         $users = AppUser::all();
 
-        return View::make("users/app_users", array(
-            "users" => $users
-        ));
+        return View::make("users/app_users", ["users" => $users]);
     }
 
     public function newAppUser()
@@ -320,21 +333,22 @@ class UserController extends Controller
         $bin = pack("H32", md5($text));
         for ($i = 0; $i < 1000; $i++) {
             $new = ($i & 1) ? $plainpasswd : $bin;
-            if ($i % 3) $new .= $salt;
-            if ($i % 7) $new .= $plainpasswd;
+            if ($i % 3)
+                $new .= $salt;
+            if ($i % 7)
+                $new .= $plainpasswd;
             $new .= ($i & 1) ? $bin : $plainpasswd;
             $bin = pack("H32", md5($new));
         }
         for ($i = 0; $i < 5; $i++) {
             $k = $i + 6;
             $j = $i + 12;
-            if ($j == 16) $j = 5;
+            if ($j == 16)
+                $j = 5;
             $tmp = $bin[$i] . $bin[$k] . $bin[$j] . $tmp;
         }
         $tmp = chr(0) . chr(0) . $bin[11] . $tmp;
-        $tmp = strtr(strrev(substr(base64_encode($tmp), 2)),
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
-            "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+        $tmp = strtr(strrev(substr(base64_encode($tmp), 2)), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
         return "$" . "apr1" . "$" . $salt . "$" . $tmp;
     }

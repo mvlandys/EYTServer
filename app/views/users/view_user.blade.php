@@ -99,8 +99,20 @@
                 <option value="1" {{ ($user->ecers == 1) ? "selected" : "" }}>ENABLED</option>
             </select>
         </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <label>RDE Data:</label>
+            <select class="form-control" name="rde">
+                <option value="0" {{ ($user->rde == 0) ? "selected" : "" }}>DISABLED</option>
+                <option value="1" {{ ($user->rde == 1) ? "selected" : "" }}>ENABLED</option>
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <label>Early Numeracy Data:</label>
+            <select class="form-control" name="earlynum">
+                <option value="0" {{ ($user->earlynum == 0) ? "selected" : "" }}>DISABLED</option>
+                <option value="1" {{ ($user->earlynum == 1) ? "selected" : "" }}>ENABLED</option>
+            </select>
+        </div>
     </div><br/>
 
     <div class="row">

@@ -23,7 +23,7 @@ class NotThisController extends BaseController
             $game->session_id = $gameData["session"];
             $game->grade      = $gameData["grade"];
             $game->sex        = $gameData["sex"];
-            $game->test_name  = (empty($gameData["test_name"])) ? "" : $gameData["test_name"];
+            $game->test_name  = (empty($gameData["test_name"])) ? "Untitled Test" : $gameData["test_name"];
             $game->played_at  = \DateTime::createFromFormat("Y-m-d H:i", $gameData["date"]);
             $game->age        = (empty($gameData["age"])) ? 0 : $gameData["age"];
             $game->dob        = (empty($gameData["birthdate"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["birthdate"]);
@@ -207,5 +207,12 @@ class NotThisController extends BaseController
         }
 
         echo "Done";
+    }
+
+    public function deleteGames()
+    {
+        $games   = Input::get("game_ids");
+        $gameRep = new Games(new NotThisGame());
+        return $gameRep->deleteGames(new NotThisScore(), $games);
     }
 }

@@ -30,6 +30,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\VerbalGame whereScore($value)
  * @method static \Illuminate\Database\Query\Builder|\VerbalGame whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\VerbalGame whereUpdatedAt($value)
+ * @property string $centre
+ * @property string $assessor
+ * @method static \Illuminate\Database\Query\Builder|\VerbalGame whereCentre($value)
+ * @method static \Illuminate\Database\Query\Builder|\VerbalGame whereAssessor($value)
  */
 class VerbalGame extends Model
 {

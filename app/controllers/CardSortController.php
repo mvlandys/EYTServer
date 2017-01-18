@@ -40,7 +40,7 @@ class CardSortController extends BaseController
             $game->session_id    = $gameData["user_data"]["session_id"];
             $game->grade         = $gameData["user_data"]["grade"];
             $game->sex           = $gameData["user_data"]["sex"];
-            $game->test_name     = $gameData["user_data"]["test_name"];
+            $game->test_name     = (empty($gameData["user_data"]["test_name"])) ? "Untitled Test" : $gameData["user_data"]["test_name"];
             $game->played_at     = \DateTime::createFromFormat("Y-m-d H:i:s", $gameData["played_at"]);
             $game->age           = (empty($gameData["user_data"]["age"])) ? 0 : $gameData["user_data"]["age"];
             $game->dob           = (empty($gameData["user_data"]["dob"])) ? null : \DateTime::createFromFormat("d/m/Y", $gameData["user_data"]["dob"]);
@@ -137,7 +137,20 @@ class CardSortController extends BaseController
             "TS_Lvl2_Start",
             "TS_Lvl2_End",
             "TS_Lvl3_Start",
-            "TS_Lvl3_End"
+            "TS_Lvl3_End",
+            "DCCS_SwitchAcc",
+            "DCCS_Acc",
+            "Lvl1_PtCalc",
+            "Lvl2_PtCalc",
+            "Lvl3_PtCalc",
+            "Lvl4_PtCalc",
+            "Lvl5_PtCalc",
+            "Lvl6_PtCalc",
+            "Lvl7_PtCalc",
+            "Lvl8_PtCalc",
+            "Lvl1_Acc",
+            "Lvl2_Acc",
+            "Lvl3_Acc"
         ), $cards));
 
         foreach ($games as $game) {
@@ -192,6 +205,19 @@ class CardSortController extends BaseController
                 (empty($game->ts_lvl2_end)) ? "." : $game->ts_lvl2_end,
                 (empty($game->ts_lvl3_start)) ? "." : $game->ts_lvl3_start,
                 (empty($game->ts_lvl3_end)) ? "." : $game->ts_lvl3_end,
+                "=SUM(R2:S2)",
+                "=SUM(Q2:S2)",
+                "=IF(Q2>1, 1, (Q2*(1/3)))",
+                "=IF(R2>1, 1, (R2*(1/3)))",
+                "=IF(S2>1, 1, (S2*(1/3)))",
+                "Lvl4_PtCalc",
+                "Lvl5_PtCalc",
+                "Lvl6_PtCalc",
+                "Lvl7_PtCalc",
+                "Lvl8_PtCalc",
+                "=SUM(T2:Y2)",
+                "=SUM(Z2:AE2)",
+                "=SUM(AF2:AK2)"
             ), $scoreData));
         }
 
@@ -242,5 +268,12 @@ class CardSortController extends BaseController
         }
 
         echo "Removed " . count($deleted) . " duplicates";
+    }
+
+    public function deleteGames()
+    {
+        $games   = Input::get("game_ids");
+        $gameRep = new Games(new CardSortGame());
+        return $gameRep->deleteGames(new CardSortScore(), $games);
     }
 }

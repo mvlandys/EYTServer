@@ -35,6 +35,10 @@ use \Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\User whereEmail($value)
  * @method static \Illuminate\Database\Query\Builder|\User whereNotthis($value)
  * @method static \Illuminate\Database\Query\Builder|\User whereEcers($value)
+ * @property integer $rde 
+ * @property integer $earlynum 
+ * @method static \Illuminate\Database\Query\Builder|\User whereRde($value)
+ * @method static \Illuminate\Database\Query\Builder|\User whereEarlynum($value)
  */
 class User extends Model
 {

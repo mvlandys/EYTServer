@@ -43,12 +43,13 @@
                     <li><a href="/fishshark">Fish Shark</a></li>
                     <li><a href="/notthis">NotThis</a></li>
                     <li><a href="/ecers">Ecers</a></li>
+                    <li><a href="/early_numeracy">Early Numeracy</a></li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BAS Apps<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">RDE Apps<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/verbal">Verbal Comprehension</a></li>
-                            <li><a href="/numeracy">Early Numeracy</a></li>
-                            <li><a href="/numbers">Early Numbers</a></li>
+                            <li><a href="/verbal">RDE Literacy</a></li>
+                            <li><a href="/numbers">RDE Numeracy 1</a></li>
+                            <li><a href="/numeracy">RDE Numeracy 2</a></li>
                         </ul>
                     </li>
                 </ul>

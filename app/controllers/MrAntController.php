@@ -18,7 +18,7 @@ class MrAntController extends BaseController
             $game = MrAntGame::create(array(
                 "subject_id"    => $gameData["subject_id"],
                 "session_id"    => $gameData["session"],
-                "test_name"     => $gameData["studyName"],
+                "test_name"     => (empty($gameData["studyName"])) ? "Untitled Test" : $gameData["studyName"],
                 "grade"         => $gameData["grade"],
                 "dob"           => $gameData["birthdate"],
                 "age"           => $gameData["age"],
@@ -119,6 +119,10 @@ class MrAntController extends BaseController
 
     public function showResults($test_name = null, $start = null, $end = null)
     {
+        if ($test_name == "Untitled Test (.)") {
+            $test_name = "";
+        }
+
         $gameRep   = new Games(new MrAntGame());
         $games     = $gameRep->getGames($test_name, $start, $end);
         $tests     = App::make('perms');
@@ -197,7 +201,18 @@ class MrAntController extends BaseController
             "TS_Lvl7_Start",
             "TS_Lvl7_End",
             "TS_Lvl8_Start",
-            "TS_Lvl8_End"
+            "TS_Lvl8_End",
+            "MrAnt_Pt",
+            "MrAnt_k",
+            "MrAnt_Acc",
+            "Lvl1_Acc",
+            "Lvl2_Acc",
+            "Lvl3_Acc",
+            "Lvl4_Acc",
+            "Lvl5_Acc",
+            "Lvl6_Acc",
+            "Lvl7_Acc",
+            "Lvl8_Acc",
         ), $gamesCount));
 
         foreach ($games as $game) {
@@ -254,6 +269,17 @@ class MrAntController extends BaseController
                 (empty($game->ts_lvl7_end)) ? "." : $game->ts_lvl7_end,
                 (empty($game->ts_lvl8_start)) ? "." : $game->ts_lvl8_start,
                 (empty($game->ts_lvl8_end)) ? "." : $game->ts_lvl8_end,
+                "MrAnt_Pt",
+                "MrAnt_k",
+                "MrAnt_Acc",
+                "Lvl1_Acc",
+                "Lvl2_Acc",
+                "Lvl3_Acc",
+                "Lvl4_Acc",
+                "Lvl5_Acc",
+                "Lvl6_Acc",
+                "Lvl7_Acc",
+                "Lvl8_Acc",
             ), $scores));
         }
 
@@ -304,5 +330,12 @@ class MrAntController extends BaseController
         }
 
         echo "Removed " . count($deleted) . " duplicates";
+    }
+
+    public function deleteGames()
+    {
+        $games   = Input::get("game_ids");
+        $gameRep = new Games(new MrAntGame());
+        return $gameRep->deleteGames(new MrAntScore(), $games);
     }
 }

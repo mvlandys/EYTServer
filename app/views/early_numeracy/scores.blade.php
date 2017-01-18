@@ -7,11 +7,7 @@
     <table class="table table-bordered table-stiped">
         <thead>
         <tr>
-            <th>Name</th>
-
-            <th>Level</th>
-            <th>Part</th>
-
+            <th>Item</th>
             <th>Value</th>
             <th>Response</th>
         </tr>
@@ -19,15 +15,12 @@
         <tbody>
         @foreach ($scores as $score)
             <tr>
-                <td>Item {{ $score->item }}</td>
-
-                <td>{{ $score->level }}</td>
-                <td>{{ $score->part }}</td>
+                <td>{{ $score['item'] }}</td>
                 <td>
-                    {{ $score->value }}
+                    {{ $score['value'] }}
                 </td>
                 <td>
-                    {{ $score->response }}
+                    {{ $score['response'] }}
                 </td>
             </tr>
         @endforeach

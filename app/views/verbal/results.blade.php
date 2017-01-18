@@ -4,6 +4,8 @@
 
 @section('content')
 
+<input type="hidden" name="game" value="verbal" />
+
 <div class="well">
     <div class="row">
         <div class="col-sm-3">
@@ -34,6 +36,8 @@
     <tr>
         <th><a class="btn btn-warning btn-xs" id="btnVerbalCSV">CSV</a></th>
         <th><a href="?order=test_name">Study Name</a></th>
+        <th><a href="?order=centre">Centre</a></th>
+        <th><a href="?order=assessor">Assessor</a></th>
         <th><a href="?order=subject_id">Subject ID</a></th>
         <th><a href="?order=session_id">Session ID</a></th>
         <th><a href="?order=grade">Grade</a></th>
@@ -43,6 +47,9 @@
         <th><a href="?order=score">Score</a></th>
         <th><a href="?order=played_at">Played At</a></th>
         <th class="text-center"><i class="glyphicon glyphicon-trash"></i></th>
+        <th class="text-center">
+            <a id="btnDeleteGames" class="btn btn-danger btn-block btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -51,7 +58,9 @@
         <tr id="row{{ $game->id }}">
             <td><a class="btn btn-info btn-sm" href="/verbal/game/{{ $game->id }}">View Scores</a></td>
             <td>{{{ empty($game->test_name) ? '.' : $game->test_name }}}</td>
-            <td>{{{ empty($game->subject_id) ? '.' : $game->subject_id }}}</td>
+            <td>{{{ empty($game->centre) ? '.' : $game->centre }}}</td>
+            <td>{{{ empty($game->assessor) ? '.' : $game->assessor }}}</td>
+            <td>{{{ empty($game->child_id) ? '.' : $game->child_id }}}</td>
             <td>{{{ empty($game->session_id) ? '.' : $game->session_id }}}</td>
             <td>{{{ empty($game->grade) ? '.' : $game->grade }}}</td>
             <td>
@@ -72,6 +81,7 @@
             <td>{{ $game->score }}</td>
             <td>{{ date("h:i A, d/m/Y",strtotime($game->played_at)) }}</td>
             <td class="text-center"><a class="btn btn-danger btn-xs btnDeleteGame" data-last_id="{{ $lastID }}" data-game_id="{{ $game->id }}" data-game_type="verbal" data-confirm="0"><i class="glyphicon glyphicon-trash"></i></a></td>
+            <td class="text-center"><input class="deleteGames" type="checkbox" data-game_id="{{ $game->id }}"></td>
             <?php $lastID = $game->id; ?>
         </tr>
     @endforeach
